@@ -1,0 +1,121 @@
+.btn{
+    position: relative;
+    display: inline-block;
+
+    box-sizing: border-box;
+    width: 90px;
+    background-color: inherit;
+    border: 2px solid #e6e7ec;
+    border-radius: 20px;
+    outline: none;
+
+    line-height: 32px;
+    color: rgba(#333, 0.8);
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    &-icon{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover{
+        border-color: #00e4a8;
+        color: #00e4a8;
+    }
+
+    &--no_bordered{
+        border: none;
+        border-radius: 0px;
+        &:hover{
+            color: #00e4a8;
+        }
+    }
+    &--circle{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+        font-size: 12px;
+        color: #FFF;
+
+        &:hover{
+            border-color: #e6e7ec;
+            color: #FFF;
+
+            box-shadow: 0 0 25px rgba(#333, 0.3);
+        }
+    }
+
+    &--category{
+        width: 170px;
+        padding: 0px;
+
+        line-height: 40px;
+
+        color: #FFF;
+        font-size: 12px;
+        font-family: roboto--b, Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+
+        &:hover{
+            border-color: #EB4E36;
+            color: #EB4E36;
+        }
+    }
+
+    &--left{
+        width: 40px;
+        height: 30px;
+
+        border: 2px solid #E4E7F0;
+        border-right-width: 1px;
+        border-radius: 0;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+
+        color: #333;
+
+        &:hover{
+            border-color: #e6e7ec;
+            color: inherit;
+        }
+    }
+    &--right{
+        width: 40px;
+        height: 30px;
+
+        border: 2px solid #E4E7F0;
+        border-left-width: 1px;
+        border-radius: 0;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+
+        color: #333;
+        
+        &:hover{
+            border-color: #e6e7ec;
+            color: inherit;
+        }
+    }
+
+    &--disabled{
+        background-color: #EC4E35;
+        border-color: #EC4E35;
+        color: #FFF;
+
+        opacity: 0.7;
+
+        &:hover{
+            border-color: #EC4E35;
+            color: #FFF;
+
+            box-shadow: none;
+        }
+    }
+}

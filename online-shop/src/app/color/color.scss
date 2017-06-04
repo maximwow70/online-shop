@@ -1,0 +1,57 @@
+.color{
+    display: inline-block;
+    
+    box-sizing: border-box;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #3a3f5c;
+    outline: none;
+
+    &--small{
+        width: 10px;
+        height: 10px;
+    }
+
+    &--black{
+        background-color: #333;
+    }
+    &--white{
+        background-color: #FFF;
+        border: 2px solid #3a3f5c;
+
+        color: #3a3f5c;
+    }
+    &--dark_grey{
+        background-color: #625f56;
+    }
+    &--eggplant{
+        background-color: #852f4c;
+    }
+    &--red{
+        background-color: #ff5234;
+    }
+    &--yellow{
+        background-color: #f5c500;
+    }
+    &--blue{
+        background-color: #2754eb;
+    }
+    &--green{
+        background-color: #01e2aa;
+    }
+    &--light_blue{
+        background-color: #00deeb;
+    }
+    &--military{
+        background-color: #007236;
+        background-image: url('/assets/colors/military-icon1.png');
+        background-size: 225% 225%;
+    }
+    &--multicolor{
+        background-color: transparent;
+        background-image: url('/assets/colors/colors_icon.png');
+        background-position: center;
+        background-size: 150% 150%;
+    }
+}

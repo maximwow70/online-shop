@@ -1,0 +1,19 @@
+.size{
+    display: inline-block;
+    
+    box-sizing: border-box;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #B9BED1;
+    background-color: #FFF;
+    outline: none;
+            
+    line-height: 32px;
+    color: #3a3f5c;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    transition: 0.3s;
+}

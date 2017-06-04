@@ -1,0 +1,113 @@
+.item_card{
+    position: relative;
+
+    display: inline-block;
+    width: 270px;
+    background-color: #FFF;
+    border-radius: 5px;
+
+    color: #3A3F5C;
+    text-align: left;
+
+    &-img{
+        position: relative;
+
+        display: block;
+        width: 100%;
+        height: 300px;
+        background-color: #F0F2F7;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        
+        //overflow: hidden;
+
+
+        .img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            max-width: 80%;
+            max-height: 80%;
+        }
+    }
+    &-info{
+        padding: 20px;
+    }
+    &-name{
+        margin-bottom: 4px;
+
+        display: inline-block;
+        width: 100%;
+
+        color: inherit;
+        font-size: 18px;
+        text-decoration: none;
+
+        transition: 0.3s;
+        &:hover{
+            color: #E8C63B;
+        }
+    }
+    &-color_list{
+        display: inline-block;
+        vertical-align: middle;
+        width: 70%;
+    }
+    &-cost{
+        display: inline-block;
+        vertical-align: middle;
+        width: 30%;
+
+        color: #A1A6BA;
+        font-size: 14px;
+        text-align: right;
+    }
+
+    &-new{
+        z-index: 1;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+
+        width: 45px;
+        padding: 5px 0;
+        background-color: #E8C63B;
+        border-radius: 5px;
+
+        color: #FFF;
+        font-size: 12px;
+        font-family: roboto--b, Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    &--small{
+        width: auto;
+        height: auto;
+        .item_card-img{
+            margin-bottom: 12px;
+
+            height: 130px;
+            border-radius: 5px;
+        }
+        .item_card-name{
+            width: 100%;
+
+            font-weight: normal;
+        }
+        .item_card-cost{
+            display: block;
+            width: 100%;
+
+            text-align: left;
+        }
+        .item_card-new{
+        }
+    }
+    &--light{
+        background-color: #FFF;
+        color: #3A3F5C;
+    }
+}

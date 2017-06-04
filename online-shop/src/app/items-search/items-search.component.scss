@@ -1,0 +1,11 @@
+.items_search{
+    border-radius: 5px;
+
+    text-align: left;
+
+    &-search{
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+    }
+}
