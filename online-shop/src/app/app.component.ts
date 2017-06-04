@@ -17,7 +17,7 @@ export class AppComponent {
 	}
 
 	private getResponseFromServer(): void {
-		this._http.get('TestServlet')
+		this._http.post('TestServlet', '')
 			.map(response => response.json()).subscribe(
 				response => this._responseFromServer = response.toString()
 			);
