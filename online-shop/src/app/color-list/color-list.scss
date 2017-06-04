@@ -1,0 +1,9 @@
+.color_list{
+    &-color{
+        display: inline-block;
+
+        &:not(:last-child){
+            margin-right: 5px;
+        }
+    }
+}

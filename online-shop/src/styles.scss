@@ -1,0 +1,29 @@
+@import './app/ui/btn/btn.scss';
+@import './app/ui/select-number/select-number.scss';
+@import './app/ui/search/search.scss';
+@import './app/ui/select/select.scss';
+@import './app/ui/range/range.scss';
+@import './app/ui/datapicker/datapicker.scss';
+
+@import './app/header/header.scss';
+@import './app/navigation/navigation.scss';
+@import './app/logo/logo.scss';
+
+@import './app/item-list/item-list.scss';
+@import './app/item-card/item-card.scss';
+
+@import './app/color-list/color-list.scss';
+@import './app/color/color.scss';
+
+@import './app/size/size.scss';
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body{
+    background-color: #E4E7EF;
+
+    font-family: Arial, Helvetica, sans-serif;
+}

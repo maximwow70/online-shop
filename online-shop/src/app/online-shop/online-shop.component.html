@@ -1,0 +1,73 @@
+<div class="navigation navigation--light">
+	<div class="navigation-logo">
+		<div class="logo">
+			<h2 class="logo-name">
+				Portland
+			</h2>
+		</div>
+	</div><!--
+	--><div class="navigation-search">
+		<div class="search">
+			<input class="search-input" type="text" placeholder="I'm shopping for.."><!--
+			--><div class="search-select">
+				<div class="select select--full_squared select--light">
+					<input type="text" class="select-input" value="" readonly><!--
+					--><button class="select-btn">
+						<div class="select-btn_icon"><span class="fa fa-chevron-down"></span></div>
+					</button>
+					<div class="select-value_list">
+						<button class="select-value" value="Ladies"></button>
+						<button class="select-value" value="Men"></button>
+						<button class="select-value" value="Kids"></button>
+					</div>
+				</div>
+			</div><!--
+			--><button class="search-btn">
+				<span class="fa fa-search"></span>
+			</button>
+		</div>
+	</div><!--
+	--><div class="navigation-actions">
+		<div class="navigation-btn">
+			<div class="btn btn--no_bordered">
+				<div class="fa fa-shopping-cart"></div>
+				cart
+			</div>
+		</div>
+		<div class="navigation-btn">
+			<div class="btn btn--no_bordered">
+				<div class="fa fa-heart"></div>
+				wishlist
+			</div>
+		</div>
+		<div class="navigation-btn">
+			<div class="btn">sign in</div>
+		</div>
+	</div>
+</div>
+<div class="item_list">
+	<div class="item_list-items_search">
+		<items-search></items-search>
+	</div><!--
+	--><div class="item_list-items">
+		<div class="item_list-item_card" *ngFor="let itemInfo of itemList">
+			<div class="item_card">
+				<div class="item_card-new">new</div>
+				<div class="item_card-img">
+					<img class="img" src="{{itemInfo.item.photoUrl}}" alt="">
+				</div>
+				<div class="item_card-info">
+					<a class="item_card-name" href="">{{itemInfo.item.name}}</a>
+					<div class="item_card-color_list">
+						<div class="color-list">
+							<div class="color_list-color" *ngFor="let color of getColorsByItem(itemInfo.item)">
+								<div class="color color--{{getClassByColor(color)}} color--small"></div>
+							</div>
+						</div>
+					</div><!--
+					--><h4 class="item_card-cost">${{getCostByItem(itemInfo.item)}}</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
