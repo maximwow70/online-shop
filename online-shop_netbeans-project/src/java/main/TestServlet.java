@@ -5,6 +5,7 @@
  */
 package main;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -46,7 +47,12 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        System.out.println("test");
+        String[] s = new String[]{"0","1","2"};
+        Gson gson = new Gson();
+        String lol = gson.toJson(s);
+        System.out.println(lol);
+        response.getWriter().write(lol);
     }
 
     /**
@@ -61,7 +67,6 @@ public class TestServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text.html;charset=UTF-8");
-        response.getWriter().write("helloWorld");
     }
 
     /**
