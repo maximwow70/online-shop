@@ -66,7 +66,12 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text.html;charset=UTF-8");
+        System.out.println("test2");
+        String[] s = new String[]{"1","2","3"};
+        Gson gson = new Gson();
+        String lol = gson.toJson(s);
+        System.out.println(lol);
+        response.getWriter().write(lol);
     }
 
     /**
