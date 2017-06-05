@@ -7,6 +7,7 @@ import { ItemColorService } from "app/_services/item-color/item-color.service";
 import { ItemCostService } from "app/_services/item-cost/item-cost.service";
 
 import { Select } from "app/ui/select/select";
+import { ItemListService } from "app/_services/item-list/item-list.service";
 
 @Component({
 	selector: 'online-shop',
@@ -19,29 +20,30 @@ export class OnlineShopComponent implements OnInit {
 
 	constructor(
 		private _elementRef: ElementRef,
+		private _itemList: ItemListService,
 		private _itemColor: ItemColorService,
 		private _itemCost: ItemCostService
 	) {
 		this._onlineShop = new OnlineShop();
 
-		let item1 = new Item('1koqwe23', 'T-Shirt', '', '/assets/items/item4.png');
-		this._onlineShop.addItem(item1, 25.6);
+		let item1 = new Item('1koqwe23', 'T-Shirt', '', ['item4.png']);
+		this._onlineShop.addItem(item1);
 		this._itemColor.addItemColors(
 			item1,
 			[new Color('red'), new Color('green')]
 		);
 		this._itemCost.setCostToItem(item1, 99);
 
-		let item2 = new Item('1koq233', 'T-Shirt', '', '/assets/items/item2.png');
-		this._onlineShop.addItem(item2, 34);
+		let item2 = new Item('1koq233', 'T-Shirt', '', ['item2.png']);
+		this._onlineShop.addItem(item2);
 		this._itemColor.addItemColors(
 			item2,
 			[new Color('white'), new Color('red'), new Color('green')]
 		);
 		this._itemCost.setCostToItem(item2, 19.9);
 
-		let item3 = new Item('1ko2323', 'T-Shirt', '', '/assets/items/item5.png');
-		this._onlineShop.addItem(item3, 19.99);
+		let item3 = new Item('1ko2323', 'T-Shirt', '', ['item5.png']);
+		this._onlineShop.addItem(item3);
 		this._itemColor.addItemColors(
 			item3,
 			[new Color('eggplant'), new Color('white'), new Color('black')]
@@ -49,10 +51,24 @@ export class OnlineShopComponent implements OnInit {
 		this._itemCost.setCostToItem(item3, 35.4);
 
 		this.getColorsByItem(item3);
+
+		this.getItemList();
 	}
 
 	ngOnInit() {
 		let select = new Select(this._elementRef.nativeElement.querySelector('.navigation .select'));
+	}
+
+	public getItemList(): void {
+		let that = this;
+		this._itemList.getItemList().subscribe(
+			itemList => {
+				for (let item = 0; item < itemList.length; item++){
+					itemList[item] = Item.fromObject(itemList[item]);
+				}
+				this._onlineShop.setItemList(itemList)
+			}
+		);
 	}
 
 	public get itemList(): any {
