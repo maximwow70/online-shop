@@ -1,50 +1,4 @@
-<div class="navigation navigation--light">
-	<div class="navigation-logo">
-		<div class="logo">
-			<h2 class="logo-name">
-				Portland
-			</h2>
-		</div>
-	</div><!--
-	--><div class="navigation-search">
-		<div class="search">
-			<input class="search-input" type="text" placeholder="I'm shopping for.."><!--
-			--><div class="search-select">
-				<div class="select select--full_squared select--light">
-					<input type="text" class="select-input" value="" readonly><!--
-					--><button class="select-btn">
-						<div class="select-btn_icon"><span class="fa fa-chevron-down"></span></div>
-					</button>
-					<div class="select-value_list">
-						<button class="select-value" value="Ladies"></button>
-						<button class="select-value" value="Men"></button>
-						<button class="select-value" value="Kids"></button>
-					</div>
-				</div>
-			</div><!--
-			--><button class="search-btn">
-				<span class="fa fa-search"></span>
-			</button>
-		</div>
-	</div><!--
-	--><div class="navigation-actions">
-		<div class="navigation-btn">
-			<div class="btn btn--no_bordered">
-				<div class="fa fa-shopping-cart"></div>
-				cart
-			</div>
-		</div>
-		<div class="navigation-btn">
-			<div class="btn btn--no_bordered">
-				<div class="fa fa-heart"></div>
-				wishlist
-			</div>
-		</div>
-		<div class="navigation-btn">
-			<div class="btn">sign in</div>
-		</div>
-	</div>
-</div>
+<navigation></navigation>
 <div class="item_list">
 	<div class="item_list-items_search">
 		<items-search></items-search>
@@ -57,7 +11,7 @@
 					<img class="img" src="{{item.photosUrl[0]}}" alt="">
 				</div>
 				<div class="item_card-info">
-					<a class="item_card-name" href="">{{item.name}}</a>
+					<a class="item_card-name" (click)="onItemClicked(item)">{{item.name}}</a>
 					<!--<div class="item_card-color_list">
 						<div class="color-list">
 							<div class="color_list-color" *ngFor="let color of getColorsByItem(item)">
