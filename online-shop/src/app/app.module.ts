@@ -10,6 +10,7 @@ import { ItemColorService } from "app/_services/item-color/item-color.service";
 import { ItemCostService } from "app/_services/item-cost/item-cost.service";
 import { ItemSizeService } from "app/_services/item-size/item-size.service";
 import { ItemsSearchComponent } from './items-search/items-search.component';
+import { ItemListService } from "app/_services/item-list/item-list.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ItemsSearchComponent } from './items-search/items-search.component';
   providers: [
     ItemColorService,
     ItemCostService,
-    ItemSizeService
+    ItemSizeService,
+    ItemListService
   ],
   bootstrap: [AppComponent]
 })

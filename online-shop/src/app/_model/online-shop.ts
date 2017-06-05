@@ -3,20 +3,22 @@ import { Color } from "app/_model/color";
 
 export class OnlineShop {
 
-    private _itemList: {item: Item, cost: number}[] = [];
+    private _itemList: Item[] = [];
     
     constructor() {
 
     }
 
-    public addItem(item: Item, cost: number): void{
-        this._itemList.push({
-            item: item,
-            cost: cost
-        });
+    public setItemList(itemList: Item[]): void {
+        console.log(itemList);
+        this._itemList = itemList;
     }
 
-    public get itemList(): {item: Item, cost: number}[]{
+    public addItem(item: Item): void{
+        this._itemList.push(item);
+    }
+
+    public get itemList(): Item[]{
         return this._itemList;
     }
 
