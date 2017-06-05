@@ -18,6 +18,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { NavigationComponent } from './navigation/navigation.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemService } from "app/_services/item/item.service";
+import { LoadingComponent } from './loading/loading.component';
 
 const appRoutes: Routes = [
   {
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     ItemComponent,
     PageNotFoundComponent,
     NavigationComponent,
-    ItemListComponent
+    ItemListComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

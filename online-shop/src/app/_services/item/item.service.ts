@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs/Observable";
-import { Http } from "@angular/http";
+import { Http, RequestOptions } from "@angular/http";
 import { Item } from "app/_model/item";
 
 @Injectable()
@@ -11,6 +11,12 @@ export class ItemService {
 	) { }
 
 	public getItem(id: string): Observable<Item> {
-		return this._http.get('GetItem', id).map(response => response.json());
+		let params : URLSearchParams = new URLSearchParams();
+		params.set('id', id);
+		let requestOptions = new RequestOptions({
+			params: params
+		});
+
+		return this._http.get('GetItem', requestOptions).map(response => response.json());
 	}
 }

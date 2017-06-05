@@ -1,4 +1,6 @@
-<p *ngIf="!item">Some error to get item</p>
+<div class="item-loading" *ngIf="!item">
+	<loading></loading>
+</div>
 <div class="item" *ngIf="item">
 	<div class="item_card">
 		<div class="item_card-new">new</div>
