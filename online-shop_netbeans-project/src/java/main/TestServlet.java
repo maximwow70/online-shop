@@ -7,12 +7,13 @@ package main;
 
 import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import main.objects.Item;
 
 /**
  *
@@ -48,9 +49,9 @@ public class TestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("test");
-        String[] s = new String[]{"0","1","2"};
+        Set<Item> set = SQLConnector.getAllItems();
         Gson gson = new Gson();
-        String lol = gson.toJson(s);
+        String lol = gson.toJson(set);
         System.out.println(lol);
         response.getWriter().write(lol);
     }
@@ -66,10 +67,10 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("test2");
-        String[] s = new String[]{"1","2","3"};
+        System.out.println("test");
+        Set<Item> set = SQLConnector.getAllItems();
         Gson gson = new Gson();
-        String lol = gson.toJson(s);
+        String lol = gson.toJson(set);
         System.out.println(lol);
         response.getWriter().write(lol);
     }
