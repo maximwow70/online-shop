@@ -79,6 +79,6 @@ public class SQLConnector {
     }
     
     public static Item getItem(String id) {
-        return initItem("SELECT * FROM Item WHERE item_id = \""+id+"\"");
+        return initItem("SELECT * FROM Item WHERE item_id = \""+id+"\";");
     }
 }

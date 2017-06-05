@@ -60,7 +60,7 @@ public class GetItem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getReader().readLine();
+        String id = request.getParameter("id");
         Item item = SQLConnector.getItem(id);
         Gson gson = new Gson();
         String json = gson.toJson(item);
