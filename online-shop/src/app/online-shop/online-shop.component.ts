@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+
 import { OnlineShop } from "app/_model/online-shop";
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
@@ -8,6 +9,7 @@ import { ItemCostService } from "app/_services/item-cost/item-cost.service";
 
 import { Select } from "app/ui/select/select";
 import { ItemListService } from "app/_services/item-list/item-list.service";
+import { Route, Router } from "@angular/router";
 
 @Component({
 	selector: 'online-shop',
@@ -20,6 +22,7 @@ export class OnlineShopComponent implements OnInit {
 
 	constructor(
 		private _elementRef: ElementRef,
+		private _router: Router,
 		private _itemList: ItemListService,
 		private _itemColor: ItemColorService,
 		private _itemCost: ItemCostService
@@ -56,23 +59,18 @@ export class OnlineShopComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		let select = new Select(this._elementRef.nativeElement.querySelector('.navigation .select'));
 	}
 
 	public getItemList(): void {
 		let that = this;
 		this._itemList.getItemList().subscribe(
 			itemList => {
-				for (let item = 0; item < itemList.length; item++){
+				for (let item = 0; item < itemList.length; item++) {
 					itemList[item] = Item.fromObject(itemList[item]);
 				}
 				this._onlineShop.setItemList(itemList)
 			}
 		);
-	}
-
-	public get itemList(): any {
-		return this._onlineShop.itemList;
 	}
 
 	public getColorsByItem(item: Item): Color[] {
@@ -84,6 +82,16 @@ export class OnlineShopComponent implements OnInit {
 
 	public getCostByItem(item: Item): number {
 		return this._itemCost.getCostByItem(item);
+	}
+
+
+	public get itemList(): any {
+		return this._onlineShop.itemList;
+	}
+
+	public onItemClicked(item: Item): void {
+		console.log(item.id);
+		this._router.navigate(['/products', item.id]);
 	}
 
 }

@@ -1,0 +1,20 @@
+<p *ngIf="!item">Some error to get item</p>
+<div class="item" *ngIf="item">
+	<div class="item_card">
+		<div class="item_card-new">new</div>
+		<div class="item_card-img">
+			<img class="img" src="{{item.photosUrl[0]}}" alt="">
+		</div>
+		<div class="item_card-info">
+			<a class="item_card-name" (click)="onItemClicked(item)">{{item.name}}</a>
+			<!--<div class="item_card-color_list">
+				<div class="color-list">
+					<div class="color_list-color" *ngFor="let color of getColorsByItem(item)">
+						<div class="color color--{{getClassByColor(color)}} color--small"></div>
+					</div>
+				</div>
+			</div>
+			<h4 class="item_card-cost">${{getCostByItem(item)}}</h4>-->
+		</div>
+	</div>
+</div>
