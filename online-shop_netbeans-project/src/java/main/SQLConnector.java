@@ -5,7 +5,6 @@
  */
 package main;
 
-import com.google.gson.Gson;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -40,11 +39,15 @@ public class SQLConnector {
         }
     }
     
-    public static Set<Item> getAllItems() {
-        Set<Item> set = new LinkedHashSet<>();
+    private static ResultSet initResultSet(String url) throws SQLException {
         connect();
+        return statement.executeQuery(url);
+    }
+    
+    private static Set<Item> initItems(String url){
+        Set<Item> set = new LinkedHashSet<>();
         try {
-            ResultSet result = statement.executeQuery("SELECT * FROM Item");
+        ResultSet result = initResultSet(url);
             while(result.next()) {
                 set.add(new Item(result.getString("item_id"),result.getString("item_name"),result.getString("item_description"),result.getString("item_images")));
             }
@@ -52,5 +55,30 @@ public class SQLConnector {
             Logger.getLogger(SQLConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return set;
+    }
+    
+    private static Item initItem(String url) {
+        Item item = null;
+        try {
+        ResultSet result = initResultSet(url);
+        result.next();
+        item = new Item(result.getString("item_id"),result.getString("item_name"),result.getString("item_description"),result.getString("item_images"));
+        } catch (SQLException ex) {
+            Logger.getLogger(SQLConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return item;
+    }
+    
+    public static Set<Item> getAllItems() {
+        return initItems("SELECT * FROM Item");
+    }
+    
+    public static Set<Item> getItems(String name, String color, String size, int minCost, int maxCost) {
+        String URL = "";
+        return initItems(URL);
+    }
+    
+    public static Item getItem(String id) {
+        return initItem("SELECT * FROM Item WHERE item_id = \""+id+"\"");
     }
 }
