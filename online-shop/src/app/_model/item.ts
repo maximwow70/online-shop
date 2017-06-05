@@ -5,7 +5,7 @@ export class Item {
     private _name: string;
     private _description: string;
 
-    private static basePhotoUrl: string = '/assets/items/';
+    private static basePhotoUrl: string = 'assets/items/';
     private _photosUrl: string[] = [];
     
     constructor(id: string, name: string, description: string, photosUrl: string[]) {
