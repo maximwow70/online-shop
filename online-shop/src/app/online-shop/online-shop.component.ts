@@ -90,7 +90,6 @@ export class OnlineShopComponent implements OnInit {
 	}
 
 	public onItemClicked(item: Item): void {
-		console.log(item.id);
 		this._router.navigate(['/products', item.id]);
 	}
 
