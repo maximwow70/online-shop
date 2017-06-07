@@ -59,11 +59,11 @@
 
         cursor: pointer;
 
-        &--top{
+        &--inc{
             border-bottom: 1px solid #A1A6BB;
             border-top-right-radius: 5px;
         }
-        &--bottom{
+        &--dec{
             border-top: 1px solid #A1A6BB;
             border-bottom-right-radius: 5px;
         }
@@ -87,6 +87,34 @@
             border-radius: 20px;
 
             color: #3a3f5c;
+        }
+    }
+    &--count{
+        width: 100px;
+        height: 50px;
+        border-radius: 25px;
+        border: 2px solid #A1A6BB;
+
+        .select_number-value{
+            box-sizing: border-box;
+            width: 33.3333%;
+            padding: 0;
+            background-color: #FFF;
+            border: none;
+
+            color: #3a3f5c;
+            text-align: center;
+        }
+        .select_number-btn{
+            display: inline-block;
+            vertical-align: middle;
+            border: none;
+
+            width: 33.3333%;
+            height: 100%;
+
+            color: #A1A6BB;
+            font-size: 12px;
         }
     }
 }

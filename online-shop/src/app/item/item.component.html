@@ -2,21 +2,66 @@
 	<loading></loading>
 </div>
 <div class="item" *ngIf="item">
-	<div class="item_card">
-		<div class="item_card-new">new</div>
-		<div class="item_card-img">
-			<img class="img" src="{{item.photosUrl[0]}}" alt="">
-		</div>
-		<div class="item_card-info">
-			<a class="item_card-name" (click)="onItemClicked(item)">{{item.name}}</a>
-			<!--<div class="item_card-color_list">
-				<div class="color-list">
-					<div class="color_list-color" *ngFor="let color of getColorsByItem(item)">
-						<div class="color color--{{getClassByColor(color)}} color--small"></div>
+	<div class="item-photos">
+		<item-photos [photosUrl]="item.photosUrl"></item-photos>
+	</div><!--
+	--><div class="item-info">
+		<div class="item-name">{{item.name}}</div>
+		<div class="item-cost">$95.4</div>
+		<div class="item-description">{{item.description}}</div>
+
+		
+		<div class="item-item_feature_list">
+			<div class="item_feature_list">
+				<div class="item_feature_list-title">
+					Composition
+				</div>
+				<div class="item_feature_list-feature_list">
+					<div class="item_feature_list-feature">
+						Upper: Leather 100%
+					</div>
+					<div class="item_feature_list-feature">
+						Outer sole: Rubber 100%
+					</div>
+					<div class="item_feature_list-feature">
+						Lining and sock: Leather 100%
 					</div>
 				</div>
 			</div>
-			<h4 class="item_card-cost">${{getCostByItem(item)}}</h4>-->
+		</div>
+
+		<div class="item-controls">
+			<div class="item-select">
+				<select-item-color [colors]="availableColors" (selectedColor)="onColorSelected($event)"></select-item-color>
+			</div>
+			<div class="item-select">
+				<select-item-size [sizes]="availableSizes" (selectedSize)="onSizeSelected($event)"></select-item-size>
+			</div>
+			<div class="item-select">
+				<select-item-count [min]="0" [max]="6" [step]="1" [startValue]="1" (value)="onCountChange($event)"></select-item-count>
+			</div>
+			<div class="item-available">
+				available: 6
+			</div>
+		</div>
+
+		<div class="item-delivery">
+			Next Day Delivery or Standart delivery in 2-4 days
+		</div>
+
+		<div class="item-actions">
+			<div class="item-btn">
+				<button class="btn btn--add_to_card" (click)="addToCard()" [ngClass]="{'btn--disabled': !canAddToCard}" [disabled]="!canAddToCard">
+					<div class="btn-icon fa fa-shopping-cart"></div>
+					Add To Card
+				</button>
+			</div>
+			<div class="item-btn">
+				<button class="btn btn--add_to_wishlist" (click)="addToWishList()">
+					<div class="btn-icon fa fa-heart"></div>
+					Add To WishList
+				</button>
+			</div>
 		</div>
 	</div>
 </div>

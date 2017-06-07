@@ -1,3 +1,4 @@
+@import '../../src.scss';
 .btn{
     position: relative;
     display: inline-block;
@@ -66,6 +67,57 @@
         &:hover{
             border-color: #EB4E36;
             color: #EB4E36;
+        }
+    }
+    &--add_to_card{
+        width: auto;
+        padding: 0px 20px;
+        background-color: $color-dark_blue;
+        border: none;
+
+        color: #FFF;
+        font-size: 12px;
+        text-transform: uppercase;
+
+        &:hover{
+            color: #FFF;
+
+            box-shadow: 0 0 40px rgba($color-dark_blue, 0.4);
+        }
+
+        .btn-icon{
+            margin-right: 10px;
+            
+            position: static;
+            transform: translate(0);
+
+            line-height: 32px;
+            font-size: 16px;
+        }
+    }
+    &--add_to_wishlist{
+        width: auto;
+        padding: 0px 20px;
+        background-color: inherit;
+        border: none;
+
+        color: $color-dark_blue;
+        font-size: 12px;
+        text-transform: uppercase;
+
+        &:hover{
+            color: $color-dark_red;
+            background-color: inherit;
+        }
+
+        .btn-icon{
+            margin-right: 5px;
+            
+            position: static;
+            transform: translate(0);
+
+            line-height: 32px;
+            font-size: 16px;
         }
     }
 

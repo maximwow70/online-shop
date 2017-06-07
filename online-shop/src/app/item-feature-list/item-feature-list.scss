@@ -1,0 +1,21 @@
+@import '../src.scss';
+.item_feature_list{
+
+    &-title{
+        margin-bottom: 10px;
+
+        color: $color-dark_grey;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    &-feature{
+        color: $color-dark_blue;
+        font-family: $font-stack--bold;
+        font-size: 14px;
+
+        &:not(:last-child){
+            margin-bottom: 5px;
+        }
+    }
+}

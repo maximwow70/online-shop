@@ -1,0 +1,13 @@
+<div class="select select--size">
+	<button class="select-input" value="" (click)="onSizeSelectClicked()">
+		<span class="size">{{_selectedSize}}</span>
+	</button><!--
+  	--><button class="select-btn" (click)="onSizeSelectClicked()">
+    	<div class="select-btn_icon"><span class="fa fa-chevron-down"></span></div>
+  	</button>
+	<div class="select-value_list">
+		<button class="select-value" *ngFor="let size of sizes" (click)="onSizeSelect(size)" [ngClass]="{'select-value--active': isSizeSelected(size)}">
+      		<span class="size">{{size}}</span>
+    	</button>
+	</div>
+</div>

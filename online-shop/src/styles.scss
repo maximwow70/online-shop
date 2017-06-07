@@ -11,11 +11,19 @@
 
 @import './app/item-list/item-list.scss';
 @import './app/item-card/item-card.scss';
+@import './app/item/item.scss';
+@import './app/item-photos/item-photos.scss';
+@import './app/item-feature-list/item-feature-list.scss';
 
 @import './app/color-list/color-list.scss';
 @import './app/color/color.scss';
 
 @import './app/size/size.scss';
+
+@font-face{
+    font-family: mont--b;
+    src: url('assets/fonts/Montserrat-Bold.otf');
+}
 
 *{
     margin: 0;

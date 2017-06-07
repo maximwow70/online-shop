@@ -7,6 +7,7 @@ export class SelectNumber {
 
     constructor(select) {
         var that = this;
+        console.log(select.querySelector('.select_number-value').getAttribute('min'));
 
         this.input = select.querySelector('.select_number-value');
         var value = this.input.getAttribute('value');
@@ -14,6 +15,9 @@ export class SelectNumber {
         this.min = parseFloat(this.input.getAttribute('min'));
         this.max = parseFloat(this.input.getAttribute('max'));
         var step = parseFloat(this.input.getAttribute('step'));
+        console.log(this.min);
+        console.log(this.max);
+        console.log(step);
 
         //this.onchange = function () { };
 
@@ -28,17 +32,17 @@ export class SelectNumber {
             that.onChange();
         }
 
-        var btnIncrement = select.querySelector('.select_number-btn--top');
+        var btnIncrement = select.querySelector('.select_number-btn--inc');
         if (btnIncrement) {
             btnIncrement.addEventListener('click', function () {
-                that.setValue(parseFloat(this.input.value) + step);
+                that.setValue(parseFloat(that.input.value) + step);
             });
         }
 
-        var btnDecrement = select.querySelector('.select_number-btn--bottom');
+        var btnDecrement = select.querySelector('.select_number-btn--dec');
         if (btnDecrement) {
             btnDecrement.addEventListener('click', function () {
-                that.setValue(parseFloat(this.input.value) - step);
+                that.setValue(parseFloat(that.input.value) - step);
             });
         }
     }
@@ -48,7 +52,7 @@ export class SelectNumber {
             this.input.value = this.min;
         } else if (value > this.max) {
             this.input.value = this.max;
-        } else {
+        } else if(!isNaN(value)){
             this.input.value = value;
         }
     }
@@ -57,7 +61,7 @@ export class SelectNumber {
         return this.input.value;
     }
     public onChange(): void {
-
+        this.setValue(this.input.value);
     }
 
 }

@@ -1,0 +1,101 @@
+@import '../src.scss';
+.item{
+    margin: 50px;
+    margin-bottom: 100px;
+    padding: 50px;
+    background-color: #FFF;
+
+    &-photos{
+        display: inline-block;
+        vertical-align: top;
+
+        box-sizing: border-box;
+        width: 50%;
+        padding-right: 50px;
+
+        text-align: center;
+    }
+    &-info{
+        display: inline-block;
+        vertical-align: top;
+
+        width: 50%;
+    }
+
+
+    &-photo{
+        display: inline-block;
+        max-width: 10%;
+        max-height: 10%;
+    }
+    &-name{
+        margin-bottom: 20px;
+
+        font-family: $font-stack--bold;
+        font-size: 32px;
+    }
+    &-cost{
+        margin-bottom: 30px;
+        font-size: 20px;
+    }
+    &-description{
+        margin-bottom: 30px;
+
+        line-height: 1.5em;
+        text-align: justify;
+    }
+    &-item_feature_list{
+        margin-bottom: 30px;
+    }
+
+
+    &-controls{
+        margin-bottom: 40px;
+    }
+    &-select{
+        margin-bottom: 20px;
+        display: inline-block;
+        vertical-align: middle;
+
+        &:not(:last-child){
+            margin-right: 20px;
+        }
+    }
+    &-available{
+        display: inline-block;
+        vertical-align: middle;
+
+        color: #A1A6BB;
+    }
+
+    &-delivery{
+        margin-bottom: 20px;
+
+        color: #A1A6BB;
+        font-size: 14px;
+    }
+
+
+    &-actions{
+
+    }
+    &-btn{
+        display: inline-block;
+
+        &:not(:last-child){
+            margin-right: 20px;
+        }
+    }
+    
+
+    
+
+    &-loading{
+        height: 100vh;
+
+        loading{
+            display: block;
+            height: 100vh;
+        }
+    }
+}

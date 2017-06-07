@@ -19,6 +19,10 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ItemService } from "app/_services/item/item.service";
 import { LoadingComponent } from './loading/loading.component';
+import { SelectItemCountComponent } from './ui/select-item-count/select-item-count.component';
+import { SelectItemColorComponent } from './ui/select-item-color/select-item-color.component';
+import { SelectItemSizeComponent } from './ui/select-item-size/select-item-size.component';
+import { ItemPhotosComponent } from './item-photos/item-photos.component';
 
 const appRoutes: Routes = [
   {
@@ -44,7 +48,11 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     NavigationComponent,
     ItemListComponent,
-    LoadingComponent
+    LoadingComponent,
+    SelectItemCountComponent,
+    SelectItemColorComponent,
+    SelectItemSizeComponent,
+    ItemPhotosComponent
   ],
   imports: [
     BrowserModule,

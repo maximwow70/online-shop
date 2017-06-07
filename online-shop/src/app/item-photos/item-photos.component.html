@@ -1,0 +1,10 @@
+<div class="item_photos">
+	<div class="item_photos-main_photo">
+		<img class="item_photo" src="{{activePhotoUrl}}" alt="">
+	</div>
+	<div class="item_photos-photo_list">
+		<div class="item_photos-photo" *ngFor="let url of photosUrl" (click)="onPhotoClicked(url)" [ngClass]="{'item_photos-photo--active': isPhotoActive(url)}">
+			<img class="item_photo" src="{{url}}" alt="" >
+		</div>
+	</div>
+</div>
