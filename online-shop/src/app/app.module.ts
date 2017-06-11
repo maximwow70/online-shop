@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { AppComponent } from './app.component';
 
@@ -35,61 +36,73 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SliderComponent } from './slider/slider.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { RangeMapZoomComponent } from './ui/range-map-zoom/range-map-zoom.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserWishlistComponent } from './user-wishlist/user-wishlist.component';
+import { UserCartComponent } from './user-cart/user-cart.component';
 
 const appRoutes: Routes = [
-  {
-    path: 'products',
-    component: OnlineShopComponent,
-    data: { title: 'Heroes List' }
-  },
-  { path: 'products/:id', component: ItemComponent },
-  {
-    path: '',
-    redirectTo: '/products',
-    pathMatch: 'full'
-  },
-  { path: '**', component: PageNotFoundComponent }
+	{ path: 'products', component: OnlineShopComponent },
+	{ path: 'products/:id', component: ItemComponent },
+	{ path: 'users', component: UserDashboardComponent },
+	{ path: 'users/:id', component: UserDashboardComponent },
+	{ path: 'contacts', component: ContactsComponent },
+	{
+		path: '',
+		redirectTo: '/products',
+		pathMatch: 'full'
+	},
+	{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    OnlineShopComponent,
-    ItemsSearchComponent,
-    ItemComponent,
-    PageNotFoundComponent,
-    ItemListComponent,
-    LoadingComponent,
-    SelectItemCountComponent,
-    SelectItemColorComponent,
-    SelectItemSizeComponent,
-    ItemPhotosComponent,
-    SizeGuideComponent,
-    ColorpickerComponent,
-    SizepickerComponent,
-    CostpickerComponent,
-    CategoryListComponent,
-    PaginatorComponent,
-    HomePageComponent,
-    HeaderComponent,
-    FooterComponent,
-    SliderComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot(appRoutes)
-  ],
-  providers: [
-    ItemColorService,
-    ItemCostService,
-    ItemSizeService,
-    ItemListService,
-    ItemService,
-    CategoryListService,
-    UserDataService
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		OnlineShopComponent,
+		ItemsSearchComponent,
+		ItemComponent,
+		PageNotFoundComponent,
+		ItemListComponent,
+		LoadingComponent,
+		SelectItemCountComponent,
+		SelectItemColorComponent,
+		SelectItemSizeComponent,
+		ItemPhotosComponent,
+		SizeGuideComponent,
+		ColorpickerComponent,
+		SizepickerComponent,
+		CostpickerComponent,
+		CategoryListComponent,
+		PaginatorComponent,
+		HomePageComponent,
+		HeaderComponent,
+		FooterComponent,
+		SliderComponent,
+		ContactsComponent,
+		RangeMapZoomComponent,
+		UserDashboardComponent,
+		UserWishlistComponent,
+		UserCartComponent,
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpModule,
+		RouterModule.forRoot(appRoutes),
+		AgmCoreModule.forRoot({
+			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
+		})
+	],
+	providers: [
+		ItemColorService,
+		ItemCostService,
+		ItemSizeService,
+		ItemListService,
+		ItemService,
+		CategoryListService,
+		UserDataService
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

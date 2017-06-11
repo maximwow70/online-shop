@@ -148,7 +148,9 @@ export class Range {
         var progressBarVM = rangeVM.querySelector('.range-progress_bar');
 
         for (var i = 0; i < pointsVM.length; i++) {
-            this.points.push(parseFloat(pointsVM[i].getAttribute('data-point')));
+            console.log(pointsVM[i].innerHTML);
+            this.points.push(parseFloat(pointsVM[i].innerHTML));
+            pointsVM[i].innerHTML = '';
             if (this.points[i] > 1) {
                 this.points[i] = 1;
             } else if (this.points[i] < 0) {

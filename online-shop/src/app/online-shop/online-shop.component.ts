@@ -56,6 +56,8 @@ export class OnlineShopComponent implements OnInit {
 		this.getColorsByItem(item3);
 
 		this.getItemList();
+	
+
 	}
 
 	ngOnInit() {

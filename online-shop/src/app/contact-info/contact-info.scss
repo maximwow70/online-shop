@@ -1,0 +1,27 @@
+@import '../src.scss';
+.contact_info{
+
+    font-family: $font-stack--light;
+    &-icon{
+        margin-bottom: 30px;
+
+        font-size: 36px;
+    }
+    &-title{
+        margin-bottom: 10px;
+
+        font-size: 20px;
+    }
+    &-contact{
+        color: inherit;
+        font-size: 16px;
+        text-decoration: none;
+
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+            color: $color-dark_red;
+        }
+    }
+}

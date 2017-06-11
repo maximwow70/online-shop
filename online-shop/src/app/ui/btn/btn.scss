@@ -241,6 +241,41 @@
             box-shadow: 0 0 40px rgba($color-light_grey, 0.4);
         }
     }
+    &--send_message{
+        width: auto;
+        padding: 0 20px;
+        background-color: $color-dark_blue;
+        border: 0;
+
+        line-height: 40px;
+        color: #FFF;
+        font-size: 14px;
+        text-transform: uppercase;
+
+        &:hover{
+            color: #FFF;
+            box-shadow: 0 0 40px rgba($color-dark_blue, 0.4);
+        }
+    }
+
+    &--order_road{
+        width: 120px;
+        padding: 0px 20px;
+        border: 2px solid $color-light_grey;
+
+        color: rgba($color-dark_blue, 0.8);
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        text-transform: uppercase;
+
+        &:hover{
+            background: none;
+            border-color: $color-light_grey;
+
+            color: rgba($color-dark_blue, 0.8);
+        }
+
+    }
 
     &--disabled{
         background-color: #EC4E35;

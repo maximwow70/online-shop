@@ -41,14 +41,14 @@ export class HeaderComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this._wishListItemsVM = this._elementRef.nativeElement.querySelector('.wishlist');
+		this._wishListItemsVM = this._elementRef.nativeElement.querySelector('.user_wishlist');
 		Ps.initialize(
-			this._wishListItemsVM.querySelector('.wishlist-item_list')
+			this._wishListItemsVM.querySelector('.user_wishlist-item_list')
 		);
 
-		this._cartItemsVM = this._elementRef.nativeElement.querySelector('.cart');
+		this._cartItemsVM = this._elementRef.nativeElement.querySelector('.user_cart');
 		Ps.initialize(
-			this._cartItemsVM.querySelector('.cart-item_list')
+			this._cartItemsVM.querySelector('.user_cart-item_list')
 		);
 	}
 
@@ -66,12 +66,12 @@ export class HeaderComponent implements OnInit {
 
 
 	public onWishlistBtnToggle(): void {
-		this._wishListItemsVM.classList.toggle('wishlist--open');
-		this._cartItemsVM.classList.remove('cart--open');
+		this._wishListItemsVM.classList.toggle('user_wishlist--open');
+		this._cartItemsVM.classList.remove('user_cart--open');
 	}
 	public onCartBtnToggle(): void {
-		this._cartItemsVM.classList.toggle('cart--open');
-		this._wishListItemsVM.classList.remove('wishlist--open');
+		this._cartItemsVM.classList.toggle('user_cart--open');
+		this._wishListItemsVM.classList.remove('user_wishlist--open');
 	}
 
 }

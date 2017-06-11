@@ -7,10 +7,28 @@ export class ItemColorService {
 
 	private _itemList: { item: Item, colors: Color[] }[] = [];
 
-	constructor() { }
+	constructor() {
+		this.addItemColors(
+			new Item('12qwe234', 'T-Shirt', '', ['item5.png']),
+			[new Color('eggplant'), new Color('white'), new Color('black')]
+		);
+		this.addItemColors(
+			new Item('123e23q4', 'T-Shirt', '', ['item5.png']),
+			[new Color('red'), new Color('black')]
+		);
+		this.addItemColors(
+			new Item('asdaqwe', 'T-Shirt', '', ['item5.png']),
+			[new Color('green'), new Color('white'), new Color('black')]
+		);
+		this.addItemColors(
+			new Item('123qweaq4', 'T-Shirt', '', ['item5.png']),
+			[new Color('green'), new Color('white'), new Color('black')]
+		);
+	}
 
 	public getColorsByItem(item: Item): Color[] {
-		return this._itemList.find( i => i.item.id === item.id).colors;
+		let findedItem = this._itemList.find( i => i.item.id === item.id);
+		return findedItem ? findedItem.colors : [];
 	}
 
 	public addItemColors(item, colors: Color[]): void {

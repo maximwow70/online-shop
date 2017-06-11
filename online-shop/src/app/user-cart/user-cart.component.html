@@ -1,0 +1,65 @@
+<div class="user_cart" [ngClass]="{'user_wishlist--empty': itemList.length == 0}">
+	<h4 routerLink="/products" class="user_cart-helper" *ngIf="itemList.length == 0">
+		There is no products in your cart. Let's shopping now!
+	</h4>
+	<div class="user_cart-user_order_road">
+		<div class="user_order_road">
+			<div class="user_order_road-btn user_order_road-btn--during">
+				<div class="btn btn--order_road">order</div>
+			</div>
+			<div class="user_order_road-btn">
+				<div class="btn btn--order_road">checkout</div>
+			</div>
+			<div class="user_order_road-btn">
+				<div class="btn btn--order_road">delivery</div>
+			</div>
+			<div class="user_order_road-btn">
+				<div class="btn btn--order_road">done</div>
+			</div>
+		</div>
+	</div>
+	<div class="user_cart-item_list">
+		<div class="user_cart-item" *ngFor="let item of itemList">
+			<div class="item item--user_cart">
+				<div class="item-photos">
+					<img class="item-photo" src="{{item.photosUrl[0]}}" alt="">
+				</div><!--
+				--><div class="item-info">
+					<h2 class="item-name" (click)="onItemClicked(item)">{{item.name}}</h2>
+					<div class="item-color_list">
+						<div class="color-list">
+							<div class="color_list-color" *ngFor="let color of getColorsByItem(item)">
+								<div class="color color--middle color--{{getClassByColor(color)}}"></div>
+							</div>
+						</div>
+					</div>
+					<div class="item-size_list">
+						<div class="item-size">
+							<div class="size size--middle">xl</div>
+						</div>
+						<div class="item-size">
+							<div class="size size--middle">l</div>
+						</div>
+					</div>
+				</div>
+				<div class="item-actions">
+					<div class="item-cost">$34</div>
+					<div class="item-available">
+						6 available
+					</div>
+					<div class="item-btn">
+						<button class="btn btn--add_to_card">Add to cart</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="user_cart-actions">
+		<div class="user_cart-btn">
+			<button class="btn">Continue shopping</button>
+		</div>
+		<div class="user_cart-btn">
+			<button class="btn">Proceed to Checkout</button>
+		</div>
+	</div>
+</div>

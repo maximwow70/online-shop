@@ -1,0 +1,21 @@
+.contact_map{
+    position: relative;
+    &-map{
+        display: block;
+        height: 400px;
+    }
+    &-range_map_zoom{
+        z-index: 3;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translate(-50%, 0);
+
+        width: 200px;
+    }
+}
+
+.gm-style-cc, .gm-svpc, .gmnoprint, a img[draggable=false],
+.gmnoprint{
+    display: none !important;
+}

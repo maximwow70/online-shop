@@ -32,8 +32,15 @@
 @import './app/info/info.scss';
 
 @import './app/user/user.scss';
-@import './app/wishlist/wishlist.scss';
-@import './app/cart/cart.scss';
+@import './app/user-wishlist/user-wishlist.scss';
+@import './app/user-cart/user-cart.scss';
+@import './app/user-dashboard/user-dashboard.scss';
+@import './app/user-order-road/user-order-road.scss';
+
+@import './app/contacts/contacts.scss';
+@import './app/contact-info/contact-info.scss';
+@import './app/contact-form/contact-form.scss';
+@import './app/contact-map/contact-map.scss';
 
 @font-face{
     font-family: mont--b;

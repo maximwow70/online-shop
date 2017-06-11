@@ -25,10 +25,99 @@
         }
     }
 
+    &-btn_list{
+    }
+    &-btn{
+        background: none;
+        outline: none;
+
+        color: inherit;
+        font-size: 20px;
+
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+            color: $color-dark_green;
+        }
+    }
+
+    &--smart{
+        z-index: 5;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: translate(-100%, 0);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        box-sizing: border-box;
+        width: 320px;
+        background-color: $color-black;
+        height: 100%;
+        padding: 80px 40px;
+
+        background-image: url('assets/smart-navigation.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        color: #FFF;
+        text-align: center;
+
+        transition: transform 0.3s;
+        .navigation-btn{
+            margin: 0 10px 20px 10px;
+            &--close{
+                margin: 0;
+                position: absolute;
+                top: 40px;
+                right: 40px;
+            }
+        }
+        .navigation-list{
+            margin: 0;
+
+            box-sizing: border-box;
+            width: 100%;
+
+            &:not(:last-of-type){
+                margin-bottom: 30px;
+            }
+        }
+
+        .navigation{
+            position: static;
+            margin-top: 50px;
+            border-top: 1px solid $color-light_grey; 
+            padding: 50px 0;
+            background: none;
+            .navigation-list{
+                &:not(:last-child){
+                    margin-bottom: 15px;
+                }
+            }
+        }
+        
+        &.navigation--open{
+            transform: translate(0);
+        }
+    }
+
+    @media screen and (max-width: 550px) {
+        &.navigation--smart{
+            width: 100%;
+        }
+    }
+
     @media screen and (max-width: 500px){
         &-list{
             width: 100%;
-            &:not(:last-child){
+            &:not(:last-of-type){
                 margin-right: 0;
                 margin-bottom: 10px;
             }

@@ -1,0 +1,43 @@
+@import '../src.scss';
+.contact_form{
+
+    &-title{
+        margin-bottom: 40px;
+
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: normal;
+    }
+
+    &-input{
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        border-bottom: 1px solid $color-dark_blue;
+        outline: none;
+
+        line-height: 50px;
+        color: $color-dark_blue;
+        font-family: inherit;
+        font-size: 24px;
+
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+
+        &--message{
+            max-height: 200px;
+            min-height: 36px * 3;
+
+            line-height: 36px;
+        }
+
+        &.ng-invalid.ng-dirty{
+            border-color: $color-dark_red;
+        }
+    }
+
+    &-btn{
+        margin-top: 20px;
+    }
+}

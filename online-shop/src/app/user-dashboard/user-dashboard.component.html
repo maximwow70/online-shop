@@ -1,0 +1,29 @@
+<div class="user_dashboard-loading" *ngIf="!user">
+    <loading></loading>
+</div>
+<div class="user_dashboard" *ngIf="user">
+	<h2 class="user_dashboard-title">Welcome {{user.name}}</h2>
+    <p class="user_dashboard-description">
+        This is your personal dashboard. Look, edit and order items in your cart and wishlist!
+    </p>
+    <div class="user_dashboard-tabs">
+        <div class="user_dashboard-btn" [ngClass]="{'user_dashboard-btn--active': isActiveCart}" (click)="onCartView()">
+            <div class="btn btn--user_cart">
+                <div class="btn-icon fa fa-shopping-cart" ></div>
+                3 items
+            </div>
+        </div><!--
+        --><div class="user_dashboard-btn" [ngClass]="{'user_dashboard-btn--active': !isActiveCart}" (click)="onWishlistView()">
+            <div class="btn btn--user_wishlist">
+                <div class="btn-icon fa fa-heart"></div>
+                4 items
+            </div>
+        </div>
+    </div>
+    <div class="user_dashboard-user_cart" *ngIf="isActiveCart">
+        <user-cart [itemList]="cartItems"></user-cart>
+    </div>
+    <div class="user_dashboard-user_wishlist" *ngIf="!isActiveCart">
+        <user-wishlist [itemList]="wishlistItems"></user-wishlist>
+    </div>
+</div>
