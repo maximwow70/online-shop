@@ -13,7 +13,7 @@ export class ItemListService {
 	) { }
 
 	public getItemList(): Observable<Item[]> {
-		return this._http.get('TestServlet', '')
+		return this._http.get('GetItemList', '')
 			.map(response => response.json());
 	}
 

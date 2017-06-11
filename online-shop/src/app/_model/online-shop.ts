@@ -3,22 +3,33 @@ import { Color } from "app/_model/color";
 
 export class OnlineShop {
 
-    private _itemList: Item[] = [];
-    
+    private _itemList: { item: Item, cost: number }[] = [];
+
     constructor() {
 
     }
 
     public setItemList(itemList: Item[]): void {
-        console.log(itemList);
-        this._itemList = itemList;
+        for (let i = 0; i < itemList.length; i++) {
+            this._itemList.push({
+                item: itemList[i],
+                cost: 0
+            });
+        }
     }
 
-    public addItem(item: Item): void{
-        this._itemList.push(item);
+    public addItem(item: Item): void {
+        this._itemList.push({
+            item: item,
+            cost: 0
+        });
     }
 
-    public get itemList(): Item[]{
+    public setItemCost(item: Item, cost: number): void {
+        this._itemList.find(itemList => itemList.item.id === item.id).cost = cost;
+    }
+
+    public get itemList(): { item: Item, cost: number }[] {
         return this._itemList;
     }
 

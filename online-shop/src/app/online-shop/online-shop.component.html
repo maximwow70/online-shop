@@ -6,22 +6,22 @@
 		<items-search></items-search>
 	</div><!--
 	--><div class="item_list-items">
-		<div class="item_list-item_card" *ngFor="let item of itemList">
+		<div class="item_list-item_card" *ngFor="let itemlist of itemList">
 			<div class="item_card">
 				<div class="item_card-new">new</div>
 				<div class="item_card-img">
-					<img class="img" src="{{item.photosUrl[0]}}" alt="">
+					<img class="img" src="{{itemlist.item.photosUrl[0]}}" alt="">
 				</div>
 				<div class="item_card-info">
-					<a class="item_card-name" (click)="onItemClicked(item)">{{item.name}}</a>
+					<a class="item_card-name" (click)="onItemClicked(itemlist.item)">{{itemlist.item.name}}</a>
 					<div class="item_card-color_list">
 						<div class="color-list">
-							<div class="color_list-color" *ngFor="let color of getColorsByItem(item)">
+							<div class="color_list-color" *ngFor="let color of getColorsByItem(itemlist.item)">
 								<div class="color color--{{getClassByColor(color)}} color--small"></div>
 							</div>
 						</div>
 					</div><!--
-					--><h4 class="item_card-cost">${{getCostByItem(item)}}</h4>
+					--><h4 class="item_card-cost">${{itemlist.cost}}</h4>
 				</div>
 			</div>
 		</div>
