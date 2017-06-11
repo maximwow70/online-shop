@@ -81,4 +81,27 @@ public class SQLConnector {
     public static Item getItem(String id) {
         return initItem("SELECT * FROM Item WHERE item_id = \""+id+"\";");
     }
+    public static int getItemCost(String id) {
+        int cost = -1;
+        try {
+            ResultSet res = initResultSet("SELECT item_cost FROM Item_cost WHERE item_id = \""+id+"\"");
+            res.next();
+            cost = res.getInt("item_cost");
+        } catch (SQLException ex) {
+            Logger.getLogger(SQLConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cost;
+    }
+    public static LinkedHashSet<String> getItemColors(String id) {
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+        try {
+            ResultSet res = initResultSet("SELECT item_color FROM Item_color WHERE item_id = \""+id+"\"");
+            while(res.next()) {
+                set.add(res.getString("item_color"));
+            }
+        } catch (SQLException ex) {
+            
+        }
+        return set;
+    }
 }
