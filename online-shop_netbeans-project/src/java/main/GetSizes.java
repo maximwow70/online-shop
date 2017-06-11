@@ -5,7 +5,6 @@
  */
 package main;
 
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebServlet(name = "GetCost", urlPatterns = {"/GetCost"})
-public class GetCost extends HttpServlet {
+@WebServlet(name = "GetSizes", urlPatterns = {"/GetSizes"})
+public class GetSizes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class GetCost extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GetCost</title>");            
+            out.println("<title>Servlet GetSizes</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GetCost at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet GetSizes at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +59,9 @@ public class GetCost extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
-        response.getWriter().write(""+SQLConnector.getItemCost(id));
+        String sizeId = request.getParameter("sizeId");
+        String colorId = request.getParameter("colorId");
+        response.getWriter().write(""+SQLConnector.getCount(id, colorId, sizeId));
     }
 
     /**

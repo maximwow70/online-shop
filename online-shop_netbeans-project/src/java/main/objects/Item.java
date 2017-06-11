@@ -5,7 +5,9 @@
  */
 package main.objects;
 
-import java.util.Set;
+import com.google.gson.Gson;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 /**
  *
@@ -16,12 +18,13 @@ public class Item {
     private String id;
     private String name;
     private String description;
-    private String photosUrl;
+    private HashSet photosUrl;
     
     public Item(String id, String name, String description, String photosUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.photosUrl = photosUrl;
+        Gson gson = new Gson();
+        this.photosUrl = gson.fromJson(photosUrl, LinkedHashSet.class);
     }
 }

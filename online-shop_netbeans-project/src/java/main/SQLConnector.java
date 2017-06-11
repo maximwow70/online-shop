@@ -75,6 +75,11 @@ public class SQLConnector {
     
     public static Set<Item> getItems(String name, String color, String size, int minCost, int maxCost) {
         String URL = "";
+//        Select * from Item where 
+//        item_name like "%hat%" AND
+//        item_id like (Select item_id from Item_color where item_color = "green") AND
+//        item_id like (Select item_id from Item_size where item_size = "biggest!") AND
+//        item_id like (Select item_id from Item_cost where item_cost > 10000 AND item_cost<0)
         return initItems(URL);
     }
     
@@ -99,9 +104,26 @@ public class SQLConnector {
             while(res.next()) {
                 set.add(res.getString("item_color"));
             }
-        } catch (SQLException ex) {
-            
-        }
+        } catch (SQLException ex) {}
         return set;
+    }
+    public static LinkedHashSet<String> getItemSizes(String id) {
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+        try {
+            ResultSet res = initResultSet("SELECT item_size FROM Item_size WHERE item_id = \""+id+"\"");
+            while(res.next()) {
+                set.add(res.getString("item_size"));
+            }
+        } catch (SQLException ex) {}
+        return set;
+    }
+    public static int getCount(String id, String colorId, String sizeId) {
+        int count = 0;
+        try {
+            ResultSet res = initResultSet("SELECT COUNT(item_id) as count FROM Item_count WHERE id = \""+id+"\" AND item_color_article = \""+colorId+"\" AND item_size_article = \""+sizeId+"\"");
+            res.next();
+            count = res.getInt(count);
+        } catch(SQLException ex) {}
+        return count;
     }
 }

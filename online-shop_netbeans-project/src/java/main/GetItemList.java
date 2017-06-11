@@ -51,6 +51,7 @@ public class GetItemList extends HttpServlet {
         Set<Item> set = SQLConnector.getAllItems();
         Gson gson = new Gson();
         String lol = gson.toJson(set);
+        System.out.println(lol);
         response.getWriter().write(lol);
     }
 
