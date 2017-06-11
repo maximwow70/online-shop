@@ -71,6 +71,7 @@ export class OnlineShopComponent implements OnInit {
 					let item = Item.fromObject(itemList[i])
 					itemList[i] = item;
 					that.getCostByItem(item);
+					this.getColorsByItem(item);
 				}
 				this._onlineShop.setItemList(itemList)
 			}
@@ -81,17 +82,22 @@ export class OnlineShopComponent implements OnInit {
 			this._onlineShop.setItemCost(item, response);
 		});
 	}
-
-
-	public getColorsByItem(item: Item): Color[] {
-		return this._itemColor.getColorsByItem(item);
+	public getColorsByItem(item: Item): void{
+		this._itemColor.getColorsByItem(item).subscribe(colorList => {
+			let colors = [];
+			for (let i = 0; i < colorList.length; i++){
+				colors.push(new Color(colorList[i]));
+			}
+			this._onlineShop.setItemColors(item, colors);
+		});
 	}
+
 	public getClassByColor(color: Color): string {
 		return this._itemColor.getClassByColor(color);
 	}
 
 
-	public get itemList(): { item: Item, cost: number }[] {
+	public get itemList(): { item: Item, cost: number, colors: Color[] }[] {
 		return this._onlineShop.itemList;
 	}
 

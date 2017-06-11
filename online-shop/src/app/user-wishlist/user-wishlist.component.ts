@@ -32,7 +32,7 @@ export class UserWishlistComponent implements OnInit {
 		return this._itemColor.getClassByColor(color);
 	}
 	public getColorsByItem(item: Item): Color[] {
-		return this._itemColor.getColorsByItem(item);
+		return [];
 	}
 
 	public onItemClicked(item: Item): void {
