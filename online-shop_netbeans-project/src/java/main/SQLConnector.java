@@ -73,13 +73,27 @@ public class SQLConnector {
         return initItems("SELECT * FROM Item");
     }
     
-    public static Set<Item> getItems(String name, String color, String size, int minCost, int maxCost) {
-        String URL = "";
-//        Select * from Item where 
-//        item_name like "%hat%" AND
-//        item_id like (Select item_id from Item_color where item_color = "green") AND
-//        item_id like (Select item_id from Item_size where item_size = "biggest!") AND
-//        item_id like (Select item_id from Item_cost where item_cost > 10000 AND item_cost<0)
+    public static Set<Item> getItems(String name, String[] color, String[] size, int minCost, int maxCost) {
+        String URL = "SELECT * FROM Item WHERE item_name like \"%"+name+"%\"";
+        if(color.length!=0) {
+            URL += "\n AND ( ";
+            for(int i = 0; i < color.length; i++) {
+                if(i != 0)
+                    URL+= " OR \n";
+                URL += " item_id LIKE (SELECT item_id from Item_color where item_color = \""+color[i]+"\")";
+            }
+            URL += " ) ";
+        }
+        if(size.length!=0) {
+            URL += "\n AND ( ";
+            for(int i = 0; i < size.length; i++) {
+                if(i != 0)
+                    URL+= " OR \n";
+                URL += " item_id LIKE (SELECT item_id from Item_size where item_size = \""+size[i]+"\")";
+            }
+            URL += " ) ";
+        }
+        URL += "\n AND item_id like (SELECT item_id FROM Item_cost WHERE item_cost > "+minCost+" AND item_cost < "+maxCost+")";
         return initItems(URL);
     }
     
