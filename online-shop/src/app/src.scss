@@ -1,7 +1,18 @@
-$font-stack--bold: mont--b, Arial, Helvetica, sans-serif;
+$font-stack--bold: ubuntu--b, Arial, Helvetica, sans-serif;
+$font-stack--regular: ubuntu--r, Arial, Helvetica, sans-serif;
+$font-stack--light: ubuntu--l, Arial, Helvetica, sans-serif;
+$font-stack--thin: mont--t, Arial, Helvetica, sans-serif;
 
+$font-item_name: item_name, Arial, Helvetica, sans-serif;
+
+$font-paginator-page: mont--r, Arial, Helvetica, sans-serif;
+$font-navigation: $font-paginator-page;
+
+$color-black: #222328;
 $color-dark_blue: #3A405B;
+$color-blue: #334CD5;
 $color-dark_red: #EB4E36;
 $color-dark_yellow: #E8C63B;
 $color-dark_green: #43D29E;
 $color-dark_grey: #A1A6BB;
+$color-light_grey: #F0F2F7;

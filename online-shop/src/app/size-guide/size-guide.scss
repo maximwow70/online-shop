@@ -1,0 +1,17 @@
+@import '../src.scss';
+.size_guide{
+    &-title{
+        color: $color-dark_green;
+        font-size: 16px;
+        font-weight: normal;
+        text-decoration: underline;
+        text-transform: uppercase;
+
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+            color: $color-dark_red;
+        }
+    }
+}

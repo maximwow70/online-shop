@@ -19,11 +19,21 @@ export class ItemComponent implements OnInit {
 	private _itemSize: string;
 	private _itemCount: number;
 
+	private _availableColors: Color[] = [];
+
 	constructor(
 		private _elementRef: ElementRef,
 		private _activatedRoute: ActivatedRoute,
 		private _itemService: ItemService
-	) { }
+	) { 
+		this._availableColors = [
+			new Color('eggplant'),
+			new Color('red'),
+			new Color('black'),
+			new Color('white'),
+			new Color('green')
+		];
+	}
 
 	ngOnInit() {
 		let id = this._activatedRoute.snapshot.paramMap.get('id');
@@ -31,11 +41,6 @@ export class ItemComponent implements OnInit {
 		this._itemService.getItem(id).subscribe(
 			response => this._item = Item.fromObject(response)
 		);
-	}
-
-	ngAfterViewInit() {
-
-
 	}
 	
 	public addToCard(): void{
@@ -60,13 +65,7 @@ export class ItemComponent implements OnInit {
 	}
 
 	public get availableColors(): Color[] {
-		return [
-			new Color('red'),
-			new Color('black'),
-			new Color('white'),
-			new Color('dark red'),
-			new Color('green')
-		];
+		return this._availableColors;
 	}
 	public get availableSizes(): string[] {
 		return [

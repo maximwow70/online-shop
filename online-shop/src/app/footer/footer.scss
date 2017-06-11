@@ -1,0 +1,41 @@
+@import '../src.scss';
+.footer{
+    background-color: $color-black;
+
+    color: #FFF;
+    &-header{
+        padding: 60px 0;
+        border-bottom: 2px solid #2d2e33;
+    }
+    &-info{
+        padding: 60px 0;
+    }
+
+    @media screen and (max-width: 1100px){
+        &-header{
+            .header-actions{
+                margin-top: 0;
+                width: auto;
+            }
+        }
+    }
+    @media screen and (max-width: 900px){
+        &-header, &-info{
+            padding: 30px 0;
+        }
+        &-header{
+            .header{
+                text-align: center;
+                &-logo, &-navigation, &-btn_list{
+                    width: 100%;
+                }
+                &-logo{
+                    margin-bottom: 0;
+                }
+                &-navigation{
+                    margin: 20px 0;
+                }
+            }
+        }
+    }
+}

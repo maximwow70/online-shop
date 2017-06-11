@@ -1,0 +1,92 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    text-align: left;
+
+    &-hamburger, &-main{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &-hamburger{
+        box-sizing: border-box;
+        height: 90px;
+        width: 10%;
+        padding-left: 5%;
+        background-color: inherit;
+        border-right: 1px solid $color-light_grey;
+        outline: none;
+
+        transition: 0.3s;
+        cursor: pointer;
+
+        &:hover{
+            background-color: $color-light_grey;
+            .btn{
+                color: $color-dark_green;
+            }
+        }
+    }
+    &-main{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        box-sizing: border-box;
+        width: 90%;
+        padding: 0 5% 0 40px;
+    }
+
+    &-logo, &-search, &-actions, &-navigation{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &-logo{
+    }
+    &-search{
+    }
+    &-actions{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 5%;
+        border-top: 1px solid $color-light_grey;
+
+        text-align: left;
+    }
+    &-user{
+    }
+
+    &-btn_list{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &-btn{
+        margin-left: 20px;
+
+        display: inline-block;
+        vertical-align: middle;
+
+        &:first-child{
+            margin-left: 0px;
+        }
+    }
+
+    &--light{
+        background-color: #FFF;
+
+        color: #3a3f5c;
+    }
+
+    
+}

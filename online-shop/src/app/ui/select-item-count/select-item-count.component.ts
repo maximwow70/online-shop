@@ -28,12 +28,7 @@ export class SelectItemCountComponent implements OnInit {
 		this._inputVM = this._elementRef.nativeElement.querySelector('.select_number-value');
 
 		this._inputVM.oninput = function (event) {
-            var value = parseFloat(that._inputVM.input.value);
-            if (isNaN(value)) {
-                that._inputVM.input.value = 0;
-            } else {
-                that.setValue(value);
-            }
+			that.setValue(parseFloat(that._inputVM.value));
             that.onChange();
         }
 
@@ -57,7 +52,9 @@ export class SelectItemCountComponent implements OnInit {
             this._inputVM.value = this.max;
         } else if(!isNaN(value)){
             this._inputVM.value = value;
-        }
+        } else {
+			this._inputVM.value = this.min;
+		}
     }
 
 	public onChange(){

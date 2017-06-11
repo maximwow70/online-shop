@@ -5,6 +5,7 @@
 @import './app/ui/range/range.scss';
 @import './app/ui/datapicker/datapicker.scss';
 
+@import './app/home-page/home-page.scss';
 @import './app/header/header.scss';
 @import './app/navigation/navigation.scss';
 @import './app/logo/logo.scss';
@@ -19,10 +20,54 @@
 @import './app/color/color.scss';
 
 @import './app/size/size.scss';
+@import './app/size-guide/size-guide.scss';
+
+@import './app/category-list/category-list.scss';
+@import './app/category/category.scss';
+
+@import './app/paginator/paginator.scss';
+
+@import './app/slider/slider.scss';
+@import './app/footer/footer.scss';
+@import './app/info/info.scss';
+
+@import './app/user/user.scss';
+@import './app/wishlist/wishlist.scss';
+@import './app/cart/cart.scss';
 
 @font-face{
     font-family: mont--b;
     src: url('assets/fonts/Montserrat-Bold.otf');
+}
+@font-face{
+    font-family: mont--r;
+    src: url('assets/fonts/Montserrat-Regular.otf');
+}
+@font-face{
+    font-family: mont--l;
+    src: url('assets/fonts/Montserrat-Light.otf');
+}
+@font-face{
+    font-family: mont--t;
+    src: url('assets/fonts/Montserrat-Thin.otf');
+}
+
+@font-face{
+    font-family: ubuntu--l;
+    src: url('assets/fonts/Ubuntu-L.ttf');
+}
+@font-face{
+    font-family: ubuntu--b;
+    src: url('assets/fonts/Ubuntu-B.ttf');
+}
+@font-face{
+    font-family: ubuntu--r;
+    src: url('assets/fonts/Ubuntu-R.ttf');
+}
+
+@font-face{
+    font-family: item_name;
+    src: url('assets/fonts/item-name.otf');
 }
 
 *{
@@ -33,5 +78,5 @@
 body{
     background-color: #E4E7EF;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: ubuntu--r, Arial, Helvetica, sans-serif;
 }

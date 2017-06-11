@@ -1,0 +1,10 @@
+<div class="datapicker">
+	<h3 class="datapicker-title">Colors</h3>
+	<div class="datapicker-data_list">
+		<button *ngFor="let color of colors" class="datapicker-data" value="{{color.name}}" [ngClass]="{'datapicker-data--picked': isColorSelected(color)}">
+			<span class="color color--{{getClassByColor(color)}}" title="{{color.name}}" (click)="onColorSelect(color)">
+				<span class="datapicker-is_picked fa fa-check"></span>
+			</span>
+		</button>
+	</div>
+</div>

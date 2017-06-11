@@ -1,3 +1,4 @@
+@import '../../src.scss';
 .select_number{
     display: inline-block;
 
@@ -103,6 +104,7 @@
             border: none;
 
             color: #3a3f5c;
+            font-family: $font-stack--bold;
             text-align: center;
         }
         .select_number-btn{

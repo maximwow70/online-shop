@@ -1,0 +1,72 @@
+@import '../src.scss';
+.paginator{
+
+    box-sizing: border-box;
+    height: 90px;
+    background-color: #FFF;
+    border-radius: 5px;
+
+    line-height: 90px;
+    color: $color-dark_blue;
+    text-align: center;
+
+    overflow: hidden;
+
+    &-page_list, &-btn{
+        display: inline-block;
+        vertical-align: top;
+
+        box-sizing: border-box;
+        height: 100%;
+    }
+    &-page_list{
+        width: 60%;
+        border-left: 1px solid $color-light_grey;
+        border-right: 1px solid $color-light_grey;
+    }
+    &-btn{
+        width: 20%;
+        background-color: inherit;
+        outline: none;
+
+        color: inherit;
+
+        cursor: pointer;
+        transition: 0.3s;
+        
+        &:hover{
+            background-color: $color-light_grey;
+        }
+    }
+
+    &-page{
+        margin: 0 5px;
+
+        width: 50px;
+        height: 50px;
+        background-color: inherit;
+        border-radius: 50%;
+        outline: none;
+
+        line-height: 50px;
+        color: inherit;
+        font-size: 16px;
+        font-family: $font-paginator-page;
+
+        cursor: pointer;
+        transition: 0.3s;
+        &--selected{
+            background-color: #FFF;
+            box-shadow: 0 0 40px rgba($color-dark_blue, 0.4);
+        }
+
+    }
+
+    @media screen and (max-width: 550px) {
+        &-page{
+            &:not([class$='--selected']){
+                display: none;
+            }
+        }
+    }
+}

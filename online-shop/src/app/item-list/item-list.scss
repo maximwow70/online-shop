@@ -25,7 +25,10 @@
 
         width: 33.3333%;
         text-align: right;
+    }
 
+    &-paginator{
+        margin-top: 50px;
     }
 
     @media screen and (max-width: 1500px){

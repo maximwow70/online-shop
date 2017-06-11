@@ -1,4 +1,6 @@
-<navigation></navigation>
+<div class="online-shop-slider">
+	<slider></slider>
+</div>
 <div class="item_list">
 	<div class="item_list-items_search">
 		<items-search></items-search>
@@ -12,16 +14,19 @@
 				</div>
 				<div class="item_card-info">
 					<a class="item_card-name" (click)="onItemClicked(item)">{{item.name}}</a>
-					<!--<div class="item_card-color_list">
+					<div class="item_card-color_list">
 						<div class="color-list">
 							<div class="color_list-color" *ngFor="let color of getColorsByItem(item)">
 								<div class="color color--{{getClassByColor(color)}} color--small"></div>
 							</div>
 						</div>
-					</div>
-					<h4 class="item_card-cost">${{getCostByItem(item)}}</h4>-->
+					</div><!--
+					--><h4 class="item_card-cost">${{getCostByItem(item)}}</h4>
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="item_list-paginator">
+		<paginator [pages]="10" [startPage]="6"></paginator>
 	</div>
 </div>

@@ -27,7 +27,9 @@ export class ItemColorService {
 			case 'red': return 'red';
 			case 'blue': return 'blue';
 			case 'green': return 'green';
+			case 'dark grey': return 'dark_grey';
 			case 'eggplant': return 'eggplant';
+			case 'military': return 'military';
 			default: return 'multicolor';
 		}
 	}

@@ -1,0 +1,32 @@
+<div class="datapicker datapicker--cost">
+	<h3 class="datapicker-title">cost</h3>
+	<div class="datapicker-selects_group">
+		<div class="select_number select_number--light">
+			<input type="text" class="select_number-value" value="{{min}}">
+		</div>
+		-
+		<div class="select_number select_number--light">
+			<input type="text" class="select_number-value" value="{{max}}">
+		</div>
+		$
+	</div>
+	<div class="datapicker-range">
+		<div class="range range--adaptive">
+			<div class="range-bar"></div>
+			<div class="range-progress_bar" [ngStyle]="{
+				'left': vm.bar.left,
+				'width': vm.bar.width
+			}"></div>
+			<button class="range-control range-control--min" [ngStyle]="{
+				'left': vm.rangeMin.left
+			}">
+				<span class="range-value">{{vm.currentValue.min}}</span>
+			</button>
+			<button class="range-control range-control--max" [ngStyle]="{
+				'left': vm.rangeMax.left
+			}">
+				<span class="range-value">{{vm.currentValue.max}}</span>
+			</button>
+		</div>
+	</div>
+</div>

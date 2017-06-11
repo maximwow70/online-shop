@@ -1,0 +1,16 @@
+<div class="paginator">
+	<button class="paginator-btn" (click)="onPrevSelect()">
+		<div class="fa fa-chevron-left"></div>
+	</button><!--
+	--><div class="paginator-page_list">
+		<button class="paginator-page" 
+			*ngFor="let page of vm.pages" 
+			(click)="onPageSelect(page)"
+			[ngClass]="{'paginator-page--selected': isPageSelected(page)}">
+			{{page}}
+		</button>
+	</div><!--
+	--><button class="paginator-btn" (click)="onNextSelect()">
+		<div class="fa fa-chevron-right"></div>
+	</button>
+</div>

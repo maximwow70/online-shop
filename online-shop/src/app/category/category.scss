@@ -1,0 +1,83 @@
+.category{
+    background-color: #FFF;
+
+    &-btn{
+        position: relative;
+
+        display: block;
+        width: 100%;
+        background-color: inherit;
+        outline: none;
+
+        line-height: 40px;
+        color: $color-dark_blue;
+        text-align: left;
+
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    &-icon{
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translate(0, -50%) rotate(-90deg);
+
+        color: #b8bfd3;
+
+        transition: 0.3s;
+    }
+
+    &-name{
+        box-sizing: border-box;
+        height: 40px;
+        padding: 0 20px;
+
+        font-family: $font-stack--regular;
+        font-size: 14px;
+    }
+    &-value{
+        box-sizing: border-box;
+        padding: 0 20px;
+        background-color: #f0f2f7;
+
+        line-height: 40px;
+        color: #a1a7bd;
+        font-family: $font-stack--regular;
+        font-size: 12px;
+        text-transform: uppercase;
+
+        cursor: pointer;
+
+        &:not(:last-child){
+            border-bottom: 1px solid #dfe4ee;
+        }
+        &:first-child{
+            border-top: 1px solid #dfe4ee;
+        }
+    }
+    &-btn, &-value{
+        &:hover, &--selected{
+            background-color: $color-dark_green;
+            color: #FFF;
+            .category-icon{
+                color: #FFF;
+            }
+        }
+    }
+
+    &-value_list{
+        max-height: 0;
+        overflow: hidden;
+
+        transition: 0.3s;
+    }
+
+    &--open{
+        .category-value_list{
+            max-height: 40px * 5;
+        }
+        .category-icon{
+            transform: translate(0, -50%) rotate(0deg);
+        }
+    }
+}

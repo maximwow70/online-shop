@@ -1,0 +1,16 @@
+@import '../src.scss';
+.category_list{
+    box-sizing: border-box;
+    width: 280px;
+    border-radius: 5px;
+
+    box-shadow: 0 0 40px rgba($color-dark_blue, 0.4);
+    overflow: hidden;
+
+    &-category{
+       
+        &:not(:last-child){
+            border-bottom: 1px solid #f1f1f3;
+        }
+    }
+}

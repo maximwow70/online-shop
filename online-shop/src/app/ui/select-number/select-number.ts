@@ -7,7 +7,6 @@ export class SelectNumber {
 
     constructor(select) {
         var that = this;
-        console.log(select.querySelector('.select_number-value').getAttribute('min'));
 
         this.input = select.querySelector('.select_number-value');
         var value = this.input.getAttribute('value');
@@ -15,9 +14,6 @@ export class SelectNumber {
         this.min = parseFloat(this.input.getAttribute('min'));
         this.max = parseFloat(this.input.getAttribute('max'));
         var step = parseFloat(this.input.getAttribute('step'));
-        console.log(this.min);
-        console.log(this.max);
-        console.log(step);
 
         //this.onchange = function () { };
 

@@ -1,94 +1,14 @@
 <div class="items_search">
 	<div class="items_search-search">
-		<div class="datapicker datapicker--colors">
-			<h3 class="datapicker-title">Colors</h3>
-			<div class="datapicker-data_list">
-				<button class="datapicker-data" value="black">
-					<span class="color color--black"></span>
-					<span class="datapicker-is_picked fa fa-check"></span>
-				</button>
-				<button class="datapicker-data datapicker-data--light" value="white">
-					<span class="color color--white"></span>
-					<span class="datapicker-is_picked fa fa-check"></span>
-				</button>
-				<button class="datapicker-data" value="red">
-					<span class="color color--red"></span>
-					<span class="datapicker-is_picked fa fa-check"></span>
-				</button>
-				<button class="datapicker-data" value="green">
-					<span class="color color--green"></span>
-					<span class="datapicker-is_picked fa fa-check"></span>
-				</button>
-				<button class="datapicker-data" value="blue">
-					<span class="color color--blue"></span>
-					<span class="datapicker-is_picked fa fa-check"></span>
-				</button>
-				<button class="datapicker-data datapicker-data--yellow" value="yellow">
-					<span class="color color--yellow"></span>
-					<span class="datapicker-is_picked fa fa-check"></span>
-				</button>
-				<button class="datapicker-data" value="light-blue">
-					<span class="color color--light_blue"></span>
-					<span class="datapicker-is_picked fa fa-check"></span>
-				</button>
-				<button class="datapicker-data" value="military">
-					<span class="color color--military"></span>
-					<span class="datapicker-is_picked fa fa-check"></span>
-				</button>
-				<button class="datapicker-data" value="multicolor">
-					<span class="color color--multicolor"></span>
-					<span class="datapicker-is_picked fa fa-check"></span>
-				</button>
-			</div>
-		</div>
+		<category-list [categories]="availableCategories"></category-list>
 	</div>
 	<div class="items_search-search">
-		<div class="datapicker datapicker--sizes">
-			<h3 class="datapicker-title">Sizes</h3>
-			<div class="datapicker-data_list">
-				<button class="datapicker-data" value="xs">
-					<span class="size">xs</span>
-				</button>
-				<button class="datapicker-data" value="s">
-					<span class="size">s</span>
-				</button>
-				<button class="datapicker-data" value="m">
-					<span class="size">m</span>
-				</button>
-				<button class="datapicker-data" value="l">
-					<span class="size">l</span>
-				</button>
-				<button class="datapicker-data" value="xl">
-					<span class="size">xl</span>
-				</button>
-			</div>
-		</div>
+		<colorpicker [colors]="availableColors" (selectedColors)="onColorsSelected($event)"></colorpicker>
 	</div>
 	<div class="items_search-search">
-		<div class="datapicker datapicker--cost">
-			<h3 class="datapicker-title">cost</h3>
-			<div class="datapicker-selects_group">
-				<div class="select_number select_number--light">
-					<input type="text" class="select_number-value" value="2" min="0" max="8000" step="5">
-				</div>
-				-
-				<div class="select_number select_number--light">
-					<input type="text" class="select_number-value" value="2" min="0" max="500" step="5">
-				</div>
-				$
-			</div>
-			<div class="datapicker-range">
-				<div class="range range--adaptive" data-min="0" data-max="9000">
-					<div class="range-bar"></div>
-					<div class="range-progress_bar"></div>
-					<button class="range-control" data-range="0.1">
-						<span class="range-value"></span>
-					</button>
-					<button class="range-control" data-range="0.7">
-						<span class="range-value"></span>
-					</button>
-				</div>
-			</div>
-		</div>
+		<sizepicker [sizes]="availableSizes" (selectedSizes)="onSizesSelected($event)"></sizepicker>
+	</div>
+	<div class="items_search-search">
+		<costpicker [min]="availableCost.min" [max]="availableCost.max"></costpicker>
 	</div>
 </div>
