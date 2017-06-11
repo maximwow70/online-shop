@@ -1,21 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Item } from "app/_model/item";
+import { Http } from "@angular/http";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class ItemCostService {
 
-	private _itemList: {item: Item, cost: number}[] = [];
+	constructor(
+		private _http: Http
+	) { }
 
-	constructor() { }
 
-	public setCostToItem(item: Item, cost: number): void {
-		this._itemList.push({
-			item: item,
-			cost: cost
-		});
-	}	
-
-	public getCostByItem(item: Item): number {
-		return this._itemList.find(i => i.item.id === item.id).cost;
+	public getCostByItem(item: Item): Observable<number> {
+		return this._http.get('GetCost' + '?id=' + item.id).map(response => response.json());
 	}
 }

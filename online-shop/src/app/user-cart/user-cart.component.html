@@ -27,29 +27,20 @@
 				--><div class="item-info">
 					<h2 class="item-name" (click)="onItemClicked(item)">{{item.name}}</h2>
 					<div class="item-color_list">
-						<div class="color-list">
-							<div class="color_list-color" *ngFor="let color of getColorsByItem(item)">
-								<div class="color color--middle color--{{getClassByColor(color)}}"></div>
-							</div>
+						<div class="item-color">
+							<div class="color color--middle color--{{getClassByColor(getColorsByItem(item))}}"></div>
 						</div>
-					</div>
-					<div class="item-size_list">
+						<span class="item-devider">/</span>
 						<div class="item-size">
 							<div class="size size--middle">xl</div>
 						</div>
-						<div class="item-size">
-							<div class="size size--middle">l</div>
-						</div>
 					</div>
 				</div>
+				<div class="item-cost">$34</div>
+				<select-item-count [min]="0" [max]="6"></select-item-count>
+				<div class="item-total_cost">$34</div>
 				<div class="item-actions">
-					<div class="item-cost">$34</div>
-					<div class="item-available">
-						6 available
-					</div>
-					<div class="item-btn">
-						<button class="btn btn--add_to_card">Add to cart</button>
-					</div>
+					<div class="fa fa-close"></div>
 				</div>
 			</div>
 		</div>

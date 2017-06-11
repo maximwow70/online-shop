@@ -25,7 +25,8 @@ export class UserCartComponent implements OnInit {
 		return this._itemColor.getClassByColor(color);
 	}
 	public getColorsByItem(item: Item): Color[] {
-		return this._itemColor.getColorsByItem(item);
+		let colors = this._itemColor.getColorsByItem(item)
+		return [colors[0]];
 	}
 
 	public onItemClicked(item: Item): void {

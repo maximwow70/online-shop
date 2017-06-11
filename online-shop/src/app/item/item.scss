@@ -290,8 +290,8 @@
             display: inline-block;
             vertical-align: middle;
 
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
             padding: 0;
 
             overflow: hidden;
@@ -300,13 +300,14 @@
             display: inline-block;
             vertical-align: middle;
 
+            width: auto;
             flex: 1;
-
         }
 
         .item-name{
+            margin-bottom: 10px;
+
             display: inline-block;
-            vertical-align: middle;
 
             font-size: 20px;
 
@@ -344,8 +345,16 @@
             max-height: 80%;
         }
 
-        .item-color_list{
-            margin-bottom: 10px;
+        .item-color, .item-size{
+            display: inline-block;
+            vertical-align: middle;
+
+            height: 20px;
+        }
+        .item-devider{
+            margin: 0 5px;
+
+            vertical-align: middle;
         }
 
         .item-actions{
@@ -355,8 +364,7 @@
             text-align: right;
         }
         .item-cost{
-            margin-bottom: 10px;
-            width: 100%;
+            margin-bottom: 0px;
         }
         .item-available{
             margin-bottom: 20px;
