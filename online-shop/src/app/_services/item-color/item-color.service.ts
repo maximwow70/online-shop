@@ -1,41 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Color } from "app/_model/color";
 import { Item } from "app/_model/item";
+import { Observable } from "rxjs/Observable";
+import { Http } from "@angular/http";
 
 @Injectable()
 export class ItemColorService {
 
-	private _itemList: { item: Item, colors: Color[] }[] = [];
-
-	constructor() {
-		this.addItemColors(
-			new Item('12qwe234', 'T-Shirt', '', ['item5.png']),
-			[new Color('eggplant'), new Color('white'), new Color('black')]
-		);
-		this.addItemColors(
-			new Item('123e23q4', 'T-Shirt', '', ['item5.png']),
-			[new Color('red'), new Color('black')]
-		);
-		this.addItemColors(
-			new Item('asdaqwe', 'T-Shirt', '', ['item5.png']),
-			[new Color('green'), new Color('white'), new Color('black')]
-		);
-		this.addItemColors(
-			new Item('123qweaq4', 'T-Shirt', '', ['item5.png']),
-			[new Color('green'), new Color('white'), new Color('black')]
-		);
+	constructor(
+		private _http: Http
+	) {
+		
 	}
 
-	public getColorsByItem(item: Item): Color[] {
-		let findedItem = this._itemList.find( i => i.item.id === item.id);
-		return findedItem ? findedItem.colors : [];
-	}
-
-	public addItemColors(item, colors: Color[]): void {
-		this._itemList.push({
-			item: item,
-			colors: colors
-		});
+	public getColorsByItem(item: Item): Observable<string[]> {
+		return this._http.get('GetColors' + '?id=' + item.id).map(response => response.json());
 	}
 
 	public getClassByColor(color: Color): string {

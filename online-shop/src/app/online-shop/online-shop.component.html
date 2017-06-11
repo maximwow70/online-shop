@@ -16,12 +16,12 @@
 					<a class="item_card-name" (click)="onItemClicked(itemlist.item)">{{itemlist.item.name}}</a>
 					<div class="item_card-color_list">
 						<div class="color-list">
-							<div class="color_list-color" *ngFor="let color of getColorsByItem(itemlist.item)">
+							<div class="color_list-color" *ngFor="let color of itemlist.colors">
 								<div class="color color--{{getClassByColor(color)}} color--small"></div>
 							</div>
 						</div>
 					</div><!--
-					--><h4 class="item_card-cost">${{itemlist.cost}}</h4>
+					--><h4 class="item_card-cost">${{itemlist.cost === null ? '' : itemlist.cost}}</h4>
 				</div>
 			</div>
 		</div>
