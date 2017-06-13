@@ -30,34 +30,7 @@ export class OnlineShopComponent implements OnInit {
 	) {
 		this._onlineShop = new OnlineShop();
 
-		// let item1 = new Item('1koqwe23', 'T-Shirt', '', ['item4.png']);
-		// this._onlineShop.addItem(item1);
-		// this._itemColor.addItemColors(
-		// 	item1,
-		// 	[new Color('red'), new Color('green')]
-		// );
-		// this._itemCost.setCostToItem(item1, 99);
-
-		// let item2 = new Item('1koq233', 'T-Shirt', '', ['item2.png']);
-		// this._onlineShop.addItem(item2);
-		// this._itemColor.addItemColors(
-		// 	item2,
-		// 	[new Color('white'), new Color('red'), new Color('green')]
-		// );
-		// this._itemCost.setCostToItem(item2, 19.9);
-
-		// let item3 = new Item('1ko2323', 'T-Shirt', '', ['item5.png']);
-		// this._onlineShop.addItem(item3);
-		// this._itemColor.addItemColors(
-		// 	item3,
-		// 	[new Color('eggplant'), new Color('white'), new Color('black')]
-		// );
-		// this._itemCost.setCostToItem(item3, 35.4);
-
-		// this.getColorsByItem(item3);
-
 		this.getItemList();
-
 	}
 
 	ngOnInit() {
@@ -65,34 +38,19 @@ export class OnlineShopComponent implements OnInit {
 
 	public getItemList(): void {
 		let that = this;
+
 		this._itemList.getItemList().subscribe(
 			itemList => {
-				for (let i = 0; i < itemList.length; i++) {
-					let item = Item.fromObject(itemList[i])
-					itemList[i] = item;
-					that.getCostByItem(item);
-					this.getColorsByItem(item);
-				}
-				this._onlineShop.setItemList(itemList)
+				that._onlineShop.setItemList(
+					OnlineShop.itemListFromArray(itemList)
+				);
 			}
 		);
-	}
-	public getCostByItem(item: Item): void {
-		this._itemCost.getCostByItem(item).subscribe(response => {
-			this._onlineShop.setItemCost(item, response);
-		});
-	}
-	public getColorsByItem(item: Item): void{
-		this._itemColor.getColorsByItem(item).subscribe(colorList => {
-			let colors = [];
-			for (let i = 0; i < colorList.length; i++){
-				colors.push(new Color(colorList[i]));
-			}
-			this._onlineShop.setItemColors(item, colors);
-		});
+
 	}
 
 	public getClassByColor(color: Color): string {
+		//console.log(color);
 		return this._itemColor.getClassByColor(color);
 	}
 
@@ -100,6 +58,7 @@ export class OnlineShopComponent implements OnInit {
 	public get itemList(): { item: Item, cost: number, colors: Color[] }[] {
 		return this._onlineShop.itemList;
 	}
+
 
 	public onItemClicked(item: Item): void {
 		this._router.navigate(['/products', item.id]);

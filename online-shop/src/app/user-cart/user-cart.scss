@@ -8,6 +8,15 @@
             border-bottom: 1px solid $color-light_grey;
         }
     }
+    &-user_order_road{
+        padding: 100px 0 75px 0;
+    }
+    &-user_cart_header{
+        padding: 0 50px;
+    }
+    &-item_list{
+        width: 100%;
+    }
 
     &-helper{
         padding: 50px; 

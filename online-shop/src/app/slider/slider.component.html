@@ -28,12 +28,12 @@
 		</button>
 	</div>
 	<div class="slider-actions">
-		<div class="slider-btn slider-btn--left">
+		<div class="slider-btn slider-btn--left" *ngIf="vm.activeSlideNumber != 0">
 			<div class="btn btn--circle" (click)="onPrevActive()">
 				<span class="btn-icon fa fa-chevron-left"></span>
 			</div>
 		</div>
-		<div class="slider-btn slider-btn--right">
+		<div class="slider-btn slider-btn--right" *ngIf="vm.activeSlideNumber != vm.items.length - 1">
 			<div class="btn btn--circle" (click)="onNextActive()">
 				<span class="btn-icon fa fa-chevron-right"></span>
 			</div>

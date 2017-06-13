@@ -4,7 +4,7 @@
     display: inline-block;
 
     box-sizing: border-box;
-    width: 90px;
+    width: 100%;
     background-color: inherit;
     border: 2px solid $color-light_grey;
     border-radius: 20px;
@@ -29,8 +29,6 @@
     }
 
     &:hover{
-        border-color: #00e4a8;
-        color: #00e4a8;
     }
 
     &--no_bordered{
@@ -139,41 +137,6 @@
         }
     }
 
-    &--left{
-        width: 40px;
-        height: 30px;
-
-        border: 2px solid #E4E7F0;
-        border-right-width: 1px;
-        border-radius: 0;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-
-        color: #333;
-
-        &:hover{
-            border-color: #e6e7ec;
-            color: inherit;
-        }
-    }
-    &--right{
-        width: 40px;
-        height: 30px;
-
-        border: 2px solid #E4E7F0;
-        border-left-width: 1px;
-        border-radius: 0;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-
-        color: #333;
-        
-        &:hover{
-            border-color: #e6e7ec;
-            color: inherit;
-        }
-    }
-
     &--social{
         width: auto;
         height: auto;
@@ -237,7 +200,13 @@
     }
 
     &--sign_in{
+        width: 80px;
+        
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
         &:hover{
+            background-color: $color-light_grey;
             box-shadow: 0 0 40px rgba($color-light_grey, 0.4);
         }
     }
@@ -274,8 +243,50 @@
 
             color: rgba($color-dark_blue, 0.8);
         }
-
     }
+    &--proceed{
+        width: 200px;
+        background-color: $color-blue;
+        border: 2px solid $color-blue;
+
+        color: #FFF;
+        font-size: 12px;
+        text-transform: uppercase;
+
+        &:hover{
+            background-color: $color-blue;
+            border-color: $color-blue;
+
+            color: #FFF;
+
+            box-shadow: 0 0 40px rgba($color-blue, 0.4);
+        }
+    }
+    &--continue_shopping{
+        width: 200px;
+
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+        &:hover{
+            background-color: $color-light_grey;
+            border-color: $color-light_grey;
+
+            color: $color-dark_blue;
+
+            box-shadow: 0 0 40px rgba($color-light_grey, 0.4);
+        }
+    }
+    &--remove{
+        border: none;
+
+        line-height: 16px;
+        font-size: 16px;
+        &:hover{
+            color: $color-dark_red;
+        }
+    }
+
 
     &--disabled{
         background-color: #EC4E35;

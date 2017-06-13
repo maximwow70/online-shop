@@ -3,38 +3,52 @@ import { Color } from "app/_model/color";
 
 export class OnlineShop {
 
-    private _itemList: { item: Item, cost: number, colors: Color[] }[] = [];
+    private _itemList: { item: Item, colors: Color[], sizes: string[], cost: number, isNew: boolean }[] = [];
 
     constructor() {
 
     }
 
-    public setItemList(itemList: Item[]): void {
-        for (let i = 0; i < itemList.length; i++) {
-            this._itemList.push({
-                item: itemList[i],
-                cost: null,
-                colors: []
-            });
-        }
-    }
-    public setItemCost(item: Item, cost: number): void {
-        this._itemList.find(itemList => itemList.item.id === item.id).cost = cost;
-    }
-    public setItemColors(item: Item, colors: Color[]): void {
-        this._itemList.find(itemList => itemList.item.id === item.id).colors = colors;
+    
+    public setItemList(
+        itemList: { item: Item, colors: Color[], sizes: string[], cost: number, isNew: boolean }[]
+    ): void {
+        this._itemList = itemList;
     }
 
-    public addItem(item: Item): void {
+	public addItem(item: Item): void {
         this._itemList.push({
             item: item,
+            colors: [],
+            sizes: [],
             cost: null,
-            colors: []
+            isNew: false
         });
     }
 
-    public get itemList(): { item: Item, cost: number, colors: Color[] }[] {
+    public get itemList(): { item: Item, colors: Color[], cost: number }[] {
         return this._itemList;
+    }
+
+    public static itemListFromArray(itemListArray: { item: any, colors: string[], sizes: string[], cost: number, isNew: boolean }[] )
+    : { item: Item, colors: Color[], sizes: string[], cost: number, isNew: boolean }[] {
+        let itemList = [];
+        for (let i = 0; i < itemListArray.length; i++){
+            let colors = [];
+            for (let j = 0; j < itemListArray[i].colors.length; j++){
+                colors.push(
+                    new Color(itemListArray[i].colors[j])
+                );
+            }
+            itemList.push({
+                item: Item.fromObject(itemListArray[i].item),
+                colors: colors,
+                sizes: itemListArray[i].sizes,
+                cost: itemListArray[i].cost,
+                isNew: itemListArray[i].isNew
+            });
+        }
+        return itemList;
     }
 
 }
