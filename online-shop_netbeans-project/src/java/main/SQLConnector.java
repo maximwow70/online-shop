@@ -108,7 +108,7 @@ public class SQLConnector {
                 featureList.setFeatures(res.getString("features"));
                 featureLists.add(featureList);
             }
-            item.setFeatureLists(featureLists);
+            item.getItem().setFeatureLists(featureLists);
             
         } catch(SQLException ex) {
             Logger.getLogger(SQLConnector.class.getName()).log(Level.SEVERE, null, ex);

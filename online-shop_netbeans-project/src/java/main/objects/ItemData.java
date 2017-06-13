@@ -18,7 +18,6 @@ public class ItemData {
     private Set<String> sizes;
     private int cost;
     private boolean isNew;
-    private Set<FeatureList> featureLists;
     
     public ItemData() {}
  
@@ -46,12 +45,5 @@ public class ItemData {
         this.isNew = false;
     }
 
-    public Set<FeatureList> getFeatureLists() {
-        return featureLists;
-    }
-
-    public void setFeatureLists(Set<FeatureList> features) {
-        this.featureLists = features;
-    }
     
 }

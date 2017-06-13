@@ -18,6 +18,7 @@ public class Item {
     private String name;
     private String description;
     private Set<String> photosUrl;
+    private Set<FeatureList> featureLists;
 
     public Item(String id, String name, String description, String photosUrl) {
         this.id = id;
@@ -48,4 +49,11 @@ public class Item {
         this.photosUrl = gson.fromJson(photosUrl, LinkedHashSet.class);
     }
     
+    public Set<FeatureList> getFeatureLists() {
+        return featureLists;
+    }
+
+    public void setFeatureLists(Set<FeatureList> features) {
+        this.featureLists = features;
+    }
 }
