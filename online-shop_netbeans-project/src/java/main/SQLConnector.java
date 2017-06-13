@@ -5,6 +5,7 @@
  */
 package main;
 
+import com.google.gson.Gson;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,6 +15,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import main.objects.FeatureList;
+import main.objects.ItemData;
 import main.objects.Item;
 
 /**
@@ -43,36 +46,28 @@ public class SQLConnector {
         return statement.executeQuery(url);
     }
     
-    public static Set<Item> getAllItems() {
+    public static Set<ItemData> getAllItems() {
         connect();
-        Set<Item> set = new LinkedHashSet<>();
+        Set<ItemData> set = new LinkedHashSet<>();
         try {
             ResultSet res = initResultSet("SELECT * FROM Item");
             while(res.next()) {
-                Item item = new Item();
-                item.setId(res.getString("item_id"));
-                item.setName(res.getString("item_name"));
-                item.setDescription(res.getString("item_description"));
-                item.setPhotosUrl(res.getString("item_images"));
+                ItemData item = new ItemData();
+                item.setItem(new Item(res.getString("item_id"),res.getString("item_name"),res.getString("item_description"),res.getString("item_images")));
                 item.setIsNew(res.getString("item_date"));
                 set.add(item);
             }
-            for(Item item : set) {
+            for(ItemData item : set) {
                 Set<String> colors = new LinkedHashSet<>();
-                res = initResultSet("SELECT item_color FROM Item_color WHERE item_id = \""+item.getId()+"\"");
+                res = initResultSet("SELECT item_color FROM Item_color WHERE item_id = \""+item.getItem().getId()+"\"");
                 while(res.next()) {
                     colors.add(res.getString("item_color"));
                 }
                 item.setColors(colors);
-                Set<String> sizes = new LinkedHashSet<>();
-                res = initResultSet("SELECT item_size FROM Item_size WHERE item_id = \""+item.getId()+"\"");
-                while(res.next()) {
-                    sizes.add(res.getString("item_size"));
-                }
-                item.setSizes(sizes);
-                res = initResultSet("SELECT item_cost FROM Item_cost WHERE item_id = \""+item.getId()+"\"");
-                res.next();
-                item.setCost(res.getInt("item_cost"));
+                res = initResultSet("SELECT item_cost FROM Item_cost WHERE item_id = \""+item.getItem().getId()+"\"");
+                if(res.next()) {
+                    item.setCost(res.getInt("item_cost"));
+                } 
             }
             
         } catch (SQLException ex) {
@@ -81,7 +76,46 @@ public class SQLConnector {
         return set;
     }
     
-    public static Set<Item> getItems(String name, String[] color, String[] size, int minCost, int maxCost) {
+    public static ItemData getItemDate(String itemId) {
+        connect();
+        ItemData item = new ItemData();
+        try {
+            ResultSet res = initResultSet("SELECT * FROM Item WHERE item_id = \""+itemId+"\"");
+            res.next();
+            item.setItem(new Item(res.getString("item_id"),res.getString("item_name"),res.getString("item_description"),res.getString("item_images")));
+            item.setIsNew(res.getString("item_date"));
+            Set<String> colors = new LinkedHashSet<>();
+            res = initResultSet("SELECT item_color FROM Item_color WHERE item_id = \""+item.getItem().getId()+"\"");
+            while(res.next()) {
+                colors.add(res.getString("item_color"));
+            }
+            item.setColors(colors);
+            Set<String> sizes = new LinkedHashSet<>();
+            res = initResultSet("SELECT item_size FROM Item_size WHERE item_id = \""+item.getItem().getId()+"\"");
+            while(res.next()) {
+                sizes.add(res.getString("item_size"));
+            }
+            item.setSizes(sizes);
+            res = initResultSet("SELECT item_cost FROM Item_cost WHERE item_id = \""+item.getItem().getId()+"\"");
+            if(res.next()) {
+                item.setCost(res.getInt("item_cost"));
+            }
+            Set<FeatureList> featureLists = new LinkedHashSet<>();
+            res = initResultSet("SELECT feature_name,features FROM feature_list WHERE item_id = \""+item.getItem().getId()+"\"");
+            while(res.next()) {
+                FeatureList featureList = new FeatureList();
+                featureList.setName(res.getString("feature_name"));
+                featureList.setFeatures(res.getString("features"));
+                featureLists.add(featureList);
+            }
+            item.setFeatureLists(featureLists);
+            
+        } catch(SQLException ex) {
+            Logger.getLogger(SQLConnector.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return item;
+    }
+    public static Set<ItemData> getItems(String name, String[] color, String[] size, int minCost, int maxCost) {
         String URL = "SELECT * FROM Item ";
                 URL+= "WHERE item_name like \"%"+name+"%\"";
         if(color.length!=0) {
@@ -106,7 +140,7 @@ public class SQLConnector {
         return null;//initItems(URL);
     }
     
-    public static Item getItem(String id) {
+    public static ItemData getItem(String id) {
         return null;//initItem("SELECT * FROM Item WHERE item_id = \""+id+"\";");
     }
     public static int getItemCost(String id) {
@@ -150,6 +184,8 @@ public class SQLConnector {
         return count;
     }
     public static void main(String[] args) {
-        SQLConnector.getAllItems();
+        ItemData i = SQLConnector.getItemDate("111");
+        Gson g = new Gson();
+        System.out.println(g.toJson(i));
     }
 }

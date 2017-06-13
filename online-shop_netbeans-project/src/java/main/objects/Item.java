@@ -6,7 +6,6 @@
 package main.objects;
 
 import com.google.gson.Gson;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -15,18 +14,19 @@ import java.util.Set;
  * @author admin
  */
 public class Item {
-
     private String id;
     private String name;
     private String description;
     private Set<String> photosUrl;
-    private Set<String> colors;
-    private Set<String> sizes;
-    private int cost;
-    private boolean isNew;
-    
-    public Item() {}
-    
+
+    public Item(String id, String name, String description, String photosUrl) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        Gson gson = new Gson();
+        this.photosUrl = gson.fromJson(photosUrl, LinkedHashSet.class);
+    }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -47,20 +47,5 @@ public class Item {
         Gson gson = new Gson();
         this.photosUrl = gson.fromJson(photosUrl, LinkedHashSet.class);
     }
-
-    public void setColors(Set<String> colors) {
-        this.colors = colors;
-    }
-
-    public void setSizes(Set<String> sizes) {
-        this.sizes = sizes;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
-
-    public void setIsNew(String date) {
-        this.isNew = true;
-    }
+    
 }
