@@ -18,6 +18,14 @@
 			</div>
 		</div>
 	</div>
+	<div class="user_cart-user_cart_header">
+		<div class="user_cart_header">
+			<div class="user_cart_header-item">item</div><!--
+			--><div class="user_cart_header-cost">price</div><!--
+			--><div class="user_cart_header-quantity">quantity</div><!--
+			--><div class="user_cart_header-total_cost">total price</div>
+		</div>
+	</div>
 	<div class="user_cart-item_list">
 		<div class="user_cart-item" *ngFor="let item of itemList">
 			<div class="item item--user_cart">
@@ -35,22 +43,28 @@
 							<div class="size size--middle">xl</div>
 						</div>
 					</div>
-				</div>
-				<div class="item-cost">$34</div>
-				<select-item-count [min]="0" [max]="6"></select-item-count>
-				<div class="item-total_cost">$34</div>
-				<div class="item-actions">
-					<div class="fa fa-close"></div>
+				</div><!--
+				--><div class="item-cost">$34</div><!--
+				--><div class="item-select_count">
+					<select-item-count [min]="0" [max]="6" [step]="1" [startValue]="2"></select-item-count>
+				</div><!--
+				--><div class="item-total_cost">$68</div><!--
+				--><div class="item-actions">
+					<div class="item-btn">
+						<button class="btn btn--remove">
+							<div class="fa fa-close"></div>
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="user_cart-actions">
 		<div class="user_cart-btn">
-			<button class="btn">Continue shopping</button>
+			<button routerLink="/products" class="btn btn--continue_shopping">Continue shopping</button>
 		</div>
 		<div class="user_cart-btn">
-			<button class="btn">Proceed to Checkout</button>
+			<button class="btn btn--proceed">Proceed to Checkout</button>
 		</div>
 	</div>
 </div>

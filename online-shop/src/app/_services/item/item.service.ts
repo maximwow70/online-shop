@@ -17,7 +17,7 @@ export class ItemService {
 		// 	params: params
 		// });
 
-		return this._http.get('GetItem' + '?id=' + id).map(response => response.json());
-		//return this._http.get('assets/GetItem.json').map(response => response.json());
+		//return this._http.get('GetItem' + '?id=' + id).map(response => response.json());
+		return this._http.get('assets/GetItem.json').map(response => response.json());
 	}
 }

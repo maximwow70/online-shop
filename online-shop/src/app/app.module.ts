@@ -42,11 +42,17 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserWishlistComponent } from './user-wishlist/user-wishlist.component';
 import { UserCartComponent } from './user-cart/user-cart.component';
 
+// import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
+
 const appRoutes: Routes = [
 	{ path: 'products', component: OnlineShopComponent },
 	{ path: 'products/:id', component: ItemComponent },
 	{ path: 'users', component: UserDashboardComponent },
-	{ path: 'users/:id', component: UserDashboardComponent },
+	{
+		path: 'users/:id',
+		component: UserDashboardComponent,
+		// children: userDashboardRoutes
+	},
 	{ path: 'contacts', component: ContactsComponent },
 	{
 		path: '',

@@ -1,26 +1,57 @@
 [
     {
-        "id": "12331234",
-        "name": "kek",
-        "description": "sadasdsa",
-        "photosUrl": ["item4.png"]
+        "item": {
+            "id": "12331234",
+            "name": "kek",
+            "description": "sadasdsa",
+            "photosUrl": ["item4.png"]
+        },
+        "colors": [
+            "red",
+            "white"
+        ],
+        "sizes": [
+            "l",
+            "xl"
+        ],
+        "cost": 50,
+        "isNew": true
     },
     {
-        "id": "1223234",
-        "name": "kek",
-        "description": "sadasdsa",
-        "photosUrl": ["item1.png"]
+        "item": {
+            "id": "asdwqe",
+            "name": "qweasdasd",
+            "description": "sadasdsa",
+            "photosUrl": ["item3.png"]
+        },
+        "colors": [
+            "red",
+            "white"
+        ],
+        "sizes": [
+            "s",
+            "m"
+        ],
+        "cost": 1234,
+        "isNew": false
     },
     {
-        "id": "12qwe234",
-        "name": "kek",
-        "description": "sadasdsa",
-        "photosUrl": ["item2.png"]
-    },
-    {
-        "id": "123e23q4",
-        "name": "kek",
-        "description": "sadasdsa",
-        "photosUrl": ["item2.png"]
+         "item": {
+            "id": "asd",
+            "name": "kek",
+            "description": "sadasdsa",
+            "photosUrl": ["item5.png"]
+        },
+        "colors": [
+            "red",
+            "white"
+        ],
+        "sizes": [
+            "s",
+            "m",
+            "l"
+        ],
+        "cost": 99.9,
+        "isNew": true
     }
 ]
