@@ -40,41 +40,50 @@ public class SQLConnector {
     }
     
     private static ResultSet initResultSet(String url) throws SQLException {
-        connect();
         return statement.executeQuery(url);
     }
     
-    private static Set<Item> initItems(String url){
+    public static Set<Item> getAllItems() {
+        connect();
         Set<Item> set = new LinkedHashSet<>();
         try {
-        ResultSet result = initResultSet(url);
-            while(result.next()) {
-                set.add(new Item(result.getString("item_id"),result.getString("item_name"),result.getString("item_description"),result.getString("item_images")));
+            ResultSet res = initResultSet("SELECT * FROM Item");
+            while(res.next()) {
+                Item item = new Item();
+                item.setId(res.getString("item_id"));
+                item.setName(res.getString("item_name"));
+                item.setDescription(res.getString("item_description"));
+                item.setPhotosUrl(res.getString("item_images"));
+                item.setIsNew(res.getString("item_date"));
+                set.add(item);
             }
+            for(Item item : set) {
+                Set<String> colors = new LinkedHashSet<>();
+                res = initResultSet("SELECT item_color FROM Item_color WHERE item_id = \""+item.getId()+"\"");
+                while(res.next()) {
+                    colors.add(res.getString("item_color"));
+                }
+                item.setColors(colors);
+                Set<String> sizes = new LinkedHashSet<>();
+                res = initResultSet("SELECT item_size FROM Item_size WHERE item_id = \""+item.getId()+"\"");
+                while(res.next()) {
+                    sizes.add(res.getString("item_size"));
+                }
+                item.setSizes(sizes);
+                res = initResultSet("SELECT item_cost FROM Item_cost WHERE item_id = \""+item.getId()+"\"");
+                res.next();
+                item.setCost(res.getInt("item_cost"));
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(SQLConnector.class.getName()).log(Level.SEVERE, null, ex);
         }
         return set;
     }
     
-    private static Item initItem(String url) {
-        Item item = null;
-        try {
-        ResultSet result = initResultSet(url);
-        result.next();
-        item = new Item(result.getString("item_id"),result.getString("item_name"),result.getString("item_description"),result.getString("item_images"));
-        } catch (SQLException ex) {
-            Logger.getLogger(SQLConnector.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return item;
-    }
-    
-    public static Set<Item> getAllItems() {
-        return initItems("SELECT * FROM Item");
-    }
-    
     public static Set<Item> getItems(String name, String[] color, String[] size, int minCost, int maxCost) {
-        String URL = "SELECT * FROM Item WHERE item_name like \"%"+name+"%\"";
+        String URL = "SELECT * FROM Item ";
+                URL+= "WHERE item_name like \"%"+name+"%\"";
         if(color.length!=0) {
             URL += "\n AND ( ";
             for(int i = 0; i < color.length; i++) {
@@ -94,11 +103,11 @@ public class SQLConnector {
             URL += " ) ";
         }
         URL += "\n AND item_id like (SELECT item_id FROM Item_cost WHERE item_cost > "+minCost+" AND item_cost < "+maxCost+")";
-        return initItems(URL);
+        return null;//initItems(URL);
     }
     
     public static Item getItem(String id) {
-        return initItem("SELECT * FROM Item WHERE item_id = \""+id+"\";");
+        return null;//initItem("SELECT * FROM Item WHERE item_id = \""+id+"\";");
     }
     public static int getItemCost(String id) {
         int cost = -1;
@@ -139,5 +148,8 @@ public class SQLConnector {
             count = res.getInt(count);
         } catch(SQLException ex) {}
         return count;
+    }
+    public static void main(String[] args) {
+        SQLConnector.getAllItems();
     }
 }
