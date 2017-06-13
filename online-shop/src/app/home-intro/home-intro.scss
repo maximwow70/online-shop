@@ -1,0 +1,50 @@
+@import '../src.scss';
+.home_intro{
+
+    max-width: 550px;
+    padding: 0 10px;
+    
+    text-align: center;
+
+    &-welcome{
+        margin-bottom: 25px;
+
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    &-title{
+        margin-bottom: 25px;
+
+        font-family: $font-stack--regular;
+        text-transform: capitalize;
+        font-size: 42px;
+        font-weight: normal;
+    }
+    &-description{
+        margin-bottom: 40px;
+
+        line-height: 1.5em;
+        color: $color-light_grey;
+        font-family: $font-stack--light;
+    }
+
+    &-btn{
+        margin: 0 10px;
+
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    @media screen and (max-width: 600px){
+        .home_intro-btn{
+            display: block;
+            
+            &:not(:last-of-type){
+                margin-bottom: 25px;
+            }
+        }
+    }
+}

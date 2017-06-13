@@ -5,6 +5,7 @@ import { Http } from "@angular/http";
 import 'rxjs/add/operator/map';
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
+import { ItemData } from "app/_model/item-data";
 
 @Injectable()
 export class ItemListService {
@@ -14,7 +15,11 @@ export class ItemListService {
 		private _http: Http
 	) { }
 	
-	public getItemList(): Observable<{ item: any, colors: string[], sizes: string[], cost: number, isNew: boolean }[]> {
+	// public getItemList(): Observable<ItemData[]> {
+	// 	return this._http.get('assets/GetItemList.json', '')
+	// 		.map(response => response.json());
+	// }
+	public getItemList(): Observable<ItemData[]> {
 		return this._http.get('GetItemList', '')
 			.map(response => response.json());
 	}
