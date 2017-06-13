@@ -8,19 +8,19 @@ package main;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedHashSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import main.objects.ItemData;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "GetItem", urlPatterns = {"/GetItem"})
-public class GetItem extends HttpServlet {
+@WebServlet(name = "GetColors", urlPatterns = {"/GetColors"})
+public class GetColors extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class GetItem extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GetItem</title>");            
+            out.println("<title>Servlet GetColors</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GetItem at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet GetColors at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,10 +61,9 @@ public class GetItem extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
-        ItemData item = SQLConnector.getItem(id);
+        LinkedHashSet<String> colors = SQLConnector.getItemColors(id);
         Gson gson = new Gson();
-        String json = gson.toJson(item);
-        response.getWriter().write(json);
+        response.getWriter().write(gson.toJson(colors));
     }
 
     /**

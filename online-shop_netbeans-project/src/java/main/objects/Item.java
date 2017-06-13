@@ -5,6 +5,8 @@
  */
 package main.objects;
 
+import com.google.gson.Gson;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -12,16 +14,46 @@ import java.util.Set;
  * @author admin
  */
 public class Item {
-    
     private String id;
     private String name;
     private String description;
-    private String photosUrl;
-    
+    private Set<String> photosUrl;
+    private Set<FeatureList> featureLists;
+
     public Item(String id, String name, String description, String photosUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.photosUrl = photosUrl;
+        Gson gson = new Gson();
+        this.photosUrl = gson.fromJson(photosUrl, LinkedHashSet.class);
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPhotosUrl(String photosUrl) {
+        Gson gson = new Gson();
+        this.photosUrl = gson.fromJson(photosUrl, LinkedHashSet.class);
+    }
+    
+    public Set<FeatureList> getFeatureLists() {
+        return featureLists;
+    }
+
+    public void setFeatureLists(Set<FeatureList> features) {
+        this.featureLists = features;
     }
 }

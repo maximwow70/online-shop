@@ -7,7 +7,7 @@ package main;
 
 import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +19,8 @@ import main.objects.ItemData;
  *
  * @author admin
  */
-@WebServlet(name = "GetItem", urlPatterns = {"/GetItem"})
-public class GetItem extends HttpServlet {
+@WebServlet(name = "GetItemList", urlPatterns = {"/GetItemList"})
+public class GetItemList extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +34,6 @@ public class GetItem extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GetItem</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GetItem at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,11 +48,11 @@ public class GetItem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        ItemData item = SQLConnector.getItem(id);
+        Set<ItemData> set = SQLConnector.getAllItems();
         Gson gson = new Gson();
-        String json = gson.toJson(item);
-        response.getWriter().write(json);
+        String lol = gson.toJson(set);
+        System.out.println(lol);
+        response.getWriter().write(lol);
     }
 
     /**
@@ -78,7 +66,11 @@ public class GetItem extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Set<ItemData> set = SQLConnector.getAllItems();
+        Gson gson = new Gson();
+        String lol = gson.toJson(set);
+        System.out.println(lol);
+        response.getWriter().write(lol);
     }
 
     /**
