@@ -1,4 +1,5 @@
-<div class="online-shop-slider">
+<header></header>
+<div class="online_shop-slider">
 	<slider></slider>
 </div>
 <div class="item_list">
@@ -19,7 +20,7 @@
 					<div class="item_card-color_list">
 						<div class="color-list">
 							<div class="color_list-color" *ngFor="let color of itemData.colors">
-								<div class="color color--{{getClassByColor(color)}} color--small"></div>
+								<div class="color color--{{getClassByColor(color)}} color--small" title="{{color.name}}"></div>
 							</div>
 						</div>
 					</div><!--
@@ -32,3 +33,4 @@
 		<paginator [pages]="10" [startPage]="6"></paginator>
 	</div>
 </div>
+<footer></footer>

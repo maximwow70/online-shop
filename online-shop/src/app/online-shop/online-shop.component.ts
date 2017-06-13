@@ -11,6 +11,7 @@ import { Select } from "app/ui/select/select";
 import { ItemListService } from "app/_services/item-list/item-list.service";
 import { Route, Router } from "@angular/router";
 import { Observable } from "rxjs/Observable";
+import { ItemData } from "app/_model/item-data";
 
 @Component({
 	selector: 'online-shop',
@@ -40,10 +41,12 @@ export class OnlineShopComponent implements OnInit {
 		let that = this;
 
 		this._itemList.getItemList().subscribe(
-			itemList => {
-				that._onlineShop.setItemList(
-					OnlineShop.itemListFromArray(itemList)
-				);
+			itemDataList => {
+				for (let i = 0; i < itemDataList.length; i++){
+					that._onlineShop.addItemData(
+						ItemData.fromObject(itemDataList[i])
+					);
+				}
 			}
 		);
 

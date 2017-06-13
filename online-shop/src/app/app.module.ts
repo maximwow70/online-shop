@@ -32,7 +32,6 @@ import { SizepickerComponent } from './ui/sizepicker/sizepicker.component';
 import { CostpickerComponent } from './ui/costpicker/costpicker.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { PaginatorComponent } from './paginator/paginator.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SliderComponent } from './slider/slider.component';
@@ -41,10 +40,13 @@ import { RangeMapZoomComponent } from './ui/range-map-zoom/range-map-zoom.compon
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserWishlistComponent } from './user-wishlist/user-wishlist.component';
 import { UserCartComponent } from './user-cart/user-cart.component';
+import { HomeComponent } from './home/home.component';
+import { ShoppingRoadComponent } from './shopping-road/shopping-road.component';
 
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
 const appRoutes: Routes = [
+	{ path: 'home', component: HomeComponent },
 	{ path: 'products', component: OnlineShopComponent },
 	{ path: 'products/:id', component: ItemComponent },
 	{ path: 'users', component: UserDashboardComponent },
@@ -56,8 +58,8 @@ const appRoutes: Routes = [
 	{ path: 'contacts', component: ContactsComponent },
 	{
 		path: '',
-		redirectTo: '/products',
-		pathMatch: 'full'
+		pathMatch: 'full',
+		redirectTo: '/home'
 	},
 	{ path: '**', component: PageNotFoundComponent }
 ];
@@ -81,7 +83,6 @@ const appRoutes: Routes = [
 		CostpickerComponent,
 		CategoryListComponent,
 		PaginatorComponent,
-		HomePageComponent,
 		HeaderComponent,
 		FooterComponent,
 		SliderComponent,
@@ -90,6 +91,8 @@ const appRoutes: Routes = [
 		UserDashboardComponent,
 		UserWishlistComponent,
 		UserCartComponent,
+		HomeComponent,
+		ShoppingRoadComponent,
 	],
 	imports: [
 		BrowserModule,

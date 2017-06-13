@@ -1,3 +1,5 @@
+@import './app/page-not-found/page-not-found.scss';
+
 @import './app/ui/btn/btn.scss';
 @import './app/ui/select-number/select-number.scss';
 @import './app/ui/search/search.scss';
@@ -5,7 +7,9 @@
 @import './app/ui/range/range.scss';
 @import './app/ui/datapicker/datapicker.scss';
 
-@import './app/home-page/home-page.scss';
+@import './app/home/home.scss';
+@import './app/home-intro/home-intro.scss';
+@import './app/shopping-road/shopping-road.scss';
 @import './app/header/header.scss';
 @import './app/navigation/navigation.scss';
 @import './app/logo/logo.scss';
@@ -84,7 +88,5 @@
     border: 0;
 }
 body{
-    background-color: #E4E7EF;
-
     font-family: ubuntu--r, Arial, Helvetica, sans-serif;
 }

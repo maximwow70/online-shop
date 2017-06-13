@@ -5,6 +5,7 @@ import { ItemService } from "app/_services/item/item.service";
 import { Select } from "app/ui/select/select";
 import { SelectNumber } from "app/ui/select-number/select-number";
 import { Color } from "app/_model/color";
+import { ItemData } from "app/_model/item-data";
 
 @Component({
 	selector: 'item',
@@ -13,7 +14,7 @@ import { Color } from "app/_model/color";
 })
 export class ItemComponent implements OnInit {
 
-	private _item: Item;
+	private _itemData: ItemData;
 	
 	private _itemColor: Color;
 	private _itemSize: string;
@@ -39,7 +40,7 @@ export class ItemComponent implements OnInit {
 		let id = this._activatedRoute.snapshot.paramMap.get('id');
 
 		this._itemService.getItem(id).subscribe(
-			response => this._item = Item.fromObject(response)
+			itemData => this._itemData = ItemData.fromObject(itemData)
 		);
 	}
 	
@@ -57,8 +58,8 @@ export class ItemComponent implements OnInit {
 		this._itemCount = count;
 	}
 
-	public get item(): Item {
-		return this._item;
+	public get itemData(): ItemData {
+		return this._itemData;
 	}
 	public get canAddToCard(): boolean {
 		return (this._itemCount > 0) && (this._itemColor != undefined) && (this._itemSize != undefined);

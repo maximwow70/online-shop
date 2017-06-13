@@ -1,6 +1,9 @@
 @import '../src.scss';
+.item-container{
+    padding: 50px;
+    background-color: rgba($color-light_grey, 0.7);
+}
 .item{
-    margin: 50px;
     padding: 50px;
     background-color: #FFF;
 

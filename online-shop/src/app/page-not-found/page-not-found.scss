@@ -1,0 +1,26 @@
+.page_not_found{
+    position: relative;
+    min-height: 100vh;
+
+    font-family: Arial;
+    text-align: center;
+
+    &-info{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &-image{
+        margin-bottom: 20px;
+
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+    }
+    &-title{
+        font-size: 32px;
+        font-weight: normal;
+    }
+}

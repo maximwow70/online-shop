@@ -1,70 +1,66 @@
-<div class="item-loading" *ngIf="!item">
+<header></header>
+<div class="item-loading" *ngIf="!itemData">
 	<loading></loading>
 </div>
-<div class="item" *ngIf="item">
-	<div class="item-photos">
-		<item-photos [photosUrl]="item.photosUrl"></item-photos>
-	</div><!--
-	--><div class="item-info">
-		<h2 class="item-name">{{item.name}}</h2>
-		<h3 class="item-cost">$95.4</h3>
-		<div class="item-size_guide">
-			<size-guide></size-guide>
-		</div>
-		<p class="item-description">{{item.description}}</p>
-
-		
-		<div class="item-item_feature_list">
-			<div class="item_feature_list">
-				<div class="item_feature_list-title">
-					Composition
-				</div>
-				<div class="item_feature_list-feature_list">
-					<div class="item_feature_list-feature">
-						Upper: Leather 100%
+<div class="item-container" *ngIf="itemData">
+	<div class="item">
+		<div class="item-photos">
+			<item-photos [photosUrl]="itemData.item.photosUrl"></item-photos>
+		</div><!--
+		--><div class="item-info">
+			<h2 class="item-name">{{itemData.item.name}}</h2>
+			<h3 class="item-cost">${{itemData.cost}}</h3>
+			<div class="item-size_guide">
+				<size-guide></size-guide>
+			</div>
+			<p class="item-description">{{itemData.item.description}}</p>
+			<div class="item-item_feature_list" *ngFor="let featureList of itemData.item.featureLists">
+				<div class="item_feature_list">
+					<div class="item_feature_list-title">
+						{{featureList.name}}
 					</div>
-					<div class="item_feature_list-feature">
-						Outer sole: Rubber 100%
-					</div>
-					<div class="item_feature_list-feature">
-						Lining and sock: Leather 100%
+					<div class="item_feature_list-feature_list">
+						<div class="item_feature_list-feature" *ngFor="let feature of featureList.features">
+							{{feature.name}}: {{feature.value}}
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="item-controls">
-			<div class="item-select">
-				<select-item-color [colors]="availableColors" (selectedColor)="onColorSelected($event)"></select-item-color>
+			<div class="item-controls">
+				<div class="item-select">
+					<select-item-color [colors]="itemData.colors" (selectedColor)="onColorSelected($event)"></select-item-color>
+				</div>
+				<div class="item-select">
+					<select-item-size [sizes]="itemData.sizes" (selectedSize)="onSizeSelected($event)"></select-item-size>
+				</div>
+				<div class="item-select">
+					<select-item-count [min]="0" [max]="6" [step]="1" [startValue]="1" (value)="onCountChange($event)"></select-item-count>
+				</div>
+				<div class="item-available">
+					available: 6
+				</div>
 			</div>
-			<div class="item-select">
-				<select-item-size [sizes]="availableSizes" (selectedSize)="onSizeSelected($event)"></select-item-size>
-			</div>
-			<div class="item-select">
-				<select-item-count [min]="0" [max]="6" [step]="1" [startValue]="1" (value)="onCountChange($event)"></select-item-count>
-			</div>
-			<div class="item-available">
-				available: 6
-			</div>
-		</div>
 
-		<div class="item-delivery">
-			Next Day Delivery or Standart delivery in 2-4 days
-		</div>
-
-		<div class="item-actions">
-			<div class="item-btn">
-				<button class="btn btn--add_to_card" (click)="addToCard()" [ngClass]="{'btn--disabled': !canAddToCard}" [disabled]="!canAddToCard">
-					<div class="btn-icon fa fa-shopping-cart"></div>
-					Add To Card
-				</button>
+			<div class="item-delivery">
+				Next Day Delivery or Standart delivery in 2-4 days
 			</div>
-			<div class="item-btn">
-				<button class="btn btn--add_to_wishlist" (click)="addToWishList()">
-					<div class="btn-icon fa fa-heart"></div>
-					Add To WishList
-				</button>
+
+			<div class="item-actions">
+				<div class="item-btn">
+					<button class="btn btn--add_to_card" (click)="addToCard()" [ngClass]="{'btn--disabled': !canAddToCard}" [disabled]="!canAddToCard">
+						<div class="btn-icon fa fa-shopping-cart"></div>
+						Add To Card
+					</button>
+				</div>
+				<div class="item-btn">
+					<button class="btn btn--add_to_wishlist" (click)="addToWishList()">
+						<div class="btn-icon fa fa-heart"></div>
+						Add To WishList
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<footer></footer>

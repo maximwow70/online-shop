@@ -1,0 +1,42 @@
+{
+    "item": {
+        "id": "1223234",
+        "name": "Cotton T-Shirt",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat eveniet quasi tempora fuga nemo, nisi sint unde error dolor ipsam. Minima recusandae tempora officia quaerat.",
+        "photosUrl": [
+            "item4.png",
+            "item2.png",
+            "item3.png",
+            "item5.png"
+        ],
+        "featureLists": [
+            {
+                "name": "Composition",
+                "features": [
+                    {
+                        "name": "Upper",
+                        "value": "Rubber 100%"
+                    },
+                    {
+                        "name": "Outer sole",
+                        "value": "Leather 100%"
+                    },
+                    {
+                        "name": "Lining and sock",
+                        "value": "kek 100%"
+                    }
+                ]
+            }
+        ]
+    },
+    "colors": [
+        "red",
+        "white"
+    ],
+    "sizes": [
+        "l",
+        "xl"
+    ],
+    "cost": 50,
+    "isNew": true
+}
