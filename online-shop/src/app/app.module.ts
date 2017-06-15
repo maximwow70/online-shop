@@ -42,6 +42,9 @@ import { UserWishlistComponent } from './user-wishlist/user-wishlist.component';
 import { UserCartComponent } from './user-cart/user-cart.component';
 import { HomeComponent } from './home/home.component';
 import { ShoppingRoadComponent } from './shopping-road/shopping-road.component';
+import { ShopPartnersComponent } from './shop-partners/shop-partners.component';
+import { ShopHistoryComponent } from './shop-history/shop-history.component';
+import { ShopFeaturesComponent } from './shop-features/shop-features.component';
 
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
@@ -93,6 +96,9 @@ const appRoutes: Routes = [
 		UserCartComponent,
 		HomeComponent,
 		ShoppingRoadComponent,
+		ShopPartnersComponent,
+		ShopHistoryComponent,
+		ShopFeaturesComponent,
 	],
 	imports: [
 		BrowserModule,

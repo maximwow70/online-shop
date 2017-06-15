@@ -9,7 +9,11 @@
 
 @import './app/home/home.scss';
 @import './app/home-intro/home-intro.scss';
+@import './app/shop-history/shop-history.scss';
 @import './app/shopping-road/shopping-road.scss';
+@import './app/shop-features/shop-features.scss';
+@import './app/shop-feature/shop-feature.scss';
+@import './app/shop-partners/shop-partners.scss';
 @import './app/header/header.scss';
 @import './app/navigation/navigation.scss';
 @import './app/logo/logo.scss';
@@ -80,6 +84,11 @@
 @font-face{
     font-family: item_name;
     src: url('assets/fonts/item-name.otf');
+}
+
+@font-face{
+    font-family: magic-number;
+    src: url('assets/fonts/Exo2Regular.ttf');
 }
 
 *{

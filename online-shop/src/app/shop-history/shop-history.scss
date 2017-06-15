@@ -1,0 +1,105 @@
+@import '../src.scss';
+.shop_history{
+    display: block;
+
+    padding: 50px 0;
+
+    &-photos{
+        display: inline-block;
+        vertical-align: middle;
+
+        box-sizing: border-box;
+        width: 50%;
+        padding: 50px 5%;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+    } // block
+    &-photo{
+        display: inline-block;
+        vertical-align: middle;
+
+        max-height: 400px;
+        max-width: 250px;
+
+        &:not(:last-child){
+            margin-right: 20px;
+        }
+    }
+
+    &-history{
+        display: inline-block;
+        vertical-align: middle;
+
+        box-sizing: border-box;
+        width: 50%;
+        padding: 50px 5%; //grid
+    } // block
+    &-title{
+        margin-bottom: 40px;
+
+        color: $color-dark_red;
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    &-name{
+        margin-bottom: 20px;
+
+        text-transform: capitalize;
+
+    }
+    &-description{
+        line-height: 1.5em;
+    }
+    &-btn{
+
+    }
+
+    &-photos, &-history{
+        &:nth-child(2n){
+            text-align: left;
+        }
+        &:nth-child(2n+1){
+            text-align: right;
+        }
+    }
+
+    @media screen and (max-width: 1350px){
+        .shop_history{
+            &-photo{
+                max-height: 300px;
+                max-width: 175px;
+            }
+        }
+    }
+    @media screen and (max-width: 1000px){
+        .shop_history{
+            &-history, &-photos{
+                width: 100%;
+
+                text-align: center;
+            }
+            &-history{
+                display: block;
+                margin: 0 auto;
+
+                max-width: 500px;
+            }
+        }
+    }
+    @media screen and (max-width: 500px){
+        .shop_history{
+            &-photo{
+                margin: 0 auto;
+                display: block;
+                &:not(:last-child){
+                    margin-right: auto;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
