@@ -63,6 +63,7 @@ public class GetItemData extends HttpServlet {
         String id = request.getParameter("id");
         ItemData item = SQLConnector.getItemDate(id);
         Gson gson = new Gson();
+        response.setContentType("text.html;charset=UTF-8");
         response.getWriter().write(gson.toJson(item));
     }
 
