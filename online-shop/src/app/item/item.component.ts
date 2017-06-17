@@ -15,25 +15,17 @@ import { ItemData } from "app/_model/item-data";
 export class ItemComponent implements OnInit {
 
 	private _itemData: ItemData;
-	
-	private _itemColor: Color;
-	private _itemSize: string;
-	private _itemCount: number;
 
-	private _availableColors: Color[] = [];
+	private _selectedColor: Color;
+	private _selectedSize: string;
+	private _selectedCount: number;
 
 	constructor(
 		private _elementRef: ElementRef,
 		private _activatedRoute: ActivatedRoute,
 		private _itemService: ItemService
 	) { 
-		this._availableColors = [
-			new Color('eggplant'),
-			new Color('red'),
-			new Color('black'),
-			new Color('white'),
-			new Color('green')
-		];
+		this._selectedCount = 1;
 	}
 
 	ngOnInit() {
@@ -49,31 +41,46 @@ export class ItemComponent implements OnInit {
 	}
 	
 	public onColorSelected(color): void {
-		this._itemColor = color;
+		this._selectedColor = color;
+		this._selectedSize = this._itemData.getSizes(color)[0];
+		this._selectedCount = Math.min(this.availableCount, this._selectedCount);
 	}
 	public onSizeSelected(size): void {
-		this._itemSize = size;
+		this._selectedSize = size;
+		this._selectedCount = Math.min(this.availableCount, this._selectedCount);
 	}
 	public onCountChange(count): void {
-		this._itemCount = count;
+		this._selectedCount = count;
 	}
 
 	public get itemData(): ItemData {
 		return this._itemData;
 	}
-	public get canAddToCard(): boolean {
-		return (this._itemCount > 0) && (this._itemColor != undefined) && (this._itemSize != undefined);
-	}
 
 	public get availableColors(): Color[] {
-		return this._availableColors;
+		return this._itemData.getColors();
 	}
 	public get availableSizes(): string[] {
-		return [
-			'xl',
-			'l',
-			'm'
-		];
+		return this._itemData.getSizes(this._selectedColor);
+	}
+	public get availableCount(): number {
+		return this._itemData.getCount(this._selectedColor, this._selectedSize);
+	}
+
+	public get selectedColor(): Color {
+		return this._selectedColor;
+	}
+	public get selectedSize(): string {
+		return this._selectedSize;
+	}
+	public get selectedCount(): number {
+		return this._selectedCount;
+	}
+
+	public get canAddToCard(): boolean {
+		return (this._selectedCount > 0) && 
+			(this._selectedColor != undefined) && 
+			(this._selectedSize != undefined);
 	}
 
 }

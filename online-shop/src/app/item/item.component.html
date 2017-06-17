@@ -29,16 +29,16 @@
 
 			<div class="item-controls">
 				<div class="item-select">
-					<select-item-color [colors]="itemData.colors" (selectedColor)="onColorSelected($event)"></select-item-color>
+					<select-item-color [colors]="availableColors" (selectedColor)="onColorSelected($event)"></select-item-color>
 				</div>
 				<div class="item-select">
-					<select-item-size [sizes]="itemData.sizes" (selectedSize)="onSizeSelected($event)"></select-item-size>
+					<select-item-size [sizes]="availableSizes" [selectedSize]="selectedSize" (onSelectSize)="onSizeSelected($event)"></select-item-size>
 				</div>
 				<div class="item-select">
-					<select-item-count [min]="0" [max]="6" [step]="1" [startValue]="1" (value)="onCountChange($event)"></select-item-count>
+					<select-item-count [min]="0" [max]="availableCount" [selectedCount]="selectedCount" (onSelectCount)="onCountChange($event)"></select-item-count>
 				</div>
 				<div class="item-available">
-					available: 6
+					available: {{availableCount}}
 				</div>
 			</div>
 

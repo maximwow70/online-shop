@@ -45,6 +45,7 @@ import { ShoppingRoadComponent } from './shopping-road/shopping-road.component';
 import { ShopPartnersComponent } from './shop-partners/shop-partners.component';
 import { ShopHistoryComponent } from './shop-history/shop-history.component';
 import { ShopFeaturesComponent } from './shop-features/shop-features.component';
+import { ShopProductFeaturesComponent } from './shop-product-features/shop-product-features.component';
 
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
@@ -99,6 +100,7 @@ const appRoutes: Routes = [
 		ShopPartnersComponent,
 		ShopHistoryComponent,
 		ShopFeaturesComponent,
+		ShopProductFeaturesComponent,
 	],
 	imports: [
 		BrowserModule,

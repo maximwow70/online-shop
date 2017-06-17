@@ -84,6 +84,10 @@
         &-shop_feature{
             margin: 0 0px 50px 0px;
             width: 100%;
+
+            .shop_feature{
+                width: 280px;
+            }
         }
     }
 }

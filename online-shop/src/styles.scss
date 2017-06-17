@@ -14,6 +14,8 @@
 @import './app/shop-features/shop-features.scss';
 @import './app/shop-feature/shop-feature.scss';
 @import './app/shop-partners/shop-partners.scss';
+@import './app/shop-product-features/shop-product-features.scss';
+
 @import './app/header/header.scss';
 @import './app/navigation/navigation.scss';
 @import './app/logo/logo.scss';
@@ -74,7 +76,7 @@
 }
 @font-face{
     font-family: ubuntu--b;
-    src: url('assets/fonts/Ubuntu-B.ttf');
+    src: url('assets/fonts/Ubuntu-Bold.ttf');
 }
 @font-face{
     font-family: ubuntu--r;

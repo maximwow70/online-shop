@@ -153,9 +153,14 @@
                         right: -75%;
                     }
                 }
-                .cart{
-                    &-item_list{
-                        right: 25%;
+                &-wishlist{
+                    
+                }
+            }
+            .user_wishlist{
+                &--smart{
+                    .user_wishlist-item_list{
+                        right: -50%;
                     }
                 }
             }
