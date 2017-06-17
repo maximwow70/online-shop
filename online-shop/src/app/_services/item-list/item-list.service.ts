@@ -16,13 +16,13 @@ export class ItemListService {
 		private _http: Http
 	) { }
 	
-	public getItemList(): Observable<ItemData[]> {
-		return this._http.get('assets/GetItemList.json', '')
-			.map(response => response.json());
-	}
 	// public getItemList(): Observable<ItemDataPresentation[]> {
-	// 	return this._http.get('GetItemList', '')
+	// 	return this._http.get('assets/GetItemList.json', '')
 	// 		.map(response => response.json());
 	// }
+	public getItemList(): Observable<ItemDataPresentation[]> {
+		return this._http.get('GetItemList', '')
+			.map(response => response.json());
+	}
 
 }

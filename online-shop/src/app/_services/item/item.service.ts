@@ -14,8 +14,8 @@ export class ItemService {
 
 	public getItem(id: string): Observable<ItemData> {
 
-		//return this._http.get('GetItemData' + '?id=' + id).map(response => response.json());
-		return this._http.get('assets/GetItemData.json').map(response => response.json());
+		return this._http.get('GetItemData' + '?id=' + id).map(response => response.json());
+		//return this._http.get('assets/GetItemData.json').map(response => response.json());
 
 	}
 }

@@ -46,6 +46,7 @@ import { ShopPartnersComponent } from './shop-partners/shop-partners.component';
 import { ShopHistoryComponent } from './shop-history/shop-history.component';
 import { ShopFeaturesComponent } from './shop-features/shop-features.component';
 import { ShopProductFeaturesComponent } from './shop-product-features/shop-product-features.component';
+import { ItemLikerComponent } from './item-liker/item-liker.component';
 
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
 		component: UserDashboardComponent,
 		// children: userDashboardRoutes
 	},
+	{ path: 'product-liker', component: ItemLikerComponent },
 	{ path: 'contacts', component: ContactsComponent },
 	{
 		path: '',
@@ -101,6 +103,7 @@ const appRoutes: Routes = [
 		ShopHistoryComponent,
 		ShopFeaturesComponent,
 		ShopProductFeaturesComponent,
+		ItemLikerComponent,
 	],
 	imports: [
 		BrowserModule,
