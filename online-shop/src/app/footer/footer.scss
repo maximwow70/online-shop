@@ -10,6 +10,12 @@
 
         .header{
             border-bottom: none;
+
+            &-btn{
+                &:hover{
+                    color: $color-dark_green;
+                }
+            }
         }
     }
     &-info{

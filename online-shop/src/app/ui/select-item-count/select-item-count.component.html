@@ -2,7 +2,7 @@
 		<button class="select_number-btn select_number-btn--dec" (click)="onDecrement()">
     	<span class="select_number-btn_icon fa fa-minus"></span>
   	</button><!--
-  	--><input type="text" class="select_number-value" value="{{startValue}}" min="{{min}}" max="{{max}}" step="{{step}}"><!--
+  	--><input type="text" class="select_number-value" [value]="selectedCount"><!--
   	--><button class="select_number-btn select_number-btn--inc" (click)="onIncrement()">
     	<span class="select_number-btn_icon fa fa-plus"></span>
 	</button>

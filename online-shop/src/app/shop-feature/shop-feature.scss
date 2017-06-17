@@ -1,0 +1,35 @@
+@import '../src.scss';
+.shop_feature{
+    display: inline-block;
+    
+    width: 300px;
+
+    text-align: center;
+
+    &-icon{
+        margin-bottom: 20px;
+
+        display: inline-block;
+        vertical-align: middle;
+
+        color: $color-dark_red;
+        font-size: 24px;
+        
+        width: 50px;
+    }
+    &-name{
+        margin-bottom: 20px;
+
+        color: $color-dark_blue;
+        font-family: $font-stack--bold;
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+    &-description{
+
+        line-height: 1.25em;
+        color: rgba($color-black, 0.7);
+        font-size: 14px;
+    }
+
+}

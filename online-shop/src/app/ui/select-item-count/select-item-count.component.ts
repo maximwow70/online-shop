@@ -11,11 +11,10 @@ export class SelectItemCountComponent implements OnInit {
 	
 	@Input() min: number;
 	@Input() max: number;
-	@Input() step: number;
 
-	@Input() startValue: number;
+	@Input() selectedCount: number;
 
-	@Output() value: EventEmitter<number> = new EventEmitter<number>();
+	@Output() onSelectCount: EventEmitter<number> = new EventEmitter<number>();
 
 	private _inputVM;
 
@@ -32,16 +31,16 @@ export class SelectItemCountComponent implements OnInit {
             that.onChange();
         }
 
-		this.setValue(this.startValue);
+		this.setValue(this.selectedCount);
 		this.onChange();
 	}
 
 	public onDecrement(): void {
-		this.setValue(parseFloat(this._inputVM.value) - this.step);
+		this.setValue(parseFloat(this._inputVM.value) - 1);
 		this.onChange();
 	}
 	public onIncrement(): void {
-		this.setValue(parseFloat(this._inputVM.value) + this.step);
+		this.setValue(parseFloat(this._inputVM.value) + 1);
 		this.onChange();
 	}
 
@@ -58,7 +57,9 @@ export class SelectItemCountComponent implements OnInit {
     }
 
 	public onChange(){
-		this.value.emit(this._inputVM.value);
+		this.onSelectCount.emit(
+			parseFloat(this._inputVM.value)
+		);
 	}
 
 }

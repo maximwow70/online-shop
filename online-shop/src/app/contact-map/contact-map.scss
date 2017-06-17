@@ -1,17 +1,13 @@
+@import '../src.scss';
 .contact_map{
     position: relative;
     &-map{
         display: block;
         height: 400px;
     }
-    &-range_map_zoom{
-        z-index: 3;
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translate(-50%, 0);
-
-        width: 200px;
+    &-info{
+        font-family: $font-stack--bold;
+        text-align: left; 
     }
 }
 

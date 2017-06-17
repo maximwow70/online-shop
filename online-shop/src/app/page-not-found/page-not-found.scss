@@ -1,3 +1,4 @@
+@import '../src.scss';
 .page_not_found{
     position: relative;
     min-height: 100vh;
@@ -20,7 +21,26 @@
         height: 100px;
     }
     &-title{
+        margin-bottom: 10px;
+
+        color: $color-dark_blue;
+        font-family: $font-stack--bold;
         font-size: 32px;
         font-weight: normal;
+    }
+    &-description{
+        outline: none;
+
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 16px;
+        font-weight: normal;
+        text-transform: uppercase;
+
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover{
+            color: $color-dark_green;
+        }
     }
 }

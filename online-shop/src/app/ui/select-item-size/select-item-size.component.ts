@@ -12,10 +12,11 @@ declare var Ps: any;
 export class SelectItemSizeComponent implements OnInit {
 
 	@Input() sizes: string[];
+	@Input() selectedSize: string;
 
-	@Output() selectedSize: EventEmitter<string> = new EventEmitter<string>();
+	@Output() onSelectSize: EventEmitter<string> = new EventEmitter<string>();
 
-	public _selectedSize: string;
+
 	private _sizeSelectVM;
 
 	constructor(
@@ -23,8 +24,9 @@ export class SelectItemSizeComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this._selectedSize = this.sizes[0];
-		this.selectedSize.emit(this._selectedSize);
+		// let isStartSizeCurrent = this.sizes.find(s => s === this.startSize);
+		// this.selectedSize = isStartSizeCurrent ? this.startSize : this.sizes[0];
+		//this.selectedSize.emit(this._selectedSize);
 
 		this._sizeSelectVM = this._elementRef.nativeElement.querySelector('.select--size');
 
@@ -32,10 +34,9 @@ export class SelectItemSizeComponent implements OnInit {
 	}
 
 	public onSizeSelect(size: string): void {
-		this._selectedSize = size;
 		this._sizeSelectVM.classList.remove('select--active');
 
-		this.selectedSize.emit(this._selectedSize);
+		this.onSelectSize.emit(size);
 	}
 
 	public onSizeSelectClicked(): void {
@@ -43,7 +44,7 @@ export class SelectItemSizeComponent implements OnInit {
 	}
 
 	public isSizeSelected(size: string): boolean {
-		return size === this._selectedSize;
+		return size === this.selectedSize;
 	}
 
 }

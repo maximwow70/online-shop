@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
 import { ItemData } from "app/_model/item-data";
+import { ItemDataPresentation } from "app/_model/item-data-presentation";
 
 @Injectable()
 export class ItemListService {
@@ -15,11 +16,11 @@ export class ItemListService {
 		private _http: Http
 	) { }
 	
-	// public getItemList(): Observable<ItemData[]> {
+	// public getItemList(): Observable<ItemDataPresentation[]> {
 	// 	return this._http.get('assets/GetItemList.json', '')
 	// 		.map(response => response.json());
 	// }
-	public getItemList(): Observable<ItemData[]> {
+	public getItemList(): Observable<ItemDataPresentation[]> {
 		return this._http.get('GetItemList', '')
 			.map(response => response.json());
 	}

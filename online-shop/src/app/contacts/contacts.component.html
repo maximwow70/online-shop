@@ -60,7 +60,15 @@
 	<div class="contacts-contact_map">
 		<div class="contact_map">
 			<sebm-google-map class="contact_map-map" [latitude]="map.lat" [longitude]="map.lng" [zoom]="map.zoom" [styles]="map.styles" [disableDoubleClickZoom]="true" [scrollwheel]="false">
-				<sebm-google-map-marker [latitude]="map.lat" [longitude]="map.lng" [iconUrl]="'assets/icon-location.svg'"></sebm-google-map-marker>
+				<sebm-google-map-marker (markerClick)="window.open()" [latitude]="map.lat" [longitude]="map.lng" [iconUrl]="'assets/icon-location.svg'">
+				
+				</sebm-google-map-marker>
+				<sebm-google-map-info-window class="contact_map-info" [latitude]="map.lat" [longitude]="map.lng" (closeClick)="window.close()" #window
+					[disableAutoPan]="true" [maxWidth]="150"> 
+					<h1>Portland</h1>
+					<h3>23 Bedford Avenue</h3>
+					<h3>New York, USA</h3>
+ 				</sebm-google-map-info-window>
 			</sebm-google-map>
 		</div>
 	</div>

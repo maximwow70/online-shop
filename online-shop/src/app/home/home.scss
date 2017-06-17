@@ -16,9 +16,9 @@
 
         min-height: 100vh;
     }
-    &-news{
+    &-shop_history{
         min-height: 300px;
-        padding: 100px 5%; //grid
+        padding: 0px 0; 
         background-color: #FFF;
 
         color: $color-dark_blue;
@@ -33,6 +33,15 @@
             margin-top: 50px;
         }
     }
+    &-shop_product_features{
+    }
+    &-shop_features{
+        border-bottom: 1px solid $color-light_grey;
+    }
+    &-shop_partners{
+        padding: 0px 5%; //grid
+        background-color: #FFF;
+    }
 
     &-parallax{
         z-index: -1;
@@ -40,6 +49,7 @@
         width: 100%;
         height: 100%;
 
+        background-color: $color-black;
         background-image: url('assets/img/home-parallax.jpg');
         background-repeat: no-repeat;
         background-position: center;
