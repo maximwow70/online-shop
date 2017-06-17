@@ -16,6 +16,7 @@ import java.util.Set;
  * @author admin
  */
 public class FeatureList {
+
     private String name;
     private Set<Feature> features;
 
@@ -36,8 +37,9 @@ public class FeatureList {
 
     public void setFeatures(String features) {
         Gson gson = new Gson();
-        Type type = new TypeToken<Set<Feature>>() {}.getType();
+        Type type = new TypeToken<Set<Feature>>() {
+        }.getType();
         this.features = gson.fromJson(features, type);
     }
-    
+
 }

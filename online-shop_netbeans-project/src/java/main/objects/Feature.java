@@ -10,6 +10,7 @@ package main.objects;
  * @author admin
  */
 public class Feature {
+
     private String name;
     private String value;
 
@@ -31,5 +32,5 @@ public class Feature {
     public void setValue(String value) {
         this.value = value;
     }
-    
+
 }

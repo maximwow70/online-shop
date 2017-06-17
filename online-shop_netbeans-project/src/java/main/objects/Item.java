@@ -14,6 +14,7 @@ import java.util.Set;
  * @author admin
  */
 public class Item {
+
     private String id;
     private String name;
     private String description;
@@ -48,7 +49,7 @@ public class Item {
         Gson gson = new Gson();
         this.photosUrl = gson.fromJson(photosUrl, LinkedHashSet.class);
     }
-    
+
     public Set<FeatureList> getFeatureLists() {
         return featureLists;
     }

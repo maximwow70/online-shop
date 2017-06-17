@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import main.objects.ItemData;
+import main.objects.ItemDataPresentation;
 
 /**
  *
@@ -39,7 +39,7 @@ public class GetItem extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GetItem</title>");            
+            out.println("<title>Servlet GetItem</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet GetItem at " + request.getContextPath() + "</h1>");
@@ -61,7 +61,7 @@ public class GetItem extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
-        ItemData item = SQLConnector.getItem(id);
+        ItemDataPresentation item = SQLConnector.getItem(id);
         Gson gson = new Gson();
         String json = gson.toJson(item);
         response.getWriter().write(json);

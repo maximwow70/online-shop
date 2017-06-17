@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import main.objects.ItemData;
+import main.objects.ItemDataPresentation;
 
 /**
  *
@@ -48,7 +48,7 @@ public class GetItemList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Set<ItemData> set = SQLConnector.getAllItems();
+        Set<ItemDataPresentation> set = SQLConnector.getAllItems();
         Gson gson = new Gson();
         String lol = gson.toJson(set);
         System.out.println(lol);
@@ -66,7 +66,7 @@ public class GetItemList extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Set<ItemData> set = SQLConnector.getAllItems();
+        Set<ItemDataPresentation> set = SQLConnector.getAllItems();
         Gson gson = new Gson();
         String lol = gson.toJson(set);
         System.out.println(lol);
