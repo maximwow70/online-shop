@@ -75,7 +75,8 @@
         text-transform: uppercase;
 
         &:hover{
-            background-color: $color-dark_green;;
+            background-color: $color-dark_green;
+            border-color: $color-dark_green;
             box-shadow: 0 0 40px rgba($color-dark_green, 0.6);
 
             color: #FFF;
