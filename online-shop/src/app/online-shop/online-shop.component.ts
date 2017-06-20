@@ -45,6 +45,7 @@ export class OnlineShopComponent implements OnInit {
 
 		this._itemList.getItemList().subscribe(
 			itemDataList => {
+				that._onlineShop.setItemList([]);
 				for (let i = 0; i < itemDataList.length; i++) {
 					that._onlineShop.addItemData(
 						ItemDataPresentation.fromObject(itemDataList[i])
@@ -63,6 +64,7 @@ export class OnlineShopComponent implements OnInit {
 			sizes,
 			cost
 		).subscribe(itemDataList => {
+			that._onlineShop.setItemList([]);
 			for (let i = 0; i < itemDataList.length; i++) {
 				that._onlineShop.addItemData(
 					ItemDataPresentation.fromObject(itemDataList[i])
