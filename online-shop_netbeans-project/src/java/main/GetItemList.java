@@ -51,7 +51,6 @@ public class GetItemList extends HttpServlet {
         Set<ItemDataPresentation> set = SQLConnector.getAllItems();
         Gson gson = new Gson();
         String lol = gson.toJson(set);
-        System.out.println(lol);
         response.getWriter().write(lol);
     }
 
@@ -66,11 +65,6 @@ public class GetItemList extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Set<ItemDataPresentation> set = SQLConnector.getAllItems();
-        Gson gson = new Gson();
-        String lol = gson.toJson(set);
-        System.out.println(lol);
-        response.getWriter().write(lol);
     }
 
     /**

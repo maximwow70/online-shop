@@ -8,6 +8,7 @@ package main;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +20,8 @@ import main.objects.ItemDataPresentation;
  *
  * @author admin
  */
-@WebServlet(name = "GetItem", urlPatterns = {"/GetItem"})
-public class GetItem extends HttpServlet {
+@WebServlet(name = "SearchItemList", urlPatterns = {"/SearchItemList"})
+public class SearchItemList extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +40,10 @@ public class GetItem extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GetItem</title>");
+            out.println("<title>Servlet SearchItemList</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GetItem at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SearchItemList at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,11 +61,14 @@ public class GetItem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        ItemDataPresentation item = SQLConnector.getItem(id);
         Gson gson = new Gson();
-        String json = gson.toJson(item);
-        response.getWriter().write(json);
+        String name = "";
+        String[] colors = gson.fromJson(request.getParameter("colors"), String[].class);
+        String[] sizes = gson.fromJson(request.getParameter("sizes"), String[].class);
+        int min = Integer.valueOf(request.getParameter("minCost"));
+        int max = Integer.valueOf(request.getParameter("maxCost"));
+        Set<ItemDataPresentation> setItemData = SQLConnector.getItems(name, colors, sizes, min, max);
+        response.getWriter().write(gson.toJson(setItemData));
     }
 
     /**
