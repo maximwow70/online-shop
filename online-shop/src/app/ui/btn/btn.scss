@@ -123,6 +123,25 @@
         }
     }
 
+    &--search_items{
+        padding: 5px 0;
+        background-color: #FFF;
+        border-radius: 5px;
+        border-color: #FFF;
+
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        color: $color-dark_blue;
+        text-transform: uppercase;
+
+        &:hover{
+            border-color: $color-dark_green;
+            background-color: $color-dark_green;
+
+            color: #FFF;
+        }
+    }
+
     &--category{
         width: 170px;
         padding: 0px;

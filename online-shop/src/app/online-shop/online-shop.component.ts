@@ -23,6 +23,8 @@ export class OnlineShopComponent implements OnInit {
 
 	private _onlineShop: OnlineShop;
 
+	private _selectedName: string = '';
+
 	constructor(
 		private _elementRef: ElementRef,
 		private _router: Router,
@@ -43,14 +45,30 @@ export class OnlineShopComponent implements OnInit {
 
 		this._itemList.getItemList().subscribe(
 			itemDataList => {
-				for (let i = 0; i < itemDataList.length; i++){
+				for (let i = 0; i < itemDataList.length; i++) {
 					that._onlineShop.addItemData(
 						ItemDataPresentation.fromObject(itemDataList[i])
 					);
 				}
 			}
 		);
+	}
+	public getItemListByParams(name: string, colors: Color[], sizes: string[], cost: {min: number, max: number})
+		: void {
+		let that = this;
 
+		this._itemList.getItemListByParams(
+			name,
+			colors,
+			sizes,
+			cost
+		).subscribe(itemDataList => {
+			for (let i = 0; i < itemDataList.length; i++) {
+				that._onlineShop.addItemData(
+					ItemDataPresentation.fromObject(itemDataList[i])
+				);
+			}
+		});
 	}
 
 	public getClassByColor(color: Color): string {
@@ -64,6 +82,19 @@ export class OnlineShopComponent implements OnInit {
 	}
 
 
+	
+	public onSearch(params: {colors: Color[], sizes: string[], cost: {min: number, max: number}}): void {
+		this.getItemListByParams(
+			'',
+			params.colors,
+			params.sizes,
+			params.cost
+		);
+	}
+
+	public onItemLiked(item: Item): void {
+		console.log(item);
+	}
 	public onItemClicked(item: Item): void {
 		this._router.navigate(['/products', item.id]);
 	}

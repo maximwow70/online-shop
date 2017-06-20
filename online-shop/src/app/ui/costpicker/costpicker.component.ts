@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'costpicker',
@@ -7,6 +7,8 @@ import { Component, OnInit, ElementRef, Input } from '@angular/core';
 })
 export class CostpickerComponent implements OnInit {
 
+	@Output() selectedCost: EventEmitter<{ min: number, max: number }> = new EventEmitter<{ min: number, max: number }>();
+
 	@Input() min: number;
 	@Input() max: number;
 	@Input() step: number;
@@ -14,8 +16,8 @@ export class CostpickerComponent implements OnInit {
 	private _selectMinInputVM;
 	private _selectMaxInputVM;
 
-	private _currentMinValue;
-	private _currentMaxValue;
+	private _currentMinValue: number;
+	private _currentMaxValue: number;
 
 
 	private _costRangeVM;
@@ -35,12 +37,12 @@ export class CostpickerComponent implements OnInit {
 		this._selectMinInputVM = selectNumbers[0];
 		this._selectMaxInputVM = selectNumbers[1];
 
-		this._selectMinInputVM.oninput = function() {
+		this._selectMinInputVM.oninput = function () {
 			that.setMinValue(
 				parseFloat(that._selectMinInputVM.value)
 			);
 		}
-		this._selectMaxInputVM.oninput = function() {
+		this._selectMaxInputVM.oninput = function () {
 			that.setMaxValue(
 				parseFloat(that._selectMaxInputVM.value)
 			);
@@ -54,19 +56,19 @@ export class CostpickerComponent implements OnInit {
 
 
 		this._costRangeControlMinVM.addEventListener('mousedown', function () {
-            document.addEventListener('mousemove', onControlMinMove);
-        });
-        document.addEventListener('mouseup', function () {
-            document.removeEventListener('mousemove', onControlMinMove);
-        });
+			document.addEventListener('mousemove', onControlMinMove);
+		});
+		document.addEventListener('mouseup', function () {
+			document.removeEventListener('mousemove', onControlMinMove);
+		});
 		this._costRangeControlMinVM.addEventListener('keydown', function (event) {
-            if (event.keyCode == 39) {
+			if (event.keyCode == 39) {
 				that.setMinValue(that._currentMinValue += (that.max - that.min) / 50);
-            } else if (event.keyCode == 37) {
-                
+			} else if (event.keyCode == 37) {
+
 				that.setMinValue(that._currentMinValue -= (that.max - that.min) / 50);
-            }
-        });
+			}
+		});
 		function onControlMinMove(event) {
 			var leftX = event.clientX - that._costBarVM.getBoundingClientRect().left;
 			var proportion = leftX / parseFloat(window.getComputedStyle(that._costBarVM).width);
@@ -79,19 +81,19 @@ export class CostpickerComponent implements OnInit {
 		}
 
 		this._costRangeControlMaxVM.addEventListener('mousedown', function () {
-            document.addEventListener('mousemove', onControlMaxMove);
-        });
-        document.addEventListener('mouseup', function () {
-            document.removeEventListener('mousemove', onControlMaxMove);
-        });
+			document.addEventListener('mousemove', onControlMaxMove);
+		});
+		document.addEventListener('mouseup', function () {
+			document.removeEventListener('mousemove', onControlMaxMove);
+		});
 		this._costRangeControlMaxVM.addEventListener('keydown', function (event) {
-            if (event.keyCode == 39) {
+			if (event.keyCode == 39) {
 				that.setMaxValue(that._currentMaxValue += (that.max - that.min) / 50);
-            } else if (event.keyCode == 37) {
-                
+			} else if (event.keyCode == 37) {
+
 				that.setMaxValue(that._currentMaxValue -= (that.max - that.min) / 50);
-            }
-        });
+			}
+		});
 		function onControlMaxMove(event) {
 			var leftX = event.clientX - that._costBarVM.getBoundingClientRect().left;
 			var proportion = leftX / parseFloat(window.getComputedStyle(that._costBarVM).width);
@@ -105,32 +107,45 @@ export class CostpickerComponent implements OnInit {
 
 		this._currentMinValue = this.min;
 		this._currentMaxValue = this.max;
+
+		this.onChange();
 	}
 
 	public setMinValue(value: number): void {
-        if (value < this.min) {
-            this._selectMinInputVM.value = this.min;
-        } else if (value > this._currentMaxValue) {
-            this._selectMinInputVM.value = this._currentMaxValue;
-        } else if(!isNaN(value)){
-            this._selectMinInputVM.value = value;
-        } else {
+		if (value < this.min) {
+			this._selectMinInputVM.value = this.min;
+		} else if (value > this._currentMaxValue) {
+			this._selectMinInputVM.value = this._currentMaxValue;
+		} else if (!isNaN(value)) {
+			this._selectMinInputVM.value = value;
+		} else {
 			this._selectMinInputVM.value = this.min;
 		}
 		this._currentMinValue = parseFloat(this._selectMinInputVM.value);
-    }
+
+		this.onChange();
+	}
 
 	public setMaxValue(value: number): void {
 		if (value < this._currentMinValue) {
-            this._selectMaxInputVM.value = this._currentMinValue;
-        } else if (value > this.max) {
-            this._selectMaxInputVM.value = this.max;
-        } else if(!isNaN(value)){
-            this._selectMaxInputVM.value = value;
-        } else {
+			this._selectMaxInputVM.value = this._currentMinValue;
+		} else if (value > this.max) {
+			this._selectMaxInputVM.value = this.max;
+		} else if (!isNaN(value)) {
+			this._selectMaxInputVM.value = value;
+		} else {
 			this._selectMaxInputVM.value = this.min;
 		}
 		this._currentMaxValue = parseFloat(this._selectMaxInputVM.value);
+
+		this.onChange();
+	}
+
+	private onChange(): void {
+		this.selectedCost.emit({
+			min: this._currentMinValue,
+			max: this._currentMaxValue
+		});
 	}
 
 	public updateVM(): any {
@@ -147,7 +162,7 @@ export class CostpickerComponent implements OnInit {
 			},
 			bar: {
 				width: (this._currentMaxValue - this._currentMinValue) / this.max * 100 + "%",
-				left:  (this._currentMinValue - this.min) / this.max * 100 + "%"
+				left: (this._currentMinValue - this.min) / this.max * 100 + "%"
 			}
 		}
 	}
