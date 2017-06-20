@@ -47,6 +47,9 @@ import { ShopHistoryComponent } from './shop-history/shop-history.component';
 import { ShopFeaturesComponent } from './shop-features/shop-features.component';
 import { ShopProductFeaturesComponent } from './shop-product-features/shop-product-features.component';
 import { ItemLikerComponent } from './item-liker/item-liker.component';
+import { AboutComponent } from './about/about.component';
+import { AboutSkillsComponent } from './about-skills/about-skills.component';
+import { AboutIntroComponent } from './about-intro/about-intro.component';
 
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
@@ -62,6 +65,7 @@ const appRoutes: Routes = [
 	},
 	{ path: 'product-liker', component: ItemLikerComponent },
 	{ path: 'contacts', component: ContactsComponent },
+	{ path: 'about', component: AboutComponent },
 	{
 		path: '',
 		pathMatch: 'full',
@@ -104,6 +108,9 @@ const appRoutes: Routes = [
 		ShopFeaturesComponent,
 		ShopProductFeaturesComponent,
 		ItemLikerComponent,
+		AboutComponent,
+		AboutSkillsComponent,
+		AboutIntroComponent,
 	],
 	imports: [
 		BrowserModule,

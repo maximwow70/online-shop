@@ -9,6 +9,9 @@
 		<sizepicker [sizes]="availableSizes" (selectedSizes)="onSizesSelected($event)"></sizepicker>
 	</div>
 	<div class="items_search-search">
-		<costpicker [min]="availableCost.min" [max]="availableCost.max"></costpicker>
+		<costpicker [min]="availableCost.min" [max]="availableCost.max" (selectedCost)="onCostSelected($event)"></costpicker>
+	</div>
+	<div class="items_search-btn" (click)="onSearchClick()">
+		<button class="btn btn--search_items">Search</button>
 	</div>
 </div>

@@ -1,0 +1,19 @@
+<div class="about_skills">
+	<h2 class="about_skills-title">
+		Our Skills
+	</h2>
+	<div class="about_skills-skill" *ngFor="let skill of skillList">
+		<svg width="160" height="160">
+			<circle transform="rotate(-90)" r="65" cx="-80" cy="80" />
+			<circle transform="rotate(-90)" r="58" cx="-80" cy="80" [ngStyle]="{
+				'stroke-dasharray': skill.value * 364.0615 / 100 + 'px 364.0615px'
+			}" />
+			<text x="80" y="80" alignment-baseline="middle" text-anchor="middle">
+				{{skill.value}}%
+			</text>
+		</svg>
+		<div class="about_skills-skill_name">
+			{{skill.name}}
+		</div>
+	</div>
+</div>

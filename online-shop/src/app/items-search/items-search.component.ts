@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, EventEmitter, Output } from '@angular/core';
 import { Datapicker } from "app/ui/datapicker/datapicker";
 import { Color } from "app/_model/color";
 import { CategoryListService } from "app/_services/category-list/category-list.service";
@@ -9,6 +9,9 @@ import { CategoryListService } from "app/_services/category-list/category-list.s
 	styleUrls: ['./items-search.component.scss']
 })
 export class ItemsSearchComponent implements OnInit {
+
+	@Output() onSearch: EventEmitter<{colors: Color[], sizes: string[], cost: {min: number, max: number}}> 
+		= new EventEmitter<{colors: Color[], sizes: string[], cost: {min: number, max: number}}>();
 
 	private _availableCategories: any[] = [];
 	private _availableColors: Color[] = [];
@@ -56,6 +59,17 @@ export class ItemsSearchComponent implements OnInit {
 	}
 	public onSizesSelected(selectedSizes: string[]): void {
 		this._selectedSizes = selectedSizes;
+	}
+	public onCostSelected(selectedCost: {min: number, max: number}): void {
+		this._selectedCost = selectedCost;
+	}
+
+	public onSearchClick(): void {
+		this.onSearch.emit({
+			colors: this._selectedColors,
+			sizes: this._selectedSizes,
+			cost: this._selectedCost
+		});
 	}
 
 	public get availableCategories(): any[] {

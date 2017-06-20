@@ -1,6 +1,61 @@
 <header></header>
 <div class="item_liker">
 	<div class="item_liker-item_list">
+		<div class="item_liker-btn item_liker-btn--refresh" (click)="onRefresh()">
+			refresh
+		</div>
+		<div class="item_liker-btn item_liker-btn--like">
+			<button class="btn btn--circle" (click)="onItemLiked()" [disabled]="!canLiked" [ngClass]="{'btn--disabled': !canLiked}">
+				<div class="btn-icon fa fa-heart"></div>
+			</button>
+		</div>
+		<div class="item_liker-btn item_liker-btn--dislike">
+			<button class="btn btn--circle" (click)="onItemDisliked()" [disabled]="!canLiked" [ngClass]="{'btn--disabled': !canLiked}">
+				<div class="btn-icon fa fa-thumbs-o-down "></div>
+			</button>
+		</div>
+		<div class="item_liker-item_card item_liker-item_card--disliked" *ngFor="let itemData of itemListDisliked">
+			<div class="item_card">
+				<div class="item_card-new" *ngIf="itemData.isNew">new</div>
+				<div class="item_card-img">
+					<img class="img" src="{{itemData.item.photosUrl[0]}}" alt="">
+				</div>
+				<div class="item_card-info">
+					<a class="item_card-name" (click)="onItemClicked(itemData.item)">
+						{{itemData.item.name}}
+					</a>
+					<div class="item_card-color_list">
+						<div class="color-list">
+							<div class="color_list-color" *ngFor="let color of itemData.colors">
+								<div class="color color--{{getClassByColor(color)}} color--small" title="{{color.name}}"></div>
+							</div>
+						</div>
+					</div><!--
+					--><h4 class="item_card-cost">${{itemData.cost}}</h4>
+				</div>
+			</div>
+		</div>
+		<div class="item_liker-item_card item_liker-item_card--liked" *ngFor="let itemData of itemListLiked">
+			<div class="item_card">
+				<div class="item_card-new" *ngIf="itemData.isNew">new</div>
+				<div class="item_card-img">
+					<img class="img" src="{{itemData.item.photosUrl[0]}}" alt="">
+				</div>
+				<div class="item_card-info">
+					<a class="item_card-name" (click)="onItemClicked(itemData.item)">
+						{{itemData.item.name}}
+					</a>
+					<div class="item_card-color_list">
+						<div class="color-list">
+							<div class="color_list-color" *ngFor="let color of itemData.colors">
+								<div class="color color--{{getClassByColor(color)}} color--small" title="{{color.name}}"></div>
+							</div>
+						</div>
+					</div><!--
+					--><h4 class="item_card-cost">${{itemData.cost}}</h4>
+				</div>
+			</div>
+		</div>
 		<div class="item_liker-item_card" *ngFor="let itemData of itemListData">
 			<div class="item_card">
 				<div class="item_card-new" *ngIf="itemData.isNew">new</div>

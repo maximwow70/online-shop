@@ -4,13 +4,16 @@
 </div>
 <div class="item_list">
 	<div class="item_list-items_search">
-		<items-search></items-search>
+		<items-search (onSearch)="onSearch($event)"></items-search>
 	</div><!--
 	--><div class="item_list-items">
 		<div class="item_list-item_card" *ngFor="let itemData of itemList">
 			<div class="item_card">
 				<div class="item_card-new" *ngIf="itemData.isNew">new</div>
 				<div class="item_card-img">
+					<div class="item_card-like" (click)="onItemLiked(itemData.item)">
+						<span class="like fa fa-heart-o"></span>
+					</div>
 					<img class="img" src="{{itemData.item.photosUrl[0]}}" alt="">
 				</div>
 				<div class="item_card-info">
