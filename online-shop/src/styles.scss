@@ -1,3 +1,5 @@
+@import './app/src.scss';
+
 @import './app/page-not-found/page-not-found.scss';
 
 @import './app/ui/btn/btn.scss';
@@ -6,6 +8,7 @@
 @import './app/ui/select/select.scss';
 @import './app/ui/range/range.scss';
 @import './app/ui/datapicker/datapicker.scss';
+@import './app/ui/switch/switch.scss';
 
 @import './app/home/home.scss';
 @import './app/home-intro/home-intro.scss';
@@ -20,6 +23,8 @@
 @import './app/navigation/navigation.scss';
 @import './app/logo/logo.scss';
 
+@import './app/items-sort/items-sort.scss';
+@import './app/items-search/items-search.scss';
 @import './app/item-list/item-list.scss';
 @import './app/item-card/item-card.scss';
 @import './app/item/item.scss';
@@ -57,6 +62,8 @@
 
 @import './app/about/about.scss';
 @import './app/about-intro/about-intro.scss';
+@import './app/about-history/about-history.scss';
+@import './app/about-team/about-team.scss';
 @import './app/about-skills/about-skills.scss';
 
 @font-face{

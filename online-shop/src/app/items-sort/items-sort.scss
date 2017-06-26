@@ -1,0 +1,40 @@
+@import '../src.scss';
+.items_sort{
+    padding: 0 20px;
+    background-color: #FFF;
+    border-radius: 5px;
+
+    &-description{
+        padding-right: 40px;
+
+        display: inline-block;
+        vertical-align: middle;
+
+        
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    &-select{
+        display: inline-block;
+        vertical-align: middle;
+
+        padding-right: 20px;
+
+        color: $color-dark_blue;
+    }
+    &-free_shipping{
+        display: inline-block;
+        vertical-align: middle;
+
+        padding-left: 40px;
+        border-left: 2px solid $color-light_grey;
+
+        line-height: 60px;
+
+        .switch{
+            vertical-align: middle;
+        }
+    }
+}

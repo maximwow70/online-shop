@@ -4,6 +4,7 @@ import { ItemListService } from "app/_services/item-list/item-list.service";
 import { ItemColorService } from "app/_services/item-color/item-color.service";
 import { Color } from "app/_model/color";
 import { Item } from "app/_model/item";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: 'item-liker',
@@ -53,6 +54,7 @@ export class ItemLikerComponent implements OnInit {
 		this.getItemList();
 	}
 
+
 	public getItemList(): void {
 		let that = this;
 
@@ -71,6 +73,7 @@ export class ItemLikerComponent implements OnInit {
 	public getClassByColor(color: Color): string {
 		return this._itemColor.getClassByColor(color);
 	}
+
 
 	public get itemListData(): ItemDataPresentation[] {
 		return this._itemList;

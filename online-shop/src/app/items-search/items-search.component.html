@@ -3,6 +3,9 @@
 		<category-list [categories]="availableCategories"></category-list>
 	</div>
 	<div class="items_search-search">
+		<input class="items_search-search_name" type="text" placeholder="Product name" [(ngModel)]="selectedName">
+	</div>
+	<div class="items_search-search">
 		<colorpicker [colors]="availableColors" (selectedColors)="onColorsSelected($event)"></colorpicker>
 	</div>
 	<div class="items_search-search">

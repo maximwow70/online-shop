@@ -10,14 +10,16 @@ import { CategoryListService } from "app/_services/category-list/category-list.s
 })
 export class ItemsSearchComponent implements OnInit {
 
-	@Output() onSearch: EventEmitter<{colors: Color[], sizes: string[], cost: {min: number, max: number}}> 
-		= new EventEmitter<{colors: Color[], sizes: string[], cost: {min: number, max: number}}>();
+	@Output() onSearch: EventEmitter<{name: string, colors: Color[], sizes: string[], cost: {min: number, max: number}}> 
+		= new EventEmitter<{name: string, colors: Color[], sizes: string[], cost: {min: number, max: number}}>();
 
 	private _availableCategories: any[] = [];
 	private _availableColors: Color[] = [];
 	private _availableSizes: string[] = [];
 	private _availableCost: { min: number, max: number };
 
+
+	public selectedName: string = '';
 	private _selectedColors: Color[] = [];
 	private _selectedSizes: string[] = [];
 	private _selectedCost: { min: number, max: number };
@@ -66,6 +68,7 @@ export class ItemsSearchComponent implements OnInit {
 
 	public onSearchClick(): void {
 		this.onSearch.emit({
+			name: this.selectedName,
 			colors: this._selectedColors,
 			sizes: this._selectedSizes,
 			cost: this._selectedCost

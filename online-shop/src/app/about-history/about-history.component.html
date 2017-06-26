@@ -1,0 +1,19 @@
+<div class="about_history">
+	<div class="about_history-title">
+		Our history
+	</div>
+	<div class="about_history-history " *ngFor="let history of histories">
+		<svg class="border">
+			<line x1="0" y1="0" x2="100%" y2="0%"/>
+			<line x1="100%" y1="0" x2="100%" y2="100%"/>
+			<line x1="100%" y1="100%" x2="0%" y2="100%"/>
+			<line x1="0%" y1="100%" x2="0%" y2="0%"/>
+		</svg>
+		<h4 class="about_history-year">
+			{{history.year}}
+		</h4>
+		<p class="about_history-description">
+			{{history.description}}
+		</p>
+	</div>
+</div>

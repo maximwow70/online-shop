@@ -2,6 +2,38 @@
 .item-container{
     padding: 50px;
     background-color: rgba($color-light_grey, 0.7);
+
+    @media screen and (max-width: 900px) {
+        .item{
+            &-photos, &-info{
+                width: 100%;
+            }
+            &-photos{
+                margin-bottom: 50px;
+
+                padding-right: 0;
+            }
+        }
+    }
+    @media screen and (max-width: 700px) {
+        .item{
+            &-available, &-select{
+                width: 40%;
+                &:not(:last-child){
+                    margin-right: 0px;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 550px) {
+        padding-left: 0;
+        padding-right: 0;
+        .item{
+            &-available, &-select{
+                width: 100%;
+            }
+        }
+    }
 }
 .item{
     padding: 50px;
@@ -101,7 +133,7 @@
         display: inline-block;
 
         &:not(:last-child){
-            margin-right: 20px;
+            margin-right: 40px;
         }
     }
     
@@ -120,6 +152,7 @@
             height: 100vh;
         }
     }
+
 
     &--inherit{
         background-color: inherit;

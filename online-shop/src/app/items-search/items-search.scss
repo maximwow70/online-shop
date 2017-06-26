@@ -1,0 +1,36 @@
+@import '../src.scss';
+.items_search{
+    border-radius: 5px;
+
+    text-align: left;
+
+    &-search{
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+    }
+    &-btn{
+        .btn{
+            width: 280px;
+        }
+    }
+
+    &-search_name{
+        box-sizing: border-box;
+        width: 280px;
+        padding: 12px 20px;
+        border: 2px solid #FFF;
+        border-radius: 5px;
+        outline: none;
+
+        color: $color-dark_blue;
+        font-size: 18px;
+
+        transition: 0.3s;
+
+        &:focus{
+            border-color: $color-dark_green;
+        }
+
+    }
+}

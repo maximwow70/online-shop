@@ -50,6 +50,9 @@ import { ItemLikerComponent } from './item-liker/item-liker.component';
 import { AboutComponent } from './about/about.component';
 import { AboutSkillsComponent } from './about-skills/about-skills.component';
 import { AboutIntroComponent } from './about-intro/about-intro.component';
+import { ItemsSortComponent } from './items-sort/items-sort.component';
+import { AboutHistoryComponent } from './about-history/about-history.component';
+import { AboutTeamComponent } from './about-team/about-team.component';
 
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
@@ -111,6 +114,9 @@ const appRoutes: Routes = [
 		AboutComponent,
 		AboutSkillsComponent,
 		AboutIntroComponent,
+		ItemsSortComponent,
+		AboutHistoryComponent,
+		AboutTeamComponent,
 	],
 	imports: [
 		BrowserModule,

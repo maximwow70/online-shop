@@ -21,6 +21,7 @@ export class ItemColorService {
 		switch (color.name){
 			case 'white': return 'white';
 			case 'black': return 'black';
+			case 'brown': return 'brown';
 			case 'red': return 'red';
 			case 'blue': return 'blue';
 			case 'green': return 'green';

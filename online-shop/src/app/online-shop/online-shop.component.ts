@@ -45,12 +45,13 @@ export class OnlineShopComponent implements OnInit {
 
 		this._itemList.getItemList().subscribe(
 			itemDataList => {
-				that._onlineShop.setItemList([]);
+				let currenItemDataList = [];
 				for (let i = 0; i < itemDataList.length; i++) {
-					that._onlineShop.addItemData(
+					currenItemDataList.push(
 						ItemDataPresentation.fromObject(itemDataList[i])
 					);
 				}
+				that._onlineShop.setItemList(currenItemDataList);
 			}
 		);
 	}
@@ -64,12 +65,13 @@ export class OnlineShopComponent implements OnInit {
 			sizes,
 			cost
 		).subscribe(itemDataList => {
-			that._onlineShop.setItemList([]);
+			let currenItemDataList = [];
 			for (let i = 0; i < itemDataList.length; i++) {
-				that._onlineShop.addItemData(
+				currenItemDataList.push(
 					ItemDataPresentation.fromObject(itemDataList[i])
 				);
 			}
+			that._onlineShop.setItemList(currenItemDataList);
 		});
 	}
 
@@ -85,9 +87,9 @@ export class OnlineShopComponent implements OnInit {
 
 
 	
-	public onSearch(params: {colors: Color[], sizes: string[], cost: {min: number, max: number}}): void {
+	public onSearch(params: {name: string, colors: Color[], sizes: string[], cost: {min: number, max: number}}): void {
 		this.getItemListByParams(
-			'',
+			params.name,
 			params.colors,
 			params.sizes,
 			params.cost

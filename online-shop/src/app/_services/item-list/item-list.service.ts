@@ -17,10 +17,10 @@ export class ItemListService {
 	) { }
 
 	public getItemList(): Observable<ItemDataPresentation[]> {
-		return this._http.get('GetItemList', '')
-			.map(response => response.json());
-		// return this._http.get('assets/GetItemList.json', '')
+		// return this._http.get('GetItemList', '')
 		// 	.map(response => response.json());
+		return this._http.get('assets/GetItemList.json', '')
+			.map(response => response.json());
 	}
 
 	public getItemListByParams(name: string, colors: Color[], sizes: string[], cost: { min: number, max: number })
@@ -30,7 +30,8 @@ export class ItemListService {
 			colorNames.push(colors[color].name);
 		}
 
-		let params = 'colors=' + JSON.stringify(colorNames) +
+		let params = 'name=' + name +
+			'&colors=' + JSON.stringify(colorNames) +
 			'&sizes=' + JSON.stringify(sizes) +
 			'&minCost=' + JSON.stringify(cost.min) + 
 			'&maxCost=' + JSON.stringify(cost.max);

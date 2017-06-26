@@ -114,4 +114,20 @@
             }
         }
     }
+
+    @media screen and (max-width: 1100px) {
+        &-item_list{
+            overflow: hidden;
+        }
+        &-btn{
+            &--like{
+                right: 10px;
+                transform: translate(0, -50%);
+            }
+            &--dislike{
+                left: 10px;
+                transform: translate(0, -50%);
+            }
+        }
+    }
 }

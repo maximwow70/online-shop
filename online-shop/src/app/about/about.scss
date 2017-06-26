@@ -1,9 +1,12 @@
-@import '../src.scss';
 .about{
-    
+    color: $color-dark_blue;
     &-about_intro{
         border-bottom: 1px solid $color-light_grey;
     }
+    &-about_history{
+        border-bottom: 1px solid $color-light_grey;
+    }
     &-about_skills{
+        border-bottom: 1px solid $color-light_grey;
     }
 }
