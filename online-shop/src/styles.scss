@@ -46,12 +46,21 @@
 @import './app/footer/footer.scss';
 @import './app/info/info.scss';
 
+
 @import './app/user/user.scss';
+@import './app/user-dashboard/user-dashboard.scss';
+@import './app/user-dashboard-navigation/user-dashboard-navigation.scss';
+
+@import './app/user-login/user-login.scss';
+@import './app/user-sign-in/user-sign-in.scss';
+@import './app/user-sign-up/user-sign-up.scss';
+
 @import './app/user-wishlist/user-wishlist.scss';
+
 @import './app/user-cart/user-cart.scss';
 @import './app/user-cart-header/user-cart-header.scss';
-@import './app/user-dashboard/user-dashboard.scss';
 @import './app/user-order-road/user-order-road.scss';
+
 
 @import './app/item-liker/item-liker.scss';
 
@@ -65,6 +74,12 @@
 @import './app/about-history/about-history.scss';
 @import './app/about-team/about-team.scss';
 @import './app/about-skills/about-skills.scss';
+
+
+@font-face{
+    font-family: logo;
+    src: url('assets/fonts/Mahmur.otf');
+}
 
 @font-face{
     font-family: mont--b;

@@ -1,6 +1,12 @@
 @import '../src.scss';
 .user_cart{
-    
+    position: relative;
+    height: 100vh;
+
+    &-loading{
+        position: relative;
+        height: 100%;
+    }
     &-item{
         margin: 0 50px;
         
@@ -9,7 +15,7 @@
         }
     }
     &-user_order_road{
-        padding: 100px 0 75px 0;
+        padding: 50px 0;
     }
     &-user_cart_header{
         padding: 0 50px;
@@ -20,6 +26,7 @@
 
     &-helper{
         padding: 50px; 
+        outline: none;
 
         text-align: center;
 

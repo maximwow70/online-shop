@@ -1,0 +1,36 @@
+.user_dashboard_navigation{
+
+    height: 100%;
+    width: 80px;
+
+    background-color: #FFF;
+    border-right: 1px solid $color-light_grey;
+
+    &-list{
+        display: inline-block;
+        vertical-align: top;
+
+        width: 80px;
+        height: 80px;
+        border-bottom: 1px solid $color-light_grey;
+        background-color: #FFF;
+        outline: none;
+
+        line-height: 80px;
+        color: $color-dark_blue;
+        font-size: 28px;
+        text-align: center;
+
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:focus, &:hover {
+            background-color: rgba($color-light_grey, 0.6);
+            //outline-color: $color-dark_green;
+        }   
+        &.active {
+            background-color: $color-light_grey;
+            color: $color-dark_green;
+        }
+    }
+}

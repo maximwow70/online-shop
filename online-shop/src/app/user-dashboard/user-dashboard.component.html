@@ -1,31 +1,42 @@
-<header></header>
-<div class="user_dashboard-loading" *ngIf="!user">
-    <loading></loading>
-</div>
-<div class="user_dashboard" *ngIf="user">
-	<h2 class="user_dashboard-title">Welcome {{user.name}}</h2>
+<div class="user_dashboard">
+    <div class="user_dashboard-user_dashboard_navigation">
+        <div class="user_dashboard_navigation">
+            <button routerLink="/home" routerLinkActive="active" class="user_dashboard_navigation-list" >
+                <div class="fa fa-home"></div>
+            </button>
+            <button routerLink="/user/login" routerLinkActive="active" class="user_dashboard_navigation-list" >
+                <div class="fa fa-user"></div>
+            </button>
+            <button routerLink="/user/cart" routerLinkActive="active" class="user_dashboard_navigation-list">
+                <div class="fa fa-shopping-cart"></div>
+            </button>
+            <button routerLink="/user/wishlist" routerLinkActive="active" class="user_dashboard_navigation-list">
+                <div class="fa fa-heart"></div>
+            </button>
+            <button routerLink="/user/settings" routerLinkActive="active" class="user_dashboard_navigation-list">
+                <div class="fa fa-cog"></div>
+            </button>
+        </div>
+    </div>
+	<!--<h2 class="user_dashboard-title">Welcome {{user?.name}}</h2>
     <p class="user_dashboard-description">
         This is your personal dashboard. Look, edit and order items in your cart and wishlist!
     </p>
     <div class="user_dashboard-tabs">
-        <div class="user_dashboard-btn" [ngClass]="{'user_dashboard-btn--active': isActiveCart}" (click)="onCartView()">
+        <div routerLink="cart" routerLinkActive="active" class="user_dashboard-btn" >
             <div class="btn btn--user_cart">
                 <div class="btn-icon fa fa-shopping-cart" ></div>
                 3 items
             </div>
-        </div><!--
-        --><div class="user_dashboard-btn" [ngClass]="{'user_dashboard-btn--active': !isActiveCart}" (click)="onWishlistView()">
+        </div>
+        <div routerLink="wishlist" routerLinkActive="active" class="user_dashboard-btn">
             <div class="btn btn--user_wishlist">
                 <div class="btn-icon fa fa-heart"></div>
                 4 items
             </div>
         </div>
-    </div>
-    <div class="user_dashboard-user_cart" *ngIf="isActiveCart">
-        <user-cart [itemList]="cartItems"></user-cart>
-    </div>
-    <div class="user_dashboard-user_wishlist" *ngIf="!isActiveCart">
-        <user-wishlist [itemList]="wishlistItems"></user-wishlist>
+    </div>-->
+    <div class="user_dashboard-router_outlet">
+        <router-outlet></router-outlet>
     </div>
 </div>
-<footer></footer>

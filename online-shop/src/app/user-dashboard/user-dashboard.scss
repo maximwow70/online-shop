@@ -1,11 +1,27 @@
 @import '../src.scss';
 .user_dashboard{
-    min-height: 100vh;
-    padding: 100px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+
+    height: 100%;
+    height: 100vh;
+
     background-color: rgba($color-light_grey, 0.4);
 
-
     color: $color-dark_blue;
+
+    &-user_dashboard_navigation{
+        
+    }
+    &-router_outlet{
+        position: relative;
+        flex: 1;
+        
+        @include ps-const-width();
+    }
+
     &-title{
         margin: 0 auto;
         margin-bottom: 40px;
@@ -30,6 +46,7 @@
 
         box-sizing: border-box;
         width: 50%;
+        outline: none;
 
         &:not(:last-child){
             border-right: 1px solid $color-light_grey;
@@ -44,7 +61,7 @@
                 color: $color-dark_blue;
             }
         }
-        &--active{
+        &.active{
             .btn{
                 background-color: #FFF;
                 color: $color-dark_blue;
@@ -59,13 +76,6 @@
         border-top-right-radius: 5px;
 
         overflow: hidden;
-    }
-    &-user_wishlist, &-user_cart{
-        background-color: #FFF;
-
-        border-top: 1px solid $color-light_grey;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
     }
 
     &-loading{

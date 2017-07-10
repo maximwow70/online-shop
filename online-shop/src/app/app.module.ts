@@ -53,6 +53,8 @@ import { AboutIntroComponent } from './about-intro/about-intro.component';
 import { ItemsSortComponent } from './items-sort/items-sort.component';
 import { AboutHistoryComponent } from './about-history/about-history.component';
 import { AboutTeamComponent } from './about-team/about-team.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserComponent } from "app/user/user.component";
 
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
@@ -60,11 +62,19 @@ const appRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'products', component: OnlineShopComponent },
 	{ path: 'products/:id', component: ItemComponent },
-	{ path: 'users', component: UserDashboardComponent },
 	{
-		path: 'users/:id',
+		path: 'user',
 		component: UserDashboardComponent,
-		// children: userDashboardRoutes
+		children: [
+			{
+				path: '',
+				pathMatch: 'full',
+				redirectTo: 'login'
+			},
+			{ path: 'login', component: UserLoginComponent },
+			{ path: 'cart', component: UserCartComponent },
+			{ path: 'wishlist', component: UserWishlistComponent }
+		]
 	},
 	{ path: 'product-liker', component: ItemLikerComponent },
 	{ path: 'contacts', component: ContactsComponent },
@@ -117,6 +127,8 @@ const appRoutes: Routes = [
 		ItemsSortComponent,
 		AboutHistoryComponent,
 		AboutTeamComponent,
+		UserLoginComponent,
+		UserComponent
 	],
 	imports: [
 		BrowserModule,

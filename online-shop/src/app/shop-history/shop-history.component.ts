@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
+
+declare var $: any;
 
 @Component({
 	selector: 'shop-history',
@@ -8,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class ShopHistoryComponent implements OnInit {
 
 	private _photoUrls: string[] = [];
-	constructor() {
+	constructor(
+		private _elementRef: ElementRef
+	) {
 		this._photoUrls.push('assets/shop-history/02.jpg');
 		this._photoUrls.push('assets/shop-history/05.jpg');
 		this._photoUrls.push('assets/shop-history/man1.jpg');
@@ -18,6 +22,17 @@ export class ShopHistoryComponent implements OnInit {
 	 }
 
 	ngOnInit() {
+	}
+
+	ngAfterViewInit() {
+		let elements = this._elementRef.nativeElement.querySelectorAll('.shop_history-photos, .shop_history-history');
+		for (let i = 0; i < elements.length; i++){
+			if (i % 2 === 0){
+				$(elements[i]).animated('fadeInLeft', 'fadeOutLeft');
+			} else {
+				$(elements[i]).animated('fadeInRight', 'fadeOutRight');
+			}
+		}
 	}
 
 	public get photoUrls(): string[] {

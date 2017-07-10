@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
 	selector: 'about-history',
 	templateUrl: './about-history.component.html',
 	styleUrls: ['./about-history.component.scss']
 })
+
 export class AboutHistoryComponent implements OnInit {
 
 	private _histories: {year: number, description: string}[] = [];
@@ -40,6 +41,7 @@ export class AboutHistoryComponent implements OnInit {
 
 	ngOnInit() {
 	}
+
 
 	public get histories(): {year: number, description: string}[] {
 		return this._histories;

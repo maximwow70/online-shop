@@ -1,0 +1,163 @@
+.user_sign_in {
+    display: inline-block;
+
+    box-sizing: border-box;
+    width: 320px;
+    border-radius: 5px;
+    background-color: #FFF;
+
+    color: $color-dark_blue;
+    text-align: center;
+
+    box-shadow: 0 0 40px rgba($color-dark_blue, 0.4);
+
+    overflow: hidden;
+
+    &-title{
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        font-family: $font-stack--magic_number;
+        font-weight: bold;
+        font-size: 24px;
+        text-transform: uppercase;
+    }
+
+    &-data_input{
+        position: relative;
+        margin: 0 20px 30px 20px;
+
+        color: rgba($color-dark_blue, 0.7);
+    }
+    &-data_input_icon{
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        transform: translate(-50%, -50%);
+
+        vertical-align: top;
+    }
+    &-mail, &-password {
+        box-sizing: border-box;
+        width: 100%;  
+        height: 40px;
+        padding: 0px 5px 0px 35px;
+
+        background-color: $color-light_grey;
+        border: 1px solid rgba($color-dark_grey, 0.6);
+        border-radius: 5px;
+        outline: none;
+
+        line-height: 40px;
+        font-family: $font-stack--magic_number;
+        color: rgba($color-dark_blue, 0.7);
+        font-size: 16px;
+
+        transition: 0.3s;
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+        &:focus{
+            background-color: #FFF;
+            border-color: #FFF;
+            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2)
+        }
+        &.ng-invalid.ng-dirty{
+            border-color: $color-dark_red;
+        }
+    }
+
+    &-forgot_password {
+        display: inline-block;
+
+        color: rgba($color-dark_grey, 0.7);
+        text-decoration: underline;
+
+        cursor: pointer;
+    }
+
+    &-devider{
+        position: relative;
+        margin: 30px 20px;
+        
+        color: rgba($color-dark_grey, 0.7);
+        font-size: 14px;
+
+        &:before, &:after{
+            content: '';
+
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            display: inline-block;
+            width: 40%;
+            height: 1px;
+            background-color: rgba($color-dark_grey, 0.7);
+        }
+        &:before {
+            left: 0;
+        }
+        &:after {
+            right: 0;
+        }
+    }
+    
+    &-google_login{
+        margin-bottom: 50px;
+
+        height: 40px;
+        width: 240px;
+        border-radius: 5px;
+        background-color: $color-dark_red;
+        outline: none;
+        
+        line-height: 40px;
+        color: #FFF;
+        font-family: $font-stack--magic_number;
+        font-size: 20px;
+        //text-transform: uppercase;
+
+        cursor: pointer;
+    }
+    &-google_login_icon{
+        margin-right: 5px;
+    }
+
+    &-btn{
+        display: inline-block;
+        vertical-align: top;
+
+        width: 50%;
+        height: 60px;
+        background-color: rgba($color-dark_grey, 0.8);
+        outline: none;
+
+        line-height: 60px;
+        color: #FFF;
+        font-family: $font-stack--magic_number;
+        font-size: 20px;
+        text-transform: uppercase;
+
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover{
+            background-color: $color-dark_grey;
+        }
+
+        &--submit {
+            background-color: $color-dark_blue;
+
+            &:hover{
+                background-color: $color-dark_blue;
+            }
+        }
+        &--disabled {
+            background-color: $color-dark_red;
+            &:hover{
+                background-color: $color-dark_red;
+            }
+        }
+    }
+}

@@ -19,3 +19,13 @@ $color-dark_yellow: #E8C63B;
 $color-dark_green: #43D29E;
 $color-dark_grey: #A1A6BB;
 $color-light_grey: #F0F2F7;
+
+@mixin ps-const-width{
+    .ps-scrollbar-y-rail{
+        width: 10px !important;
+
+        .ps-scrollbar-y{
+            width: 6px !important;
+        }
+    }
+}

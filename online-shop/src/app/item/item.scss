@@ -229,14 +229,16 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+
+        padding: 40px 50px 39px 50px;
         .item-photos{
             position: relative;
 
             display: inline-block;
             vertical-align: middle;
 
-            width: 200px;
-            height: 200px;
+            width: 80px;
+            height: 80px;
             padding: 0;
 
             overflow: hidden;
@@ -250,6 +252,8 @@
         }
 
         .item-name{
+            margin-bottom: 0;
+
             display: inline-block;
             vertical-align: middle;
 
@@ -264,7 +268,7 @@
         }
         .item-btn{
             &--remove{
-                margin: 0 0 20px 20px;
+                margin-left: 20px;
 
                 display: inline-block;
                 vertical-align: middle;
@@ -305,12 +309,8 @@
             text-align: right;
         }
         .item-cost{
-            margin-bottom: 10px;
-            width: 100%;
-        }
-        .item-available{
-            margin-bottom: 20px;
-            width: 100%;
+            margin-bottom: 0px;
+            width: 200px;
         }
     }
     &--user_cart{

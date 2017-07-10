@@ -291,11 +291,16 @@
         width: 80px;
         
         font-family: $font-stack--bold;
-        font-size: 12px;
+        font-size: 18px;
         text-transform: uppercase;
         &:hover{
             background-color: $color-light_grey;
             box-shadow: 0 0 40px rgba($color-light_grey, 0.4);
+        }
+
+        &.active{
+            background-color: $color-light_grey;
+            color: $color-dark_green;
         }
     }
     &--send_message{
