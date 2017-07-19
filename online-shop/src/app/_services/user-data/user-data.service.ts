@@ -16,12 +16,18 @@ export class UserDataService {
 	constructor(
 		private _http: Http
 	) {
-		//this.loadUserData();
+		let userData = this.getUserDataFromStorage();
+
+		if (userData.mail || userData.password) {
+			this.loadUserData(userData.mail, userData.password);
+		} else {
+			this._isLogIn = false;
+		}
 
 		this._activeTheme = UserDashboardTheme.LIGHT;
 	}
 
-	public logInUser(userMail: string, userPassword: string): void {
+	public logIn(userMail: string, userPassword: string): void {
 		let userModel = {
 			mail: userMail,
 			password: userPassword
@@ -37,17 +43,29 @@ export class UserDataService {
 
 		// timing
 		this._isLogIn = true;
-		this.loadUserData();
+		this.loadUserData('', '');
 		localStorage.setItem('userMail', userMail);
 		localStorage.setItem('userPassword', userPassword);
 	}
-	public logOutUser(user: User): void {
+	public registrate(user: User): void {
+		
+	}
+	public logOut(): void {
 		this._user = null;
 		this._isLogIn = false;
+		localStorage.removeItem('userMail');
+		localStorage.removeItem('userPassword');
 	}
 
 
-	public loadUserData(): void {
+	public getUserDataFromStorage(): { mail: string, password: string } {
+		return {
+			mail: localStorage.getItem('userMail'),
+			password: localStorage.getItem('userPassword')
+		}
+	}
+
+	public loadUserData(userMail: string, userPassword: string): void {
 		this._http.get('assets/GetUserData.json')
 			.map(response => response.json())
 			.subscribe(u => {
@@ -78,7 +96,7 @@ export class UserDataService {
 		return this._isLogIn;
 	}
 	public get isLogInObservable(): Observable<boolean> {
-		return 
+		return
 	}
 
 	public get activeTheme(): UserDashboardTheme {

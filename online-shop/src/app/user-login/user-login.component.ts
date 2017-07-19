@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from "app/_services/user-data/user-data.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
 	selector: 'user-login',
@@ -15,15 +16,18 @@ export class UserLoginComponent implements OnInit {
 	private _isSignInActive: boolean = true;
 
 	constructor(
+		private _router: Router,
 		private _userData: UserDataService
 	) { }
 
 	ngOnInit() {
+		
 	}
 
 	public onUserSignIn(event: Event): void {
 		event.preventDefault();
-		this._userData.logInUser(this.userSignIn.mail, this.userSignIn.password);
+		this._userData.logIn(this.userSignIn.mail, this.userSignIn.password);
+		this._router.navigate(['user/info']);
 	}
 
 	public onUserSignUp(event: Event): void {
@@ -44,6 +48,9 @@ export class UserLoginComponent implements OnInit {
 	}
 
 	public get isLogIn(): boolean {
+		if (this._userData.isLogIn === true){
+			this._router.navigate(['user/info']);
+		}
 		return this._userData.isLogIn;
 	}
 
