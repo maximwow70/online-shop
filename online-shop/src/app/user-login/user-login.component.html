@@ -1,5 +1,5 @@
 <div class="user_login">
-	<div class="user_login-container">
+	<div class="user_login-container" *ngIf="!isLogIn">
 		<div class="user_login-user_sign_in" [ngClass]="{'user_login-user_sign_in--active': isSignInActive}">
 			<form class="user_sign_in" name="sign_in_form" (ngSubmit)="onUserSignIn($event)" #signInForm="ngForm">
 				<div class="user_sign_in-title">
@@ -60,5 +60,8 @@
 				</button>
 			</form>
 		</div>
+	</div>
+	<div class="user_login-loading" *ngIf="isLogIn">
+		<loading></loading>
 	</div>
 </div>

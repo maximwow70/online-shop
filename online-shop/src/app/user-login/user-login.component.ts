@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserDataService } from "app/_services/user-data/user-data.service";
 
 @Component({
 	selector: 'user-login',
@@ -7,23 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLoginComponent implements OnInit {
 
-	public userSignIn: {mail: string, password: string} = {mail: '', password: ''};
+	public userSignIn: { mail: string, password: string } = { mail: '', password: '' };
 
-	public userSignUp: {mail: string, password: string, confirmPassword: string} = {mail: '', password: '', confirmPassword: ''};
+	public userSignUp: { mail: string, password: string, confirmPassword: string } = { mail: '', password: '', confirmPassword: '' };
 
 	private _isSignInActive: boolean = true;
 
-	constructor() { }
+	constructor(
+		private _userData: UserDataService
+	) { }
 
 	ngOnInit() {
 	}
 
-	public onUserSignIn(event: Event) {
+	public onUserSignIn(event: Event): void {
 		event.preventDefault();
-		console.log(this.userSignIn);
+		this._userData.logInUser(this.userSignIn.mail, this.userSignIn.password);
 	}
 
-	public onUserSignUp(event: Event) {
+	public onUserSignUp(event: Event): void {
 		event.preventDefault();
 		console.log(this.userSignUp);
 	}
@@ -38,6 +41,10 @@ export class UserLoginComponent implements OnInit {
 
 	public get isSignInActive(): boolean {
 		return this._isSignInActive;
+	}
+
+	public get isLogIn(): boolean {
+		return this._userData.isLogIn;
 	}
 
 }

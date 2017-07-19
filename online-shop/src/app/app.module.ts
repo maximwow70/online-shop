@@ -61,12 +61,15 @@ import { UserCartGuard } from "app/_guards/user-cart/user-cart.guard";
 import { UserWishlistGuard } from "app/_guards/user-wishlist/user-wishlist.guard";
 import { UserStatisticComponent } from './user-statistic/user-statistic.component';
 import { UserStatisticGuard } from "app/_guards/user-statistic/user-statistic.guard";
+import { UserInfoGuard } from "app/_guards/user-info/user-info.guard";
 
 
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+// import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { UserSettingsComponent } from './user-settings/user-settings.component';
-// import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
+
 
 const appRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -84,6 +87,11 @@ const appRoutes: Routes = [
 			{
 				path: 'login',
 				component: UserLoginComponent
+			},
+			{
+				path: 'info',
+				component: UserInfoComponent,
+				canActivate: [UserInfoGuard]
 			},
 			{
 				path: 'cart',
@@ -160,7 +168,8 @@ const appRoutes: Routes = [
 		UserLoginComponent,
 		UserComponent,
 		UserStatisticComponent,
-		UserSettingsComponent
+		UserSettingsComponent,
+		UserInfoComponent
 	],
 	imports: [
 		BrowserModule,
@@ -182,7 +191,8 @@ const appRoutes: Routes = [
 		UserDataService,
 		UserCartGuard,
 		UserWishlistGuard,
-		UserStatisticGuard
+		UserStatisticGuard,
+		UserInfoGuard
 	],
 	bootstrap: [AppComponent]
 })

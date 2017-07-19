@@ -40,17 +40,21 @@ $color-light_grey: #F0F2F7;
 
     .user_dashboard_navigation{
         background-color: $color-dark_blue;
+        border-color: $color-dark_yellow;
+        border-width: 2px;
 
         &-list{
             background-color: $color-dark_blue;
+            border-color: $color-dark_yellow;
+            border-width: 2px;
 
             color: #FFF;
 
             &:focus, &:hover{
-                background-color: rgba(#FFF, 0.6);
+                background-color: rgba($color-dark_yellow, 0.6);
             }
             &.active{
-                background-color: #FFF;
+                background-color: $color-dark_yellow;
                 color: $color-dark_blue;
             }
         }

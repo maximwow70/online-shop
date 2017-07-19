@@ -4,7 +4,10 @@
             <button routerLink="/home" routerLinkActive="active" class="user_dashboard_navigation-list" >
                 <div class="fa fa-home"></div>
             </button>
-            <button routerLink="/user/login" routerLinkActive="active" class="user_dashboard_navigation-list" >
+            <button routerLink="/user/login" routerLinkActive="active" class="user_dashboard_navigation-list" *ngIf="!isLogIn">
+                <div class="fa fa-user"></div>
+            </button>
+            <button routerLink="/user/info" routerLinkActive="active" class="user_dashboard_navigation-list" *ngIf="isLogIn">
                 <div class="fa fa-user"></div>
             </button>
             <button 
