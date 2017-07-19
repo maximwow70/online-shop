@@ -1,0 +1,14 @@
+<div class="user_settings">
+	<h2 class="user_settings-title">
+		Select the best theme for you
+	</h2>
+	<div class="user_settings-themes">
+		<button 
+			*ngFor="let theme of themes"
+			class="user_settings-select_theme user_settings-select_theme--{{theme.class}}"
+			[ngClass]="{'user_settings-select_theme--active': activeTheme === theme.value}"
+			(click)="onActivateTheme(theme.value)">
+			<span class="user_settings-is_theme_active fa fa-check"></span>
+		</button>
+	</div>
+</div>

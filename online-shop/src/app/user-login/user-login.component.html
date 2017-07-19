@@ -1,7 +1,4 @@
 <div class="user_login">
-	<!--<div class="user_login-title">
-		Log in or create your account
-	</div>-->
 	<div class="user_login-container">
 		<div class="user_login-user_sign_in" [ngClass]="{'user_login-user_sign_in--active': isSignInActive}">
 			<form class="user_sign_in" name="sign_in_form" (ngSubmit)="onUserSignIn($event)" #signInForm="ngForm">
@@ -18,11 +15,11 @@
 				</div>
 				<h4 class="user_sign_in-forgot_password">Forgot password?</h4>
 				<div class="user_sign_in-devider">OR</div>
-				<button class="user_sign_in-google_login">
+				<button class="user_sign_in-google_login" type="button">
 					<span class="user_sign_in-google_login_icon fa fa-google"></span>
 					Log in with google
 				</button>
-				<button class="user_sign_in-btn" (click)="onSignUpActivate()" [disabled]="!isSignInActive">
+				<button class="user_sign_in-btn" type="button" (click)="onSignUpActivate()" [disabled]="!isSignInActive">
 					Sign up
 				</button><!--
 				--><button class="user_sign_in-btn user_sign_in-btn--submit" type="submit" [disabled]="signInForm.form.invalid" [ngClass]="{'user_sign_in-btn--disabled': signInForm.form.invalid}">
@@ -51,11 +48,11 @@
 					By creating an account you agree to the Tearms of Service and Privacy Policy
 				</h4>
 				<div class="user_sign_up-devider">OR</div>
-				<button class="user_sign_up-google_login">
+				<button class="user_sign_up-google_login" type="button">
 					<span class="user_sign_up-google_login_icon fa fa-google"></span>
 					Log in with google
 				</button>
-				<button class="user_sign_up-btn" (click)="onSignInActivate()" [disabled]="isSignInActive">
+				<button class="user_sign_up-btn" type="button" (click)="onSignInActivate()" [disabled]="isSignInActive">
 					Log in
 				</button><!--
 				--><button class="user_sign_up-btn user_sign_up-btn--submit" type="submit" [disabled]="signUpForm.form.invalid" [ngClass]="{'user_sign_up-btn--disabled': signUpForm.form.invalid}">

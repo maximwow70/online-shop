@@ -1,4 +1,4 @@
-<div class="user_dashboard">
+<div class="user_dashboard user_dashboard{{getVMTheme().class}}">
     <div class="user_dashboard-user_dashboard_navigation">
         <div class="user_dashboard_navigation">
             <button routerLink="/home" routerLinkActive="active" class="user_dashboard_navigation-list" >
@@ -7,11 +7,29 @@
             <button routerLink="/user/login" routerLinkActive="active" class="user_dashboard_navigation-list" >
                 <div class="fa fa-user"></div>
             </button>
-            <button routerLink="/user/cart" routerLinkActive="active" class="user_dashboard_navigation-list">
+            <button 
+                routerLink="/user/cart"
+                routerLinkActive="active"
+                class="user_dashboard_navigation-list"
+                [ngClass]="{'disabled': !isLogIn}"
+                [disabled]="!isLogIn">
                 <div class="fa fa-shopping-cart"></div>
             </button>
-            <button routerLink="/user/wishlist" routerLinkActive="active" class="user_dashboard_navigation-list">
+            <button 
+                routerLink="/user/wishlist"
+                routerLinkActive="active"
+                class="user_dashboard_navigation-list"
+                [ngClass]="{'disabled': !isLogIn}"
+                [disabled]="!isLogIn">
                 <div class="fa fa-heart"></div>
+            </button>
+            <button 
+                routerLink="/user/statistic"
+                routerLinkActive="active"
+                class="user_dashboard_navigation-list"
+                [ngClass]="{'disabled': !isLogIn}"
+                [disabled]="!isLogIn">
+                <div class="fa fa-area-chart"></div>
             </button>
             <button routerLink="/user/settings" routerLinkActive="active" class="user_dashboard_navigation-list">
                 <div class="fa fa-cog"></div>

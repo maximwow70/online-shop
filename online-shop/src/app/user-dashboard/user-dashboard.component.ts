@@ -5,6 +5,7 @@ import { User } from "app/_model/user";
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
 import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { UserDashboardTheme } from "app/_model/user-dashboard-theme";
 
 declare var Ps;
 
@@ -17,24 +18,16 @@ export class UserDashboardComponent implements OnInit {
 	
 	private _updateScrollInterval: any = null;
 
-	private _userId: string;
 	private _user: User;
-	
+
 	constructor(
 		private _elementRef: ElementRef,
 		private _router: Router,
 		private _activatedRoute: ActivatedRoute,
 		private _userData: UserDataService,
-		private _itemColor: ItemColorService
 	) { }
 
 	ngOnInit() {
-		this._userId = this._activatedRoute.snapshot.paramMap.get('id');
-
-		this._userData.getUserData(this._userId).subscribe(user => {
-			this._user = User.fromObject(user);
-		});
-
 		Ps.initialize(
 			this._elementRef.nativeElement.querySelector('.user_dashboard-router_outlet')
 		);
@@ -48,8 +41,23 @@ export class UserDashboardComponent implements OnInit {
 		clearInterval(this._updateScrollInterval);
 	}
 
+	public getVMTheme(): any {
+		switch(this._userData.activeTheme) {
+			case(UserDashboardTheme.LIGHT): return {
+				class: '--light'
+			}
+			case(UserDashboardTheme.DARK): return {
+				class: '--dark'
+			}
+			default: return null;
+		}
+	}
+
 	public get user(): User {
-		return this._user;
+		return this._userData.user;
+	}
+	public get isLogIn(): boolean {
+		return this._userData.isLogIn;
 	}
 
 }

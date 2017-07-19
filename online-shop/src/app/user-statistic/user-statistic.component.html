@@ -1,0 +1,67 @@
+<div class="user_statistic">
+	<div class="user_statistic-orders">
+		<div class="user_statistic-title">Your orders</div>
+		<canvas class="user_statistic-chart" baseChart
+				[datasets]="orderStatistic.data"
+				[labels]="orderStatistic.labels"
+				[options]="orderStatistic.options"
+				[colors]="orderStatistic.colors"
+				[legend]="orderStatistic.legend"
+				[chartType]="orderStatistic.type"
+				(chartHover)="chartHovered($event)"
+				(chartClick)="chartClicked($event)">
+		</canvas>
+		<div class="user_statistic-description">
+			TOTAL: <span>{{orderStatistic.total}}</span>
+		</div>
+	</div>
+	<div class="user_statistic-likes">
+		<div class="user_statistic-title">Your likes</div>
+		<canvas class="user_statistic-chart" baseChart
+				[datasets]="likeStatistic.data"
+				[labels]="likeStatistic.labels"
+				[options]="likeStatistic.options"
+				[colors]="likeStatistic.colors"
+				[legend]="likeStatistic.legend"
+				[chartType]="likeStatistic.type"
+				(chartHover)="chartHovered($event)"
+				(chartClick)="chartClicked($event)">
+		</canvas>
+		<div class="user_statistic-description">
+			TOTAL: 
+			<span>{{likeStatistic.total}}</span>
+		</div>
+	</div>
+	<div class="user_statistic-category_likes">
+		<div class="user_statistic-title">Category likes</div>
+		<canvas class="user_statistic-chart" baseChart
+              [data]="categoryLikeStatistic.data"
+              [labels]="categoryLikeStatistic.labels"
+              [chartType]="categoryLikeStatistic.type"
+			  [options]="categoryLikeStatistic.options"
+			  [colors]="categoryLikeStatistic.colors"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+		</canvas>
+		<!--<div class="user_statistic-description">
+			TOTAL: 
+			<span>{{categoryLikesStatistic.total}}</span>
+		</div>-->
+	</div>
+	<div class="user_statistic-cash">
+		<div class="user_statistic-title">Cash (in $)</div>
+		<canvas class="user_statistic-chart" baseChart
+				[datasets]="cashStatistic.data"
+				[labels]="cashStatistic.labels"
+				[options]="cashStatistic.options"
+				[colors]="cashStatistic.colors"
+				[legend]="cashStatistic.legend"
+				[chartType]="cashStatistic.type"
+				(chartHover)="chartHovered($event)"
+				(chartClick)="chartClicked($event)">
+		</canvas>
+		<div class="user_statistic-description">
+			TOTAL: <span>{{cashStatistic.total}}</span>
+		</div>
+	</div>
+</div>

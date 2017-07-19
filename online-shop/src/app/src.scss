@@ -23,9 +23,36 @@ $color-light_grey: #F0F2F7;
 @mixin ps-const-width{
     .ps-scrollbar-y-rail{
         width: 10px !important;
-
+        background: none !important;
         .ps-scrollbar-y{
             width: 6px !important;
+        }
+    }
+}
+
+@mixin user-dashboard-light-theme() {
+
+}
+@mixin user-dashboard-dark-theme() {
+    background-color: $color-dark_blue;
+
+    color: #FFF;
+
+    .user_dashboard_navigation{
+        background-color: $color-dark_blue;
+
+        &-list{
+            background-color: $color-dark_blue;
+
+            color: #FFF;
+
+            &:focus, &:hover{
+                background-color: rgba(#FFF, 0.6);
+            }
+            &.active{
+                background-color: #FFF;
+                color: $color-dark_blue;
+            }
         }
     }
 }

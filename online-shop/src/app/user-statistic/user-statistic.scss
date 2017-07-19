@@ -1,0 +1,97 @@
+:host{
+    display: block;
+}
+.user_statistic{
+    padding: 50px 5%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+
+    &-statistic{
+        display: inline-block;
+
+        box-sizing: border-box;
+        width: 400px;
+        height: 400px;
+        padding: 20px;
+
+        background-color: #FFF;
+        border-radius: 5px;
+
+        box-shadow: 0 0 20px rgba($color-dark_blue, 0.2);
+
+    }
+    &-orders{
+        margin-bottom: 100px;
+
+        box-sizing: border-box;
+        width: 100%;
+        padding: 20px;
+        
+        background-color: #FFF;
+        border-radius: 5px;
+
+        box-shadow: 0 0 20px rgba($color-dark_blue, 0.2);
+    }
+    &-likes{
+        margin-bottom: 100px;
+        margin-right: 5%;
+        
+        box-sizing: border-box;
+        width: 55%;
+        padding: 20px;
+        
+        background-color: #FFF;
+        border-radius: 5px;
+
+        box-shadow: 0 0 20px rgba($color-dark_blue, 0.2);
+    }
+    &-category_likes{
+        margin-bottom: 100px;
+        margin-left: 5%;
+
+        box-sizing: border-box;
+        width: 35%;
+        padding: 20px;
+        
+        background-color: #FFF;
+        border-radius: 5px;
+
+        box-shadow: 0 0 20px rgba($color-dark_blue, 0.2);
+    }
+    &-cash{
+        margin-bottom: 100px;
+
+        box-sizing: border-box;
+        width: 50%;
+        padding: 20px;
+    }
+
+    &-title{
+        margin-bottom: 30px;
+
+        color: $color-dark_blue;
+        font-family: $font-stack--bold;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+    &-chart{
+        display: block;
+        width: 100%;
+    }
+    &-description{
+        margin-top: 20px;
+
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        text-transform: uppercase;
+
+        span{
+            color: $color-dark_blue;
+        }
+    }
+}

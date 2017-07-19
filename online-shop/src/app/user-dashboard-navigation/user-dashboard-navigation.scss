@@ -32,5 +32,11 @@
             background-color: $color-light_grey;
             color: $color-dark_green;
         }
+        &.disabled {
+            background-color: $color-dark_red;
+            color: #FFF;
+
+            opacity: 0.7;
+        }
     }
 }

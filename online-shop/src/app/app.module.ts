@@ -56,6 +56,16 @@ import { AboutTeamComponent } from './about-team/about-team.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserComponent } from "app/user/user.component";
 
+
+import { UserCartGuard } from "app/_guards/user-cart/user-cart.guard";
+import { UserWishlistGuard } from "app/_guards/user-wishlist/user-wishlist.guard";
+import { UserStatisticComponent } from './user-statistic/user-statistic.component';
+import { UserStatisticGuard } from "app/_guards/user-statistic/user-statistic.guard";
+
+
+
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
 const appRoutes: Routes = [
@@ -71,9 +81,29 @@ const appRoutes: Routes = [
 				pathMatch: 'full',
 				redirectTo: 'login'
 			},
-			{ path: 'login', component: UserLoginComponent },
-			{ path: 'cart', component: UserCartComponent },
-			{ path: 'wishlist', component: UserWishlistComponent }
+			{
+				path: 'login',
+				component: UserLoginComponent
+			},
+			{
+				path: 'cart',
+				component: UserCartComponent,
+				canActivate: [UserCartGuard]
+			},
+			{
+				path: 'wishlist',
+				component: UserWishlistComponent,
+				canActivate: [UserWishlistGuard],
+			},
+			{
+				path: 'statistic',
+				component: UserStatisticComponent,
+				canActivate: [UserStatisticGuard]
+			},
+			{
+				path: 'settings',
+				component: UserSettingsComponent
+			}
 		]
 	},
 	{ path: 'product-liker', component: ItemLikerComponent },
@@ -128,7 +158,9 @@ const appRoutes: Routes = [
 		AboutHistoryComponent,
 		AboutTeamComponent,
 		UserLoginComponent,
-		UserComponent
+		UserComponent,
+		UserStatisticComponent,
+		UserSettingsComponent
 	],
 	imports: [
 		BrowserModule,
@@ -137,7 +169,8 @@ const appRoutes: Routes = [
 		RouterModule.forRoot(appRoutes),
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
-		})
+		}),
+		ChartsModule
 	],
 	providers: [
 		ItemColorService,
@@ -146,7 +179,10 @@ const appRoutes: Routes = [
 		ItemListService,
 		ItemService,
 		CategoryListService,
-		UserDataService
+		UserDataService,
+		UserCartGuard,
+		UserWishlistGuard,
+		UserStatisticGuard
 	],
 	bootstrap: [AppComponent]
 })
