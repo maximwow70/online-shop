@@ -16,4 +16,9 @@
             border-right: 1px solid $color-light_grey;
         }
     }
+    &-cart{
+        .user_cart{
+            height: auto;
+        }
+    }
 }

@@ -1,3 +1,7 @@
-<p style="padding: 50px;">
-	<button class="btn btn--dark_blue" (click)="logOut()">Log out</button>
-</p>
+<div class="user_info">
+	<h2 class="user_info-name">{{user.name}}</h2>
+	<h3 class="user_info-mail">{{user.mail}}</h3>
+	<div class="user_info-btn">
+		<button class="btn btn--dark_blue" (click)="logOut()">Log out</button>
+	</div>
+</div>
