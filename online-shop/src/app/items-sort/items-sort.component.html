@@ -3,20 +3,7 @@
 		Sort by:
 	</div><!--
 	--><div class="items_sort-select">
-		<div class="select" #select>
-			<div class="select-input" (click)="select.classList.toggle('select--active')">{{selectedSort}}</div><!--
-			--><button class="select-btn" (click)="select.classList.toggle('select--active')">
-				<span class="select-btn_icon fa fa-chevron-down"></span>
-			</button>
-			<div class="select-value_list">
-				<button class="select-value" 
-					*ngFor="let value of sortValues" 
-					[ngClass]="{ 'select-value--active': value === selectedSort }"
-					(click)="onSortValueSelected(value); select.classList.remove('select--active')">
-					{{value}}
-				</button>
-			</div>
-		</div>
+		<dropdown [values]="sortValues" (onValueSelected)="onSortValueSelected($event)"></dropdown>
 	</div><!--
 	--><div class="items_sort-free_shipping">
 		<!--<button class="switch" value="false">

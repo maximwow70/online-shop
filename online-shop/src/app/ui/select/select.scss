@@ -1,4 +1,10 @@
 @import '../../src.scss';
+
+:host{
+    &.small{
+        
+    }
+}
 .select{
     position: relative;
 

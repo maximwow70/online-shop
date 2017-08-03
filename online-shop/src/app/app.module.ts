@@ -65,8 +65,14 @@ import { UserStatisticGuard } from "app/_guards/user-statistic/user-statistic.gu
 
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+<<<<<<< Updated upstream
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
+=======
+import { SelectComponent } from './ui/select/select.component';
+import { DropdownComponent } from './ui/dropdown/dropdown.component';
+
+>>>>>>> Stashed changes
 
 const appRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -160,7 +166,14 @@ const appRoutes: Routes = [
 		UserLoginComponent,
 		UserComponent,
 		UserStatisticComponent,
+<<<<<<< Updated upstream
 		UserSettingsComponent
+=======
+		UserSettingsComponent,
+		UserInfoComponent,
+		SelectComponent,
+		DropdownComponent
+>>>>>>> Stashed changes
 	],
 	imports: [
 		BrowserModule,
