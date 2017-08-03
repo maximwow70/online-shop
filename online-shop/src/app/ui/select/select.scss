@@ -155,7 +155,7 @@
         .select-input{
             position: relative;
 
-            width: 50px;
+            width: 46px;
             padding: 0;
             border-radius: 25px;
 
@@ -163,6 +163,7 @@
             color: inherit;
             text-align: center;
 
+            cursor: pointer;
             .color, .size{
                 position: absolute;
                 top: 50%;
@@ -171,6 +172,7 @@
             }
         }
         .select-btn{
+            width: 50px;
             border-left: none;
             border-radius: 25px;
 

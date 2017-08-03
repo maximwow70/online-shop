@@ -19,6 +19,12 @@ export class SelectItemColorComponent implements OnInit {
 	public _selectedColor: Color;
 	private _colorSelectVM;
 
+	private onClick = (e) => {
+		if (!this._elementRef.nativeElement.contains((e as any).target)) {
+			this._elementRef.nativeElement.querySelector('.select').classList.remove('select--active');
+		}
+	}
+
 	constructor(
 		private _elementRef: ElementRef,
 		private _colorService: ItemColorService
@@ -31,6 +37,12 @@ export class SelectItemColorComponent implements OnInit {
 		this._colorSelectVM = this._elementRef.nativeElement.querySelector('.select--color');
 
 		//Ps.initialize(this._colorSelectVM.querySelector('.select-value_list'));
+	}
+	ngAfterViewInit() {
+		window.addEventListener('click', this.onClick);
+	}
+	ngOnDestroy() {
+		window.removeEventListener('click', this.onClick);
 	}
 
 	public onColorSelect(color: Color): void {

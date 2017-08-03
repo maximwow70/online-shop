@@ -16,21 +16,26 @@ export class SelectItemSizeComponent implements OnInit {
 
 	@Output() onSelectSize: EventEmitter<string> = new EventEmitter<string>();
 
-
 	private _sizeSelectVM;
+
+	private onClick = (e) => {
+		if (!this._elementRef.nativeElement.contains((e as any).target)) {
+			this._elementRef.nativeElement.querySelector('.select').classList.remove('select--active');
+		}
+	}
 
 	constructor(
 		private _elementRef: ElementRef
 	) { }
 
 	ngOnInit() {
-		// let isStartSizeCurrent = this.sizes.find(s => s === this.startSize);
-		// this.selectedSize = isStartSizeCurrent ? this.startSize : this.sizes[0];
-		//this.selectedSize.emit(this._selectedSize);
-
 		this._sizeSelectVM = this._elementRef.nativeElement.querySelector('.select--size');
-
-		//Ps.initialize(this._sizeSelectVM.querySelector('.select-value_list'));
+	}
+	ngAfterViewInit() {
+		window.addEventListener('click', this.onClick);
+	}
+	ngOnDestroy() {
+		window.removeEventListener('click', this.onClick);
 	}
 
 	public onSizeSelect(size: string): void {
