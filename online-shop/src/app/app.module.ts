@@ -69,6 +69,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
 // import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { SelectComponent } from './ui/select/select.component';
+import { DropdownComponent } from './ui/dropdown/dropdown.component';
 
 
 const appRoutes: Routes = [
@@ -169,7 +171,9 @@ const appRoutes: Routes = [
 		UserComponent,
 		UserStatisticComponent,
 		UserSettingsComponent,
-		UserInfoComponent
+		UserInfoComponent,
+		SelectComponent,
+		DropdownComponent
 	],
 	imports: [
 		BrowserModule,

@@ -23,6 +23,7 @@ export class ItemsSortComponent implements OnInit {
 
 	public onSortValueSelected(value: string): void {
 		this._selectedSort = value;
+		console.log(this._selectedSort);
 	}
 
 	public get selectedSort(): string {
