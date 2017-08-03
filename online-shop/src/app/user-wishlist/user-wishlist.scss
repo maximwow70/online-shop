@@ -17,6 +17,7 @@
     &-item_list{
         position: relative;
 
+        @include ps-const-width();
         .ps-scrollbar-y-rail{
             margin: 20px 0;
             right: 20px;

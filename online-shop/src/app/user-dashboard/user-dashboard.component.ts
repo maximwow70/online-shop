@@ -41,7 +41,7 @@ export class UserDashboardComponent implements OnInit {
 		clearInterval(this._updateScrollInterval);
 	}
 
-	public getVMTheme(): any {
+	public getVMTheme(): {class: string} {
 		switch(this._userData.activeTheme) {
 			case(UserDashboardTheme.LIGHT): return {
 				class: '--light'

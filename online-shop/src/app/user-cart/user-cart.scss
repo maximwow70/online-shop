@@ -87,6 +87,7 @@
             opacity: 0;
             transition: opacity 0.3s;
 
+            @include ps-const-width();
             .ps-scrollbar-y-rail{
                 margin: 10px 0;
                 right: 10px;
