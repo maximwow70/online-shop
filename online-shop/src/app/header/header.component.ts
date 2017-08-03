@@ -17,6 +17,16 @@ export class HeaderComponent implements OnInit {
 	
 	private _wishListItemsVM;
 	private _cartItemsVM;
+
+	private onClick = (e) => {
+		if (!this._elementRef.nativeElement.querySelector('.user_wishlist').contains((e as any).target)) {
+			this._elementRef.nativeElement.querySelector('.user_wishlist').classList.remove('user_wishlist--open');
+		}
+		if (!this._elementRef.nativeElement.querySelector('.user_cart').contains((e as any).target)) {
+			this._elementRef.nativeElement.querySelector('.user_cart').classList.remove('user_cart--open');
+		}
+	}
+
 	constructor(
 		private _elementRef: ElementRef,
 		private _router: Router,
@@ -49,6 +59,12 @@ export class HeaderComponent implements OnInit {
 		Ps.initialize(
 			this._cartItemsVM.querySelector('.user_cart-item_list')
 		);
+	}
+	ngAfterViewInit() {
+		window.addEventListener('click', this.onClick);
+	}
+	ngOnDestroy() {
+		window.removeEventListener('click', this.onClick);
 	}
 
 	public onItemClicked(item: Item): void {
