@@ -15,6 +15,13 @@ export class DropdownComponent implements OnInit {
 
 	private _selectedValue: any = null;
 
+	private onClick = (e) => {
+		if (!this._elementRef.nativeElement.contains((e as any).target)) {
+			this._elementRef.nativeElement.querySelector('.select').classList.remove('select--active');
+		}
+	}
+
+
 	constructor(
 		private _elementRef: ElementRef
 	) { }
@@ -25,19 +32,12 @@ export class DropdownComponent implements OnInit {
 		}
 	}
 
-	ngOnDestroy() {
-		// window.removeEventListener('click'); // Need Fix
-	}
-
 	ngAfterViewInit() {
-		window.addEventListener('click', (e) => {
-			if (!this._elementRef.nativeElement.contains((e as any).target)){
-				this._elementRef.nativeElement.querySelector('.select').classList.remove('select--active');
-			} 
-			//console.log('kek');
-		});
+		window.addEventListener('click', this.onClick);
 	}
-
+	ngOnDestroy() {
+		window.removeEventListener('click', this.onClick); // Need Fix
+	}
 
 
 	public selectValue(value: any): void {
