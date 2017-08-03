@@ -25,6 +25,13 @@ export class HeaderComponent implements OnInit {
 		if (!this._elementRef.nativeElement.querySelector('.user_cart').contains((e as any).target)) {
 			this._elementRef.nativeElement.querySelector('.user_cart').classList.remove('user_cart--open');
 		}
+		if (
+			!this._elementRef.nativeElement.querySelector('.navigation--smart').contains((e as any).target) &&
+			!this._elementRef.nativeElement.querySelector('.header-hamburger').contains((e as any).target)
+		) {
+			this._elementRef.nativeElement.querySelector('.navigation--smart').classList.remove('navigation--open');
+		}
+		
 	}
 
 	constructor(
