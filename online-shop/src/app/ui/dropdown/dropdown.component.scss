@@ -1,0 +1,10 @@
+:host{
+    background-color: red;
+    &.small{
+        .select{
+            &-value{
+                font-size: 14px;
+            }
+        }
+    }
+}
