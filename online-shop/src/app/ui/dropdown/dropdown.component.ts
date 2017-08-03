@@ -25,13 +25,19 @@ export class DropdownComponent implements OnInit {
 		}
 	}
 
+	ngOnDestroy() {
+		// window.removeEventListener('click'); // Need Fix
+	}
+
 	ngAfterViewInit() {
 		window.addEventListener('click', (e) => {
 			if (!this._elementRef.nativeElement.contains((e as any).target)){
 				this._elementRef.nativeElement.querySelector('.select').classList.remove('select--active');
 			} 
+			//console.log('kek');
 		});
 	}
+
 
 
 	public selectValue(value: any): void {

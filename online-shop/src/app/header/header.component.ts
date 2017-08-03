@@ -1,5 +1,4 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { Select } from "app/ui/select/select";
 import { Item } from "app/_model/item";
 import { Router } from "@angular/router";
 import { UserDataService } from "app/_services/user-data/user-data.service";
