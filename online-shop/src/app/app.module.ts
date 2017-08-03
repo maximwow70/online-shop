@@ -63,14 +63,11 @@ import { UserStatisticComponent } from './user-statistic/user-statistic.componen
 import { UserStatisticGuard } from "app/_guards/user-statistic/user-statistic.guard";
 import { UserInfoGuard } from "app/_guards/user-info/user-info.guard";
 
-
-import { UserSettingsComponent } from './user-settings/user-settings.component';
-import { UserInfoComponent } from './user-info/user-info.component';
-// import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
-
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SelectComponent } from './ui/select/select.component';
 import { DropdownComponent } from './ui/dropdown/dropdown.component';
+import { UserInfoComponent } from "app/user-info/user-info.component";
+import { UserSettingsComponent } from "app/user-settings/user-settings.component";
 
 
 const appRoutes: Routes = [
