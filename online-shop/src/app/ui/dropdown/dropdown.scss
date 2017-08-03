@@ -1,0 +1,218 @@
+@import '../../src.scss';
+
+:host{
+    &.small{
+        
+    }
+}
+.select{
+    position: relative;
+
+    display: inline-block;
+
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    text-align: left;
+
+    &-input, &-btn{
+        display: inline-block;
+        vertical-align: middle;
+
+        box-sizing: border-box;
+        background-color: inherit;
+
+        line-height: 42px;
+
+        cursor: pointer;
+    }
+    &-input{
+        width: 80px;
+        height: 100%;
+        padding: 0 10px;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+
+        outline: none;
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: right;
+
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    &-btn{
+        width: 20px;
+        height: 100%;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        outline: none;
+
+        color: $color-dark_grey;
+        text-align: center;
+    }
+    &-btn_icon{
+        position: relative;
+
+        //transform: translate(-4%, 1%);
+        
+        transition: 0.3s;
+    }
+
+    &-value_list{
+        z-index: 3;
+        position: absolute;
+        bottom: -20px;
+        transform: translate(0%, 100%);
+
+        width: 100%;
+        max-height: 232px;
+        border-radius: 5px;
+        background-color: #FFF;
+ 
+        color: #3a3f5c;
+
+        box-shadow: 0 0 40px rgba(#333, 0.4);
+
+        opacity: 0;
+        height: 0;
+        overflow: auto;
+        transition: 0.3s;
+
+        .ps-scrollbar-y-rail{
+            margin: 10px 0;
+            right: 10px;
+            .ps-scrollbar-y{
+                background-color: #3a3f5c;
+            }
+        }
+    }
+
+    &-value{
+        display: block;
+
+        box-sizing: border-box;
+        width: 100%;
+        padding: 20px;
+        background-color: inherit;
+        outline: none;
+
+        color: inherit;
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+        &:hover, &--active{
+            background-color: #F1F2F7;
+        }
+    }
+
+    &--full_squared{
+        .select{
+            border-radius: 0px;
+            &-input{
+                border-bottom-left-radius: 0px;
+                border-top-left-radius: 0px;
+            }
+            &-btn{
+                border-bottom-right-radius: 0px;
+                border-top-right-radius: 0px;
+            }
+        }
+    }
+    &--bg_none{
+        background-color: none;
+    }
+    &--light{
+        .select{
+            &-input{
+                border: 1px solid #e7e8ed;
+                border-right: none;
+                background-color: #FFF;
+                color: #3a3f5c;
+            }
+            &-btn{
+                border: 1px solid #e7e8ed;
+                border-left: none;
+                background-color: #FFF;
+                color: #3a3f5c;
+            }
+        }
+    }
+
+    &--color, &--size{
+        background-color: inherit;
+        width: 100px;
+        height: 50px;
+        border: 2px solid #A1A6BB;
+        border-radius: 25px;
+        color: inherit;
+        .select-input{
+            position: relative;
+
+            width: 50px;
+            padding: 0;
+            border-radius: 25px;
+
+            line-height: inherit;
+            color: inherit;
+            text-align: center;
+
+            .color, .size{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .select-btn{
+            border-left: none;
+            border-radius: 25px;
+
+            color: inherit;
+        }
+        .select-value_list{
+            left: 50%;
+            transform: translate(-50%, 100%);
+
+            width: auto;
+            max-width: 75px * 4;
+            max-height: 75px * 3;
+
+            white-space: nowrap;
+
+            .ps-scrollbar-x-rail{
+                margin: 0 20px;
+            }
+        }
+        .select-value{
+            display: inline-block;
+            vertical-align: middle;
+            height: 75px;
+            width: 75px;
+
+            text-align: center;
+        }
+    }
+
+    &--active{ 
+        .select-btn_icon{
+            transform: translateX(-2%) rotate(180deg);
+        }
+        .select-value_list{
+            height: auto;
+            opacity: 1;
+        }
+    }
+}
