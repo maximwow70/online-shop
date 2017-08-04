@@ -3,6 +3,10 @@
 		size guide
 	</button>
 	<div class="size_guide-sizes">
-		sizes
+		<h3 class="size_guide-title">{{vm.title}}</h3>
+		<div class="size_guide-size_list" *ngFor="let sg of vm.sizeGuide">
+			<div class="size_guide-size_name">{{sg.name}}</div>
+			<div class="size" *ngFor="let size of sg.sizes">{{size}}</div>
+		</div>
 	</div>
 </div>

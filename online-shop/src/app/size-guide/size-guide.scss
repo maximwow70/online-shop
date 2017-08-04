@@ -29,9 +29,8 @@
         left: 50%;
         transform: translate(-50%, 100%);
 
+        width: auto;
         box-sizing: border-box;
-        width: 200px;
-        height: 200px;
         padding: 20px;
         background-color: $color-dark_blue;
         border-radius: 5px;
@@ -41,6 +40,28 @@
 
 
         display: none;
+    }
+
+    &-title{
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    &-size_list{
+       white-space: nowrap; 
+    }
+    &-size_name{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    &-size{
+        display: inline-block;
+        vertical-align: middle;
+
+        .size{
+            border: 0;
+        }
     }
 
     &--open{
