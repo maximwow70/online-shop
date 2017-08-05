@@ -19,6 +19,9 @@
         &:hover{
             color: $color-dark_red;
         }
+        &:focus{
+            color: $color-dark_red;
+        }
     }
 
     &-sizes{
@@ -31,7 +34,7 @@
 
         width: auto;
         box-sizing: border-box;
-        padding: 20px;
+        padding: 20px 0 15px 0;
         background-color: $color-dark_blue;
         border-radius: 5px;
         box-shadow: 0px 0 60px rgba($color-dark_blue, 0.4);
@@ -43,24 +46,47 @@
     }
 
     &-title{
+        margin-bottom: 15px;
+
+        padding: 0 20px;
+
         font-family: $font-stack--bold;
         font-size: 14px;
         text-transform: uppercase;
     }
 
     &-size_list{
-       white-space: nowrap; 
+        padding: 5px 20px;
+        white-space: nowrap; 
+
+        transition: 0.3s;
+
+        &:hover{
+            background-color: $color-dark_green;
+        }
     }
     &-size_name{
+        margin-right: 10px;
+
         display: inline-block;
         vertical-align: middle;
+
+        width: 30px;
+        
+        @include no-wrap();
+        text-transform: uppercase;
     }
     &-size{
         display: inline-block;
         vertical-align: middle;
 
+        &:not(:last-child){
+            margin-right: 10px;
+        }
+
         .size{
             border: 0;
+            line-height: 35px;
         }
     }
 
