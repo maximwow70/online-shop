@@ -20,7 +20,13 @@ $color-dark_green: #43D29E;
 $color-dark_grey: #A1A6BB;
 $color-light_grey: #F0F2F7;
 
-@mixin ps-const-width{
+@mixin no-wrap {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin ps-const-width {
     .ps-scrollbar-y-rail{
         width: 10px !important;
         background: none !important;

@@ -7,7 +7,7 @@
 				</div>
 				<div class="user_sign_in-data_input">
 					<span class="user_sign_in-data_input_icon fa fa-envelope"></span>
-					<input type="mail" class="user_sign_in-mail" [(ngModel)]="userSignIn.mail" name="mail" autocomplete="off" placeholder="*mail" required>
+					<input type="mail" class="user_sign_in-mail" [(ngModel)]="userSignIn.mail" name="mail" autocomplete="off" placeholder="*mail" required pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'>
 				</div>
 				<div class="user_sign_in-data_input">
 					<span class="user_sign_in-data_input_icon fa fa-lock"></span>
@@ -34,7 +34,7 @@
 				</div>
 				<div class="user_sign_up-data_input">
 					<span class="user_sign_up-data_input_icon fa fa-envelope"></span>
-					<input type="mail" class="user_sign_up-mail" [(ngModel)]="userSignUp.mail" name="mail" autocomplete="off" placeholder="*mail" required>
+					<input type="mail" class="user_sign_up-mail" [(ngModel)]="userSignUp.mail" name="mail" autocomplete="off" placeholder="*mail" required pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'>
 				</div>
 				<div class="user_sign_up-data_input">
 					<span class="user_sign_up-data_input_icon fa fa-lock"></span>

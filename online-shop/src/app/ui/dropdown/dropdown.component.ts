@@ -36,7 +36,7 @@ export class DropdownComponent implements OnInit {
 		window.addEventListener('click', this.onClick);
 	}
 	ngOnDestroy() {
-		window.removeEventListener('click', this.onClick); // Need Fix
+		window.removeEventListener('click', this.onClick); 
 	}
 
 

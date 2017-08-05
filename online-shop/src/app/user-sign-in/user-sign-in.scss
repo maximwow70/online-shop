@@ -60,7 +60,7 @@
         &:focus{
             background-color: #FFF;
             border-color: #FFF;
-            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2)
+            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2);
         }
         &.ng-invalid.ng-dirty{
             border-color: $color-dark_red;
@@ -119,6 +119,10 @@
         //text-transform: uppercase;
 
         cursor: pointer;
+
+        &:focus{
+            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.4);
+        }
     }
     &-google_login_icon{
         margin-right: 5px;
