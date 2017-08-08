@@ -43,6 +43,10 @@
     }
     &-step{
         flex: 1;
+
+        & > div {
+            padding: 0 50px; //timing
+        }
     }
 
     &-btn{

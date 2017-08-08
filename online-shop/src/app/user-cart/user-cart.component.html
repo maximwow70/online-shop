@@ -52,7 +52,7 @@
 			(onProceedToCheckout)="goToStep(UserCartSteps.CHECKOUT)">
 		</user-cart-order>
 		<div *ngIf="activeStep === UserCartSteps.CHECKOUT">
-			checkout
+			{{itemList.length}} items to order
 		</div>
 		<div *ngIf="activeStep === UserCartSteps.DELIVERY">
 			delivery

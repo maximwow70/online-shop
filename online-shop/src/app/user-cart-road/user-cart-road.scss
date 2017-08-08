@@ -9,12 +9,14 @@
 
         display: inline-block;
         vertical-align: middle;
-        
-        background-color: inherit;
+
+        background: inherit;
+        border-radius: 20px;
         outline: none;
 
         .btn{
             background-color: #FFF;
+            //transition: 0s;
         }
 
         &:not(:last-child){
@@ -32,6 +34,8 @@
                 background-color: $color-light_grey;
             }
         }
+
+        
         
         
         &.user_cart_road-btn--during{
@@ -49,6 +53,12 @@
             }
             &:after{
                 background-color: $color-dark_blue;
+            }
+        }
+        
+        &:focus{
+            .btn{
+                border-color: $color-dark_green;
             }
         }
     }
