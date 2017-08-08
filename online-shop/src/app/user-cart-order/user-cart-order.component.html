@@ -1,0 +1,54 @@
+<div class="user_cart_order">
+	<div class="user_cart_order-user_cart_order_header" *ngIf="isItemListReady && itemList.length > 0">
+		<div class="user_cart_order_header">
+			<div class="user_cart_order_header-item">item</div><!--
+			--><div class="user_cart_order_header-cost">price</div><!--
+			--><div class="user_cart_order_header-quantity">quantity</div><!--
+			--><div class="user_cart_order_header-total_cost">total price</div>
+		</div>
+	</div>
+	<div class="user_cart_order-item_list" *ngIf="isItemListReady && itemList.length > 0">
+		<div class="user_cart_order-item" *ngFor="let item of itemList">
+			<div class="item item--user_cart">
+				<div class="item-photos">
+					<img class="item-photo" src="{{item.photosUrl[0]}}" alt="">
+				</div><!--
+				--><div class="item-info">
+					<h2 class="item-name" (click)="onItemClicked(item)">{{item.name}}</h2>
+					<div class="item-color_list">
+						<div class="item-color">
+							<div class="color color--middle color--{{getClassByColor(getColorsByItem(item))}}"></div>
+						</div>
+						<span class="item-devider">/</span>
+						<div class="item-size">
+							<div class="size size--middle">xl</div>
+						</div>
+					</div>
+				</div><!--
+				--><div class="item-cost">$34</div><!--
+				--><div class="item-select_count">
+					<select-item-count [min]="0" [max]="6" [selectedCount]="2"></select-item-count>
+				</div><!--
+				--><div class="item-total_cost">$68</div><!--
+				--><div class="item-actions">
+					<div class="item-btn">
+						<button class="btn btn--remove">
+							<div class="fa fa-close"></div>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="user_cart_order-actions" *ngIf="isItemListReady && itemList.length > 0">
+		<div class="user_cart-btn">
+			<button routerLink="/products" class="btn btn--continue_shopping">Continue shopping</button>
+		</div>
+		<div class="user_cart-btn">
+			<button class="btn btn--proceed" (click)="proceedToCheckout()">Proceed to Checkout</button>
+		</div>
+	</div>
+	<div class="user_cart_order-loading" *ngIf="!isItemListReady">
+		<loading></loading>
+	</div>
+</div>

@@ -3,6 +3,11 @@
     position: relative;
     height: 100vh;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
     &-loading{
         position: relative;
         height: 100%;
@@ -13,12 +18,6 @@
         &:not(:last-child){
             border-bottom: 1px solid $color-light_grey;
         }
-    }
-    &-user_order_road{
-        padding: 50px 0;
-    }
-    &-user_cart_header{
-        padding: 0 50px;
     }
     &-item_list{
         width: 100%;
@@ -38,17 +37,14 @@
         }
     }
 
-    &-actions{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        margin: 0 50px;
-
+    &-user_cart_road{
         padding: 50px 0;
-        border-top: 1px solid $color-light_grey;
+        flex-shrink: 0;
     }
+    &-step{
+        flex: 1;
+    }
+
     &-btn{
 
     }
@@ -60,6 +56,7 @@
     }
 
     &--smart{
+        display: block;
         position: relative;
         .user_cart-btn{
             display: block;

@@ -1,0 +1,28 @@
+.user_cart_order{
+
+    height: 100%;
+
+    &-user_cart_order_header{
+        padding: 0 50px;
+    }
+    &-item_list{
+        padding: 0 50px;
+    }
+
+    &-actions{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        margin: 0 50px;
+
+        padding: 50px 0;
+        border-top: 1px solid $color-light_grey;
+    }
+
+    &-loading{
+        position: relative;
+        height: 100%;
+    }
+}
