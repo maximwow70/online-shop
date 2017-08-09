@@ -51,12 +51,17 @@
 			[isItemListReady]="isItemListReady"
 			(onProceedToCheckout)="goToStep(UserCartSteps.CHECKOUT)">
 		</user-cart-order>
-		<div *ngIf="activeStep === UserCartSteps.CHECKOUT">
-			{{itemList.length}} items to order
-		</div>
-		<div *ngIf="activeStep === UserCartSteps.DELIVERY">
-			delivery
-		</div>
+		<user-cart-checkout 
+			*ngIf="activeStep === UserCartSteps.CHECKOUT"
+			[itemList]="itemList"
+			(onProceedToDelivery)="goToStep(UserCartSteps.DELIVERY)"
+			(onBackToOrder)="goToStep(UserCartSteps.ORDER)">
+		</user-cart-checkout>
+		<user-cart-delivery 
+			*ngIf="activeStep === UserCartSteps.DELIVERY"
+			(onProceedToDone)="goToStep(UserCartSteps.DONE)"
+			(onBackToCheckout)="goToStep(UserCartSteps.CHECKOUT)">
+		</user-cart-delivery>
 		<div *ngIf="activeStep === UserCartSteps.DONE">
 			done
 		</div>

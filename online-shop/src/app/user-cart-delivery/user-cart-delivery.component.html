@@ -1,0 +1,13 @@
+<div class="user_cart_delivery">
+	<div class="user_cart_delivery-info">
+		<dropdown class="dropdown--big" [values]="countriesToDelivery"></dropdown>
+	</div>
+	<div class="user_cart_delivery-actions">
+		<div class="user_cart_delivery-btn">
+			<button class="btn btn--user_cart_back" (click)="backToCheckout()">back to checkout</button>
+		</div>
+		<div class="user_cart_delivery-btn">
+			<button class="btn btn--proceed" (click)="proceedToDone()">proceed to payment</button>
+		</div>
+	</div>
+</div>

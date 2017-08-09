@@ -19,6 +19,11 @@
             //transition: 0s;
         }
 
+        &:disabled{
+            .btn{
+                background-color: $color-light_grey;
+            }
+        }
         &:not(:last-child){
             &:after{
                 z-index: -1;
