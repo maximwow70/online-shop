@@ -68,6 +68,9 @@ import { SelectComponent } from './ui/select/select.component';
 import { DropdownComponent } from './ui/dropdown/dropdown.component';
 import { UserInfoComponent } from "app/user-info/user-info.component";
 import { UserSettingsComponent } from "app/user-settings/user-settings.component";
+import { UserCartOrderComponent } from './user-cart-order/user-cart-order.component';
+import { UserCartCheckoutComponent } from './user-cart-checkout/user-cart-checkout.component';
+import { UserCartDeliveryComponent } from './user-cart-delivery/user-cart-delivery.component';
 
 
 const appRoutes: Routes = [
@@ -170,7 +173,10 @@ const appRoutes: Routes = [
 		UserSettingsComponent,
 		UserInfoComponent,
 		SelectComponent,
-		DropdownComponent
+		DropdownComponent,
+		UserCartOrderComponent,
+		UserCartCheckoutComponent,
+		UserCartDeliveryComponent
 	],
 	imports: [
 		BrowserModule,

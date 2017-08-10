@@ -1,0 +1,28 @@
+dropdown{
+    display: inline-block;
+    .select{
+        &-value_list{
+            max-height: 56px * 4;
+
+            .ps-scrollbar-y-rail{
+                right: 5px;
+            }
+        }
+    }
+
+    &.dropdown--big{
+        border: 1px solid rgba($color-dark_grey, 0.6);
+        border-radius: 5px;
+        background-color: #FFF;
+        .select{
+            &-input{
+                width: 170px;
+                text-align: left;
+            }
+            &-btn{
+                width: 20px;
+                padding-right: 10px;
+            }
+        }
+    }
+}

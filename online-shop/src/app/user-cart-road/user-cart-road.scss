@@ -1,4 +1,4 @@
-.user_order_road{
+.user_cart_road{
     text-align: center;
 
     &-btn{
@@ -9,12 +9,21 @@
 
         display: inline-block;
         vertical-align: middle;
-        background-color: inherit;
+
+        background: inherit;
+        border-radius: 20px;
+        outline: none;
 
         .btn{
             background-color: #FFF;
+            //transition: 0s;
         }
 
+        &:disabled{
+            .btn{
+                background-color: $color-light_grey;
+            }
+        }
         &:not(:last-child){
             &:after{
                 z-index: -1;
@@ -30,15 +39,18 @@
                 background-color: $color-light_grey;
             }
         }
+
         
-        &.user_order_road-btn--during{
+        
+        
+        &.user_cart_road-btn--during{
             .btn{
-                background-color: $color-dark_blue;
+                //background-color: $color-dark_blue;
                 border-color: $color-dark_blue;
-                color: #FFF;
+                color: $color-dark_blue;
             }
         }
-        &.user_order_road-btn--completed{
+        &.user_cart_road-btn--completed{
             .btn{
                 background-color: $color-dark_blue;
                 border-color: $color-dark_blue;
@@ -48,11 +60,17 @@
                 background-color: $color-dark_blue;
             }
         }
+        
+        &:focus{
+            .btn{
+                border-color: $color-dark_green;
+            }
+        }
     }
 
     @media screen and (max-width: 900px){
         &{
-            .user_order_road-btn{
+            .user_cart_road-btn{
                 margin-bottom: 25px;
                 display: block;
                 &:after{
