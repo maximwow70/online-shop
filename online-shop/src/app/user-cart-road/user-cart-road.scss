@@ -22,6 +22,7 @@
         &:disabled{
             .btn{
                 background-color: $color-light_grey;
+                cursor: default;
             }
         }
         &:not(:last-child){
