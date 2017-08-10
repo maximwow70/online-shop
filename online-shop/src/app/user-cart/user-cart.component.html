@@ -10,7 +10,8 @@
 					'user_cart_road-btn--during': activeStep === UserCartSteps.ORDER,
 					'user_cart_road-btn--completed': activeStep >= UserCartSteps.CHECKOUT
 				}" 
-				(click)="goToStep(UserCartSteps.ORDER)">
+				(click)="goToStep(UserCartSteps.ORDER)"
+				[disabled]="orderStatus === true">
 				<div class="btn btn--order_road">order</div>
 			</button>
 			<button
@@ -20,27 +21,28 @@
 					'user_cart_road-btn--completed': activeStep >= UserCartSteps.DELIVERY
 				}" 
 				(click)="goToStep(UserCartSteps.CHECKOUT)"
-				[disabled]="activeStep < UserCartSteps.ORDER">
+				[disabled]="activeStep < UserCartSteps.ORDER || orderStatus === true">
 				<div class="btn btn--order_road">checkout</div>
 			</button>
 			<button 
 				class="user_cart_road-btn"
 				[ngClass]="{
 					'user_cart_road-btn--during': activeStep === UserCartSteps.DELIVERY,
-					'user_cart_road-btn--completed': activeStep >= UserCartSteps.DONE
+					'user_cart_road-btn--completed': activeStep >= UserCartSteps.PAYMENT
 				}" 
 				(click)="goToStep(UserCartSteps.DELIVERY)"
-				[disabled]="activeStep < UserCartSteps.CHECKOUT">
+				[disabled]="activeStep < UserCartSteps.CHECKOUT || orderStatus === true">
 				<div class="btn btn--order_road">delivery</div>
 			</button>
 			<button 
 				class="user_cart_road-btn"
 				[ngClass]="{
-					'user_cart_road-btn--during': activeStep === UserCartSteps.DONE
+					'user_cart_road-btn--during': activeStep === UserCartSteps.PAYMENT,
+					'user_cart_road-btn--completed': orderStatus === true
 				}" 
-				(click)="goToStep(UserCartSteps.DONE)"
-				[disabled]="activeStep < UserCartSteps.DELIVERY">
-				<div class="btn btn--order_road">done</div>
+				(click)="goToStep(UserCartSteps.PAYMENT)"
+				[disabled]="activeStep < UserCartSteps.DELIVERY || orderStatus === true">
+				<div class="btn btn--order_road">payment</div>
 			</button>
 		</div>
 	</div>
@@ -59,11 +61,15 @@
 		</user-cart-checkout>
 		<user-cart-delivery 
 			*ngIf="activeStep === UserCartSteps.DELIVERY"
-			(onProceedToDone)="goToStep(UserCartSteps.DONE)"
+			(onProceedToDone)="goToStep(UserCartSteps.PAYMENT)"
 			(onBackToCheckout)="goToStep(UserCartSteps.CHECKOUT)">
 		</user-cart-delivery>
-		<div *ngIf="activeStep === UserCartSteps.DONE">
-			done
-		</div>
+		<user-cart-payment 
+			[orderStatus]="orderStatus"
+			(onDone)="createOrder()"
+			(onBackToDelivery)="goToStep(UserCartSteps.DELIVERY)"
+			*ngIf="activeStep === UserCartSteps.PAYMENT">
+			payment
+		</user-cart-payment>
 	</div>
 </div>
