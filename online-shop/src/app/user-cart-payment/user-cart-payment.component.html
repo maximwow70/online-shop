@@ -1,0 +1,22 @@
+<div class="user_cart_payment">
+	<div class="user_cart_payment-info" *ngIf="!orderStatus">
+		payment
+	</div>
+	<div class="user_cart_payment-actions" *ngIf="!orderStatus">
+		<div class="user_cart_payment-btn">
+			<button class="btn btn--user_cart_back" (click)="backToDelivery()">back to delivery</button>
+		</div>
+		<div class="user_cart_payment-btn">
+			<button class="btn btn--proceed" (click)="done()">done</button>
+		</div>
+	</div>
+	<div class="user_cart_payment-success_order" *ngIf="orderStatus">
+		<img src="assets/user-cart-success-order.svg" alt="" class="user_cart_payment-success_order_img">
+		<h2 class="user_cart_payment-success_order_title">
+			Success Order
+		</h2> 
+		<div class="user_cart_payment-success_order_btn">
+			<button class="btn btn--dark_green">back to shopping</button>
+		</div>
+	</div>
+</div>
