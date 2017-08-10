@@ -1,0 +1,43 @@
+.user_cart_payment{
+
+    height: 100%;
+
+    &-info{
+        padding: 0 50px;
+    }
+
+    &-actions{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        margin: 0 50px;
+
+        padding: 50px 0;
+        //border-top: 1px solid $color-light_grey;
+    }
+
+    &-success_order{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        box-sizing: border-box;
+        height: 100%;
+        padding-bottom: 136px; // height of "shopping road"
+
+        text-align: center;
+    }
+    &-success_order_img{
+        margin-bottom: 20px;
+
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+    }
+    &-success_order_title{
+        margin-bottom: 50px;
+    }
+}

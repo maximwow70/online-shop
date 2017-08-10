@@ -10,7 +10,7 @@ export enum UserCartSteps {
 	ORDER = 0,
 	CHECKOUT = 1,
 	DELIVERY = 2,
-	DONE = 3
+	PAYMENT = 3
 }
 
 declare var Ps: any;
@@ -28,6 +28,8 @@ export class UserCartComponent implements OnInit {
 
 	private _activeStep: UserCartSteps = null;
 
+	private _orderStatus: boolean = false;
+
 
 	public get itemList(): Item[] {
 		return this._itemList;
@@ -36,8 +38,12 @@ export class UserCartComponent implements OnInit {
 		return this._isItemListReady;
 	}
 
-	public get activeStep(): UserCartSteps{
+	public get activeStep(): UserCartSteps {
 		return this._activeStep;
+	}
+
+	public get orderStatus(): boolean {
+		return this._orderStatus;
 	}
 
 	public get UserCartSteps(): any {
@@ -49,14 +55,14 @@ export class UserCartComponent implements OnInit {
 		private _router: Router,
 		private _userData: UserDataService,
 		private _itemColor: ItemColorService
-	) { 
+	) {
 		this._activeStep = UserCartSteps.ORDER;
 	}
 
 	ngOnInit() {
 		this._userData.getUserCart().subscribe(itemList => {
 			let items = [];
-			for (let item = 0; item < itemList.length; item++){
+			for (let item = 0; item < itemList.length; item++) {
 				items.push(Item.fromObject(itemList[item]));
 			}
 			this._itemList = items;
@@ -72,6 +78,10 @@ export class UserCartComponent implements OnInit {
 		this._activeStep = step;
 	}
 
+	public createOrder(): void {
+		this._orderStatus = true;
+	}
+
 	// public getClassByColor(color: Color): string {
 	// 	return this._itemColor.getClassByColor(color);
 	// }
@@ -83,6 +93,6 @@ export class UserCartComponent implements OnInit {
 	// public onItemClicked(item: Item): void {
 	// 	this._router.navigate(['/products', item.id]);
 	// }
- 
+
 
 }
