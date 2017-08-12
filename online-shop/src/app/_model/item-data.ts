@@ -11,6 +11,23 @@ export class ItemData {
     private _cost: number;
     private _isNew: boolean;
 
+
+    public get item(): Item {
+        return this._item;
+    }
+
+    public get itemCountDataList(): ItemCountData[] {
+        return this._itemCountDataList;
+    }
+
+    public get cost(): number {
+        return this._cost
+    }
+    public get isNew(): boolean {
+        return this._isNew;
+    }
+
+
     constructor(item: Item, itemCountDataList: ItemCountData[], cost: number, isNew: boolean) {
         this._item = item;
         this._itemCountDataList = itemCountDataList;
@@ -47,16 +64,6 @@ export class ItemData {
             data.size === size
         );
         return itemData ? itemData.count : null;
-    }
-
-    public get item(): Item {
-        return this._item;
-    }
-    public get cost(): number {
-        return this._cost
-    }
-    public get isNew(): boolean {
-        return this._isNew;
     }
 
 
