@@ -14,9 +14,18 @@ declare var Ps: any;
 })
 export class UserWishlistComponent implements OnInit {
 
+	private _itemList: Item[] = [];
 	private _isItemListReady = false;
 
-	private _itemList: Item[] = [];
+	private _updateScrollInterval: any;
+
+
+	public get itemList(): Item[] {
+		return this._itemList;
+	}
+	public get isItemListReady(): boolean {
+		return this._isItemListReady;
+	}
 
 	constructor(
 		private _elementRef: ElementRef,
@@ -26,9 +35,7 @@ export class UserWishlistComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		// Ps.initialize(
-		// 	this._elementRef.nativeElement.querySelector('.user_wishlist-item_list')
-		// );
+		
 
 		this._userData.getUserWishlist().subscribe(itemList => {
 			let items = [];
@@ -38,10 +45,20 @@ export class UserWishlistComponent implements OnInit {
 			this._itemList = items;
 
 			setTimeout(
-				() => this._isItemListReady = true,
+				() => {
+					this._isItemListReady = true;
+					setTimeout(() => {
+						let itemListVM = this._elementRef.nativeElement.querySelector('.user_wishlist-item_list');
+						Ps.initialize(itemListVM);
+						setInterval(() => Ps.update(itemListVM), 150);
+					});
+				},
 				2000
 			);
 		})
+	}
+	ngOnDestroy() {
+		clearInterval(this._updateScrollInterval);
 	}
 
 	public getClassByColor(color: Color): string {
@@ -53,13 +70,6 @@ export class UserWishlistComponent implements OnInit {
 
 	public onItemClicked(item: Item): void {
 		this._router.navigate(['/products', item.id]);
-	}
-
-	public get itemList(): Item[] {
-		return this._itemList;
-	}
-	public get isItemListReady(): boolean {
-		return this._isItemListReady;
 	}
 
 }

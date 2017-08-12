@@ -1,31 +1,134 @@
-@import '../src.scss';
-:host{
-    display: block;
-    height: 100%;
-}
 .user_wishlist{
     position: relative;
+
+    box-sizing: border-box;
     height: 100%;
+    padding: 50px;
     background-color: #FFF;
 
     text-align: left;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
     &-loading{
         position: relative;
         height: 100%;
+        flex: 1;
     }
+
+
+    &-filters{
+        flex-shrink: 0;
+
+        margin-bottom: 50px;
+    }
+    &-title{
+        font-family: $font-stack--bold;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    &-header{
+        flex-shrink: 0;
+
+        background-color: $color-light_grey;
+        padding: 5px 25px;
+        border-radius: 5px 5px 0 0;
+
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    &-item_info{
+        display: inline-block;
+        vertical-align: middle;
+        width: 40%;
+    }
+    &-item_colors{
+        display: inline-block;
+        vertical-align: middle;
+        width: 25%;
+        
+        text-align: center;
+
+        .color{
+            line-height: 24px;
+        }
+    }
+    &-item_cost{
+        display: inline-block;
+        vertical-align: middle;
+        width: 15%;
+
+        text-align: center;
+    }
+    &-item_actions{
+        display: inline-block;
+        vertical-align: middle;
+        width: 20%;
+
+        text-align: right;
+    }
+
     &-item_list{
+        flex-grow: 1;
+
         position: relative;
 
         @include ps-const-width();
         .ps-scrollbar-y-rail{
-            margin: 20px 0;
-            right: 20px;
+            margin: 0px 0;
+            right: 0px;
         }
     }
     &-item{
+        padding: 10px 25px;
         &:not(:last-child){
             border-bottom: 1px solid $color-light_grey;
+        }
+
+        .user_wishlist-item_colors{
+            height: 20px;
+        }
+        .user_wishlist-item_cost{
+            font-family: $font-stack--bold;
+            font-weight: bold;
+        }
+    }
+    &-item_photos{
+        display: inline-block;
+        vertical-align: middle;
+
+        width: 75px;
+        height: 75px;
+        position: relative;
+    }
+    &-item_photo{
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        transform: translate(0%, -50%);
+
+        max-width: 80%;
+        max-height: 80%;
+    }
+    &-item_name{
+        margin-left: 10px;
+
+        display: inline-block;
+        vertical-align: middle;
+
+        font-size: 16px;
+    }
+    &-btn_remove{
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover{
+            color: $color-dark_red;
         }
     }
 
@@ -54,6 +157,7 @@
 
     &--smart{
         position: relative;
+        padding: 0;
         .user_wishlist-btn{
             display: block;
             
@@ -88,6 +192,7 @@
         .user_wishlist-item{
             box-sizing: border-box;
             height: 100px;
+            padding: 0;
 
             cursor: pointer;
             transition: 0.3s;
