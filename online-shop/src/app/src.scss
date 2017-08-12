@@ -34,6 +34,13 @@ $color-light_grey: #F0F2F7;
             width: 6px !important;
         }
     }
+    .ps-scrollbar-x-rail{
+        height: 10px !important;
+        background: none !important;
+        .ps-scrollbar-x{
+            height: 6px !important;
+        }
+    }
 }
 
 @mixin user-dashboard-light-theme() {

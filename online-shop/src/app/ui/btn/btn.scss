@@ -384,6 +384,41 @@
     }
 
 
+    &-twitter,
+    &-facebook{
+        width: 200px;
+        height: 40px;
+        background-color: #55acef;
+        border: none;
+        border-radius: 20px;
+
+        line-height: 40px;
+        color: #FFF;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        .btn-icon{
+            position: static;
+            transform: none;
+            margin-right: 5px;
+
+            line-height: 40px;
+            font-size: 16px;
+        }
+        &:hover{
+            background-color: #55acef;
+        }
+    }
+    &-facebook{
+        background-color: #3b5997;
+        &:hover{
+            background-color: #3b5997;
+        }
+    }
+
+
+
     &--disabled{
         background-color: #EC4E35;
         border-color: #EC4E35;
