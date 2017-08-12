@@ -25,11 +25,7 @@ export class UserLoginComponent implements OnInit {
 		
 	}
 	ngAfterViewInit() {
-		if (this._isSignInActive === true){
-			this._elementRef.nativeElement.querySelector('.user_sign_in-mail').focus();
-		} else {
-			this._elementRef.nativeElement.querySelector('.user_sign_up-mail').focus();
-		}
+		this.onSignInActivate();
 	}
 
 	public onUserSignIn(event: Event): void {

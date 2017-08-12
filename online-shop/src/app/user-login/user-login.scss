@@ -29,6 +29,7 @@
     }
     &-user_sign_in, &-user_sign_up {
         z-index: 1;
+        position: relative;
         
         display: flex;
         flex-direction: column;
@@ -42,87 +43,5 @@
         // opacity: 0.5;
         opacity: 1;
     }
-    // &-user_sign_in {
-    //     // //transform: translateY(-50%) translateX(-25%) translateZ(-100px);
-    //     // animation: sign-in 1s ease-in-out forwards;
-    //     // &--active {
-    //     //     animation: sign-in-active 1s ease-in-out forwards;
-    //     // }
-    // }
-    // &-user_sign_up {
-    //     // transform: translateY(-50%) translateX(-75%) translateZ(-100px);
-    //     // animation: sign-up 1s ease-in-out forwards;
-    //     // &--active {
-    //     //     animation: sign-up-active 1s ease-in-out forwards;
-    //     // }
-    //     transform: translateX(500px);
-    // }
 
-    @keyframes sign-in-active {
-        0% {
-            z-index: 1;
-            opacity: 0.5;
-            transform: translateY(-50%) translateX(-25%) translateZ(-150px);
-        }
-        50% {
-            z-index: 2;
-            transform: translateY(-50%) translateX(-0%) translateZ(-75px);
-        }
-        100% {
-            opacity: 1;
-            z-index: 2;
-            transform: translateY(-50%) translateX(-50%) translateZ(0px);
-        }
-    }
-    @keyframes sign-in {
-        0% {
-            z-index: 2;
-            opacity: 1;
-            transform: translateY(-50%) translateX(-50%) translateZ(0px);
-        }
-        50% {
-            z-index: 1;
-            transform: translateY(-50%) translateX(-25%) translateZ(-75px);
-        }
-        100% {
-            z-index: 1;
-            opacity: 0.5;
-            transform: translateY(-50%) translateX(-25%) translateZ(-150px);
-        }
-    }
-
-
-    @keyframes sign-up-active {
-        0% {
-            z-index: 1;
-            opacity: 0.5;
-            transform: translateY(-50%) translateX(-75%) translateZ(-150px);
-        }
-        50% {
-            z-index: 2;
-            transform: translateY(-50%) translateX(-100%) translateZ(-75px);
-        }
-        100% {
-            opacity: 1;
-            z-index: 2;
-            transform: translateY(-50%) translateX(-50%) translateZ(0px);
-        }
-    }
-    
-    @keyframes sign-up {
-        0% {
-            z-index: 2;
-            opacity: 1;
-            transform: translateY(-50%) translateX(-50%) translateZ(0px);
-        }
-        50% {
-            z-index: 1;
-            transform: translateY(-50%) translateX(-75%) translateZ(-75px);
-        }
-        100% {
-            z-index: 1;
-            opacity: 0.5;
-            transform: translateY(-50%) translateX(-75%) translateZ(-150px);
-        }
-    }
 }
