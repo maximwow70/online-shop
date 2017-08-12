@@ -2,7 +2,8 @@
     display: inline-block;
 
     box-sizing: border-box;
-    width: 320px;
+    width: 600px;
+    padding: 0 70px;
     border-radius: 5px;
     background-color: #FFF;
 
@@ -23,16 +24,33 @@
         text-transform: uppercase;
     }
 
+    &-password_container{
+        margin-bottom: 30px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .user_sign_in-data_input{
+            margin: 0;
+            width: 200px;
+        }
+    }
+
     &-data_input{
         position: relative;
-        margin: 0 20px 30px 20px;
+        margin-bottom: 30px;
 
         color: rgba($color-dark_blue, 0.7);
+
+        
     }
     &-data_input_icon{
         position: absolute;
         top: 50%;
-        left: 20px;
+        left: 25px;
         transform: translate(-50%, -50%);
 
         vertical-align: top;
@@ -41,11 +59,11 @@
         box-sizing: border-box;
         width: 100%;  
         height: 40px;
-        padding: 0px 5px 0px 35px;
+        padding: 0px 5px 0px 40px;
 
         background-color: $color-light_grey;
         border: 1px solid rgba($color-dark_grey, 0.6);
-        border-radius: 5px;
+        border-radius: 20px;
         outline: none;
 
         line-height: 40px;
@@ -69,18 +87,28 @@
 
     &-forgot_password {
         display: inline-block;
+        background: none;
+        outline: none;
 
-        color: rgba($color-dark_grey, 0.7);
+        color: rgba($color-dark_blue, 0.8);
+        font: inherit;
+        font-weight: bold;
         text-decoration: underline;
 
         cursor: pointer;
+        transition: 0.3s;
+
+        &:hover,
+        &:focus{
+            color: rgba($color-blue, 0.8);
+        }
     }
 
     &-devider{
         position: relative;
-        margin: 30px 20px;
+        margin: 30px 0px;
         
-        color: rgba($color-dark_grey, 0.7);
+        color: rgba($color-dark_grey, 0.8);
         font-size: 14px;
 
         &:before, &:after{
@@ -93,7 +121,7 @@
             display: inline-block;
             width: 40%;
             height: 1px;
-            background-color: rgba($color-dark_grey, 0.7);
+            background-color: rgba($color-dark_grey, 0.8);
         }
         &:before {
             left: 0;
@@ -103,44 +131,37 @@
         }
     }
     
-    &-google_login{
-        margin-bottom: 50px;
 
-        height: 40px;
-        width: 240px;
-        border-radius: 5px;
-        background-color: $color-dark_red;
-        outline: none;
-        
-        line-height: 40px;
-        color: #FFF;
-        font-family: $font-stack--magic_number;
-        font-size: 20px;
-        //text-transform: uppercase;
-
-        cursor: pointer;
-
-        &:focus{
-            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.4);
-        }
+    &-social{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
     }
-    &-google_login_icon{
-        margin-right: 5px;
+    &-twitter_login,
+    &-facebook_login{
+        .btn{
+            &:focus{
+                box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.4);
+            }
+        }
     }
 
     &-btn{
         display: inline-block;
         vertical-align: top;
 
-        width: 50%;
-        height: 60px;
+        width: 200px;
+        height: 40px;
         background-color: rgba($color-dark_grey, 0.8);
+        border-radius: 20px;
         outline: none;
 
-        line-height: 60px;
+        line-height: 40px;
         color: #FFF;
         font-family: $font-stack--magic_number;
-        font-size: 20px;
+        font-size: 14px;
         text-transform: uppercase;
 
         cursor: pointer;
@@ -151,10 +172,25 @@
         }
 
         &--submit {
-            background-color: $color-dark_blue;
+            background-color: $color-dark_green;
 
             &:hover{
-                background-color: $color-dark_blue;
+                background-color: $color-dark_green;
+            }
+            &:focus{
+                box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2);
+            }
+        }
+        &--sign_up{
+            background-color: $color-blue;
+
+            color: #FFF;
+
+            &:hover{
+                background-color: $color-blue;
+            }
+            &:focus{
+                box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.4);
             }
         }
         &--disabled {
@@ -164,4 +200,14 @@
             }
         }
     }
+
+    &-sign_up_btn_container{
+        padding: 30px 0 30px 0;
+    }
+    &-sign_up_title{
+        margin-bottom: 20px;
+
+        color: rgba($color-dark_blue, 0.7);
+    }
+    
 }
