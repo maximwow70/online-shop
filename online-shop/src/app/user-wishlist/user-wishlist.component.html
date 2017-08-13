@@ -7,15 +7,28 @@
 	</div>
 	<div class="user_wishlist-filters" *ngIf="isItemListReady">
 		<h2 class="user_wishlist-title">Your Wishlist</h2>
+		<div class="user_wishlist-search_items">
+			<input type="text" class="user_wishlist-search_items_input" [(ngModel)]="searchItemsName" (keydown.enter)="onSearchByName()" placeholder="find by name">
+			<span class="user_wishlist-search_items_btn fa fa-search" (click)="onSearchByName()"></span>
+		</div>
 	</div>
 	<div class="user_wishlist-header" *ngIf="isItemListReady">
-		<div class="user_wishlist-item_info">item</div><!--
+		<div class="user_wishlist-item_info">
+			<span 
+				class="user_wishlist-sort_by_name"
+				(click)="onSortByName()"
+				[ngClass]="{
+					'user_wishlist-sort_by_name--sorted_by_increase': isItemListSortedByNameIncrease,
+					'user_wishlist-sort_by_name--sorted_by_decrease': !isItemListSortedByNameIncrease
+				}">
+			item</span>
+		</div><!--
 		--><div class="user_wishlist-item_colors">colors</div><!--
 		--><div class="user_wishlist-item_cost">cost</div><!--
 		--><div class="user_wishlist-item_actions">actions</div>
 	</div>
   	<div class="user_wishlist-item_list" *ngIf="isItemListReady">
-		<div class="user_wishlist-item" *ngFor="let item of itemList">
+		<div class="user_wishlist-item" *ngFor="let item of itemListToShow">
 			<div class="user_wishlist-item_info">
 				<div class="user_wishlist-item_photos">
 					<img class="user_wishlist-item_photo" src="{{item.photosUrl[0]}}" alt="">

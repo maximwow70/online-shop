@@ -24,11 +24,53 @@
         flex-shrink: 0;
 
         margin-bottom: 50px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
     &-title{
         font-family: $font-stack--bold;
         font-size: 24px;
         font-weight: bold;
+    }
+    &-search_items{
+        position: relative;
+
+    }
+    &-search_items_input{
+        box-sizing: border-box;
+        width: 200px;
+        height: 30px;
+        padding: 0px 30px 0 10px; 
+
+        background-color: #FFF;
+        border: 2px solid $color-dark_blue;
+        border-radius: 5px;
+        outline: none;
+
+        line-height: 30px;
+        color: rgba($color-dark_blue, 0.8);
+        font-family: $font-stack--bold;
+        font-size: 12px;
+
+        transition: 0.3s;
+
+        &:focus{
+            border-color: $color-dark_green;
+        }
+    }
+    &-search_items_btn{
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translate(0%, -50%);
+
+        color: $color-dark_green;
+        font-size: 14px;
+
+        cursor: pointer;
     }
 
     &-header{
@@ -72,6 +114,41 @@
         width: 20%;
 
         text-align: right;
+    }
+    &-sort_by_name{
+        position: relative;
+
+        display: inline-block;
+        width: 45px;
+
+        cursor: pointer;
+
+        &:after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translate(0%, -50%);
+
+            display: none;
+
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 5px 0 5px;
+            border-color: $color-dark_green transparent transparent transparent;
+        }
+        &--sorted_by_increase {
+            &:after{
+                display: inline-block;
+            }
+        }
+        &--sorted_by_decrease {
+            &:after{
+                display: inline-block;
+                transform: translate(0%, -50%) rotate(180deg);
+            }
+        }
     }
 
     &-item_list{

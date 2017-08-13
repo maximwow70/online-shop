@@ -17,6 +17,10 @@ export class UserWishlistComponent implements OnInit {
 	private _itemList: Item[] = [];
 	private _isItemListReady = false;
 
+	private _itemListToShow: Item[] = [];
+	public searchItemsName: string = '';
+	private _isItemListSortedByNameIncrease: boolean = false;
+
 	private _updateScrollInterval: any;
 
 
@@ -27,6 +31,13 @@ export class UserWishlistComponent implements OnInit {
 		return this._isItemListReady;
 	}
 
+	public get itemListToShow(): Item[] {
+		return this._itemListToShow;
+	}
+	public get isItemListSortedByNameIncrease(): boolean {
+		return this._isItemListSortedByNameIncrease;
+	}
+
 	constructor(
 		private _elementRef: ElementRef,
 		private _router: Router,
@@ -35,14 +46,16 @@ export class UserWishlistComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		
+
 
 		this._userData.getUserWishlist().subscribe(itemList => {
 			let items = [];
-			for (let item = 0; item < itemList.length; item++){
+			for (let item = 0; item < itemList.length; item++) {
 				items.push(Item.fromObject(itemList[item]));
 			}
 			this._itemList = items;
+			this._itemListToShow = this._itemList;
+			this.onSortByName();
 
 			setTimeout(
 				() => {
@@ -50,7 +63,7 @@ export class UserWishlistComponent implements OnInit {
 					setTimeout(() => {
 						let itemListVM = this._elementRef.nativeElement.querySelector('.user_wishlist-item_list');
 						Ps.initialize(itemListVM);
-						setInterval(() => Ps.update(itemListVM), 150);
+						this._updateScrollInterval = setInterval(() => Ps.update(itemListVM), 150);
 					});
 				},
 				2000
@@ -59,6 +72,20 @@ export class UserWishlistComponent implements OnInit {
 	}
 	ngOnDestroy() {
 		clearInterval(this._updateScrollInterval);
+	}
+
+	public onSearchByName(): void {
+		this._itemListToShow = this._itemList.filter(i => i.name.toLowerCase().indexOf(this.searchItemsName.toLowerCase()) !== -1);
+		this._isItemListSortedByNameIncrease = false;
+		this.onSortByName();
+	}
+	public onSortByName(): void {
+		if (this._isItemListSortedByNameIncrease === true) {
+			this._itemListToShow.sort((a, b) => a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1);
+		} else {
+			this._itemListToShow.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+		}
+		this._isItemListSortedByNameIncrease = !this._isItemListSortedByNameIncrease;
 	}
 
 	public getClassByColor(color: Color): string {
