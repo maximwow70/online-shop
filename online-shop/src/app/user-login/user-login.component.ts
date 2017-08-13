@@ -42,11 +42,17 @@ export class UserLoginComponent implements OnInit {
 
 	public onSignInActivate(): void {
 		this._isSignInActive = true;
-		setTimeout(() => this._elementRef.nativeElement.querySelector('.user_sign_in-mail').focus());
+		let signInInputVM = this._elementRef.nativeElement.querySelector('.user_sign_in-mail');
+		if (signInInputVM){
+			setTimeout(() => signInInputVM.focus());
+		}
 	}
 	public onSignUpActivate(): void {
 		this._isSignInActive = false;
-		setTimeout(() => this._elementRef.nativeElement.querySelector('.user_sign_up-mail').focus());
+		let signUpInputVM = this._elementRef.nativeElement.querySelector('.user_sign_up-mail');
+		if (signUpInputVM){
+			setTimeout(() => signUpInputVM.focus());
+		}
 	}
 
 	public get isSignInActive(): boolean {

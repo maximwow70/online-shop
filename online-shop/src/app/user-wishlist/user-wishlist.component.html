@@ -5,37 +5,42 @@
 	<div class="user_wishlist-loading" *ngIf="!isItemListReady">
 		<loading></loading>
 	</div>
+	<div class="user_wishlist-filters" *ngIf="isItemListReady">
+		<h2 class="user_wishlist-title">Your Wishlist</h2>
+		<div class="user_wishlist-search_items">
+			<input type="text" class="user_wishlist-search_items_input" [(ngModel)]="searchItemsName" (keydown.enter)="onSearchByName()" placeholder="find by name">
+			<span class="user_wishlist-search_items_btn fa fa-search" (click)="onSearchByName()"></span>
+		</div>
+	</div>
+	<div class="user_wishlist-header" *ngIf="isItemListReady">
+		<div class="user_wishlist-item_info">
+			<span 
+				class="user_wishlist-sort_by_name"
+				(click)="onSortByName()"
+				[ngClass]="{
+					'user_wishlist-sort_by_name--sorted_by_increase': isItemListSortedByNameIncrease,
+					'user_wishlist-sort_by_name--sorted_by_decrease': !isItemListSortedByNameIncrease
+				}">
+			item</span>
+		</div><!--
+		--><div class="user_wishlist-item_colors">colors</div><!--
+		--><div class="user_wishlist-item_cost">cost</div><!--
+		--><div class="user_wishlist-item_actions">actions</div>
+	</div>
   	<div class="user_wishlist-item_list" *ngIf="isItemListReady">
-		<div class="user_wishlist-item" *ngFor="let item of itemList">
-			<div class="item item--user_wishlist">
-				<div class="item-photos">
-					<img class="item-photo" src="{{item.photosUrl[0]}}" alt="">
-				</div><!--
-				--><div class="item-info">
-					<h2 class="item-name" (click)="onItemClicked(item)">{{item.name}}</h2>
-					<!--<div class="item-color_list">
-						<div class="color-list">
-							<div class="color_list-color">
-								<div class="color color--middle color--red"></div>
-							</div>
-							<div class="color_list-color">
-								<div class="color color--middle color--white"></div>
-							</div>
-						</div>
-					</div>
-					<div class="item-size_list">
-						<div class="item-size">
-							<div class="size size--middle">xl</div>
-						</div>
-						<div class="item-size">
-							<div class="size size--middle">l</div>
-						</div>
-					</div>-->
+		<div class="user_wishlist-item" *ngFor="let item of itemListToShow">
+			<div class="user_wishlist-item_info">
+				<div class="user_wishlist-item_photos">
+					<img class="user_wishlist-item_photo" src="{{item.photosUrl[0]}}" alt="">
 				</div>
-				<div class="item-cost">$34</div>
-				<div class="item-actions">
-					<span class="item-btn item-btn--remove fa fa-close" title="remove"></span>
-				</div>
+				<h2 class="user_wishlist-item_name" (click)="onItemClicked(item)">{{item.name}}</h2>
+			</div><!--
+			--><div class="user_wishlist-item_colors">
+				<div class="color color--middle color--white"></div>
+			</div><!--
+			--><div class="user_wishlist-item_cost">$34</div><!--
+			--><div class="user_wishlist-item_actions">
+				<span class="user_wishlist-btn_remove fa fa-close"></span>
 			</div>
 		</div>
   	</div>

@@ -14,9 +14,29 @@ declare var Ps: any;
 })
 export class UserWishlistComponent implements OnInit {
 
+	private _itemList: Item[] = [];
 	private _isItemListReady = false;
 
-	private _itemList: Item[] = [];
+	private _itemListToShow: Item[] = [];
+	public searchItemsName: string = '';
+	private _isItemListSortedByNameIncrease: boolean = false;
+
+	private _updateScrollInterval: any;
+
+
+	public get itemList(): Item[] {
+		return this._itemList;
+	}
+	public get isItemListReady(): boolean {
+		return this._isItemListReady;
+	}
+
+	public get itemListToShow(): Item[] {
+		return this._itemListToShow;
+	}
+	public get isItemListSortedByNameIncrease(): boolean {
+		return this._isItemListSortedByNameIncrease;
+	}
 
 	constructor(
 		private _elementRef: ElementRef,
@@ -26,22 +46,46 @@ export class UserWishlistComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		// Ps.initialize(
-		// 	this._elementRef.nativeElement.querySelector('.user_wishlist-item_list')
-		// );
+
 
 		this._userData.getUserWishlist().subscribe(itemList => {
 			let items = [];
-			for (let item = 0; item < itemList.length; item++){
+			for (let item = 0; item < itemList.length; item++) {
 				items.push(Item.fromObject(itemList[item]));
 			}
 			this._itemList = items;
+			this._itemListToShow = this._itemList;
+			this.onSortByName();
 
 			setTimeout(
-				() => this._isItemListReady = true,
+				() => {
+					this._isItemListReady = true;
+					setTimeout(() => {
+						let itemListVM = this._elementRef.nativeElement.querySelector('.user_wishlist-item_list');
+						Ps.initialize(itemListVM);
+						this._updateScrollInterval = setInterval(() => Ps.update(itemListVM), 150);
+					});
+				},
 				2000
 			);
 		})
+	}
+	ngOnDestroy() {
+		clearInterval(this._updateScrollInterval);
+	}
+
+	public onSearchByName(): void {
+		this._itemListToShow = this._itemList.filter(i => i.name.toLowerCase().indexOf(this.searchItemsName.toLowerCase()) !== -1);
+		this._isItemListSortedByNameIncrease = false;
+		this.onSortByName();
+	}
+	public onSortByName(): void {
+		if (this._isItemListSortedByNameIncrease === true) {
+			this._itemListToShow.sort((a, b) => a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1);
+		} else {
+			this._itemListToShow.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+		}
+		this._isItemListSortedByNameIncrease = !this._isItemListSortedByNameIncrease;
 	}
 
 	public getClassByColor(color: Color): string {
@@ -53,13 +97,6 @@ export class UserWishlistComponent implements OnInit {
 
 	public onItemClicked(item: Item): void {
 		this._router.navigate(['/products', item.id]);
-	}
-
-	public get itemList(): Item[] {
-		return this._itemList;
-	}
-	public get isItemListReady(): boolean {
-		return this._isItemListReady;
 	}
 
 }
