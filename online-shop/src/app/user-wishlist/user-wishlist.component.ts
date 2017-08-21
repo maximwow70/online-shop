@@ -17,7 +17,6 @@ export class UserWishlistComponent implements OnInit {
 	private _itemList: Item[] = [];
 	private _isItemListReady = false;
 
-	private _itemListToShow: Item[] = [];
 	public searchItemsName: string = '';
 	private _isItemListSortedByNameIncrease: boolean = false;
 
@@ -31,9 +30,6 @@ export class UserWishlistComponent implements OnInit {
 		return this._isItemListReady;
 	}
 
-	public get itemListToShow(): Item[] {
-		return this._itemListToShow;
-	}
 	public get isItemListSortedByNameIncrease(): boolean {
 		return this._isItemListSortedByNameIncrease;
 	}
@@ -54,7 +50,6 @@ export class UserWishlistComponent implements OnInit {
 				items.push(Item.fromObject(itemList[item]));
 			}
 			this._itemList = items;
-			this._itemListToShow = this._itemList;
 			this.onSortByName();
 
 			setTimeout(
@@ -74,16 +69,14 @@ export class UserWishlistComponent implements OnInit {
 		clearInterval(this._updateScrollInterval);
 	}
 
-	public onSearchByName(): void {
-		this._itemListToShow = this._itemList.filter(i => i.name.toLowerCase().indexOf(this.searchItemsName.toLowerCase()) !== -1);
-		this._isItemListSortedByNameIncrease = false;
-		this.onSortByName();
+	public isItemShow(item: Item): boolean {
+		return item.name.toLowerCase().indexOf(this.searchItemsName.toLowerCase()) !== -1;
 	}
 	public onSortByName(): void {
 		if (this._isItemListSortedByNameIncrease === true) {
-			this._itemListToShow.sort((a, b) => a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1);
+			this._itemList.sort((a, b) => a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1);
 		} else {
-			this._itemListToShow.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
+			this._itemList.sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1);
 		}
 		this._isItemListSortedByNameIncrease = !this._isItemListSortedByNameIncrease;
 	}
