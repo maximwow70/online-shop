@@ -59,6 +59,10 @@
 
         &:focus{
             border-color: $color-dark_green;
+
+            & + .user_wishlist-search_items_btn{
+                color: $color-dark_green;
+            }
         }
     }
     &-search_items_btn{
@@ -67,10 +71,10 @@
         right: 10px;
         transform: translate(0%, -50%);
 
-        color: $color-dark_green;
         font-size: 14px;
 
         cursor: pointer;
+        transition: 0.3s;
     }
 
     &-header{

@@ -8,8 +8,8 @@
 	<div class="user_wishlist-filters" *ngIf="isItemListReady">
 		<h2 class="user_wishlist-title">Your Wishlist</h2>
 		<div class="user_wishlist-search_items">
-			<input type="text" class="user_wishlist-search_items_input" [(ngModel)]="searchItemsName" (keydown.enter)="onSearchByName()" placeholder="find by name">
-			<span class="user_wishlist-search_items_btn fa fa-search" (click)="onSearchByName()"></span>
+			<input type="text" class="user_wishlist-search_items_input" [(ngModel)]="searchItemsName" (ngModelChange)="onSearchByName()" placeholder="find by name">
+			<span class="user_wishlist-search_items_btn fa fa-search"></span>
 		</div>
 	</div>
 	<div class="user_wishlist-header" *ngIf="isItemListReady">
@@ -28,7 +28,7 @@
 		--><div class="user_wishlist-item_actions">actions</div>
 	</div>
   	<div class="user_wishlist-item_list" *ngIf="isItemListReady">
-		<div class="user_wishlist-item" *ngFor="let item of itemListToShow">
+		<div class="user_wishlist-item" *ngFor="let item of itemList" [hidden]="!isItemShow(item)">
 			<div class="user_wishlist-item_info">
 				<div class="user_wishlist-item_photos">
 					<img class="user_wishlist-item_photo" src="{{item.photosUrl[0]}}" alt="">
