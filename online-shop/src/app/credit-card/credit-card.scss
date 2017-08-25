@@ -1,0 +1,221 @@
+.credit_card{
+    display: inline-block;
+
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 40px rgba($color-dark_blue, 0.4);
+
+    &-title{
+        padding: 20px 50px;
+        border-bottom: 1px solid $color-light_grey; 
+
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    &-info{
+        padding: 30px 50px 50px 50px;
+    }
+
+    &-first_name{
+        display: inline-block;
+        vertical-align: top;
+        width: 220px;
+    }
+    &-first_name_label{
+        display: inline-block;
+        margin-left: 20px;
+        margin-bottom: 10px;
+
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    &-first_name_input{
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 1px solid rgba($color-dark_grey, 0.5);
+        background-color: rgba($color-dark_grey, 0.3);
+        outline: none;
+
+        color: $color-dark_blue;
+        font-size: 16px;
+
+        transition: 0.3s;
+        &:focus{
+            background-color: #FFF;
+            border-color: #FFF;
+            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2);
+        }
+    }
+
+    &-last_name{
+        margin-left: 40px;
+        display: inline-block;
+        vertical-align: top;
+        width: 220px;
+    }
+    &-last_name_label{
+        display: inline-block;
+        margin-left: 20px;
+        margin-bottom: 10px;
+
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    &-last_name_input{
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 1px solid rgba($color-dark_grey, 0.5);
+        background-color: rgba($color-dark_grey, 0.3);
+        outline: none;
+
+        color: $color-dark_blue;
+        font-size: 16px;
+
+        transition: 0.3s;
+        &:focus{
+            background-color: #FFF;
+            border-color: #FFF;
+            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2);
+        }
+    }
+
+    &-number{
+        margin: 40px 0;
+        width: 100%;
+    }
+    &-number_label{
+        display: inline-block;
+        margin-left: 20px;
+        margin-bottom: 10px;
+
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    &-number_input{
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 1px solid rgba($color-dark_grey, 0.5);
+        background-color: rgba($color-dark_grey, 0.3);
+        outline: none;
+
+        color: $color-dark_blue;
+        font-size: 16px;
+
+        transition: 0.3s;
+        &:focus{
+            background-color: #FFF;
+            border-color: #FFF;
+            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2);
+        }
+    }
+
+    &-date{
+        display: inline-block;
+        vertical-align: top;
+        width: 220px;
+    }
+    &-date_label{
+        display: block;
+        margin-left: 20px;
+        margin-bottom: 10px;
+
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    &-date_input{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        & > span{
+            color: $color-dark_grey;
+            font-size: 12px;
+        }
+    }
+    &-month_input,
+    &-year_input{
+        box-sizing: border-box;
+        width: 100px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 1px solid rgba($color-dark_grey, 0.5);
+        background-color: rgba($color-dark_grey, 0.3);
+        outline: none;
+
+        color: $color-dark_blue;
+        font-size: 16px;
+
+        transition: 0.3s;
+        &:focus{
+            background-color: #FFF;
+            border-color: #FFF;
+            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2);
+        }
+    }
+
+    &-cvv{
+        margin-left: 40px;
+        display: inline-block;
+        vertical-align: top;
+        width: 220px;
+    }
+    &-cvv_label{
+        display: block;
+        margin-left: 20px;
+        margin-right: auto;
+        margin-bottom: 10px;
+
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+    &-cvv_input{
+        box-sizing: border-box;
+        width: 100px;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 1px solid rgba($color-dark_grey, 0.5);
+        background-color: rgba($color-dark_grey, 0.3);
+        outline: none;
+
+        color: $color-dark_blue;
+        font-size: 16px;
+
+        transition: 0.3s;
+        &:focus{
+            background-color: #FFF;
+            border-color: #FFF;
+            box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2);
+        }
+    }
+
+    &-save_button{
+        margin-top: 40px;
+
+        .btn{
+            line-height: 26px;
+            width: 100%; 
+        }
+    }
+
+
+}
