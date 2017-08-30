@@ -74,6 +74,8 @@ import { UserCartCheckoutComponent } from './user-cart-checkout/user-cart-checko
 import { UserCartDeliveryComponent } from './user-cart-delivery/user-cart-delivery.component';
 import { UserCartPaymentComponent } from './user-cart-payment/user-cart-payment.component';
 import { CreditCardEditComponent } from './credit-card-edit/credit-card-edit.component';
+import { CreditCardPresetListComponent } from './credit-card-preset-list/credit-card-preset-list.component';
+import { CreditCardPresetComponent } from './credit-card-preset/credit-card-preset.component';
 
 
 const appRoutes: Routes = [
@@ -181,7 +183,9 @@ const appRoutes: Routes = [
 		UserCartCheckoutComponent,
 		UserCartDeliveryComponent,
 		UserCartPaymentComponent,
-		CreditCardEditComponent
+		CreditCardEditComponent,
+		CreditCardPresetListComponent,
+		CreditCardPresetComponent
 	],
 	imports: [
 		BrowserModule,

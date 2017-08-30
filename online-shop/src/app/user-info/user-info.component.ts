@@ -3,6 +3,7 @@ import { UserDataService } from "app/_services/user-data/user-data.service";
 import { Router } from "@angular/router";
 import { User } from "app/_model/user";
 import { CreditCard, CreditCardType } from "app/_model/credit-card";
+import { CreditCardPreset } from "app/_model/credit-card-preset";
 
 @Component({
 	selector: 'user-info',
@@ -13,6 +14,8 @@ export class UserInfoComponent implements OnInit {
 
 	private _creditCard: CreditCard = null;
 
+	private _creditCardPresetList: CreditCardPreset[] = [];
+
 	public get user(): User {
 		return this._userData.user;
 	}
@@ -20,11 +23,43 @@ export class UserInfoComponent implements OnInit {
 	public get creditCard(): CreditCard {
 		return this._creditCard;
 	}
+
+	public get creditCardPresetList(): CreditCardPreset[] {
+		return this._creditCardPresetList;
+	}
+
 	constructor(
 		private _router: Router,
 		private _userData: UserDataService
 	) { 
 		this._creditCard = new CreditCard(CreditCardType.MASTERCARD);
+
+		this._creditCardPresetList = [
+			new CreditCardPreset(
+				'My Visa',
+				new CreditCard(CreditCardType.VISA)
+			),
+			new CreditCardPreset(
+				'My MasterCard',
+				new CreditCard(CreditCardType.MASTERCARD)
+			),
+			new CreditCardPreset(
+				'Another Visa (bank Moskow-Minsk)',
+				new CreditCard(CreditCardType.VISA)
+			),
+			new CreditCardPreset(
+				'Some MasterCard',
+				new CreditCard(CreditCardType.MASTERCARD)
+			),
+			new CreditCardPreset(
+				'Some Visa (national bank)',
+				new CreditCard(CreditCardType.VISA)
+			),
+			new CreditCardPreset(
+				'Another MasterCard',
+				new CreditCard(CreditCardType.MASTERCARD)
+			)
+		];
 	}
 
 	ngOnInit() {

@@ -1,0 +1,9 @@
+<div class="credit_card_preset_list">
+	<div class="credit_card_preset_list-title">Your presets:</div>
+	<div class="credit_card_preset_list-presets">
+		<div class="credit_card_preset_list-preset" *ngFor="let preset of presetList">
+			<credit-card-preset [preset]="preset"></credit-card-preset>
+		</div>
+	</div>
+	<div class="credit_card_preset_list-add_preset_btn">Add preset</div>
+</div>
