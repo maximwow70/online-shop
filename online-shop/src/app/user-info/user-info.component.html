@@ -4,4 +4,12 @@
 	<div class="user_info-btn">
 		<button class="btn btn--dark_blue" (click)="logOut()">Log out</button>
 	</div>
+
+	<div class="user_info-preset_list">
+		<credit-card-preset-list [presetList]="creditCardPresetList"></credit-card-preset-list>
+	</div>
+
+	<div class="user_info-credit_card">
+		<credit-card-edit [creditCard]="creditCard" (onChange)="onCreditCardChange($event)" (onSave)="onCreditCardSave()"></credit-card-edit>
+	</div>
 </div>
