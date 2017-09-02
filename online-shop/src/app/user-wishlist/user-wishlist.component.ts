@@ -45,11 +45,7 @@ export class UserWishlistComponent implements OnInit {
 
 
 		this._userData.getUserWishlist().subscribe(itemList => {
-			let items = [];
-			for (let item = 0; item < itemList.length; item++) {
-				items.push(Item.fromJSON(itemList[item]));
-			}
-			this._itemList = items;
+			this._itemList = itemList;
 			this.onSortByName();
 
 			setTimeout(

@@ -45,13 +45,7 @@ export class OnlineShopComponent implements OnInit {
 
 		this._itemList.getItemList().subscribe(
 			itemDataList => {
-				let currenItemDataList = [];
-				for (let i = 0; i < itemDataList.length; i++) {
-					currenItemDataList.push(
-						ItemDataPresentation.fromJSON(itemDataList[i])
-					);
-				}
-				that._onlineShop.setItemList(currenItemDataList);
+				that._onlineShop.setItemList(itemDataList);
 			}
 		);
 	}
@@ -64,14 +58,8 @@ export class OnlineShopComponent implements OnInit {
 			colors,
 			sizes,
 			cost
-		).subscribe(itemDataList => {
-			let currenItemDataList = [];
-			for (let i = 0; i < itemDataList.length; i++) {
-				currenItemDataList.push(
-					ItemDataPresentation.fromJSON(itemDataList[i])
-				);
-			}
-			that._onlineShop.setItemList(currenItemDataList);
+		).subscribe(itemList => {
+			that._onlineShop.setItemList(itemList);
 		});
 	}
 

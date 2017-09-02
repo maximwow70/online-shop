@@ -40,19 +40,11 @@ export class HeaderComponent implements OnInit {
 		private _userData: UserDataService
 	) {
 		this._userData.getUserWishlist().subscribe(itemList => {
-			let items: Item[] = [];
-			for (let item = 0; item < itemList.length; item++){
-				items.push(Item.fromJSON(itemList[item]));
-			}
-			this._wishlistItems = items;
+			this._wishlistItems = itemList;
 		});
 
 		this._userData.getUserCart().subscribe(itemList => {
-			let items: Item[] = [];
-			for (let item = 0; item < itemList.length; item++){
-				items.push(Item.fromJSON(itemList[item]));
-			}
-			this._cartItems = items;
+			this._cartItems = itemList;
 		})
 	}
 

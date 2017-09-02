@@ -93,11 +93,11 @@ export class UserDataService {
 
 	public getUserWishlist(): Observable<Item[]> {
 		return this._http.get('assets/GetUserWishlist.json')
-			.map(response => response.json());
+			.map(response => response.json().map(i => Item.fromJSON(i)));
 	}
 	public getUserCart(): Observable<Item[]> {
 		return this._http.get('assets/GetUserCart.json')
-			.map(response => response.json());
+			.map(response => response.json().map(i => Item.fromJSON(i)));
 	}
 
 

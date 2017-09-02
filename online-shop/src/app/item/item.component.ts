@@ -64,7 +64,7 @@ export class ItemComponent implements OnInit {
 		let id = this._activatedRoute.snapshot.paramMap.get('id');
 
 		this._itemService.getItem(id).subscribe(itemData => {
-			this._itemData = ItemData.fromJSON(itemData);
+			this._itemData = itemData;
 			this._selectedColor = this.availableColors[0];
 			this._selectedSize = this.availableSizes[0];
 			this._selectedCount = this.availableCount > 0 
