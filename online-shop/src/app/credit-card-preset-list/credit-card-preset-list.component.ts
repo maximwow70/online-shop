@@ -75,11 +75,12 @@ export class CreditCardPresetListComponent implements OnInit {
 
 
 	public savePreset(preset: CreditCardPreset): void {
-		if (this.presetList.some(p => p.id === preset.id)) {
-			this.editPreset(preset);
-		} else {
-			this.addPreset();
-		}
+		console.log(preset);
+		// if (this.presetList.some(p => p.id === preset.id)) {
+		// 	this.editPreset(preset);
+		// } else {
+		// 	this.addPreset();
+		// }
 	}
 
 }
