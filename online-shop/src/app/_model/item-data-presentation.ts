@@ -1,5 +1,6 @@
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
+import { ItemData } from "app/_model/item-data";
 
 export class ItemDataPresentation {
 
@@ -10,14 +11,6 @@ export class ItemDataPresentation {
     private _cost: number;
 
     private _isNew: boolean;
-
-    constructor(item: Item, colors: Color[], sizes: string[], cost: number, isNew: boolean) {
-        this._item = item;
-        this._colors = colors;
-        this._sizes = sizes;
-        this._cost = cost;
-        this._isNew = isNew;
-    }
 
     public get item(): Item {
         return this._item;
@@ -35,17 +28,19 @@ export class ItemDataPresentation {
         return this._isNew;
     }
 
-    public static fromObject(itemData: any): ItemDataPresentation {
-        let item = Item.fromObject(itemData.item);
-        let colors = [];
-        for (let  i = 0; i < itemData.colors.length; i++){
-            colors.push(
-                new Color(itemData.colors[i])
-            );
-        }
+    constructor(item: Item, colors: Color[], sizes: string[], cost: number, isNew: boolean) {
+        this._item = item;
+        this._colors = colors;
+        this._sizes = sizes;
+        this._cost = cost;
+        this._isNew = isNew;
+    }
+
+
+    public static fromJSON(itemData: any): ItemDataPresentation {
         return new ItemDataPresentation(
-            item,
-            colors,
+            Item.fromJSON(itemData.item),
+            itemData.colors.map(colorName => new Color(colorName)),
             itemData.sizes,
             itemData.cost,
             itemData.isNew

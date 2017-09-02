@@ -20,15 +20,12 @@ export class ItemListService {
 		// return this._http.get('GetItemList', '')
 		// 	.map(response => response.json());
 		return this._http.get('assets/GetItemList.json', '')
-			.map(response => response.json());
+			.map(response => response.json().map(itemData => ItemDataPresentation.fromJSON(itemData)));
 	}
 
 	public getItemListByParams(name: string, colors: Color[], sizes: string[], cost: { min: number, max: number })
 		: Observable<ItemDataPresentation[]> {
-		let colorNames: any = [];
-		for (let color = 0; color < colors.length; color++) {
-			colorNames.push(colors[color].name);
-		}
+		let colorNames: any = colors.map(c => c.name);
 
 		let params = 'name=' + name +
 			'&colors=' + JSON.stringify(colorNames) +
@@ -36,10 +33,8 @@ export class ItemListService {
 			'&minCost=' + JSON.stringify(cost.min) + 
 			'&maxCost=' + JSON.stringify(cost.max);
 
-		console.log(params);
-
 		return this._http.get('SearchItemList?' + params, '')
-			.map(response => response.json());
+			.map(response => response.json().map(itemData => ItemDataPresentation.fromJSON(itemData)));
 	}
 
 }

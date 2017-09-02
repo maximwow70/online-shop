@@ -13,6 +13,22 @@ export class UserDataService {
 
 	private _activeTheme: UserDashboardTheme = null;
 
+	
+	public get user(): User {
+		return this._user;
+	}
+	public get isLogIn(): boolean {
+		return this._isLogIn;
+	}
+	public get isLogInObservable(): Observable<boolean> {
+		return;
+	}
+
+	public get activeTheme(): UserDashboardTheme {
+		return this._activeTheme;
+	}
+	
+
 	constructor(
 		private _http: Http
 	) {
@@ -69,7 +85,7 @@ export class UserDataService {
 		this._http.get('assets/GetUserData.json')
 			.map(response => response.json())
 			.subscribe(u => {
-				this._user = User.fromJSON(JSON.stringify(u));
+				this._user = User.fromJSON(u);
 				// this._user = undefined; // timing
 				this._isLogIn = this._user ? true : false;
 			});
@@ -77,11 +93,11 @@ export class UserDataService {
 
 	public getUserWishlist(): Observable<Item[]> {
 		return this._http.get('assets/GetUserWishlist.json')
-			.map(response => response.json());
+			.map(response => response.json().map(i => Item.fromJSON(i)));
 	}
 	public getUserCart(): Observable<Item[]> {
 		return this._http.get('assets/GetUserCart.json')
-			.map(response => response.json());
+			.map(response => response.json().map(i => Item.fromJSON(i)));
 	}
 
 
@@ -89,17 +105,4 @@ export class UserDataService {
 		this._activeTheme = theme;
 	}
 
-	public get user(): User {
-		return this._user;
-	}
-	public get isLogIn(): boolean {
-		return this._isLogIn;
-	}
-	public get isLogInObservable(): Observable<boolean> {
-		return
-	}
-
-	public get activeTheme(): UserDashboardTheme {
-		return this._activeTheme;
-	}
 }

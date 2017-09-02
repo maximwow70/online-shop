@@ -61,12 +61,7 @@ export class UserCartComponent implements OnInit {
 
 	ngOnInit() {
 		this._userData.getUserCart().subscribe(itemList => {
-			let items = [];
-			for (let item = 0; item < itemList.length; item++) {
-				items.push(Item.fromObject(itemList[item]));
-			}
-			this._itemList = items;
-
+			this._itemList = itemList;
 			setTimeout(
 				() => this._isItemListReady = true,
 				2000

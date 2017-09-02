@@ -7,6 +7,10 @@ export class OnlineShop {
 
     private _itemDataList: ItemDataPresentation[];
 
+    public get itemList(): ItemDataPresentation[] {
+        return this._itemDataList;
+    }
+
     constructor() {
         this._itemDataList = [];
     }
@@ -17,10 +21,6 @@ export class OnlineShop {
     
     public setItemList(itemDataList: ItemDataPresentation[]): void {
         this._itemDataList = itemDataList;
-    }
-
-    public get itemList(): ItemDataPresentation[] {
-        return this._itemDataList;
     }
 
 }
