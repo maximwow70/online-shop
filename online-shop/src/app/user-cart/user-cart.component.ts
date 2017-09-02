@@ -63,7 +63,7 @@ export class UserCartComponent implements OnInit {
 		this._userData.getUserCart().subscribe(itemList => {
 			let items = [];
 			for (let item = 0; item < itemList.length; item++) {
-				items.push(Item.fromObject(itemList[item]));
+				items.push(Item.fromJSON(itemList[item]));
 			}
 			this._itemList = items;
 

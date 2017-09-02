@@ -6,7 +6,6 @@ export class ItemCountData {
     private _size: string;
     private _count: number;
 
-
     public get color(): Color {
         return this._color;
     }

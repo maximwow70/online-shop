@@ -48,7 +48,7 @@ export class OnlineShopComponent implements OnInit {
 				let currenItemDataList = [];
 				for (let i = 0; i < itemDataList.length; i++) {
 					currenItemDataList.push(
-						ItemDataPresentation.fromObject(itemDataList[i])
+						ItemDataPresentation.fromJSON(itemDataList[i])
 					);
 				}
 				that._onlineShop.setItemList(currenItemDataList);
@@ -68,7 +68,7 @@ export class OnlineShopComponent implements OnInit {
 			let currenItemDataList = [];
 			for (let i = 0; i < itemDataList.length; i++) {
 				currenItemDataList.push(
-					ItemDataPresentation.fromObject(itemDataList[i])
+					ItemDataPresentation.fromJSON(itemDataList[i])
 				);
 			}
 			that._onlineShop.setItemList(currenItemDataList);

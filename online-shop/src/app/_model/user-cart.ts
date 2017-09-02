@@ -20,11 +20,11 @@ export class UserCart {
 
     public static fromJSON(json: ItemData[]): UserCart {
         return new UserCart(
-            json.map( i => ItemData.fromObject(i))
+            json.map( i => ItemData.fromJSON(i))
         );
     }
 
-    public static toJSON(userCart: UserCart): string {
-        return JSON.stringify(userCart);
+    public static toJSON(userCart: UserCart): any {
+        return userCart;
     }
 }

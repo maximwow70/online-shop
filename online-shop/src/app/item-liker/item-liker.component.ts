@@ -62,7 +62,7 @@ export class ItemLikerComponent implements OnInit {
 			itemDataList => {
 				let itemList = [];
 				for (let i = 0; i < itemDataList.length; i++) {
-					itemList.push(ItemDataPresentation.fromObject(itemDataList[i]));
+					itemList.push(ItemDataPresentation.fromJSON(itemDataList[i]));
 				}
 				that._itemList = itemList;
 
