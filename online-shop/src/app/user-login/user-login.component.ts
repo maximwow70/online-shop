@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { UserDataService } from "app/_services/user-data/user-data.service";
 import { ActivatedRoute, Router } from "@angular/router";
 
@@ -17,11 +17,15 @@ export class UserLoginComponent implements OnInit {
 
 	constructor(
 		private _router: Router,
-		private _userData: UserDataService
+		private _userData: UserDataService,
+		private _elementRef: ElementRef
 	) { }
 
 	ngOnInit() {
 		
+	}
+	ngAfterViewInit() {
+		this.onSignInActivate();
 	}
 
 	public onUserSignIn(event: Event): void {
@@ -38,9 +42,17 @@ export class UserLoginComponent implements OnInit {
 
 	public onSignInActivate(): void {
 		this._isSignInActive = true;
+		let signInInputVM = this._elementRef.nativeElement.querySelector('.user_sign_in-mail');
+		if (signInInputVM){
+			setTimeout(() => signInInputVM.focus());
+		}
 	}
 	public onSignUpActivate(): void {
 		this._isSignInActive = false;
+		let signUpInputVM = this._elementRef.nativeElement.querySelector('.user_sign_up-mail');
+		if (signUpInputVM){
+			setTimeout(() => signUpInputVM.focus());
+		}
 	}
 
 	public get isSignInActive(): boolean {

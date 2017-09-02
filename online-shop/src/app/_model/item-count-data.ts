@@ -6,12 +6,6 @@ export class ItemCountData {
     private _size: string;
     private _count: number;
 
-    constructor(color: Color, size: string, count: number) {
-        this._color = color;
-        this._size = size;
-        this._count = (this._count < 1) ? 1 : count;
-    }
-
     public get color(): Color {
         return this._color;
     }
@@ -20,6 +14,12 @@ export class ItemCountData {
     }
     public get count(): number {
         return this._count;
+    }
+    
+    constructor(color: Color, size: string, count: number) {
+        this._color = color;
+        this._size = size;
+        this._count = (this._count < 1) ? 1 : count;
     }
 
     public static fromObject(obj: any): ItemCountData {

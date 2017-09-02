@@ -2,7 +2,8 @@
     display: inline-block;
 
     box-sizing: border-box;
-    width: 320px;
+    width: 600px;
+    padding: 0 70px;
     border-radius: 5px;
     background-color: #FFF;
 
@@ -23,16 +24,31 @@
         text-transform: uppercase;
     }
 
+
+    &-password_container{
+        margin-bottom: 30px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .user_sign_up-data_input{
+            margin: 0;
+            width: 200px;
+        }
+    }
     &-data_input{
         position: relative;
-        margin: 0 20px 30px 20px;
+        margin-bottom: 30px;
 
         color: rgba($color-dark_blue, 0.7);
     }
     &-data_input_icon{
         position: absolute;
         top: 50%;
-        left: 20px;
+        left: 25px;
         transform: translate(-50%, -50%);
 
         vertical-align: top;
@@ -41,11 +57,11 @@
         box-sizing: border-box;
         width: 100%;  
         height: 40px;
-        padding: 0px 5px 0px 35px;
+        padding: 0px 5px 0px 40px;
 
         background-color: $color-light_grey;
         border: 1px solid rgba($color-dark_grey, 0.6);
-        border-radius: 5px;
+        border-radius: 20px;
         outline: none;
 
         line-height: 40px;
@@ -68,18 +84,37 @@
     }
 
     &-description {
-        margin: 0 20px;
+        margin-bottom: 40px;
 
         display: inline-block;
+        padding: 0 70px;
 
-        color: rgba($color-dark_grey, 0.7);
+        line-height: 1.5em;
+        color: rgba($color-dark_blue, 0.8);
+
+        button{
+            background: none;
+            outline: none;
+            
+            color: inherit;
+            font: inherit;
+            font-weight: bold;
+            text-decoration: underline;
+
+            transition: 0.3s;
+            cursor: pointer;
+            &:focus,
+            &:hover{
+                color: $color-blue;
+            }
+        }
     }
 
     &-devider{
         position: relative;
-        margin: 30px 20px;
+        margin: 30px 0px;
         
-        color: rgba($color-dark_grey, 0.7);
+        color: rgba($color-dark_grey, 0.8);
         font-size: 14px;
 
         &:before, &:after{
@@ -92,7 +127,7 @@
             display: inline-block;
             width: 40%;
             height: 1px;
-            background-color: rgba($color-dark_grey, 0.7);
+            background-color: rgba($color-dark_grey, 0.8);
         }
         &:before {
             left: 0;
@@ -102,40 +137,21 @@
         }
     }
     
-    &-google_login{
-        margin-bottom: 50px;
-
-        height: 40px;
-        width: 240px;
-        border-radius: 5px;
-        background-color: $color-dark_red;
-        outline: none;
-        
-        line-height: 40px;
-        color: #FFF;
-        font-family: $font-stack--magic_number;
-        font-size: 20px;
-        //text-transform: uppercase;
-
-        cursor: pointer;
-    }
-    &-google_login_icon{
-        margin-right: 5px;
-    }
 
     &-btn{
         display: inline-block;
         vertical-align: top;
 
-        width: 50%;
-        height: 60px;
+        width: 200px;
+        height: 40px;
         background-color: rgba($color-dark_grey, 0.8);
+        border-radius: 20px;
         outline: none;
 
-        line-height: 60px;
+        line-height: 40px;
         color: #FFF;
         font-family: $font-stack--magic_number;
-        font-size: 20px;
+        font-size: 14px;
         text-transform: uppercase;
 
         cursor: pointer;
@@ -146,16 +162,50 @@
         }
 
         &--submit {
-            background-color: $color-dark_blue;
+            width: 100%;
+            background-color: $color-blue;
 
             &:hover{
-                background-color: $color-dark_blue;
+                background-color: $color-blue;
+            }
+            &:focus{
+                box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2);
+            }
+        }
+        &--sign_in{
+            margin-bottom: 30px;
+            background-color: $color-blue;
+
+            color: #FFF;
+
+            &:hover{
+                background-color: $color-blue;
+            }
+            &:focus{
+                box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.4);
             }
         }
         &--disabled {
             background-color: $color-dark_red;
             &:hover{
                 background-color: $color-dark_red;
+            }
+        }
+    }
+    &-social{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        
+        padding: 10px 0 30px 0;
+    }
+    &-twitter_login,
+    &-facebook_login{
+        .btn{
+            &:focus{
+                box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.4);
             }
         }
     }

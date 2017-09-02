@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppComponent } from './app.component';
 
@@ -72,6 +73,10 @@ import { UserCartOrderComponent } from './user-cart-order/user-cart-order.compon
 import { UserCartCheckoutComponent } from './user-cart-checkout/user-cart-checkout.component';
 import { UserCartDeliveryComponent } from './user-cart-delivery/user-cart-delivery.component';
 import { UserCartPaymentComponent } from './user-cart-payment/user-cart-payment.component';
+import { CreditCardEditComponent } from './credit-card-edit/credit-card-edit.component';
+import { CreditCardPresetListComponent } from './credit-card-preset-list/credit-card-preset-list.component';
+import { CreditCardPresetComponent } from './credit-card-preset/credit-card-preset.component';
+import { CreditCardPresetEditComponent } from './credit-card-preset-edit/credit-card-preset-edit.component';
 
 
 const appRoutes: Routes = [
@@ -178,7 +183,11 @@ const appRoutes: Routes = [
 		UserCartOrderComponent,
 		UserCartCheckoutComponent,
 		UserCartDeliveryComponent,
-		UserCartPaymentComponent
+		UserCartPaymentComponent,
+		CreditCardEditComponent,
+		CreditCardPresetListComponent,
+		CreditCardPresetComponent,
+		CreditCardPresetEditComponent
 	],
 	imports: [
 		BrowserModule,
@@ -188,7 +197,8 @@ const appRoutes: Routes = [
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
 		}),
-		ChartsModule
+		ChartsModule,
+		TextMaskModule
 	],
 	providers: [
 		ItemColorService,

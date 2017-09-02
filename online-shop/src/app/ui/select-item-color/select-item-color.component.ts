@@ -31,7 +31,7 @@ export class SelectItemColorComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this._selectedColor = this.colors[0];
+		this._selectedColor = this.colors.length > 0 ? this.colors[0] : null;
 		this.selectedColor.emit(this._selectedColor);
 
 		this._colorSelectVM = this._elementRef.nativeElement.querySelector('.select--color');

@@ -34,6 +34,30 @@ $color-light_grey: #F0F2F7;
             width: 6px !important;
         }
     }
+    .ps-scrollbar-x-rail{
+        height: 10px !important;
+        background: none !important;
+        .ps-scrollbar-x{
+            height: 6px !important;
+        }
+    }
+}
+
+@mixin placeholder-color($color) {
+    &::-webkit-input-placeholder { /* Chrome */ 
+        color: $color; 
+    } 
+    &:-ms-input-placeholder { /* IE 10+ */ 
+        color: $color; 
+    } 
+    &::-moz-placeholder { /* Firefox 19+ */ 
+        color: $color; 
+        opacity: 1; 
+    } 
+    &:-moz-placeholder { /* Firefox 4 - 18 */ 
+        color: $color; 
+        opacity: 1; 
+    }
 }
 
 @mixin user-dashboard-light-theme() {

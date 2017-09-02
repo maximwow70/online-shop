@@ -1,0 +1,46 @@
+.credit_card_preset_list{
+    display: inline-block;
+    
+    box-sizing: border-box;
+    width: 320px;
+
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 40px rgba($color-dark_blue, 0.4);
+
+    &-title{
+        padding: 0 20px;
+        border-bottom: 1px solid $color-light_grey;
+
+        line-height: 60px;
+        color: $color-dark_blue;
+        font-family: $font-stack--bold;
+        text-transform: uppercase;
+    }
+    &-presets{
+        position: relative;
+        max-height: 60px * 4 + 3px;
+        @include ps-const-width();
+    }
+    &-preset{
+        padding: 20px;
+        &:not(:last-child) {
+            border-bottom: 1px solid $color-light_grey;
+        }
+    }
+
+    &-add_preset_btn{
+        padding: 0 20px;
+        background-color: $color-dark_green;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        line-height: 60px;
+        color: #FFF;
+        font-family: $font-stack--bold;
+        text-align: center;
+        text-transform: uppercase;
+
+        cursor: pointer;
+    }
+}

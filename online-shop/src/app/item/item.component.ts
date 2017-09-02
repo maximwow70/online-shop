@@ -14,44 +14,12 @@ import { ItemData } from "app/_model/item-data";
 })
 export class ItemComponent implements OnInit {
 
-	private _itemData: ItemData;
+	private _itemData: ItemData = null;
 
-	private _selectedColor: Color;
-	private _selectedSize: string;
-	private _selectedCount: number;
+	private _selectedColor: Color = null;
+	private _selectedSize: string = null;
+	private _selectedCount: number = null;
 
-	constructor(
-		private _elementRef: ElementRef,
-		private _activatedRoute: ActivatedRoute,
-		private _itemService: ItemService
-	) { 
-		this._selectedCount = 1;
-	}
-
-	ngOnInit() {
-		let id = this._activatedRoute.snapshot.paramMap.get('id');
-
-		this._itemService.getItem(id).subscribe(
-			itemData => this._itemData = ItemData.fromObject(itemData)
-		);
-	}
-	
-	public addToCard(): void{
-		//console.log(this._selectColor.getData() + " / " + this._selectSize.getData());
-	}
-	
-	public onColorSelected(color): void {
-		this._selectedColor = color;
-		this._selectedSize = this._itemData.getSizes(color)[0];
-		this._selectedCount = Math.min(this.availableCount, this._selectedCount);
-	}
-	public onSizeSelected(size): void {
-		this._selectedSize = size;
-		this._selectedCount = Math.min(this.availableCount, this._selectedCount);
-	}
-	public onCountChange(count): void {
-		this._selectedCount = count;
-	}
 
 	public get itemData(): ItemData {
 		return this._itemData;
@@ -78,9 +46,48 @@ export class ItemComponent implements OnInit {
 	}
 
 	public get canAddToCard(): boolean {
-		return (this._selectedCount > 0) && 
-			(this._selectedColor != undefined) && 
-			(this._selectedSize != undefined);
+		return (this._selectedCount > 0) &&
+			(this._selectedColor !== null) &&
+			(this._selectedSize !== null);
+	}
+
+
+	constructor(
+		private _elementRef: ElementRef,
+		private _activatedRoute: ActivatedRoute,
+		private _itemService: ItemService
+	) {
+
+	}
+
+	ngOnInit() {
+		let id = this._activatedRoute.snapshot.paramMap.get('id');
+
+		this._itemService.getItem(id).subscribe(itemData => {
+			this._itemData = itemData;
+			this._selectedColor = this.availableColors[0];
+			this._selectedSize = this.availableSizes[0];
+			this._selectedCount = this.availableCount > 0 
+				? 1
+				: 0;
+		});
+	}
+
+	public addToCard(): void {
+		//console.log(this._selectColor.getData() + " / " + this._selectSize.getData());
+	}
+
+	public onColorSelected(color): void {
+		this._selectedColor = color;
+		this._selectedSize = this._itemData.getSizes(color)[0];
+		this._selectedCount = Math.min(this.availableCount, this._selectedCount);
+	}
+	public onSizeSelected(size): void {
+		this._selectedSize = size;
+		this._selectedCount = Math.min(this.availableCount, this._selectedCount);
+	}
+	public onCountChange(count): void {
+		this._selectedCount = count;
 	}
 
 }
