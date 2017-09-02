@@ -37,27 +37,33 @@ export class UserInfoComponent implements OnInit {
 		this._creditCardPresetList = [
 			new CreditCardPreset(
 				'My Visa',
-				new CreditCard(CreditCardType.VISA)
+				new CreditCard(CreditCardType.VISA),
+				0
 			),
 			new CreditCardPreset(
 				'My MasterCard',
-				new CreditCard(CreditCardType.MASTERCARD)
+				new CreditCard(CreditCardType.MASTERCARD),
+				1
 			),
 			new CreditCardPreset(
 				'Another Visa (bank Moskow-Minsk)',
-				new CreditCard(CreditCardType.VISA)
+				new CreditCard(CreditCardType.VISA),
+				2
 			),
 			new CreditCardPreset(
 				'Some MasterCard',
-				new CreditCard(CreditCardType.MASTERCARD)
+				new CreditCard(CreditCardType.MASTERCARD),
+				3
 			),
 			new CreditCardPreset(
 				'Some Visa (national bank)',
-				new CreditCard(CreditCardType.VISA)
+				new CreditCard(CreditCardType.VISA),
+				4
 			),
 			new CreditCardPreset(
 				'Another MasterCard',
-				new CreditCard(CreditCardType.MASTERCARD)
+				new CreditCard(CreditCardType.MASTERCARD),
+				5
 			)
 		];
 	}

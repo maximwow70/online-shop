@@ -74,7 +74,7 @@ export class CreditCard {
     }
     public set cvv(cvv: number) {
         this._cvv = cvv > 999 || cvv < 0
-            ? 0
+            ? null
             : cvv;
     }
 

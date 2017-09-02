@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { CreditCard } from "app/_model/credit-card";
 import { CreditCardPreset } from "app/_model/credit-card-preset";
 
@@ -11,9 +11,15 @@ export class CreditCardPresetComponent implements OnInit {
 
 	@Input() preset: CreditCardPreset = null;
 
+	@Output() onEdit: EventEmitter<void> = new EventEmitter<void>();
+
 	constructor() { }
 
 	ngOnInit() {
+	}
+
+	public edit(): void {
+		this.onEdit.emit();
 	}
 
 }
