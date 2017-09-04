@@ -58,5 +58,10 @@ public class Feature implements java.io.Serializable{
     public void setName(FeatureList name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "{" +"key=" + key + ", value=" + value + '}';
+    }
     
 }

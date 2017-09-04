@@ -32,7 +32,7 @@ public class FeatureList implements java.io.Serializable{
         this.id = id;
     }
 
-    @Column(name = "name", unique = true, nullable = false)
+    @Column(name = "name", unique = false, nullable = false)
     public String getName() {
         return name;
     }
@@ -58,6 +58,11 @@ public class FeatureList implements java.io.Serializable{
 
     public void setOwner(Item owner) {
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + "name=" + name + ", features=" + features + '}';
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package entity;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -17,7 +18,7 @@ import javax.persistence.*;
 public class Color implements java.io.Serializable{
     private Long id;
     private String color;
-    private Set<Item> items;
+    private Set<ItemData> items = new HashSet<ItemData>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,22 +40,18 @@ public class Color implements java.io.Serializable{
         this.color = color;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable( name = "colors",
-            joinColumns = {
-                @JoinColumn(name = "color")
-            },
-            inverseJoinColumns = {
-                @JoinColumn(name = "item")
-            }
-    )
-    public Set<Item> getItems() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "color", cascade = CascadeType.ALL)
+    public Set<ItemData> getItems() {
         return items;
     }
 
-    public void setItems(Set<Item> items) {
+    public void setItems(Set<ItemData> items) {
         this.items = items;
     }
-    
+
+    @Override
+    public String toString() {
+        return '{' + "id=" + id + ", color=" + color + '}';
+    }
     
 }

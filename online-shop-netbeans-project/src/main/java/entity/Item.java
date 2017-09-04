@@ -6,6 +6,7 @@
 package entity;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -21,12 +22,9 @@ public class Item implements java.io.Serializable{
     private String article;
     private String name;
     private String description;
-    private Set<Photo> photos = new HashSet<Photo>();
-    private Set<Color> colors = new HashSet<Color>();
-    private Set<Size> sizes = new HashSet<Size>();
-    private Set<FeatureList> featureLists = new HashSet<FeatureList>();
-    private int count;
-    private int price;
+    private Set<Photo> photos = new LinkedHashSet<Photo>();
+    private Set<FeatureList> featureLists = new LinkedHashSet<FeatureList>();
+    private Set<ItemData> itemData = new LinkedHashSet<ItemData>();
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,40 +73,6 @@ public class Item implements java.io.Serializable{
         this.photos = photos;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable( name = "colors",
-            joinColumns = {
-                @JoinColumn(name = "item")
-            },
-            inverseJoinColumns = {
-                @JoinColumn(name = "color")
-            }
-    )
-    public Set<Color> getColors() {
-        return colors;
-    }
-
-    public void setColors(Set<Color> colors) {
-        this.colors = colors;
-    }
-    
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable( name = "sizes",
-            joinColumns = {
-                @JoinColumn(name = "item")
-            },
-            inverseJoinColumns = {
-                @JoinColumn(name = "size")
-            }
-    )
-    public Set<Size> getSizes() {
-        return sizes;
-    }
-
-    public void setSizes(Set<Size> sizes) {
-        this.sizes = sizes;
-    }
-    
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL)
     public Set<FeatureList> getFeatureLists() {
         return featureLists;
@@ -118,23 +82,18 @@ public class Item implements java.io.Serializable{
         this.featureLists = featureLists;
     }
 
-    @Column(name = "count", unique = false, nullable = false)
-    public int getCount() {
-        return count;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL)
+    public Set<ItemData> getItemData() {
+        return itemData;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setItemData(Set<ItemData> itemCountData) {
+        this.itemData = itemCountData;
     }
 
-    @Column(name = "price", nullable = false)
-    public int getPrice() {
-        return price;
+    @Override
+    public String toString() {
+        return "{" + "id=" + id + ", article=" + article + ", name=" + name + ", description=" + description + ", photos=" + photos + ", featureLists=" + featureLists + ", itemCountData=" + itemData + '}';
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-    
-    
 }

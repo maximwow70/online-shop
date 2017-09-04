@@ -48,5 +48,10 @@ public class Photo implements java.io.Serializable{
     public void setOwner(Item owner) {
         this.owner = owner;
     }
+
+    @Override
+    public String toString() {
+        return Photo;
+    }
     
 }

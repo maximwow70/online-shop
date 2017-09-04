@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Size implements java.io.Serializable{
     private long id;
     private String size;
-    private Set<Item> items = new HashSet<Item>();
+    private Set<ItemData> items = new HashSet<ItemData>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,22 +40,18 @@ public class Size implements java.io.Serializable{
         this.size = size;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable( name = "sizes",
-            joinColumns = {
-                @JoinColumn(name = "size")
-            },
-            inverseJoinColumns = {
-                @JoinColumn(name = "item")
-            }
-    )
-    public Set<Item> getItems() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "size", cascade = CascadeType.ALL)
+    public Set<ItemData> getItems() {
         return items;
     }
 
-    public void setItems(Set<Item> items) {
+    public void setItems(Set<ItemData> items) {
         this.items = items;
     }
-    
+
+    @Override
+    public String toString() {
+        return "{" + "id=" + id + ", size=" + size + '}';
+    }
     
 }
