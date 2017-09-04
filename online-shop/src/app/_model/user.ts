@@ -29,15 +29,20 @@ export class User {
     }
 
 
-    public static fromJSON(user: any): User {
+    public static fromJSON(json: any): User {
         return new User(
-            user.id,
-            user.name,
-            user.mail,
-            user.password
+            json.id,
+            json.name,
+            json.mail,
+            json.password
         );
     }
     public static toJSON(user: User): any {
-        return user;
+        return {
+            id: user.id,
+            name: user.name,
+            mail: user.mail,
+            password: user.password
+        };
     }
 }

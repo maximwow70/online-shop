@@ -60,15 +60,20 @@ export class ItemData {
     }
 
 
-    public static toJSON(item): any {
-        return item;
+    public static toJSON(itemData: ItemData): any {
+        return {
+            item: Item.toJSON(itemData.item),
+            itemCountDataList: itemData.itemCountDataList.map(icd => ItemCountData.toJSON(icd)),
+            cost: itemData.cost,
+            isNew: itemData.isNew
+        };
     }
-    public static fromJSON(itemData: any): ItemData {
+    public static fromJSON(json: any): ItemData {
         return new ItemData(
-            Item.fromJSON(itemData.item),
-            itemData.itemCountDataList.map(icd => ItemCountData.fromJSON(icd)),
-            itemData.cost,
-            itemData.isNew
+            Item.fromJSON(json.item),
+            json.itemCountDataList.map(icd => ItemCountData.fromJSON(icd)),
+            json.cost,
+            json.isNew
         );
     }
 }

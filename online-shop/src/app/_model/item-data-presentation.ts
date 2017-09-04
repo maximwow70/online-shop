@@ -38,6 +38,16 @@ export class ItemDataPresentation {
     }
 
 
+
+    public static toJson(itemData: ItemDataPresentation): any{
+        return {
+            item: Item.toJSON(itemData.item),
+            colors: itemData.colors.map(c => Color.toJSON(c)),
+            sizes: itemData.sizes.map(s => Size.toJSON(s)),
+            cost: itemData.cost,
+            isNew: itemData.isNew 
+        }
+    }
     public static fromJSON(itemData: any): ItemDataPresentation {
         return new ItemDataPresentation(
             Item.fromJSON(itemData.item),
