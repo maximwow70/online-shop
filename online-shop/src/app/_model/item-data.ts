@@ -1,6 +1,7 @@
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
 import { ItemCountData } from "app/_model/item-count-data";
+import { Size } from "app/_model/size";
 
 export class ItemData {
 
@@ -45,29 +46,29 @@ export class ItemData {
         }
         return currentColors;
     }
-    public getSizes(color: Color): string[] {
+    public getSizes(color: Color): Size[] {
         return this._itemCountDataList
             .filter(data => data.color.name === color.name)
             .map(dl => dl.size);
     }
-    public getCount(color: Color, size: string): number {
+    public getCount(color: Color, size: Size): number {
         let itemData = this._itemCountDataList.find(data =>
-            data.color.name === color.name &&
-            data.size === size
+            data.color.equals(color)
+            && data.size.equals(size)
         );
         return itemData ? itemData.count : null;
     }
 
 
+    public static toJSON(item): any {
+        return item;
+    }
     public static fromJSON(itemData: any): ItemData {
         return new ItemData(
             Item.fromJSON(itemData.item),
-            itemData.itemCountDataList.map(icd => ItemCountData.fromObject(icd)),
+            itemData.itemCountDataList.map(icd => ItemCountData.fromJSON(icd)),
             itemData.cost,
             itemData.isNew
         );
-    }
-    public static toJSON(item): any {
-        return item;
     }
 }

@@ -6,6 +6,7 @@ import { Select } from "app/ui/select/select";
 import { SelectNumber } from "app/ui/select-number/select-number";
 import { Color } from "app/_model/color";
 import { ItemData } from "app/_model/item-data";
+import { Size } from "app/_model/size";
 
 @Component({
 	selector: 'item',
@@ -17,7 +18,7 @@ export class ItemComponent implements OnInit {
 	private _itemData: ItemData = null;
 
 	private _selectedColor: Color = null;
-	private _selectedSize: string = null;
+	private _selectedSize: Size = null;
 	private _selectedCount: number = null;
 
 
@@ -28,7 +29,7 @@ export class ItemComponent implements OnInit {
 	public get availableColors(): Color[] {
 		return this._itemData.getColors();
 	}
-	public get availableSizes(): string[] {
+	public get availableSizes(): Size[] {
 		return this._itemData.getSizes(this._selectedColor);
 	}
 	public get availableCount(): number {
@@ -38,7 +39,7 @@ export class ItemComponent implements OnInit {
 	public get selectedColor(): Color {
 		return this._selectedColor;
 	}
-	public get selectedSize(): string {
+	public get selectedSize(): Size {
 		return this._selectedSize;
 	}
 	public get selectedCount(): number {
