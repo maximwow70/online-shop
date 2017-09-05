@@ -6,14 +6,16 @@
 package main;
 
 import com.google.gson.Gson;
+import entity.Item;
+import hibernate.HibernateUtil;
+import hibernate.ItemDAO;
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import main.objects.ItemDataPresentation;
 
 /**
  *
@@ -48,10 +50,10 @@ public class GetItemList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Set<ItemDataPresentation> set = SQLConnector.getAllItems();
-        Gson gson = new Gson();
-        String lol = gson.toJson(set);
-        response.getWriter().write(lol);
+        ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
+        List<Item> items = itemDAO.getItemList();
+        itemDAO.close();
+        response.getWriter().write(items.toString());
     }
 
     /**
