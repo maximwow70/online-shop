@@ -1,0 +1,20 @@
+<div class="category">
+	<button class="category-btn" (click)="onRootClick()">
+		<span class="category-name">{{category.name}}</span>
+		<span class="category-icon fa fa-chevron-down"></span>
+	</button>
+	<div class="category-values_container">
+		<div class="category-parent_list" *ngIf="parentStack && parentStack.length > 0">
+			<div class="category-value" *ngFor="let parent of parentStack" (click)="onParentClick(parent)" [hidden]="parent.equals(category)">
+				{{parent.name}}
+				<span class="category-icon fa fa-chevron-down" *ngIf="parent.hasChildren && parent.children.length > 0"></span>
+			</div>
+		</div>
+		<div class="category-children_list" *ngIf="childrenToShow && childrenToShow.length > 0">
+			<div class="category-value" *ngFor="let child of childrenToShow" (click)="onChildClick(child)">
+				{{child.name}}
+				<span class="category-icon fa fa-chevron-down" *ngIf="child.hasChildren && child.children.length > 0"></span>
+			</div>
+		</div>
+	</div>
+</div>
