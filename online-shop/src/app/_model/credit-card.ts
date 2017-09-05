@@ -81,4 +81,40 @@ export class CreditCard {
     constructor(type: CreditCardType) {
         this._type = type;
     }
+
+    public equals(other: CreditCard): boolean {
+        if (!other) {
+            return;
+        }
+        return this.type === other.type
+            && this.firstName === other.firstName
+            && this.lastName === other.lastName
+            && this.number === other.number
+            && this.month === other.month
+            && this.year === other.year
+            && this.cvv === other.cvv;
+    }
+
+    public static toJSON(creditCard: CreditCard): any {
+        return {
+            type: creditCard.type,
+            firstName: creditCard.firstName,
+            lastName: creditCard.lastName,
+            number: creditCard.number,
+            month: creditCard.month,
+            year: creditCard.year,
+            cvv: creditCard.cvv
+        }
+    }
+    public static fromJSON(json: any): CreditCard {
+        let creditCard = new CreditCard(json.type);
+        creditCard.firstName = json.firstName;
+        creditCard.lastName = json.lastName;
+        creditCard.number = json.number;
+        creditCard.month = json.month;
+        creditCard.year = json.year;
+        creditCard.cvv = json.cvv;
+
+        return creditCard;
+    }
 }

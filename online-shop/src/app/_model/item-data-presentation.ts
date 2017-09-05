@@ -1,13 +1,14 @@
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
 import { ItemData } from "app/_model/item-data";
+import { Size } from "app/_model/size";
 
 export class ItemDataPresentation {
 
     private _item: Item;
 
     private _colors: Color[];
-    private _sizes: string[];
+    private _sizes: Size[];
     private _cost: number;
 
     private _isNew: boolean;
@@ -18,7 +19,7 @@ export class ItemDataPresentation {
     public get colors(): Color[] {
         return this._colors;
     }
-    public get sizes(): string[] {
+    public get sizes(): Size[] {
         return this._sizes;
     }
     public get cost(): number {
@@ -28,7 +29,7 @@ export class ItemDataPresentation {
         return this._isNew;
     }
 
-    constructor(item: Item, colors: Color[], sizes: string[], cost: number, isNew: boolean) {
+    constructor(item: Item, colors: Color[], sizes: Size[], cost: number, isNew: boolean) {
         this._item = item;
         this._colors = colors;
         this._sizes = sizes;
@@ -37,11 +38,21 @@ export class ItemDataPresentation {
     }
 
 
+
+    public static toJson(itemData: ItemDataPresentation): any{
+        return {
+            item: Item.toJSON(itemData.item),
+            colors: itemData.colors.map(c => Color.toJSON(c)),
+            sizes: itemData.sizes.map(s => Size.toJSON(s)),
+            cost: itemData.cost,
+            isNew: itemData.isNew 
+        }
+    }
     public static fromJSON(itemData: any): ItemDataPresentation {
         return new ItemDataPresentation(
             Item.fromJSON(itemData.item),
-            itemData.colors.map(colorName => new Color(colorName)),
-            itemData.sizes,
+            itemData.colors.map(color => Color.fromJSON(color)),
+            itemData.sizes.map(size => Size.fromJSON(size)),
             itemData.cost,
             itemData.isNew
         );

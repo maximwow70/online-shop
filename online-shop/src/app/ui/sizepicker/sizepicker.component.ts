@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Size } from "app/_model/size";
 
 @Component({
 	selector: 'sizepicker',
@@ -7,11 +8,11 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class SizepickerComponent implements OnInit {
 
-	@Input() sizes: string[];
+	@Input() sizes: Size[];
 
-	@Output() selectedSizes: EventEmitter<string[]> = new EventEmitter<string[]>();
-	
-	private _selectedSizes: string[] = [];
+	@Output() selectedSizes: EventEmitter<Size[]> = new EventEmitter<Size[]>();
+
+	private _selectedSizes: Size[] = [];
 
 	constructor() { }
 
@@ -19,9 +20,9 @@ export class SizepickerComponent implements OnInit {
 	}
 
 
-	public onSizeSelect(size: string): void {
-		let selectedSize = this._selectedSizes.find(s => s === size);
-		if (selectedSize){
+	public onSizeSelect(size: Size): void {
+		let selectedSize = this._selectedSizes.find(s => s.equals(size));
+		if (selectedSize) {
 			this._selectedSizes = this._selectedSizes.filter(s => s !== selectedSize);
 		} else {
 			this._selectedSizes.push(size);
@@ -29,8 +30,8 @@ export class SizepickerComponent implements OnInit {
 		this.selectedSizes.emit(this._selectedSizes);
 	}
 
-	public isSizeSelected(size: string): boolean {
-		return (this._selectedSizes.find(s => s === size) != undefined);
+	public isSizeSelected(size: Size): boolean {
+		return (this._selectedSizes.find(s => s.equals(size)) != undefined);
 	}
 
 }

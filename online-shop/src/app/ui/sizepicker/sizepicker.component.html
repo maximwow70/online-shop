@@ -1,8 +1,8 @@
 <div class="datapicker datapicker--sizes">
 	<h3 class="datapicker-title">Sizes</h3>
 	<div class="datapicker-data_list">
-		<button class="datapicker-data" value="{{size}}" *ngFor="let size of sizes" [ngClass]="{'datapicker-data--picked': isSizeSelected(size)}">
-      		<span class="size" (click)="onSizeSelect(size)">{{size}}</span>
+		<button class="datapicker-data" value="{{size.id}}" *ngFor="let size of sizes" [ngClass]="{'datapicker-data--picked': isSizeSelected(size)}">
+      		<span class="size" (click)="onSizeSelect(size)">{{size.name}}</span>
     	</button>
 	</div>
 </div>

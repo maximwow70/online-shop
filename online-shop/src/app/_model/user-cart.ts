@@ -25,6 +25,8 @@ export class UserCart {
     }
 
     public static toJSON(userCart: UserCart): any {
-        return userCart;
+        return {
+            itemDataList: userCart.itemDataList.map(itemData => ItemData.toJSON(itemData))
+        };
     }
 }

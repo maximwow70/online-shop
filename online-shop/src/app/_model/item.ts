@@ -39,26 +39,23 @@ export class Item {
         this._photosUrl = photosUrl.map(pUrl => Item.basePhotoUrl + pUrl);
     }
 
+    public static toJSON(item: Item): any {
+        return {
+            id: item.id,
+            name: item.name,
+            description: item.description,
+            featureLists: item.featureLists.map(fl => FeatureList.toJSON(fl)),
+            photosUrl: item.photosUrl
+        };
+    }
     public static fromJSON(json: Item): Item {
-        let featureLists = [];
-        if (json.featureLists) {
-            featureLists = json.featureLists.map(fl => {
-                return new FeatureList(
-                    fl.name,
-                    fl.features.map(f => new Feature(f.name, f.value))
-                )
-            });
-        }
         return new Item(
             json.id,
             json.name,
             json.description,
-            featureLists,
+            json.featureLists.map(fl => FeatureList.fromJSON(fl)),
             json.photosUrl
         );
-    }
-    public static toJSON(item: Item): any {
-        return item;
     }
 
 }
