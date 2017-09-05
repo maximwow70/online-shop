@@ -103,6 +103,12 @@ export class CategoryListService {
 						null
 					),
 					new Category(
+						999,
+						'Test long name test long name test long name test long name test long name',
+						true,
+						[]
+					),
+					new Category(
 						22,
 						'Cotton Shoes',
 						false,

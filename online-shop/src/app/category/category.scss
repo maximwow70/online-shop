@@ -5,7 +5,9 @@
         position: relative;
 
         display: block;
+        box-sizing: border-box;
         width: 100%;
+        padding: 0 40px 0 20px;
         background-color: inherit;
         outline: none;
 
@@ -30,7 +32,6 @@
     &-name{
         box-sizing: border-box;
         height: 40px;
-        padding: 0 20px;
 
         font-family: $font-stack--regular;
         font-size: 14px;
@@ -39,7 +40,7 @@
         position: relative;
 
         box-sizing: border-box;
-        padding: 0 20px;
+        padding: 0 40px 0 20px;
         background-color: #f0f2f7;
 
         line-height: 40px;
@@ -49,6 +50,8 @@
         text-transform: uppercase;
 
         cursor: pointer;
+
+        @include no-wrap();
 
         &:not(:last-child){
             border-bottom: 1px solid #dfe4ee;
@@ -80,11 +83,18 @@
     &-value_list{
     }
     &-parent_list{
-
+        .category-value{
+            .category-icon{
+                transform: translate(0, -50%) rotate(0deg);
+            }
+        }
     }
     &-children_list{
         .category-value{
             padding-left: 40px;
+            .category-icon{
+                transform: translate(0, -50%) rotate(-90deg);
+            }
         }
     }
 
