@@ -27,7 +27,7 @@ export class ItemsSearchComponent implements OnInit {
 	private _selectedCost: { min: number, max: number } = {min: null, max: null};
 
 
-	public get availableCategories(): any[] {
+	public get availableCategories(): Category[] {
 		return this._availableCategories;
 	}
 	public get availableColors(): Color[] {
@@ -68,8 +68,8 @@ export class ItemsSearchComponent implements OnInit {
 			min: 0,
 			max: 8000
 		};
-		this._categoryList.getCategoryList().then(categories => this._availableCategories = categories);
 		this._selectedCost = this._availableCost;
+		this._categoryList.getCategoryList().then(categories => this._availableCategories = categories);
 	}
 
 	ngOnInit() {
@@ -95,7 +95,4 @@ export class ItemsSearchComponent implements OnInit {
 		});
 	}
 
-	public get availableCategories(): Category[] {
-		return this._availableCategories;
-	}
 }

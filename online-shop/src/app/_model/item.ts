@@ -48,12 +48,12 @@ export class Item {
             photosUrl: item.photosUrl
         };
     }
-    public static fromJSON(json: Item): Item {
+    public static fromJSON(json: any): Item {
         return new Item(
             json.id,
             json.name,
             json.description,
-            json.featureLists.map(fl => FeatureList.fromJSON(fl)),
+            json.featureLists ? json.featureLists.map(fl => FeatureList.fromJSON(fl)) : [],
             json.photosUrl
         );
     }

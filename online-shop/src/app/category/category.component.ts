@@ -38,7 +38,6 @@ export class CategoryComponent implements OnInit {
 	ngAfterViewInit() {
 		Ps.initialize(this._elementRef.nativeElement.querySelector('.category-values_container'));
 		this._updateScrollInterval = setInterval(() => {
-			console.log('lel');
 			Ps.update(this._elementRef.nativeElement.querySelector('.category-values_container'));
 		}, 150);
 	}
