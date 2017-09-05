@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, EventEmitter, Output } from '@angular/co
 import { Datapicker } from "app/ui/datapicker/datapicker";
 import { Color } from "app/_model/color";
 import { CategoryListService } from "app/_services/category-list/category-list.service";
+import { Category } from "app/_model/category";
 
 @Component({
 	selector: 'items-search',
@@ -13,7 +14,7 @@ export class ItemsSearchComponent implements OnInit {
 	@Output() onSearch: EventEmitter<{name: string, colors: Color[], sizes: string[], cost: {min: number, max: number}}> 
 		= new EventEmitter<{name: string, colors: Color[], sizes: string[], cost: {min: number, max: number}}>();
 
-	private _availableCategories: any[] = [];
+	private _availableCategories: Category[] = [];
 	private _availableColors: Color[] = [];
 	private _availableSizes: string[] = [];
 	private _availableCost: { min: number, max: number };
@@ -50,7 +51,7 @@ export class ItemsSearchComponent implements OnInit {
 			min: 0,
 			max: 8000
 		};
-		this._availableCategories = this._categoryList.getCategoryList();
+		this._categoryList.getCategoryList().then(categories => this._availableCategories = categories);
 	}
 
 	ngOnInit() {
@@ -75,7 +76,7 @@ export class ItemsSearchComponent implements OnInit {
 		});
 	}
 
-	public get availableCategories(): any[] {
+	public get availableCategories(): Category[] {
 		return this._availableCategories;
 	}
 	public get availableColors(): Color[] {

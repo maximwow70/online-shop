@@ -77,6 +77,7 @@ import { CreditCardEditComponent } from './credit-card-edit/credit-card-edit.com
 import { CreditCardPresetListComponent } from './credit-card-preset-list/credit-card-preset-list.component';
 import { CreditCardPresetComponent } from './credit-card-preset/credit-card-preset.component';
 import { CreditCardPresetEditComponent } from './credit-card-preset-edit/credit-card-preset-edit.component';
+import { CategoryComponent } from './category/category.component';
 
 
 const appRoutes: Routes = [
@@ -187,7 +188,8 @@ const appRoutes: Routes = [
 		CreditCardEditComponent,
 		CreditCardPresetListComponent,
 		CreditCardPresetComponent,
-		CreditCardPresetEditComponent
+		CreditCardPresetEditComponent,
+		CategoryComponent
 	],
 	imports: [
 		BrowserModule,

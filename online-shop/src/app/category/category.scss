@@ -36,6 +36,8 @@
         font-size: 14px;
     }
     &-value{
+        position: relative;
+
         box-sizing: border-box;
         padding: 0 20px;
         background-color: #f0f2f7;
@@ -65,16 +67,32 @@
         }
     }
 
-    &-value_list{
+    &-values_container{
+        position: relative;
         max-height: 0;
         overflow: hidden;
 
         transition: 0.3s;
+
+        @include ps-const-width();
     }
 
+    &-value_list{
+    }
+    &-parent_list{
+
+    }
+    &-children_list{
+        .category-value{
+            padding-left: 40px;
+        }
+    }
+
+
+
     &--open{
-        .category-value_list{
-            max-height: 40px * 5;
+        .category-values_container{
+            max-height: 40px * 10 + 9px + 1px;
         }
         .category-icon{
             transform: translate(0, -50%) rotate(0deg);
