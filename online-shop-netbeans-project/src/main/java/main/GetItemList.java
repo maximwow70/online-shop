@@ -5,7 +5,7 @@
  */
 package main;
 
-import com.google.gson.Gson;
+import Else.Helper;
 import entity.Item;
 import hibernate.HibernateUtil;
 import hibernate.ItemDAO;
@@ -53,6 +53,11 @@ public class GetItemList extends HttpServlet {
         ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
         List<Item> items = itemDAO.getItemList();
         itemDAO.close();
+        int page = Integer.valueOf(request.getParameter("page"));
+        int countOnPage = Integer.valueOf(request.getParameter("countOnPage"));
+        int countOfPages = items.size()/countOnPage;
+        items = Helper.getItem(items, page, countOnPage);
+        System.out.println();
         response.getWriter().write(items.toString());
     }
 

@@ -28,7 +28,7 @@ public class Test {
         Session s = HibernateUtil.getSessionFactory().openSession();
         Transaction t = s.beginTransaction();
         Item item = new Item();
-        item.setArticle("ebq");
+        item.setArticle("ebqwda");
         item.setDescription("danwfjnqw dwi jdawoidj awd");
         item.setName("name");
         Feature feature = new Feature();
@@ -37,14 +37,14 @@ public class Test {
         FeatureList featureList = new FeatureList();
         featureList.setName("name");
         Color color = new Color();
-        color.setColor("green");
+        color.setColor("yellow");
         Size size = new Size();
-        size.setSize("small");
+        size.setSize("big");
         ItemData data = new ItemData();
         data.setCount(12);
         data.setCost(123);
         Photo photo = new Photo();
-        photo.setPhoto("lolol");
+        photo.setPhoto("photo");
         try{
             
             s.save(feature);

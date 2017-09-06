@@ -5,9 +5,14 @@
  */
 package main;
 
+import Else.Helper;
 import com.google.gson.Gson;
+import entity.Item;
+import hibernate.HibernateUtil;
+import hibernate.ItemDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -61,14 +66,20 @@ public class SearchItemList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Gson gson = new Gson();
         String name = "";
-        String[] colors = gson.fromJson(request.getParameter("colors"), String[].class);
-        String[] sizes = gson.fromJson(request.getParameter("sizes"), String[].class);
+        Gson gson = new Gson();
+        int[] colors = gson.fromJson(request.getParameter("colors"), int[].class);
+        int[] sizes = gson.fromJson(request.getParameter("sizes"), int[].class);
         int min = Integer.valueOf(request.getParameter("minCost"));
         int max = Integer.valueOf(request.getParameter("maxCost"));
-        Set<ItemDataPresentation> setItemData = SQLConnector.getItems(name, colors, sizes, min, max);
-        response.getWriter().write(gson.toJson(setItemData));
+        ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
+        List<Item> items = itemDAO.getItemList(name, min, max, colors, sizes);
+        itemDAO.close();
+        int page = Integer.valueOf(request.getParameter("page"));
+        int countOnPage = Integer.valueOf(request.getParameter("countOnPage"));
+        int countOfPages = items.size()/countOnPage;
+        items = Helper.getItem(items, page, countOnPage);
+        response.getWriter().write(items.toString());
     }
 
     /**
