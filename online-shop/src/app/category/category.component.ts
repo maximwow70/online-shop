@@ -57,7 +57,11 @@ export class CategoryComponent implements OnInit {
 	}
 	public onChildClick(child: Category): void {
 		if (!child.hasChildren) {
-			this._selectedCategories.push(child);
+			if (!this._selectedCategories.some(c => c.equals(child))) {
+				this._selectedCategories.push(child);
+			} else {
+				this._selectedCategories = this._selectedCategories.filter(c => !c.equals(child));
+			}
 		} else {
 			this._parentStack.push(child);
 		}
