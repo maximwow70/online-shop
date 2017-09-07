@@ -56,7 +56,7 @@ export class ItemLikerComponent implements OnInit {
 
 
 	public getItemList(): void {
-		this._itemListData.getItemList().then(itemList => {
+		this._itemListData.getItemListJSON().then(itemList => {
 			this._itemList = itemList;
 			this._listLength = this._itemList.length;
 		});
