@@ -39,7 +39,7 @@ export class ItemDataPresentation {
 
 
 
-    public static toJson(itemData: ItemDataPresentation): any{
+    public static toJSON(itemData: ItemDataPresentation): any{
         return {
             item: Item.toJSON(itemData.item),
             colors: itemData.colors.map(c => Color.toJSON(c)),
