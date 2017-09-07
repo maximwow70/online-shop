@@ -59,6 +59,10 @@
         &:first-child{
             border-top: 1px solid #dfe4ee;
         }
+
+        &--selected{
+
+        }
     }
     &-btn, &-value{
         &:hover, &--selected{
