@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
+package trash;
 
 import com.google.gson.Gson;
 import java.sql.Connection;
@@ -15,12 +15,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import main.objects.FeatureList;
-import main.objects.ItemDataPresentation;
-import main.objects.Item;
-import main.objects.ItemCountData;
-import main.objects.ItemData;
-import main.objects.User;
 
 /**
  *

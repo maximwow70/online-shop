@@ -6,8 +6,11 @@
 package Tests;
 
 import Else.Helper;
+import entity.Item;
 import hibernate.HibernateUtil;
 import hibernate.ItemDAO;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -15,13 +18,31 @@ import hibernate.ItemDAO;
  */
 public class Test4 {
     public static void main(String... args) {
-        int[] color = {1,2};
-        int[] size = {1,2,3};
+        int[] color = {};
+        int[] size = {};
         String name = "";
         int max = 1000;
         int min = 0;
+        int currentPage1 = 1;
+        int currentPage2 = 2;
+        int range = 50;
         ItemDAO i = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
-        System.out.println(i.getItemList(name, min, max, color, size));
+        Date date = new Date();
+//        for(int k = 0; k < 1000; k ++) {
+//            List<Item> items = i.getItemList(name, min, max, color, size, currentPage2, range);
+//            //items = Helper.getItem(items, currentPage1, range);
+//            int countOfPages = items.size()/range;
+//            items = Helper.getItems(items, currentPage1, range);
+//            System.out.println(countOfPages);
+//        }
+        for(int k = 0; k < 1000; k ++) {
+            List<Item> items = i.getItemList(name, min, max, color, size, currentPage2, range);
+            Long countOfPages = i.getItemsCount(name, min, max, color, size);
+            //items = Helper.getItems(items, currentPage1, range);
+            System.out.println((int)(countOfPages/range));
+        }
+        Date date1 = new Date();
+        System.out.println(date1.getTime()-date.getTime());
+        i.close();
     }
-    
 }

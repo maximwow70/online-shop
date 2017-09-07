@@ -24,9 +24,9 @@ public class Helper {
         return str;
     }
     
-    public static List<Item> getItem(List<Item> items, int page, int countOnPage) {
+    public static List<Item> getItems(List<Item> items, int currentPage, int range) {
         List<Item> newItems = new ArrayList<>();
-        for(int i = countOnPage*(page-1);i < countOnPage*page;i++) {
+        for(int i = range*(currentPage-1);i < range*currentPage;i++) {
             newItems.add(items.get(i));
         }
         return newItems;

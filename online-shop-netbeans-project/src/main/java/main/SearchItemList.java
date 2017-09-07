@@ -19,7 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import main.objects.ItemDataPresentation;
+import trash.ItemDataPresentation;
 
 /**
  *
@@ -72,14 +72,13 @@ public class SearchItemList extends HttpServlet {
         int[] sizes = gson.fromJson(request.getParameter("sizes"), int[].class);
         int min = Integer.valueOf(request.getParameter("minCost"));
         int max = Integer.valueOf(request.getParameter("maxCost"));
+        int currentPage = Integer.valueOf(request.getParameter("currentPage"));
+        int range = Integer.valueOf(request.getParameter("range"));
         ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
-        List<Item> items = itemDAO.getItemList(name, min, max, colors, sizes);
+        List<Item> items = itemDAO.getItemList(name, min, max, colors, sizes, currentPage, range);
+        Long countOfPages = itemDAO.getItemsCount(name, min, max, colors, sizes)/range;
         itemDAO.close();
-        int page = Integer.valueOf(request.getParameter("page"));
-        int countOnPage = Integer.valueOf(request.getParameter("countOnPage"));
-        int countOfPages = items.size()/countOnPage;
-        items = Helper.getItem(items, page, countOnPage);
-        response.getWriter().write(items.toString());
+        response.getWriter().write("{ items="+items.toString()+", pages="+countOfPages+"}");
     }
 
     /**

@@ -34,8 +34,8 @@ public class ItemDAO {
         return item;
     }
     
-    public List<Item> getItemList(String name, int min, int max, int[] color, int[] size) {
-        String query = "FROM Item item"+" WHERE item.name LIKE '%%' AND EXISTS(\n";
+    public List<Item> getItemList(String name, int min, int max, int[] color, int[] size, int currentPage, int range) {
+        String query = "FROM Item item"+" WHERE item.name LIKE '%"+name+"%' AND EXISTS(\n";
         query+="SELECT data.id FROM ItemData data\n";
         if(color.length>0) {
             query+="inner join data.color color\n"; 
@@ -51,12 +51,33 @@ public class ItemDAO {
             query+=" AND data.size.id = size.id AND data.size.id IN"+Helper.convertArrayToString(size)+"\n";
         }
         query+=")";
-        System.out.println(query);
-        Query q = session.createQuery(query);
+        //System.out.println(query);
+        Query q = session.createQuery(query).setFirstResult(range*(currentPage-1)).setMaxResults(range);
         List<Item> list = q.list();
         return list;
     }
     
+    public Long getItemsCount(String name, int min, int max, int[] color, int[] size) {
+        String query = "SELECT COUNT(item.id) FROM Item item"+" WHERE item.name LIKE '%"+name+"%' AND EXISTS(\n";
+        query+="SELECT data.id FROM ItemData data\n";
+        if(color.length>0) {
+            query+="inner join data.color color\n"; 
+        }
+        if(size.length>0) {
+            query+=" inner join data.size size\n";
+        }
+        query+=" WHERE data.cost > "+min+" AND data.cost < "+max+" AND data.owner.id = item.id\n";
+        if(color.length > 0) {
+            query+=" AND data.color.id = color.id AND data.color.id IN"+Helper.convertArrayToString(color)+"\n";
+        }
+        if(size.length > 0) {
+            query+=" AND data.size.id = size.id AND data.size.id IN"+Helper.convertArrayToString(size)+"\n";
+        }
+        query+=")";
+        Query q = session.createQuery(query);
+        Long count = (Long)q.uniqueResult();
+        return count;
+    }
     
     public void close() {
         if(session!=null) {

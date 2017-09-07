@@ -3,52 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main.objects;
+package trash;
 
 import java.sql.Date;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
  *
  * @author admin
  */
-public class ItemData {
+public class ItemDataPresentation {
 
     private Item item;
-    private Set<ItemCountData> itemCountDataList = new LinkedHashSet<>();
+    private Set<String> colors;
+    private Set<String> sizes;
     private int cost;
     private boolean isNew;
 
-    public ItemData() {
-    }
-
-    public Item getItem() {
-        return item;
+    public ItemDataPresentation() {
     }
 
     public void setItem(Item item) {
         this.item = item;
     }
 
-    public Set<ItemCountData> getItemCountDataList() {
-        return itemCountDataList;
+    public Item getItem() {
+        return item;
     }
 
-    public void addItemCountDataList(ItemCountData itemCountDataList) {
-        this.itemCountDataList.add(itemCountDataList);
+    public void setColors(Set<String> colors) {
+        this.colors = colors;
     }
 
-    public int getCost() {
-        return cost;
+    public void setSizes(Set<String> sizes) {
+        this.sizes = sizes;
     }
 
     public void setCost(int cost) {
         this.cost = cost;
-    }
-
-    public boolean isIsNew() {
-        return isNew;
     }
 
     public void setIsNew(Date date) {
