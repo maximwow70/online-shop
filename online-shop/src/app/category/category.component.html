@@ -1,17 +1,24 @@
 <div class="category">
-	<button class="category-btn" (click)="onRootClick()">
+	<button class="category-btn" (click)="onRootClick()" [ngClass]="{'category-value--selected': isCategorySelected(category)}">
 		<span class="category-name">{{category.name}}</span>
 		<span class="category-icon fa fa-chevron-down"></span>
 	</button>
 	<div class="category-values_container">
 		<div class="category-parent_list" *ngIf="parentStack && parentStack.length > 0">
-			<div class="category-value" *ngFor="let parent of parentStack" (click)="onParentClick(parent)" [hidden]="parent.equals(category)">
+			<div class="category-value"
+				*ngFor="let parent of parentStack"
+				(click)="onParentClick(parent)"
+				[hidden]="parent.equals(category)"
+				[ngClass]="{'category-value--selected': isCategorySelected(parent)}">
 				{{parent.name}}
 				<span class="category-icon fa fa-chevron-down" *ngIf="parent.hasChildren"></span>
 			</div>
 		</div>
 		<div class="category-children_list" *ngIf="childrenToShow && childrenToShow.length > 0">
-			<div class="category-value" *ngFor="let child of childrenToShow" (click)="onChildClick(child)">
+			<div class="category-value"
+				*ngFor="let child of childrenToShow"
+				(click)="onChildClick(child)"
+				[ngClass]="{'category-value--selected': isCategorySelected(child)}">
 				{{child.name}}
 				<span class="category-icon fa fa-chevron-down" *ngIf="child.hasChildren"></span>
 			</div>

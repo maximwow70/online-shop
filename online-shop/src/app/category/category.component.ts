@@ -17,6 +17,8 @@ export class CategoryComponent implements OnInit {
 	private _parentStack: Category[] = [];
 	private _childrenToShow: Category[] = [];
 
+	private _updateScrollInterval: any = null;
+
 	public get parentStack(): Category[] {
 		return this._parentStack;
 	}
@@ -24,7 +26,6 @@ export class CategoryComponent implements OnInit {
 		return this._parentStack.length > 0 ? this._parentStack[this.parentStack.length - 1].children : [];
 	}
 
-	private _updateScrollInterval: any = null;
 
 	constructor(
 		private _elementRef: ElementRef
@@ -71,6 +72,22 @@ export class CategoryComponent implements OnInit {
 		while (this._parentStack.length > 0 && !parent.equals(currentParent)) {
 			this._parentStack.pop();
 			currentParent = this._parentStack[this._parentStack.length - 1];
+		}
+	}
+
+	public isCategorySelected(category: Category): boolean {
+		if (!category.hasChildren) {
+			return this._selectedCategories.some(c => category.equals(c));
+		} else if (category.children && category.children.length > 0) {
+			let isAllChildrenSelected = true;
+			category.children.map(child => {
+				if (this.isCategorySelected(child) !== true) {
+					isAllChildrenSelected = false;
+				}
+			});
+			return isAllChildrenSelected;
+		} else {
+			return false;
 		}
 	}
 
