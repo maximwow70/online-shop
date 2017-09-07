@@ -29,7 +29,7 @@ export class OnlineShopComponent implements OnInit {
 	private _selectedPage: number = null;
 
 	private _searchParams: { name: string, colors: Color[], sizes: Size[], cost: { min: number, max: number } } = null;
-	private _itemsRange: number = 3;
+	private _itemsRange: number = 6;
 
 	public get pages(): number {
 		return this._pages;
@@ -57,25 +57,29 @@ export class OnlineShopComponent implements OnInit {
 		this._onlineShop = new OnlineShop();
 
 		this.loadItemList();
+		this._selectedPage = 1;
+		this.loadItemListByParams();
 	}
 
 	ngOnInit() {
 	}
 
 	public loadItemList(): void {
-		this._itemList.getItemList().then(itemDataList =>
+		this._itemList.getItemListJSON().then(itemDataList =>
 			this._onlineShop.setItemList(itemDataList)
 		);
 	}
 	public loadItemListByParams(): void {
-		this._itemList.getItemListByParams(
-			this._searchParams ? this._searchParams.name : null,
-			this._searchParams ? this._searchParams.colors : null,
-			this._searchParams ? this._searchParams.sizes : null,
-			this._searchParams ? this._searchParams.cost : null,
+		this._itemList.getItemList(
+			this._searchParams ? this._searchParams.name : '',
+			this._searchParams ? this._searchParams.colors : [],
+			this._searchParams ? this._searchParams.sizes : [],
+			this._searchParams ? this._searchParams.cost : {min: null, max: null},
+			this.itemsRange,
 			this._selectedPage
-		).then(itemList => {
-			this._onlineShop.setItemList(itemList);
+		).then(itemDataSearch => {
+			this._onlineShop.setItemList(itemDataSearch.itemDataPresentationList);
+			this._pages = itemDataSearch.totalPages;
 		});
 	}
 
