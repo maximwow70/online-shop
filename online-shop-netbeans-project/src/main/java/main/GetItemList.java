@@ -5,9 +5,9 @@
  */
 package main;
 
-import Else.Helper;
+import other.Helper;
 import com.google.gson.Gson;
-import entity.Item;
+import entity.Item.Item;
 import hibernate.HibernateUtil;
 import hibernate.ItemDAO;
 import java.io.IOException;
@@ -26,7 +26,7 @@ import trash.ItemDataPresentation;
  * @author admin
  */
 @WebServlet(name = "SearchItemList", urlPatterns = {"/SearchItemList"})
-public class SearchItemList extends HttpServlet {
+public class GetItemList extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

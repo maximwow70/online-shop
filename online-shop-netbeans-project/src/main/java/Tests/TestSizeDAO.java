@@ -6,16 +6,15 @@
 package Tests;
 
 import hibernate.HibernateUtil;
-import hibernate.ItemDAO;
+import hibernate.SizeDAO;
 
 /**
  *
  * @author admin
  */
-public class Test3 {
+public class TestSizeDAO {
     public static void main(String... args) {
-        ItemDAO i = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
-        System.out.println(i.getItemList().toString());
-        //System.out.println(i.getItem((long)1));
+        SizeDAO sizeDAO = new SizeDAO(HibernateUtil.getSessionFactory().openSession());
+        System.out.println(sizeDAO.getAllSizes().toString());
     }
 }

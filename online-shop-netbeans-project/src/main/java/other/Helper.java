@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Else;
+package other;
 
-import entity.Item;
+import entity.Item.Item;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +22,5 @@ public class Helper {
         //Удаление ненужной запятой
         str = str.substring(0, str.length()-2)+")";
         return str;
-    }
-    
-    public static List<Item> getItems(List<Item> items, int currentPage, int range) {
-        List<Item> newItems = new ArrayList<>();
-        for(int i = range*(currentPage-1);i < range*currentPage;i++) {
-            newItems.add(items.get(i));
-        }
-        return newItems;
     }
 }

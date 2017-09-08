@@ -5,11 +5,11 @@
  */
 package main;
 
-import entity.Item.Item;
+import entity.Item.Size;
 import hibernate.HibernateUtil;
-import hibernate.ItemDAO;
+import hibernate.SizeDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author admin
  */
-@WebServlet(name = "GetItemData", urlPatterns = {"/GetItemData"})
-public class GetItemData extends HttpServlet {
+@WebServlet(name = "GetSize", urlPatterns = {"/GetSize"})
+public class GetSizes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,19 +34,6 @@ public class GetItemData extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet GetItemDate</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GetItemDate at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,11 +48,10 @@ public class GetItemData extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
-        Item item = itemDAO.getItem(Long.valueOf(id));
-        itemDAO.close();
-        response.getWriter().write(item.toString());
+        SizeDAO sizeDAO = new SizeDAO(HibernateUtil.getSessionFactory().openSession());
+        List<Size> sizes = sizeDAO.getAllSizes();
+        sizeDAO.close();
+        response.getWriter().write(sizes.toString());
     }
 
     /**

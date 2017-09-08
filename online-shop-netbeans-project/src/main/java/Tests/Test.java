@@ -1,13 +1,13 @@
 package Tests;
 
 
-import entity.Color;
-import entity.Feature;
-import entity.FeatureList;
-import entity.Item;
-import entity.ItemData;
-import entity.Photo;
-import entity.Size;
+import entity.Item.Color;
+import entity.Item.Feature;
+import entity.Item.FeatureList;
+import entity.Item.Item;
+import entity.Item.ItemData;
+import entity.Item.Photo;
+import entity.Item.Size;
 import hibernate.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -26,7 +26,7 @@ import org.hibernate.Transaction;
 public class Test {
     public static void main(String[] args) {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        for(int i = 101;i<1000;i++) {
+        for(int i = 0;i<1;i++) {
             Transaction t = s.beginTransaction();
             Item item = new Item();
             item.setArticle("ebqwda"+i);

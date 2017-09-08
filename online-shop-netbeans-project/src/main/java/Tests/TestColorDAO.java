@@ -5,17 +5,16 @@
  */
 package Tests;
 
+import hibernate.ColorDAO;
 import hibernate.HibernateUtil;
-import hibernate.ItemDAO;
 
 /**
  *
  * @author admin
  */
-public class Test3 {
+public class TestColorDAO {
     public static void main(String... args) {
-        ItemDAO i = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
-        System.out.println(i.getItemList().toString());
-        //System.out.println(i.getItem((long)1));
+        ColorDAO colorDAO = new ColorDAO(HibernateUtil.getSessionFactory().openSession());
+        System.out.println(colorDAO.getAllColors().toString());
     }
 }

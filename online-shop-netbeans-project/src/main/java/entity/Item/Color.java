@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity;
+package entity.Item;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,33 +14,33 @@ import javax.persistence.*;
  * @author admin
  */
 @Entity
-@Table(name = "size")
-public class Size implements java.io.Serializable{
-    private long id;
-    private String size;
+@Table(name = "color")
+public class Color implements java.io.Serializable{
+    private Long id;
+    private String color;
     private Set<ItemData> items = new HashSet<ItemData>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    
-    @Column(name = "size", unique = true, nullable = false)
-    public String getSize() {
-        return size;
+
+    @Column(name = "color", unique = true, nullable = false)
+    public String getColor() {
+        return color;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "size", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "color", cascade = CascadeType.ALL)
     public Set<ItemData> getItems() {
         return items;
     }
@@ -51,7 +51,7 @@ public class Size implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "{" + "id=" + id + ", size=" + size + '}';
+        return '{' + "id=" + id + ", color=" + color + '}';
     }
     
 }

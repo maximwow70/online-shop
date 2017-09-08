@@ -6,16 +6,15 @@
 package Tests;
 
 import hibernate.HibernateUtil;
-import hibernate.ItemDAO;
+import hibernate.ItemDataDAO;
 
 /**
  *
  * @author admin
  */
-public class Test3 {
+public class TestItemDataDAO {
     public static void main(String... args) {
-        ItemDAO i = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
-        System.out.println(i.getItemList().toString());
-        //System.out.println(i.getItem((long)1));
+        ItemDataDAO i = new ItemDataDAO(HibernateUtil.getSessionFactory().openSession());
+        System.out.println(i.getMaxCost());
     }
 }

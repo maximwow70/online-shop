@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package hibernate;
-import Else.Helper;
-import entity.Item;
-import java.util.HashSet;
+import other.Helper;
+import entity.Item.Item;
 import java.util.List;
-import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -35,19 +33,21 @@ public class ItemDAO {
     }
     
     public List<Item> getItemList(String name, int min, int max, int[] color, int[] size, int currentPage, int range) {
+        boolean colorValid = color!=null&&color.length>0;
+        boolean sizeValid = size!=null&&size.length>0;
         String query = "FROM Item item"+" WHERE item.name LIKE '%"+name+"%' AND EXISTS(\n";
         query+="SELECT data.id FROM ItemData data\n";
-        if(color.length>0) {
+        if(colorValid) {
             query+="inner join data.color color\n"; 
         }
-        if(size.length>0) {
+        if(sizeValid) {
             query+=" inner join data.size size\n";
         }
         query+=" WHERE data.cost > "+min+" AND data.cost < "+max+" AND data.owner.id = item.id\n";
-        if(color.length > 0) {
+        if(colorValid) {
             query+=" AND data.color.id = color.id AND data.color.id IN"+Helper.convertArrayToString(color)+"\n";
         }
-        if(size.length > 0) {
+        if(sizeValid) {
             query+=" AND data.size.id = size.id AND data.size.id IN"+Helper.convertArrayToString(size)+"\n";
         }
         query+=")";
@@ -58,19 +58,21 @@ public class ItemDAO {
     }
     
     public Long getItemsCount(String name, int min, int max, int[] color, int[] size) {
+        boolean colorValid = color!=null&&color.length>0;
+        boolean sizeValid = size!=null&&size.length>0;
         String query = "SELECT COUNT(item.id) FROM Item item"+" WHERE item.name LIKE '%"+name+"%' AND EXISTS(\n";
         query+="SELECT data.id FROM ItemData data\n";
-        if(color.length>0) {
+        if(colorValid) {
             query+="inner join data.color color\n"; 
         }
-        if(size.length>0) {
+        if(sizeValid) {
             query+=" inner join data.size size\n";
         }
         query+=" WHERE data.cost > "+min+" AND data.cost < "+max+" AND data.owner.id = item.id\n";
-        if(color.length > 0) {
+        if(colorValid) {
             query+=" AND data.color.id = color.id AND data.color.id IN"+Helper.convertArrayToString(color)+"\n";
         }
-        if(size.length > 0) {
+        if(sizeValid) {
             query+=" AND data.size.id = size.id AND data.size.id IN"+Helper.convertArrayToString(size)+"\n";
         }
         query+=")";
@@ -80,7 +82,7 @@ public class ItemDAO {
     }
     
     public void close() {
-        if(session!=null) {
+        if(session.isOpen()) {
             session.close();
         }
     }

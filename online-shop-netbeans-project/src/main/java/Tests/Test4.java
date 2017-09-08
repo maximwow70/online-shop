@@ -5,8 +5,8 @@
  */
 package Tests;
 
-import Else.Helper;
-import entity.Item;
+import other.Helper;
+import entity.Item.Item;
 import hibernate.HibernateUtil;
 import hibernate.ItemDAO;
 import java.util.Date;
@@ -18,14 +18,14 @@ import java.util.List;
  */
 public class Test4 {
     public static void main(String... args) {
-        int[] color = {};
+        int[] color = null;
         int[] size = {};
         String name = "";
         int max = 1000;
         int min = 0;
         int currentPage1 = 1;
         int currentPage2 = 2;
-        int range = 50;
+        int range = 1;
         ItemDAO i = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
         Date date = new Date();
 //        for(int k = 0; k < 1000; k ++) {
@@ -35,10 +35,10 @@ public class Test4 {
 //            items = Helper.getItems(items, currentPage1, range);
 //            System.out.println(countOfPages);
 //        }
-        for(int k = 0; k < 1000; k ++) {
-            List<Item> items = i.getItemList(name, min, max, color, size, currentPage2, range);
+        for(int k = 0; k < 1; k ++) {
+            List<Item> items = i.getItemList(name, min, max, color, size, currentPage1, range);
             Long countOfPages = i.getItemsCount(name, min, max, color, size);
-            //items = Helper.getItems(items, currentPage1, range);
+            System.out.println(items);
             System.out.println((int)(countOfPages/range));
         }
         Date date1 = new Date();

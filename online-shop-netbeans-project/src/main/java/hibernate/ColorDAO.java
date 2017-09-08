@@ -5,7 +5,8 @@
  */
 package hibernate;
 
-import entity.Color;
+import entity.Item.Color;
+import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
@@ -31,7 +32,24 @@ public class ColorDAO {
         return color;
     }
     
+    public List<Color> getAllColors() {
+        List<Color> colors = null;
+        try {
+            colors = session.createCriteria(Color.class).list();
+        } catch(HibernateException e) {
+            System.out.println("Error: getAllColors");
+            e.printStackTrace();
+        }
+        return colors;
+    }
+    
     public boolean addColor(String color) {
         return false;
+    }
+    
+    public void close() {
+        if(session.isOpen()) {
+            session.close();
+        }
     }
 }

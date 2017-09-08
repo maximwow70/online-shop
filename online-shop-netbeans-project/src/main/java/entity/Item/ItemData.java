@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity;
+package entity.Item;
 
 import javax.persistence.*;
 
@@ -11,6 +11,10 @@ import javax.persistence.*;
  *
  * @author admin
  */
+@NamedQueries({
+    @NamedQuery(name = "getMaxCost", query = "SELECT MAX(data.cost) FROM ItemData data")
+})
+
 @Entity
 @Table(name = "data")
 public class ItemData implements java.io.Serializable{

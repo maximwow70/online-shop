@@ -2,7 +2,7 @@ package Tests;
 
 
 import com.google.gson.Gson;
-import entity.Item;
+import entity.Item.Item;
 import hibernate.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

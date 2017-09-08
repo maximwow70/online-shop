@@ -9,12 +9,12 @@
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="show_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
-    <mapping class="entity.Item"></mapping> 
-    <mapping class="entity.ItemData"></mapping>
-    <mapping class="entity.Color"></mapping>
-    <mapping class="entity.Size"></mapping>
-    <mapping class="entity.Feature"></mapping>
-    <mapping class="entity.FeatureList"></mapping>
-    <mapping class="entity.Photo"></mapping>
+    <mapping class="entity.Item.Item"></mapping> 
+    <mapping class="entity.Item.ItemData"></mapping>
+    <mapping class="entity.Item.Color"></mapping>
+    <mapping class="entity.Item.Size"></mapping>
+    <mapping class="entity.Item.Feature"></mapping>
+    <mapping class="entity.Item.FeatureList"></mapping>
+    <mapping class="entity.Item.Photo"></mapping>
   </session-factory>
 </hibernate-configuration>
