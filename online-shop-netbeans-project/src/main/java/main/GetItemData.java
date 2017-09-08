@@ -5,7 +5,9 @@
  */
 package main;
 
-import com.google.gson.Gson;
+import entity.Item.Item;
+import hibernate.HibernateUtil;
+import hibernate.ItemDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,7 +15,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import main.objects.ItemData;
 
 /**
  *
@@ -61,10 +62,10 @@ public class GetItemData extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
-        ItemData item = SQLConnector.getItemDate(id);
-        Gson gson = new Gson();
-        response.setContentType("text.html;charset=UTF-8");
-        response.getWriter().write(gson.toJson(item));
+        ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
+        Item item = itemDAO.getItem(Long.valueOf(id));
+        itemDAO.close();
+        response.getWriter().write(item.toString());
     }
 
     /**

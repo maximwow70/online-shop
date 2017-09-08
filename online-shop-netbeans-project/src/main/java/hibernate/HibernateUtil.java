@@ -18,7 +18,7 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory() {
         try {
-            return new AnnotationConfiguration().configure(new File("/Users/admin/Desktop/git/online-shop/online-shop_netbeans-project1/main/resources/hibernate.cfg.xml")).buildSessionFactory();
+            return new AnnotationConfiguration().configure(new File("/Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/resources/hibernate.cfg.xml")).buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex); 
