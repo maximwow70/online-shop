@@ -24,7 +24,7 @@ export class ItemLikerComponent implements OnInit {
 		private _itemListData: ItemListService,
 		private _itemColor: ItemColorService
 	) {
-		
+
 	}
 
 	ngOnInit() {
@@ -37,7 +37,7 @@ export class ItemLikerComponent implements OnInit {
 			let likedItem = this._itemList.pop();
 			this._itemListLiked.push(likedItem);
 		}
-		if (this._itemListLiked.length > this._listLength){
+		if (this._itemListLiked.length > this._listLength) {
 			this._itemListLiked.shift();
 		}
 	}
@@ -46,7 +46,7 @@ export class ItemLikerComponent implements OnInit {
 			let dislikedItem = this._itemList.pop();
 			this._itemListDisliked.push(dislikedItem);
 		}
-		if (this._itemListDisliked.length > this._listLength){
+		if (this._itemListDisliked.length > this._listLength) {
 			this._itemListDisliked.shift();
 		}
 	}
@@ -56,14 +56,10 @@ export class ItemLikerComponent implements OnInit {
 
 
 	public getItemList(): void {
-		let that = this;
-
-		this._itemListData.getItemList().subscribe(
-			itemList => {
-				that._itemList = itemList;
-				that._listLength = that._itemList.length;
-			}
-		);
+		this._itemListData.getItemListJSON().then(itemList => {
+			this._itemList = itemList;
+			this._listLength = this._itemList.length;
+		});
 	}
 	public getClassByColor(color: Color): string {
 		return this._itemColor.getClassByColor(color);

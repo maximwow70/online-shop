@@ -5,7 +5,9 @@
         position: relative;
 
         display: block;
+        box-sizing: border-box;
         width: 100%;
+        padding: 0 40px 0 20px;
         background-color: inherit;
         outline: none;
 
@@ -30,14 +32,15 @@
     &-name{
         box-sizing: border-box;
         height: 40px;
-        padding: 0 20px;
 
         font-family: $font-stack--regular;
         font-size: 14px;
     }
     &-value{
+        position: relative;
+
         box-sizing: border-box;
-        padding: 0 20px;
+        padding: 0 40px 0 20px;
         background-color: #f0f2f7;
 
         line-height: 40px;
@@ -48,11 +51,17 @@
 
         cursor: pointer;
 
+        @include no-wrap();
+
         &:not(:last-child){
             border-bottom: 1px solid #dfe4ee;
         }
         &:first-child{
             border-top: 1px solid #dfe4ee;
+        }
+
+        &--selected{
+
         }
     }
     &-btn, &-value{
@@ -65,16 +74,39 @@
         }
     }
 
-    &-value_list{
+    &-values_container{
+        position: relative;
         max-height: 0;
         overflow: hidden;
 
         transition: 0.3s;
+
+        @include ps-const-width();
     }
 
+    &-value_list{
+    }
+    &-parent_list{
+        .category-value{
+            .category-icon{
+                transform: translate(0, -50%) rotate(0deg);
+            }
+        }
+    }
+    &-children_list{
+        .category-value{
+            padding-left: 40px;
+            .category-icon{
+                transform: translate(0, -50%) rotate(-90deg);
+            }
+        }
+    }
+
+
+
     &--open{
-        .category-value_list{
-            max-height: 40px * 5;
+        .category-values_container{
+            max-height: 40px * 10 + 9px + 1px;
         }
         .category-icon{
             transform: translate(0, -50%) rotate(0deg);
