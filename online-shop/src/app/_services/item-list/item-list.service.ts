@@ -34,8 +34,8 @@ export class ItemListService {
 		let colorNames: any = colors.map(c => c.name);
 
 		let params = 'name=' + name +
-			'&colors=' + JSON.stringify(colors.map(c => Color.toJSON(c))) +
-			'&sizes=' + JSON.stringify(sizes.map(s => Size.toJSON(s))) +
+			'&colors=' + JSON.stringify(colors.map(c => Color.toJSON(c).id)) +
+			'&sizes=' + JSON.stringify(sizes.map(s => Size.toJSON(s).id)) +
 			'&minCost=' + JSON.stringify(cost.min) +
 			'&maxCost=' + JSON.stringify(cost.max) + 
 			'&range=' + JSON.stringify(range) + 
