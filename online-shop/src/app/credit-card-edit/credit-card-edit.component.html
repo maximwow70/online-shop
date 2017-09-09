@@ -7,7 +7,7 @@
 				<input 
 					type="text"
 					class="credit_card-first_name_input"
-					(ngModelChange)="change()"
+					(ngModelChange)="change($event)"
 					[(ngModel)]="creditCard.firstName"
 					#firstNameModel="ngModel"
 					pattern="^\S+(\s\S+)*$"
@@ -22,7 +22,7 @@
 				<input
 					type="text"
 					class="credit_card-last_name_input"
-					(ngModelChange)="change()"
+					(ngModelChange)="change($event)"
 					[(ngModel)]="creditCard.lastName"
 					#lastNameModel="ngModel"
 					pattern="^\S+(\s\S+)*$"
@@ -34,7 +34,7 @@
 			</div>
 			<div class="credit_card-number">
 				<label class="credit_card-number_label">Credit Card Number</label>
-				<input type="text" class="credit_card-number_input" [(ngModel)]="cardNumber" (ngModelChange)="change()" [textMask]="{mask: cardNumberMask}">
+				<input type="text" class="credit_card-number_input" [(ngModel)]="cardNumber" (ngModelChange)="change($event)" [textMask]="{mask: cardNumberMask}">
 				<img alt="" class="credit_card-card_type" src="assets/credit-card/{{getCardImageSource(creditCard)}}">
 			</div>
 			<div class="credit_card-date">
@@ -45,7 +45,7 @@
 						class="credit_card-month_input"
 						[(ngModel)]="cardMonth"
 						(keypress)="isNumberPressed($event)"
-						(ngModelChange)="change()"
+						(ngModelChange)="change($event)"
 						maxlength="2"
 						placeholder="mm"
 						required>
@@ -55,7 +55,7 @@
 						class="credit_card-year_input"
 						[(ngModel)]="cardYear"
 						(keypress)="isNumberPressed($event)"
-						(ngModelChange)="change()"
+						(ngModelChange)="change($event)"
 						maxlength="4"
 						placeholder="yyyy"
 						required>
