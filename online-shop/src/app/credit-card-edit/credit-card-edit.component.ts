@@ -35,7 +35,7 @@ export class CreditCardEditComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	public change(): void {
+	public change(event): void {
 		this.onChange.emit(this.creditCard);
 	}
 
