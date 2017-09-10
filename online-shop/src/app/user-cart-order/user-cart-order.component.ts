@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
-import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { ItemColorService } from "app/_services/item-color.service";
 import { Router } from "@angular/router";
 
 @Component({

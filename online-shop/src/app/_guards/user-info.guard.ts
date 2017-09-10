@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { UserDataService } from "app/_services/user-data/user-data.service";
+import { UserDataService } from "app/_services/user-data.service";
 
 @Injectable()
-export class UserStatisticGuard implements CanActivate {
+export class UserInfoGuard implements CanActivate {
 
 	constructor(
 		private _router: Router,

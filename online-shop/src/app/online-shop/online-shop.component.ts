@@ -4,16 +4,15 @@ import { OnlineShop } from "app/_model/online-shop";
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
 
-import { ItemColorService } from "app/_services/item-color/item-color.service";
-import { ItemCostService } from "app/_services/item-cost/item-cost.service";
+import { ItemColorService } from "app/_services/item-color.service";
 
 import { Select } from "app/ui/select/select";
-import { ItemListService } from "app/_services/item-list/item-list.service";
 import { Route, Router } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import { ItemData } from "app/_model/item-data";
 import { ItemDataPresentation } from "app/_model/item-data-presentation";
 import { Size } from "app/_model/size";
+import { ItemService } from "app/_services/item.service";
 
 @Component({
 	selector: 'online-shop',
@@ -50,9 +49,8 @@ export class OnlineShopComponent implements OnInit {
 	constructor(
 		private _elementRef: ElementRef,
 		private _router: Router,
-		private _itemList: ItemListService,
-		private _itemColor: ItemColorService,
-		private _itemCost: ItemCostService
+		private _itemData: ItemService,
+		private _itemColor: ItemColorService
 	) {
 		this._onlineShop = new OnlineShop();
 
@@ -65,12 +63,12 @@ export class OnlineShopComponent implements OnInit {
 	}
 
 	public loadItemList(): void {
-		this._itemList.getItemListJSON().then(itemDataList =>
+		this._itemData.getItemListJSON().then(itemDataList =>
 			this._onlineShop.setItemList(itemDataList)
 		);
 	}
 	public loadItemListByParams(): void {
-		this._itemList.getItemList(
+		this._itemData.getItemList(
 			this._searchParams ? this._searchParams.name : '',
 			this._searchParams ? this._searchParams.colors : [],
 			this._searchParams ? this._searchParams.sizes : [],

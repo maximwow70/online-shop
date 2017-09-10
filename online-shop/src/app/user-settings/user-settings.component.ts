@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDashboardTheme } from "app/_model/user-dashboard-theme";
-import { UserDataService } from "app/_services/user-data/user-data.service";
+import { UserDataService } from "app/_services/user-data.service";
 
 @Component({
 	selector: 'user-settings',

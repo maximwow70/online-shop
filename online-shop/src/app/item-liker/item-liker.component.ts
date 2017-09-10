@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemDataPresentation } from "app/_model/item-data-presentation";
-import { ItemListService } from "app/_services/item-list/item-list.service";
-import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { ItemColorService } from "app/_services/item-color.service";
 import { Color } from "app/_model/color";
 import { Item } from "app/_model/item";
 import { Router } from "@angular/router";
+import { ItemService } from "app/_services/item.service";
 
 @Component({
 	selector: 'item-liker',
@@ -21,7 +21,7 @@ export class ItemLikerComponent implements OnInit {
 
 	private _listLength: number;
 	constructor(
-		private _itemListData: ItemListService,
+		private _itemData: ItemService,
 		private _itemColor: ItemColorService
 	) {
 
@@ -56,7 +56,7 @@ export class ItemLikerComponent implements OnInit {
 
 
 	public getItemList(): void {
-		this._itemListData.getItemListJSON().then(itemList => {
+		this._itemData.getItemListJSON().then(itemList => {
 			this._itemList = itemList;
 			this._listLength = this._itemList.length;
 		});
