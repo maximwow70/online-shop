@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Item } from "app/_model/item";
-import { ItemService } from "app/_services/item/item.service";
+import { ItemService } from "app/_services/item.service";
 import { Select } from "app/ui/select/select";
 import { SelectNumber } from "app/ui/select-number/select-number";
 import { Color } from "app/_model/color";

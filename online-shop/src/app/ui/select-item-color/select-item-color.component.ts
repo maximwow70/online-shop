@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
-import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { ItemColorService } from "app/_services/item-color.service";
 import { Color } from "app/_model/color";
 
 declare var Ps: any;

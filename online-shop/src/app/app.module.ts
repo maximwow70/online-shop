@@ -8,13 +8,10 @@ import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppComponent } from './app.component';
 
-import { ItemColorService } from "app/_services/item-color/item-color.service";
-import { ItemCostService } from "app/_services/item-cost/item-cost.service";
-import { ItemSizeService } from "app/_services/item-size/item-size.service";
-import { ItemListService } from "app/_services/item-list/item-list.service";
-import { ItemService } from "app/_services/item/item.service";
-import { CategoryListService } from "app/_services/category-list/category-list.service";
-import { UserDataService } from "app/_services/user-data/user-data.service";
+import { ItemColorService } from "app/_services/item-color.service";
+import { ItemService } from "app/_services/item.service";
+import { CategoryListService } from "app/_services/category-list.service";
+import { UserDataService } from "app/_services/user-data.service";
 
 import { OnlineShopComponent } from './online-shop/online-shop.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -56,13 +53,13 @@ import { AboutHistoryComponent } from './about-history/about-history.component';
 import { AboutTeamComponent } from './about-team/about-team.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserComponent } from "app/user/user.component";
-
-
-import { UserCartGuard } from "app/_guards/user-cart/user-cart.guard";
-import { UserWishlistGuard } from "app/_guards/user-wishlist/user-wishlist.guard";
 import { UserStatisticComponent } from './user-statistic/user-statistic.component';
-import { UserStatisticGuard } from "app/_guards/user-statistic/user-statistic.guard";
-import { UserInfoGuard } from "app/_guards/user-info/user-info.guard";
+
+
+import { UserCartGuard } from "app/_guards/user-cart.guard";
+import { UserWishlistGuard } from "app/_guards/user-wishlist.guard";
+import { UserStatisticGuard } from "app/_guards/user-statistic.guard";
+import { UserInfoGuard } from "app/_guards/user-info.guard";
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SelectComponent } from './ui/select/select.component';
@@ -204,9 +201,6 @@ const appRoutes: Routes = [
 	],
 	providers: [
 		ItemColorService,
-		ItemCostService,
-		ItemSizeService,
-		ItemListService,
 		ItemService,
 		CategoryListService,
 		UserDataService,

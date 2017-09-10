@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Item } from "app/_model/item";
 import { Router } from "@angular/router";
-import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { ItemColorService } from "app/_services/item-color.service";
 import { Color } from "app/_model/color";
-import { UserDataService } from "app/_services/user-data/user-data.service";
+import { UserDataService } from "app/_services/user-data.service";
 
 
 export enum UserCartSteps {

@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, EventEmitter, Output } from '@angular/core';
 import { Datapicker } from "app/ui/datapicker/datapicker";
 import { Color } from "app/_model/color";
-import { CategoryListService } from "app/_services/category-list/category-list.service";
+import { CategoryListService } from "app/_services/category-list.service";
 import { Size } from "app/_model/size";
 import { Category } from "app/_model/category";
 
