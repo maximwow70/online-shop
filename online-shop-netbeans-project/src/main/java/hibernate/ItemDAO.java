@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package hibernate;
+import Enums.SortType;
 import other.Helper;
 import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import java.util.List;
@@ -80,6 +81,7 @@ public class ItemDAO {
         Long count = (Long)q.uniqueResult();
         return count;
     }
+    
     
     public void close() {
         if(session.isOpen()) {

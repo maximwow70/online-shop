@@ -5,8 +5,12 @@
  */
 package com.mycompany.online.shop.netbeans.entity.Item;
 
+import Enums.SortType;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -116,6 +120,62 @@ public class Item implements java.io.Serializable{
     @Override
     public String toString() {
         return "{" + "\"id\":" + id + ", \"article\":\"" + article + "\", \"name\":\"" + name + "\", \"description\":\"" + description + "\", \"photos\":" + photos + ", \"featureLists\":" + featureLists + ", \"itemData\":" + itemData + '}';
+    }
+    
+    public double maxCost() {
+        double maxCost = 0;
+        for(ItemData data : this.getItemData()) {
+            double cost = data.getCost();
+            if(cost>maxCost) {
+                maxCost = cost;
+            }
+        }
+        return maxCost;
+    }
+    
+    public double minCost() {
+        double minCost = 100000000;
+        for(ItemData data : this.getItemData()) {
+            double cost = data.getCost();
+            if(cost<minCost) {
+                minCost = cost;
+            }
+        }
+        return minCost;
+    }
+    
+    public static List<Item> sortItems(List<Item> oldList, final SortType type, final boolean isSortByIncrease) {
+        Collections.sort(oldList, new Comparator<Item>() {
+            @Override
+            public int compare(Item item1, Item item2) {
+                int compare;
+                switch(type) {
+                    case COST:
+                        if(isSortByIncrease)
+                            compare = (int)(item1.minCost()-item2.minCost());
+                        else
+                            compare = (int)(item2.maxCost()-item1.maxCost());
+                        break;
+                    case NAME:
+                        if(isSortByIncrease)
+                            compare = item1.getName().compareToIgnoreCase(item2.getName());
+                        else
+                            compare = item2.getName().compareToIgnoreCase(item1.getName());
+                        break;
+                    case DATE:
+                        if(isSortByIncrease)
+                            compare = item2.getDate().compareTo(item1.getDate());
+                        else
+                            compare = item1.getDate().compareTo(item2.getDate());
+                        break;
+                    default:
+                        compare = 1;
+                        break;
+                }
+                return compare;
+            }
+        });
+        return oldList;
     }
 
 }
