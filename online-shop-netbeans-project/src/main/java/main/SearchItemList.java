@@ -71,10 +71,8 @@ public class SearchItemList extends HttpServlet {
         Gson gson = new Gson();
         int[] colors = gson.fromJson(request.getParameter("colors"), int[].class);
         int[] sizes = gson.fromJson(request.getParameter("sizes"), int[].class);
-        int min = 0;
-        int max = 1000;
-//        int min = Integer.valueOf(request.getParameter("minCost"));
-//        int max = Integer.valueOf(request.getParameter("maxCost"));
+        int min = Integer.valueOf(request.getParameter("minCost"));
+        int max = Integer.valueOf(request.getParameter("maxCost"));
         int currentPage = 1;//Integer.valueOf(request.getParameter("currentPage"));
         int range = 10;//Integer.valueOf(request.getParameter("range"));
         ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());

@@ -8,6 +8,7 @@ package presentation;
 import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import com.mycompany.online.shop.netbeans.entity.Item.ItemData;
 import com.mycompany.online.shop.netbeans.entity.Item.Photo;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -38,6 +39,10 @@ public class ItemPresentation {
             }
         }
         this.cost = max;
+        Date date = new Date();
+        Date itemDate = item.getDate();
+        isNew = (date.getTime() - itemDate.getTime() < (3600000/60));
+        System.out.println(date.getTime()+"||"+itemDate.getTime());
     }
     private class ItemInfo {
         private Long id;
