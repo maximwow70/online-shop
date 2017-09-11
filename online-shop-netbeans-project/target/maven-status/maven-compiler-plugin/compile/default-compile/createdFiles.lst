@@ -9,9 +9,9 @@ other/Helper.class
 com/mycompany/online/shop/netbeans/entity/Item/FeatureList.class
 com/mycompany/online/shop/netbeans/entity/Item/Photo.class
 Tests/TestCategory.class
-hibernate/ItemDAO$1.class
 trash/User.class
 Tests/SimpleTest.class
+Enums/SortType$1.class
 com/mycompany/online/shop/netbeans/entity/Item/Color.class
 trash/FeatureList$1.class
 com/mycompany/online/shop/netbeans/entity/User/User.class
@@ -19,6 +19,7 @@ presentation/DataPresentation.class
 hibernate/CategoryDAO.class
 com/mycompany/online/shop/netbeans/entity/Item/ItemData.class
 com/mycompany/online/shop/netbeans/entity/Item/Size.class
+com/mycompany/online/shop/netbeans/entity/Item/Item$2.class
 presentation/SizePresentation.class
 main/GetMaxCost.class
 hibernate/ItemDAO.class
@@ -29,6 +30,7 @@ trash/ItemData.class
 presentation/FeatureListPresentation.class
 trash/ItemDataPresentation.class
 com/mycompany/online/shop/netbeans/entity/Item/Item.class
+com/mycompany/online/shop/netbeans/entity/Item/Item$1.class
 Enums/SortType.class
 com/mycompany/online/shop/netbeans/entity/User/Card.class
 main/SearchItemList.class
@@ -42,6 +44,7 @@ trash/Item.class
 com/mycompany/online/shop/netbeans/entity/Item/Feature.class
 presentation/ItemDataPresentation.class
 main/GetSizes.class
+main/GetSortTypes.class
 hibernate/SizeDAO.class
 hibernate/HibernateUtil.class
 trash/SQLConnector.class

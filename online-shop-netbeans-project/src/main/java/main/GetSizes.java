@@ -12,6 +12,7 @@ import hibernate.ColorDAO;
 import hibernate.HibernateUtil;
 import hibernate.SizeDAO;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +28,7 @@ import presentation.SizePresentation;
  *
  * @author admin
  */
-@WebServlet(name = "GetSize", urlPatterns = {"/GetSize"})
+@WebServlet(name = "GetSizes", urlPatterns = {"/GetSizes"})
 public class GetSizes extends HttpServlet {
 
     /**
@@ -57,8 +58,13 @@ public class GetSizes extends HttpServlet {
             throws ServletException, IOException {
         SizeDAO sizeDAO = new SizeDAO(HibernateUtil.getSessionFactory().openSession());
         List<Size> sizes = sizeDAO.getAllSizes();
-        sizeDAO.close();
-        response.getWriter().write(sizes.toString());
+        List<SizePresentation> list = new ArrayList<>();
+        for(Size size : sizes) {
+            list.add(new SizePresentation(size));
+        }
+        //sizeDAO.close();
+        Gson gson = new Gson();
+        response.getWriter().write(gson.toJson(list));
     }
 
     /**

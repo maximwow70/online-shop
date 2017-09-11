@@ -13,11 +13,11 @@ import com.mycompany.online.shop.netbeans.entity.Item.Size;
  */
 public class SizePresentation {
         private Long id;
-        private String size;
+        private String name;
 
         public SizePresentation(Size size) {
             this.id = size.getId();
-            this.size = size.getSize();
+            this.name = size.getSize();
         }
         
     }
