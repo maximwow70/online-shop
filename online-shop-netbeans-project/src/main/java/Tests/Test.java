@@ -9,6 +9,7 @@ import com.mycompany.online.shop.netbeans.entity.Item.ItemData;
 import com.mycompany.online.shop.netbeans.entity.Item.Photo;
 import com.mycompany.online.shop.netbeans.entity.Item.Size;
 import hibernate.HibernateUtil;
+import java.util.Date;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,12 +27,13 @@ import org.hibernate.Transaction;
 public class Test {
     public static void main(String[] args) {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        for(int i = 1;i<3;i++) {
+        for(int i = 4;i<7;i++) {
             Transaction t = s.beginTransaction();
             Item item = new Item();
             item.setArticle("ebqwda"+i);
             item.setDescription("danwfjnqw dwi jdawoidj awd");
             item.setName("name");
+            item.setDate(new Date());
             Feature feature = new Feature();
             feature.setKey("key");
             feature.setValue("value");

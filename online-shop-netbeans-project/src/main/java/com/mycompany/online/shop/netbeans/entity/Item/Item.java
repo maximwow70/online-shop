@@ -5,6 +5,7 @@
  */
 package com.mycompany.online.shop.netbeans.entity.Item;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -22,6 +23,7 @@ public class Item implements java.io.Serializable{
     private String article;
     private String name;
     private String description;
+    private Date date;
     private Set<Photo> photos = new LinkedHashSet<Photo>();
     private Set<FeatureList> featureLists = new LinkedHashSet<FeatureList>();
     private Set<ItemData> itemData = new LinkedHashSet<ItemData>();
@@ -62,6 +64,16 @@ public class Item implements java.io.Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "date", unique = false, nullable = false)
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL)
