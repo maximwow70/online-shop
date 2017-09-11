@@ -5,7 +5,7 @@
  */
 package hibernate;
 
-import entity.Item.Color;
+import com.mycompany.online.shop.netbeans.entity.Item.Color;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
