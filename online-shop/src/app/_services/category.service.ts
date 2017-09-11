@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Category } from "app/_model/category";
+import { Http } from "@angular/http";
 
 @Injectable()
-export class CategoryListService {
+export class CategoryService {
 
 
 	private _categoryList: Category[] = [];
 
-	constructor() {
+	constructor(
+		private _http: Http
+	) {
 		this._categoryList = [
 			new Category(
 				0,
@@ -186,8 +189,11 @@ export class CategoryListService {
 	}
 
 	public getCategoryList(): Promise<Category[]> {
-		return new Promise<Category[]>((resolve,reject) => {
-			resolve(this._categoryList);
-		});
+		// return new Promise<Category[]>((resolve,reject) => {
+		// 	resolve(this._categoryList);
+		// });
+		return this._http.get('GetCategoryList', '').map(res =>
+			res.json().map(c => Category.fromJSON(c))
+		).toPromise();
 	}
 }

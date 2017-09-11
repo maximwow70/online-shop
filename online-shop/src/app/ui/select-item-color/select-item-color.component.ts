@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
-import { ItemColorService } from "app/_services/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { Color } from "app/_model/color";
 
 declare var Ps: any;
@@ -27,7 +27,7 @@ export class SelectItemColorComponent implements OnInit {
 
 	constructor(
 		private _elementRef: ElementRef,
-		private _colorService: ItemColorService
+		private _colorService: ColorService
 	) { }
 
 	ngOnInit() {

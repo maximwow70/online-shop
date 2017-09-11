@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemDataPresentation } from "app/_model/item-data-presentation";
-import { ItemColorService } from "app/_services/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { Color } from "app/_model/color";
 import { Item } from "app/_model/item";
 import { Router } from "@angular/router";
@@ -22,7 +22,7 @@ export class ItemLikerComponent implements OnInit {
 	private _listLength: number;
 	constructor(
 		private _itemData: ItemService,
-		private _itemColor: ItemColorService
+		private _itemColor: ColorService
 	) {
 
 	}

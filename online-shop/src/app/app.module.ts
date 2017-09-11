@@ -8,9 +8,9 @@ import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppComponent } from './app.component';
 
-import { ItemColorService } from "app/_services/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { ItemService } from "app/_services/item.service";
-import { CategoryListService } from "app/_services/category-list.service";
+import { CategoryService } from "app/_services/category.service";
 import { UserDataService } from "app/_services/user-data.service";
 
 import { OnlineShopComponent } from './online-shop/online-shop.component';
@@ -75,6 +75,7 @@ import { CreditCardPresetListComponent } from './credit-card-preset-list/credit-
 import { CreditCardPresetComponent } from './credit-card-preset/credit-card-preset.component';
 import { CreditCardPresetEditComponent } from './credit-card-preset-edit/credit-card-preset-edit.component';
 import { CategoryComponent } from './category/category.component';
+import { SizeService } from "app/_services/size.service";
 
 
 const appRoutes: Routes = [
@@ -200,14 +201,15 @@ const appRoutes: Routes = [
 		TextMaskModule
 	],
 	providers: [
-		ItemColorService,
+		ColorService,
 		ItemService,
-		CategoryListService,
+		CategoryService,
 		UserDataService,
 		UserCartGuard,
 		UserWishlistGuard,
 		UserStatisticGuard,
-		UserInfoGuard
+		UserInfoGuard,
+		SizeService
 	],
 	bootstrap: [AppComponent]
 })
