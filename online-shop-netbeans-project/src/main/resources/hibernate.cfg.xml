@@ -16,5 +16,6 @@
     <mapping class="com.mycompany.online.shop.netbeans.entity.Item.Feature"></mapping>
     <mapping class="com.mycompany.online.shop.netbeans.entity.Item.FeatureList"></mapping>
     <mapping class="com.mycompany.online.shop.netbeans.entity.Item.Photo"></mapping>
+    <mapping class="com.mycompany.online.shop.netbeans.entity.Item.Category"></mapping>
   </session-factory>
 </hibernate-configuration>
