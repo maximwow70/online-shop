@@ -129,9 +129,9 @@ export class OnlineShopComponent implements OnInit {
 			this.loadItemListByParams();
 		});
 
-		this._itemData.getItemListJSON().then(itemDataList =>
-			this._onlineShop.setItemList(itemDataList)
-		);
+		// this._itemData.getItemListJSON().then(itemDataList =>
+		// 	this._onlineShop.setItemList(itemDataList)
+		// );
 	}
 
 	ngOnInit() {

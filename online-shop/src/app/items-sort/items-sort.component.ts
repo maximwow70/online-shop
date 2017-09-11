@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, SimpleChanges } from '@angular/core';
 import { SortType } from "app/_model/sort-type";
 import { DropdownValue } from "app/ui/dropdown/dropdown.component";
 import { ItemService } from "app/_services/item.service";
@@ -26,6 +26,13 @@ export class ItemsSortComponent implements OnInit {
 	constructor(
 		private _itemData: ItemService
 	) {}
+
+	ngOnChanges(changes: SimpleChanges) {
+		if (changes["sortTypes"]) {
+			this.sortTypesDropdown = this.sortTypes.map(st => new DropdownValue(st.id, st.name));
+			this.onSortTypeSelected(this.sortTypesDropdown[0]);
+		}
+	}
 
 	ngOnInit() {
 	}
