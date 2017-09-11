@@ -6,6 +6,13 @@
 package Tests;
 
 import Enums.SortType;
+import com.google.gson.Gson;
+import com.mycompany.online.shop.netbeans.entity.Item.Size;
+import hibernate.HibernateUtil;
+import hibernate.SizeDAO;
+import java.util.ArrayList;
+import java.util.List;
+import presentation.SizePresentation;
 
 /**
  *
@@ -13,9 +20,14 @@ import Enums.SortType;
  */
 public class SimpleTest {
     public static void main(String... args) {
-        
-        for(SortType sortType : SortType.values()) {
-            System.out.println(sortType.ordinal()+"-->"+sortType.getName());
+        SizeDAO sizeDAO = new SizeDAO(HibernateUtil.getSessionFactory().openSession());
+        List<Size> sizes = sizeDAO.getAllSizes();
+        List<SizePresentation> list = new ArrayList<>();
+        for(Size size : sizes) {
+            list.add(new SizePresentation(size));
         }
+        sizeDAO.close();
+        Gson gson = new Gson();
+        System.out.println(gson.toJson(list));
     }
 }
