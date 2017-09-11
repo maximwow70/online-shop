@@ -1,8 +1,11 @@
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/Tests/Test4.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/presentation/FeatureListPresentation.java
+/Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/hibernate/CategoryDAO.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/main/GetItemData.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/trash/FeatureList.java
+/Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/Tests/TestCategory.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/presentation/SizePresentation.java
+/Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/presentation/SortTypePresentation.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/hibernate/HibernateUtil.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/presentation/DataPresentation.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/trash/ItemData.java
@@ -24,6 +27,7 @@
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/com/mycompany/online/shop/netbeans/entity/Item/Size.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/Tests/TestColorDAO.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/trash/SQLConnector.java
+/Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/com/mycompany/online/shop/netbeans/entity/Item/Category.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/com/mycompany/online/shop/netbeans/entity/Item/Color.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/hibernate/SizeDAO.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/com/mycompany/online/shop/netbeans/entity/User/Card.java
@@ -32,11 +36,13 @@
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/com/mycompany/online/shop/netbeans/entity/Item/Feature.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/Tests/TestSizeDAO.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/main/SearchItemList.java
+/Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/Tests/SimpleTest.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/other/Helper.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/presentation/ColorPresentation.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/hibernate/ItemDataDAO.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/trash/ItemDataPresentation.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/trash/ItemCountData.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/com/mycompany/online/shop/netbeans/entity/Item/Item.java
+/Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/Enums/SortType.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/main/GetSizes.java
 /Users/admin/Desktop/git/online-shop/online-shop-netbeans-project/src/main/java/trash/Feature.java

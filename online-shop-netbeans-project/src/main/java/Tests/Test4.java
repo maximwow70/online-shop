@@ -37,7 +37,7 @@ public class Test4 {
 //            System.out.println(countOfPages);
 //        }
         for(int k = 0; k < 1; k ++) {
-            List<Item> items = i.getItemList(name, min, max, color, size, currentPage1, range, SortType.DEFAULT,1);
+            List<Item> items = i.getItemList(name, min, max, color, size, currentPage1, range);
             Long countOfPages = i.getItemsCount(name, min, max, color, size);
             System.out.println(items);
             System.out.println((int)(countOfPages/range));

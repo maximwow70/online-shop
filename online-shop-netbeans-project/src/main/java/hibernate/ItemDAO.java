@@ -33,7 +33,7 @@ public class ItemDAO {
         return item;
     }
     
-    public List<Item> getItemList(String name, int min, int max, int[] color, int[] size, int currentPage, int range, SortType sortType, int direction) {
+    public List<Item> getItemList(String name, int min, int max, int[] color, int[] size, int currentPage, int range) {
         boolean colorValid = color!=null&&color.length>0;
         boolean sizeValid = size!=null&&size.length>0;
         String query = "FROM Item item"+" WHERE item.name LIKE '%"+name+"%' AND EXISTS(\n";
@@ -51,13 +51,7 @@ public class ItemDAO {
         if(sizeValid) {
             query+=" AND data.size.id = size.id AND data.size.id IN"+Helper.convertArrayToString(size)+"\n";
         }
-        query+=")\n";
-        if(sortType!=SortType.DEFAULT) {
-            query+=" ORDER BY\n";
-            switch(sortType) {
-                case COST:query+="";break;
-            }
-        }
+        query+=")";
         //System.out.println(query);
         Query q = session.createQuery(query).setFirstResult(range*(currentPage-1)).setMaxResults(range);
         List<Item> list = q.list();
@@ -87,6 +81,7 @@ public class ItemDAO {
         Long count = (Long)q.uniqueResult();
         return count;
     }
+    
     
     public void close() {
         if(session.isOpen()) {

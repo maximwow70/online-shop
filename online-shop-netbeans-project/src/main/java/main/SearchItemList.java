@@ -74,8 +74,11 @@ public class SearchItemList extends HttpServlet {
         int max = Integer.valueOf(request.getParameter("maxCost"));
         int currentPage = 1;//Integer.valueOf(request.getParameter("currentPage"));
         int range = 10;//Integer.valueOf(request.getParameter("range"));
+        SortType type = SortType.values()[Integer.valueOf(request.getParameter("sortType"))];
+        boolean isSortByIncrease = Boolean.valueOf(request.getParameter("isSortByIncrease"));
         ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
-        List<Item> items = itemDAO.getItemList(name, min, max, colors, sizes, currentPage, range, SortType.DEFAULT, 1);
+        List<Item> items = itemDAO.getItemList(name, min, max, colors, sizes, currentPage, range);
+        items = Item.sortItems(items, type, isSortByIncrease);
         Long countOfPages = itemDAO.getItemsCount(name, min, max, colors, sizes)/range+1;
         List<ItemPresentation> list = new ArrayList<>();
         for(Item item : items) {
