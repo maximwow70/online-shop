@@ -5,6 +5,7 @@
  */
 package Tests;
 
+import Enums.SortType;
 import other.Helper;
 import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import hibernate.HibernateUtil;
@@ -36,7 +37,7 @@ public class Test4 {
 //            System.out.println(countOfPages);
 //        }
         for(int k = 0; k < 1; k ++) {
-            List<Item> items = i.getItemList(name, min, max, color, size, currentPage1, range);
+            List<Item> items = i.getItemList(name, min, max, color, size, currentPage1, range, SortType.DEFAULT,1);
             Long countOfPages = i.getItemsCount(name, min, max, color, size);
             System.out.println(items);
             System.out.println((int)(countOfPages/range));
