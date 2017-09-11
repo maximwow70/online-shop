@@ -4,21 +4,25 @@ import { Item } from "app/_model/item";
 import { Observable } from "rxjs/Observable";
 import { Http } from "@angular/http";
 
+import 'rxjs';
+
 @Injectable()
-export class ItemColorService {
+export class ColorService {
 
 	constructor(
 		private _http: Http
 	) {
-		
+
 	}
 
-	public getColorsByItem(item: Item): Observable<string[]> {
-		return this._http.get('GetColors' + '?id=' + item.id).map(response => response.json());
+	public getColors(): Promise<Color[]> {
+		return this._http.get('GetColors', '').map(res =>
+			res.json().map(c => Color.fromJSON(c))
+		).toPromise();
 	}
 
 	public getClassByColor(color: Color): string {
-		switch (color.name){
+		switch (color.name) {
 			case 'white': return 'white';
 			case 'black': return 'black';
 			case 'brown': return 'brown';

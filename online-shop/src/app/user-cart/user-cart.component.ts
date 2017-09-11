@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Item } from "app/_model/item";
 import { Router } from "@angular/router";
-import { ItemColorService } from "app/_services/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { Color } from "app/_model/color";
 import { UserDataService } from "app/_services/user-data.service";
 
@@ -54,7 +54,7 @@ export class UserCartComponent implements OnInit {
 		private _elementRef: ElementRef,
 		private _router: Router,
 		private _userData: UserDataService,
-		private _itemColor: ItemColorService
+		private _itemColor: ColorService
 	) {
 		this._activeStep = UserCartSteps.ORDER;
 	}

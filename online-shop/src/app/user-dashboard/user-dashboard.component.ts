@@ -4,7 +4,7 @@ import { UserDataService } from "app/_services/user-data.service";
 import { User } from "app/_model/user";
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
-import { ItemColorService } from "app/_services/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { UserDashboardTheme } from "app/_model/user-dashboard-theme";
 
 declare var Ps;

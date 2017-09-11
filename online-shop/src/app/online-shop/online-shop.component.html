@@ -7,7 +7,13 @@
 		<items-sort></items-sort>
 	</div>
 	<div class="item_list-items_search">
-		<items-search (onSearch)="onSearch($event)"></items-search>
+		<items-search 
+			[categories]="availableCategories"
+			[colors]="availableColors"
+			[sizes]="availableSizes"
+			[cost]="availableCost"
+			(onSearch)="onSearch($event)">
+		</items-search>
 	</div><!--
 	--><div class="item_list-items">
 		<div class="item_list-item_card" *ngFor="let itemData of itemList">

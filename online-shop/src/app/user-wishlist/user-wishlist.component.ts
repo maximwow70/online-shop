@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Item } from "app/_model/item";
-import { ItemColorService } from "app/_services/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { Color } from "app/_model/color";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UserDataService } from "app/_services/user-data.service";
@@ -38,12 +38,11 @@ export class UserWishlistComponent implements OnInit {
 		private _elementRef: ElementRef,
 		private _router: Router,
 		private _userData: UserDataService,
-		private _itemColor: ItemColorService
+		private _itemColor: ColorService
 	) { }
 
 	ngOnInit() {
-
-
+		
 		this._userData.getUserWishlist().subscribe(itemList => {
 			this._itemList = itemList;
 			this.onSortByName();
