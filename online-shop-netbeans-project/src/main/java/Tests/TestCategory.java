@@ -26,19 +26,19 @@ public class TestCategory {
         category2.setName("cat12");
         Transaction t = session.beginTransaction();
         try {
-        session.save(category);
-        session.save(category1);
-        session.save(category2);
-        
-        category.getChildren().add(category1);
-        category.getChildren().add(category2);
-        category1.setParent(category);
-        category2.setParent(category);
-        
-        session.update(category);
-        session.update(category1);
-        session.update(category2);
-        t.commit();
+            session.save(category);
+            session.save(category1);
+            session.save(category2);
+
+            category.getChildren().add(category1);
+            category.getChildren().add(category2);
+            category1.setParent(category);
+            category2.setParent(category);
+
+            session.update(category);
+            session.update(category1);
+            session.update(category2);
+            t.commit();
         } catch(HibernateException e) {
             t.rollback();
             e.printStackTrace();

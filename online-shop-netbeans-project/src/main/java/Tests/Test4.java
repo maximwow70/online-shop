@@ -5,6 +5,7 @@
  */
 package Tests;
 
+import Enums.SortType;
 import other.Helper;
 import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import hibernate.HibernateUtil;

@@ -28,12 +28,12 @@ import org.hibernate.Transaction;
 public class Test {
     public static void main(String[] args) {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        for(int i = 4;i<7;i++) {
+        for(int i = 15;i<17;i++) {
             Transaction t = s.beginTransaction();
             Item item = new Item();
             item.setArticle("ebqwda"+i);
             item.setDescription("danwfjnqw dwi jdawoidj awd");
-            item.setName("name");
+            item.setName("asd"+i);
             item.setDate(new Date());
             item.setCategory(new CategoryDAO(s).getCategory((long)1));
             Feature feature = new Feature();
@@ -47,7 +47,7 @@ public class Test {
             size.setSize("big"+i);
             ItemData data = new ItemData();
             data.setCount(12);
-            data.setCost(123);
+            data.setCost(123+i);
             Photo photo = new Photo();
             photo.setPhoto("photo"+i);
             try{
