@@ -5,7 +5,7 @@
  */
 package hibernate;
 import other.Helper;
-import entity.Item.Item;
+import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;

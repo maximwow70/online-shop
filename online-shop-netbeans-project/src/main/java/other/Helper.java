@@ -5,7 +5,7 @@
  */
 package other;
 
-import entity.Item.Item;
+import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import java.util.ArrayList;
 import java.util.List;
 
