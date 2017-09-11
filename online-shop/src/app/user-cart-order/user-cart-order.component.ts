@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
-import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -17,7 +17,7 @@ export class UserCartOrderComponent implements OnInit {
 	@Output() onProceedToCheckout: EventEmitter<void> = new EventEmitter<void>();
 
 	constructor(
-		private _itemColor: ItemColorService,
+		private _itemColor: ColorService,
 		private _router: Router
 	) { }
 
@@ -28,8 +28,7 @@ export class UserCartOrderComponent implements OnInit {
 		return this._itemColor.getClassByColor(color);
 	}
 	public getColorsByItem(item: Item): Color[] {
-		let colors = this._itemColor.getColorsByItem(item)
-		return [colors[0]];
+		return [new Color(0, 'red')];
 	}
 
 	public onItemClicked(item: Item): void {

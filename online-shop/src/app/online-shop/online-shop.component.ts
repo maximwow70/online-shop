@@ -4,16 +4,20 @@ import { OnlineShop } from "app/_model/online-shop";
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
 
-import { ItemColorService } from "app/_services/item-color/item-color.service";
-import { ItemCostService } from "app/_services/item-cost/item-cost.service";
+import { ColorService } from "app/_services/color.service";
 
 import { Select } from "app/ui/select/select";
-import { ItemListService } from "app/_services/item-list/item-list.service";
 import { Route, Router } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import { ItemData } from "app/_model/item-data";
 import { ItemDataPresentation } from "app/_model/item-data-presentation";
 import { Size } from "app/_model/size";
+import { ItemService } from "app/_services/item.service";
+import { Category } from "app/_model/category";
+import { CategoryService } from "app/_services/category.service";
+import { SizeService } from "app/_services/size.service";
+import { CostRange } from "app/_model/cost-range";
+import { SortType } from "app/_model/sort-type";
 
 @Component({
 	selector: 'online-shop',
@@ -24,12 +28,20 @@ export class OnlineShopComponent implements OnInit {
 
 	private _onlineShop: OnlineShop;
 
-
 	private _pages: number = null;
-	private _selectedPage: number = null;
+
+	private _availableCategories: Category[] = [];
+	private _availableColors: Color[] = [];
+	private _availableSizes: Size[] = [];
+	private _availableCost: CostRange = new CostRange(null, null);
+
+	private _availableSortTypes: SortType[] = [];
 
 	private _searchParams: { name: string, colors: Color[], sizes: Size[], cost: { min: number, max: number } } = null;
+	private _selectedPage: number = null;
 	private _itemsRange: number = 6;
+	private _selectedSortType: SortType = new SortType(null, null);
+	private _isSortByIncrease: boolean = true;
 
 	public get pages(): number {
 		return this._pages;
@@ -46,37 +58,95 @@ export class OnlineShopComponent implements OnInit {
 		return this._onlineShop.itemList;
 	}
 
+	public get availableCategories(): Category[] {
+		return this._availableCategories;
+	}
+	public get availableColors(): Color[] {
+		return this._availableColors;
+	}
+	public get availableSizes(): Size[] {
+		return this._availableSizes;
+	}
+	public get availableCost(): { min: number, max: number } {
+		return this._availableCost;
+	}
+
+	public get availableSortTypes(): SortType[] {
+		return this._availableSortTypes;
+	}
+
 
 	constructor(
 		private _elementRef: ElementRef,
 		private _router: Router,
-		private _itemList: ItemListService,
-		private _itemColor: ItemColorService,
-		private _itemCost: ItemCostService
+		private _itemData: ItemService,
+		private _colorData: ColorService,
+		private _sizeData: SizeService,
+		private _categoryData: CategoryService
 	) {
-		this._onlineShop = new OnlineShop();
+		// this._availableColors = [
+		// 	new Color(1, 'black'),
+		// 	new Color(2, 'white'),
+		// 	new Color(3, 'dark grey'),
+		// 	new Color(4, 'red'),
+		// 	new Color(5, 'blue'),
+		// 	new Color(6, 'eggplant'),
+		// 	new Color(7, 'green'),
+		// 	new Color(8, 'military'),
+		// 	new Color(9, 'multicolor')
+		// ];
+		// this._availableSizes = [
+		// 	new Size(0, 'xs'),
+		// 	new Size(1, 's'),
+		// 	new Size(2, 'm'),
+		// 	new Size(3, 'l'),
+		// 	new Size(4, 'xl'),
+		// 	new Size(5, 'xxl')
+		// ];
+		// this._availableCost = new CostRange(0, 100000);
 
-		this.loadItemList();
+		this._onlineShop = new OnlineShop();
 		this._selectedPage = 1;
-		this.loadItemListByParams();
+
+		Promise.all([
+			this._categoryData.getCategoryList(),
+			this._colorData.getColors(),
+			this._sizeData.getSizes(new Category(null, null, null, null)),
+			this._itemData.getMaxCost(),
+			this._itemData.getSortTypes()
+		]).then(([
+			categories,
+			colors,
+			sizes,
+			maxCost,
+			sortTypes
+		]) => {
+			this._availableCategories = categories;
+			this._availableColors = colors;
+			this._availableSizes = sizes;
+			this._availableCost = new CostRange(0, maxCost);
+			this._availableSortTypes = sortTypes;
+			this.loadItemListByParams();
+		});
+
+		this._itemData.getItemListJSON().then(itemDataList =>
+			this._onlineShop.setItemList(itemDataList)
+		);
 	}
 
 	ngOnInit() {
 	}
 
-	public loadItemList(): void {
-		this._itemList.getItemListJSON().then(itemDataList =>
-			this._onlineShop.setItemList(itemDataList)
-		);
-	}
 	public loadItemListByParams(): void {
-		this._itemList.getItemList(
+		this._itemData.getItemList(
 			this._searchParams ? this._searchParams.name : '',
 			this._searchParams ? this._searchParams.colors : [],
 			this._searchParams ? this._searchParams.sizes : [],
-			this._searchParams ? this._searchParams.cost : {min: null, max: null},
+			this._searchParams ? this._searchParams.cost : { min: null, max: null },
 			this.itemsRange,
-			this._selectedPage
+			this._selectedPage,
+			this._selectedSortType,
+			this._isSortByIncrease
 		).then(itemDataSearch => {
 			this._onlineShop.setItemList(itemDataSearch.itemDataPresentationList);
 			this._pages = itemDataSearch.totalPages;
@@ -93,6 +163,11 @@ export class OnlineShopComponent implements OnInit {
 		this.loadItemListByParams();
 	}
 
+	public onSortTypeSelected(sortType: SortType): void {
+		this._selectedSortType = sortType;
+		this.loadItemListByParams();
+	}
+
 	public onItemLiked(item: Item): void {
 		console.log(item);
 	}
@@ -101,7 +176,7 @@ export class OnlineShopComponent implements OnInit {
 	}
 
 	public getClassByColor(color: Color): string {
-		return this._itemColor.getClassByColor(color);
+		return this._colorData.getClassByColor(color);
 	}
 
 

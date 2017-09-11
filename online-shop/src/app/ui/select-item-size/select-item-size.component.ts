@@ -1,5 +1,4 @@
 import { Component, OnInit, ElementRef, EventEmitter, Input, Output } from '@angular/core';
-import { ItemColorService } from "app/_services/item-color/item-color.service";
 import { Color } from "app/_model/color";
 import { Size } from "app/_model/size";
 

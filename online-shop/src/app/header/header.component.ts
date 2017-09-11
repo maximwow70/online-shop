@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Item } from "app/_model/item";
 import { Router } from "@angular/router";
-import { UserDataService } from "app/_services/user-data/user-data.service";
+import { UserDataService } from "app/_services/user-data.service";
 
 declare var Ps: any;
 

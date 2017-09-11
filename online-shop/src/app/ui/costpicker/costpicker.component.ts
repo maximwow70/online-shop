@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, Input, Output, EventEmitter } from '@angular/core';
+import { CostRange } from "app/_model/cost-range";
 
 @Component({
 	selector: 'costpicker',
@@ -7,7 +8,7 @@ import { Component, OnInit, ElementRef, Input, Output, EventEmitter } from '@ang
 })
 export class CostpickerComponent implements OnInit {
 
-	@Output() selectedCost: EventEmitter<{ min: number, max: number }> = new EventEmitter<{ min: number, max: number }>();
+	@Output() selectedCost: EventEmitter<CostRange> = new EventEmitter<CostRange>();
 
 	@Input() min: number;
 	@Input() max: number;
@@ -142,10 +143,10 @@ export class CostpickerComponent implements OnInit {
 	}
 
 	private onChange(): void {
-		this.selectedCost.emit({
-			min: this._currentMinValue,
-			max: this._currentMaxValue
-		});
+		this.selectedCost.emit(new CostRange(
+			this._currentMinValue,
+			this._currentMaxValue
+		));
 	}
 
 	public updateVM(): any {

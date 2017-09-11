@@ -3,7 +3,7 @@
 		Sort by:
 	</div><!--
 	--><div class="items_sort-select">
-		<dropdown class="small" [values]="sortValues" (onValueSelected)="onSortValueSelected($event)"></dropdown>
+		<dropdown class="small" [values]="sortTypesDropdown" [selectedValue]="selectedTypeDropdown" (onValueSelected)="onSortTypeSelected($event)"></dropdown>
 	</div><!--
 	--><div class="items_sort-free_shipping">
 		<!--<button class="switch" value="false">

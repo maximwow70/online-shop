@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Item } from "app/_model/item";
-import { ItemService } from "app/_services/item/item.service";
+import { ItemService } from "app/_services/item.service";
 import { Select } from "app/ui/select/select";
 import { SelectNumber } from "app/ui/select-number/select-number";
 import { Color } from "app/_model/color";
@@ -64,7 +64,7 @@ export class ItemComponent implements OnInit {
 	ngOnInit() {
 		let id = this._activatedRoute.snapshot.paramMap.get('id');
 
-		this._itemService.getItem(id).subscribe(itemData => {
+		this._itemService.getItem(id).then(itemData => {
 			this._itemData = itemData;
 			this._selectedColor = this.availableColors[0];
 			this._selectedSize = this.availableSizes[0];
