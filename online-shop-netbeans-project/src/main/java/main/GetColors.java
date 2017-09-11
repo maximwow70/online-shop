@@ -5,17 +5,21 @@
  */
 package main;
 
+import com.google.gson.Gson;
 import com.mycompany.online.shop.netbeans.entity.Item.Color;
 import hibernate.ColorDAO;
 import hibernate.HibernateUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import presentation.ColorPresentation;
 
 /**
  *
@@ -51,8 +55,13 @@ public class GetColors extends HttpServlet {
             throws ServletException, IOException {
         ColorDAO colorDAO = new ColorDAO(HibernateUtil.getSessionFactory().openSession());
         List<Color> colors = colorDAO.getAllColors();
+        Set<ColorPresentation> colorsPresent = new LinkedHashSet<>();
+        for(Color color : colors) {
+            colorsPresent.add(new ColorPresentation(color));
+        }
         colorDAO.close();
-        response.getWriter().write(colors.toString());
+        Gson gson = new Gson();
+        response.getWriter().write(gson.toJson(colorsPresent));
     }
 
     /**
