@@ -66,7 +66,7 @@ public class Item implements java.io.Serializable{
         this.description = description;
     }
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date", unique = false, nullable = false)
     public Date getDate() {
         return date;

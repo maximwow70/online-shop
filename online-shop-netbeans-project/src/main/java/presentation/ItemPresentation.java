@@ -41,8 +41,8 @@ public class ItemPresentation {
         this.cost = max;
         Date date = new Date();
         Date itemDate = item.getDate();
-        isNew = (date.getTime() - itemDate.getTime() < (3600000*24*2));
-        
+        isNew = (date.getTime() - itemDate.getTime() < (3600000/60));
+        System.out.println(date.getTime()+"||"+itemDate.getTime());
     }
     private class ItemInfo {
         private Long id;
