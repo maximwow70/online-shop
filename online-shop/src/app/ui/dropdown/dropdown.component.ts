@@ -73,7 +73,6 @@ export class DropdownComponent implements OnInit {
 	public selectValue(value: DropdownValue): void {
 		this.selectedValue = value;
 		this.onValueSelected.emit(this.selectedValue);
-		console.log('kek');
 	}
 
 	public isValueSelected(value: DropdownValue): boolean {
