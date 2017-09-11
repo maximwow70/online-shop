@@ -5,16 +5,23 @@
  */
 package main;
 
+import com.google.gson.Gson;
+import com.mycompany.online.shop.netbeans.entity.Item.Color;
 import com.mycompany.online.shop.netbeans.entity.Item.Size;
+import hibernate.ColorDAO;
 import hibernate.HibernateUtil;
 import hibernate.SizeDAO;
 import java.io.IOException;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import presentation.ColorPresentation;
+import presentation.SizePresentation;
 
 /**
  *
@@ -65,7 +72,15 @@ public class GetSizes extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        SizeDAO sizeDAO = new SizeDAO(HibernateUtil.getSessionFactory().openSession());
+        List<Size> sizes = sizeDAO.getAllSizes();
+        Set<SizePresentation> sizePresent = new LinkedHashSet<>();
+        for(Size size : sizes) {
+            sizePresent.add(new SizePresentation(size));
+        }
+        sizeDAO.close();
+        Gson gson = new Gson();
+        response.getWriter().write(gson.toJson(sizePresent));
     }
 
     /**
