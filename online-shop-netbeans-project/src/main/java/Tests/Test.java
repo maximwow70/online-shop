@@ -8,6 +8,7 @@ import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import com.mycompany.online.shop.netbeans.entity.Item.ItemData;
 import com.mycompany.online.shop.netbeans.entity.Item.Photo;
 import com.mycompany.online.shop.netbeans.entity.Item.Size;
+import hibernate.CategoryDAO;
 import hibernate.HibernateUtil;
 import java.util.Date;
 import org.hibernate.HibernateException;
@@ -34,6 +35,7 @@ public class Test {
             item.setDescription("danwfjnqw dwi jdawoidj awd");
             item.setName("name");
             item.setDate(new Date());
+            item.setCategory(new CategoryDAO(s).getCategory((long)1));
             Feature feature = new Feature();
             feature.setKey("key");
             feature.setValue("value");

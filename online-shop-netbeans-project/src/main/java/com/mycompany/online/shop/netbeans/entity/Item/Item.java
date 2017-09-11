@@ -6,7 +6,6 @@
 package com.mycompany.online.shop.netbeans.entity.Item;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -24,6 +23,7 @@ public class Item implements java.io.Serializable{
     private String name;
     private String description;
     private Date date;
+    private Category category;
     private Set<Photo> photos = new LinkedHashSet<Photo>();
     private Set<FeatureList> featureLists = new LinkedHashSet<FeatureList>();
     private Set<ItemData> itemData = new LinkedHashSet<ItemData>();
@@ -74,6 +74,16 @@ public class Item implements java.io.Serializable{
 
     public void setDate(Date date) {
         this.date = date;
+    }
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL)
