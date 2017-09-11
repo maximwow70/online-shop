@@ -7,6 +7,7 @@ import { ItemData } from "app/_model/item-data";
 import { ItemDataPresentation } from "app/_model/item-data-presentation";
 import { Size } from "app/_model/size";
 import { ItemDataSearch } from "app/_model/item-data-search";
+import { SortType } from "app/_model/sort-type";
 
 import 'rxjs';
 
@@ -29,17 +30,20 @@ export class ItemService {
 		sizes: Size[],
 		cost: { min: number, max: number },
 		range: number,
-		currentPage: number = 1
+		currentPage: number = 1,
+		sortType: SortType,
+		isSortByIncrease: boolean = true
 	): Promise<ItemDataSearch> {
-		let colorNames: any = colors.map(c => c.name);
-
+		
 		let params = 'name=' + name +
 			'&colors=' + JSON.stringify(colors.map(c => Color.toJSON(c).id)) +
 			'&sizes=' + JSON.stringify(sizes.map(s => Size.toJSON(s).id)) +
 			'&minCost=' + JSON.stringify(cost.min) +
 			'&maxCost=' + JSON.stringify(cost.max) +
 			'&range=' + JSON.stringify(range) +
-			'&currentPage=' + JSON.stringify(currentPage);
+			'&currentPage=' + JSON.stringify(currentPage) +
+			'&sortType=' + JSON.stringify(sortType.id) + 
+			'&isSortByIncrease=' + JSON.stringify(isSortByIncrease);
 
 		return this._http.get('SearchItemList?' + params, '')
 			.map(response =>
@@ -58,6 +62,12 @@ export class ItemService {
 
 	public getMaxCost(): Promise<number> {
 		return this._http.get('GetMaxCost', '').map(res => res.json()).toPromise();
+	}
+
+	public getSortTypes(): Promise<SortType[]> {
+		return this._http.get('GetSortTypes', '').map(res => 
+			res.json().map(st => SortType.fromJSON(st)) 
+		).toPromise();
 	}
 
 }

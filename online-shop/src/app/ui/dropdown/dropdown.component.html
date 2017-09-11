@@ -1,15 +1,12 @@
-<!-- <div class="dropdown" #dropdown>
-
-</div> -->
 <div class="select" #select>
-	<div class="select-input" (click)="select.classList.toggle('select--active')">{{selectedValue}}</div><!--
+	<div class="select-input" (click)="select.classList.toggle('select--active')">{{selectedValue?.name}}</div><!--
 	--><button class="select-btn" (click)="select.classList.toggle('select--active')">
     <span class="select-btn_icon fa fa-chevron-down"></span>
   </button>
 	<div class="select-value_list">
-		<button class="select-value" *ngFor="let value of values" [ngClass]="{ 'select-value--active': value === selectedValue }"
+		<button class="select-value" *ngFor="let value of values" [ngClass]="{ 'select-value--active': isValueSelected(value) }"
 		 (click)="selectValue(value); select.classList.remove('select--active')">
-      {{value}}
+      {{value.name}}
     </button>
 	</div>
 </div>
