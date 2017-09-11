@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { SortType } from "app/_model/sort-type";
+import { DropdownValue } from "app/ui/dropdown/dropdown.component";
+import { ItemService } from "app/_services/item.service";
 
 @Component({
 	selector: 'items-sort',
@@ -7,29 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemsSortComponent implements OnInit {
 
-	private _sortValues: string[] = [];
-	private _selectedSort: string;
-	constructor() {
-		this._sortValues = [
-			"Name",
-			"Cost",
-			"Something"
-		];
-		this._selectedSort = this._sortValues[0];
+	@Input() sortTypes: SortType[] = [];
+
+	@Output() onTypeSelected: EventEmitter<SortType> = new EventEmitter<SortType>();
+
+	private _selectedType: SortType = null;
+
+	public get selectedType(): SortType {
+		return this._selectedType;
 	}
+
+	public sortTypesDropdown: DropdownValue[] = [];
+	public selectedTypeDropdown: DropdownValue = null;
+
+	constructor(
+		private _itemData: ItemService
+	) {}
 
 	ngOnInit() {
 	}
 
-	public onSortValueSelected(value: string): void {
-		this._selectedSort = value;
+	public onSortTypeSelected(value: DropdownValue): void {
+		this.selectedTypeDropdown = value;
+		this._selectedType = new SortType(
+			this.selectedTypeDropdown.id,
+			this.selectedTypeDropdown.name
+		);
+		this.onTypeSelected.emit(this._selectedType);
 	}
 
-	public get selectedSort(): string {
-		return this._selectedSort;
-	}
-	public get sortValues(): string[] {
-		return this._sortValues;
-	}
 
 }

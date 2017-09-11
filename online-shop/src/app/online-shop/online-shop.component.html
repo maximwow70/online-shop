@@ -4,7 +4,7 @@
 </div>
 <div class="item_list">
 	<div class="item_list-items_sort">
-		<items-sort></items-sort>
+		<items-sort [sortTypes]="availableSortTypes" (onTypeSelected)="onSortTypeSelected($event)"></items-sort>
 	</div>
 	<div class="item_list-items_search">
 		<items-search 

@@ -17,6 +17,7 @@ import { Category } from "app/_model/category";
 import { CategoryService } from "app/_services/category.service";
 import { SizeService } from "app/_services/size.service";
 import { CostRange } from "app/_model/cost-range";
+import { SortType } from "app/_model/sort-type";
 
 @Component({
 	selector: 'online-shop',
@@ -28,16 +29,19 @@ export class OnlineShopComponent implements OnInit {
 	private _onlineShop: OnlineShop;
 
 	private _pages: number = null;
-	private _selectedPage: number = null;
-
-	private _searchParams: { name: string, colors: Color[], sizes: Size[], cost: { min: number, max: number } } = null;
-	private _itemsRange: number = 6;
 
 	private _availableCategories: Category[] = [];
 	private _availableColors: Color[] = [];
 	private _availableSizes: Size[] = [];
 	private _availableCost: CostRange = new CostRange(null, null);
 
+	private _availableSortTypes: SortType[] = [];
+
+	private _searchParams: { name: string, colors: Color[], sizes: Size[], cost: { min: number, max: number } } = null;
+	private _selectedPage: number = null;
+	private _itemsRange: number = 6;
+	private _selectedSortType: SortType = new SortType(null, null);
+	private _isSortByIncrease: boolean = true;
 
 	public get pages(): number {
 		return this._pages;
@@ -65,6 +69,10 @@ export class OnlineShopComponent implements OnInit {
 	}
 	public get availableCost(): { min: number, max: number } {
 		return this._availableCost;
+	}
+
+	public get availableSortTypes(): SortType[] {
+		return this._availableSortTypes;
 	}
 
 
@@ -96,19 +104,34 @@ export class OnlineShopComponent implements OnInit {
 		// 	new Size(5, 'xxl')
 		// ];
 		// this._availableCost = new CostRange(0, 100000);
-		
+
 		this._onlineShop = new OnlineShop();
 		this._selectedPage = 1;
 
-		this._categoryData.getCategoryList().then(categories => this._availableCategories = categories);
-		this._colorData.getColors().then(colors => this._availableColors = colors);
-		this._sizeData.getSizes(new Category(null, null, null, null)).then(sizes => this._availableSizes = sizes);
-		this._itemData.getMaxCost().then(maxCost => this._availableCost = new CostRange(0, maxCost));
+		Promise.all([
+			this._categoryData.getCategoryList(),
+			this._colorData.getColors(),
+			this._sizeData.getSizes(new Category(null, null, null, null)),
+			this._itemData.getMaxCost(),
+			this._itemData.getSortTypes()
+		]).then(([
+			categories,
+			colors,
+			sizes,
+			maxCost,
+			sortTypes
+		]) => {
+			this._availableCategories = categories;
+			this._availableColors = colors;
+			this._availableSizes = sizes;
+			this._availableCost = new CostRange(0, maxCost);
+			this._availableSortTypes = sortTypes;
+			this.loadItemListByParams();
+		});
 
 		this._itemData.getItemListJSON().then(itemDataList =>
 			this._onlineShop.setItemList(itemDataList)
 		);
-		this.loadItemListByParams();
 	}
 
 	ngOnInit() {
@@ -121,7 +144,9 @@ export class OnlineShopComponent implements OnInit {
 			this._searchParams ? this._searchParams.sizes : [],
 			this._searchParams ? this._searchParams.cost : { min: null, max: null },
 			this.itemsRange,
-			this._selectedPage
+			this._selectedPage,
+			this._selectedSortType,
+			this._isSortByIncrease
 		).then(itemDataSearch => {
 			this._onlineShop.setItemList(itemDataSearch.itemDataPresentationList);
 			this._pages = itemDataSearch.totalPages;
@@ -135,6 +160,11 @@ export class OnlineShopComponent implements OnInit {
 
 	public onPageSelected(page: number): void {
 		this._selectedPage = page;
+		this.loadItemListByParams();
+	}
+
+	public onSortTypeSelected(sortType: SortType): void {
+		this._selectedSortType = sortType;
 		this.loadItemListByParams();
 	}
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { DropdownValue } from "app/ui/dropdown/dropdown.component";
 
 @Component({
 	selector: 'user-cart-delivery',
@@ -10,21 +11,17 @@ export class UserCartDeliveryComponent implements OnInit {
 	@Output() onBackToCheckout: EventEmitter<void> = new EventEmitter<void>();
 	@Output() onProceedToDone: EventEmitter<void> = new EventEmitter<void>();
 
-	private _countriesToDelivery: string[] = [];
+	private _countriesToDelivery: DropdownValue[] = [];
 
-	public get countriesToDelivery(): string[] {
+	public get countriesToDelivery(): DropdownValue[] {
 		return this._countriesToDelivery;
 	}
 
 	constructor() { 
 		this._countriesToDelivery = [
-			'USA',
-			'Canada',
-			'Russia',
-			'Germany',
-			'China',
-			'Belarus',
-			'Brazil'
+			new DropdownValue(1, 'USA'),
+			new DropdownValue(2, 'Canada'),
+			new DropdownValue(3, 'Brazil')
 		];
 	}
 
