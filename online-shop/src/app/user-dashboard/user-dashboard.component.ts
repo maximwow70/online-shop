@@ -1,10 +1,10 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import { UserDataService } from "app/_services/user-data/user-data.service";
+import { UserDataService } from "app/_services/user-data.service";
 import { User } from "app/_model/user";
 import { Item } from "app/_model/item";
 import { Color } from "app/_model/color";
-import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { UserDashboardTheme } from "app/_model/user-dashboard-theme";
 
 declare var Ps;
@@ -41,7 +41,7 @@ export class UserDashboardComponent implements OnInit {
 		clearInterval(this._updateScrollInterval);
 	}
 
-	public getVMTheme(): any {
+	public getVMTheme(): {class: string} {
 		switch(this._userData.activeTheme) {
 			case(UserDashboardTheme.LIGHT): return {
 				class: '--light'

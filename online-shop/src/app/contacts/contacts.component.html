@@ -46,7 +46,7 @@
 		<form class="contact_form" name="contact_form" (ngSubmit)="onSendMessage()" #contactForm="ngForm">
 			<h3 class="contact_form-title">send message to us</h3>
 			<input class="contact_form-input" type="text" placeholder="*name" autocomplete="off" required name="contact_form-name" [(ngModel)]="message.name">
-			<input class="contact_form-input" type="email" placeholder="*mail" autocomplete="off" required name="contact_form-mail" [(ngModel)]="message.mail">
+			<input class="contact_form-input" type="email" placeholder="*mail" autocomplete="off" required name="contact_form-mail" [(ngModel)]="message.mail" pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'a>
 			<input class="contact_form-input" type="text" placeholder="*phone" autocomplete="off" required name="contact_form-phone" [(ngModel)]="message.phone">
 			<textarea class="contact_form-input contact_form-input--message" autocomplete="off" placeholder="*message" required name="contact_form-message" [(ngModel)]="message.value"></textarea>
 			<div class="contact_form-btn" type="submit">

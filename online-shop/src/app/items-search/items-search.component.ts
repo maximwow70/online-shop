@@ -1,7 +1,11 @@
-import { Component, OnInit, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ElementRef, EventEmitter, Output, Input } from '@angular/core';
 import { Datapicker } from "app/ui/datapicker/datapicker";
 import { Color } from "app/_model/color";
-import { CategoryListService } from "app/_services/category-list/category-list.service";
+import { CategoryService } from "app/_services/category.service";
+import { Size } from "app/_model/size";
+import { Category } from "app/_model/category";
+import { CostRange } from "app/_model/cost-range";
+
 
 @Component({
 	selector: 'items-search',
@@ -10,59 +14,37 @@ import { CategoryListService } from "app/_services/category-list/category-list.s
 })
 export class ItemsSearchComponent implements OnInit {
 
-	@Output() onSearch: EventEmitter<{name: string, colors: Color[], sizes: string[], cost: {min: number, max: number}}> 
-		= new EventEmitter<{name: string, colors: Color[], sizes: string[], cost: {min: number, max: number}}>();
+	@Input() categories: Category[] = [];
+	@Input() colors: Color[] = [];
+	@Input() sizes: Size[] = [];
+	@Input() cost: CostRange = new CostRange(null, null);
 
-	private _availableCategories: any[] = [];
-	private _availableColors: Color[] = [];
-	private _availableSizes: string[] = [];
-	private _availableCost: { min: number, max: number };
-
+	@Output() onSearch: EventEmitter<{ name: string, colors: Color[], sizes: Size[], cost: CostRange }>
+	= new EventEmitter<{ name: string, colors: Color[], sizes: Size[], cost: CostRange }>();
 
 	public selectedName: string = '';
 	private _selectedColors: Color[] = [];
-	private _selectedSizes: string[] = [];
-	private _selectedCost: { min: number, max: number };
+	private _selectedSizes: Size[] = [];
+	private _selectedCost: CostRange = new CostRange(null, null);
 
 	constructor(
 		private _elementRef: ElementRef,
-		private _categoryList: CategoryListService
+		private _categoryList: CategoryService
 	) {
-		this._availableColors = [
-			new Color('black'),
-			new Color('white'),
-			new Color('dark grey'),
-			new Color('red'),
-			new Color('blue'),
-			new Color('eggplant'),
-			new Color('green'),
-			new Color('military'),
-			new Color('multicolor')
-		];
-		this._availableSizes = [
-			'xs',
-			's',
-			'm',
-			'l',
-			'xl'
-		];
-		this._availableCost = {
-			min: 0,
-			max: 8000
-		};
-		this._availableCategories = this._categoryList.getCategoryList();
 	}
 
 	ngOnInit() {
+		this._selectedCost = this.cost;
+		this.onSearchClick();
 	}
 
 	public onColorsSelected(selectedColors: Color[]): void {
 		this._selectedColors = selectedColors;
 	}
-	public onSizesSelected(selectedSizes: string[]): void {
+	public onSizesSelected(selectedSizes: Size[]): void {
 		this._selectedSizes = selectedSizes;
 	}
-	public onCostSelected(selectedCost: {min: number, max: number}): void {
+	public onCostSelected(selectedCost: CostRange): void {
 		this._selectedCost = selectedCost;
 	}
 
@@ -74,19 +56,5 @@ export class ItemsSearchComponent implements OnInit {
 			cost: this._selectedCost
 		});
 	}
-
-	public get availableCategories(): any[] {
-		return this._availableCategories;
-	}
-	public get availableColors(): Color[] {
-		return this._availableColors;
-	}
-	public get availableSizes(): string[] {
-		return this._availableSizes;
-	}
-	public get availableCost(): { min: number, max: number } {
-		return this._availableCost;
-	}
-
 
 }

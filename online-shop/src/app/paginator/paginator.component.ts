@@ -8,48 +8,46 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PaginatorComponent implements OnInit {
 	
 	@Input() pages: number;
-	@Input() startPage: number;
+	@Input() selectedPage: number;
 	
-	@Output() selectedPage: EventEmitter<number> = new EventEmitter<number>();
+	@Output() onPageSelected: EventEmitter<number> = new EventEmitter<number>();
 	
-	private _selectedPage: number;
-
 	constructor() { }
 
 	ngOnInit() {
-		if (this.startPage < 1 || this.startPage == undefined){
-			this.startPage = 1;
-		} else if (this.startPage > this.pages) {
-			this.startPage = this.pages;
+		if (!this.selectedPage || this.selectedPage < 1){
+			this.selectedPage = 1;
+		} else if (this.selectedPage > this.pages) {
+			this.selectedPage = this.pages;
 		}
-		this._selectedPage = this.startPage;
+		this.onPageSelected.emit(this.selectedPage);
 	}
 	
 	public onPageSelect(page: number): void {
-		this._selectedPage = page;
-		this.selectedPage.emit(this._selectedPage);
+		this.selectedPage = page;
+		this.onPageSelected.emit(this.selectedPage);
 	}
 	public onPrevSelect(): void {
 		this.onPageSelect(
-			(this._selectedPage > 1) ? (this._selectedPage - 1) : 1
+			(this.selectedPage > 1) ? (this.selectedPage - 1) : 1
 		);
 	}
 	public onNextSelect(): void {
 		this.onPageSelect(
-			(this._selectedPage < this.pages) ? (this._selectedPage + 1) : this.pages
+			(this.selectedPage < this.pages) ? (this.selectedPage + 1) : this.pages
 		);
 	}
 
 	
 	public isPageSelected(page: number): boolean {
-		return page === this._selectedPage;
+		return page === this.selectedPage;
 	}
 
 
 	public updateVM() : any {
 		let pages = [];
 		for (let page = 1; page < this.pages + 1; page++){
-			if ((page > this._selectedPage - 4) && (page < this._selectedPage + 4)){
+			if ((page > this.selectedPage - 4) && (page < this.selectedPage + 4)){
 				pages.push(page);
 			}
 		}

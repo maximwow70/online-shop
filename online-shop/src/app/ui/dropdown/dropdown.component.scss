@@ -1,0 +1,9 @@
+:host{
+    &.small{
+        .select{
+            &-value{
+                font-size: 12px;
+            }
+        }
+    }
+}

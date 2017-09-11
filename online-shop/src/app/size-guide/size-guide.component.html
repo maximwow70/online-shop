@@ -1,5 +1,14 @@
-<div class="size_guide">
-	<h4 class="size_guide-title">
+<div class="size_guide" #sizeGuide>
+	<button class="size_guide-btn" (click)="sizeGuide.classList.toggle('size_guide--open')">
 		size guide
-	</h4>
+	</button>
+	<div class="size_guide-sizes">
+		<h3 class="size_guide-title">{{vm.title}}</h3>
+		<div class="size_guide-size_list" *ngFor="let sg of vm.sizeGuide">
+			<div class="size_guide-size_name">{{sg.name}}</div><!--
+			--><div class="size_guide-size" *ngFor="let size of sg.sizes">
+				<div class="size">{{size}}</div>
+			</div>
+		</div>
+	</div>
 </div>

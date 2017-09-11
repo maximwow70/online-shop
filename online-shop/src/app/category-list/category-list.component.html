@@ -1,20 +1,5 @@
 <div class="category_list">
 	<div class="category_list-category" *ngFor="let category of categories; let i = index">
-		<div class="category">
-			<button class="category-btn" 
-				(click)="onCategorySelect(category.name); onToggleCategory($event, i)"
-				[ngClass]="{'category-btn--selected': isCategorySelected(category.name)}">
-				<span class="category-name">{{category.name}}</span>
-				<span class="category-icon fa fa-chevron-down"></span>
-			</button>
-			<div class="category-value_list">
-				<div class="category-value" 
-					*ngFor="let value of category.values"
-					(click)="onCategorySelect(value)"
-					[ngClass]="{'category-btn--selected': isCategorySelected(value)}">
-					{{value}}
-				</div>
-			</div>
-		</div>
+		<category [category]="category"></category>
 	</div>
 </div>

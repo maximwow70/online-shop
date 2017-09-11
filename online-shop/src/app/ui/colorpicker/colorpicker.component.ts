@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Color } from "app/_model/color";
-import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { ColorService } from "app/_services/color.service";
 
 @Component({
 	selector: 'colorpicker',
@@ -16,7 +16,7 @@ export class ColorpickerComponent implements OnInit {
 	private _selectedColors: Color[] = [];
 
 	constructor(
-		private _itemColor: ItemColorService
+		private _itemColor: ColorService
 	) { }
 
 	ngOnInit() {

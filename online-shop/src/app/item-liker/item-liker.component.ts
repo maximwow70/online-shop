@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemDataPresentation } from "app/_model/item-data-presentation";
-import { ItemListService } from "app/_services/item-list/item-list.service";
-import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { Color } from "app/_model/color";
 import { Item } from "app/_model/item";
 import { Router } from "@angular/router";
+import { ItemService } from "app/_services/item.service";
 
 @Component({
 	selector: 'item-liker',
@@ -21,10 +21,10 @@ export class ItemLikerComponent implements OnInit {
 
 	private _listLength: number;
 	constructor(
-		private _itemListData: ItemListService,
-		private _itemColor: ItemColorService
+		private _itemData: ItemService,
+		private _itemColor: ColorService
 	) {
-		
+
 	}
 
 	ngOnInit() {
@@ -37,7 +37,7 @@ export class ItemLikerComponent implements OnInit {
 			let likedItem = this._itemList.pop();
 			this._itemListLiked.push(likedItem);
 		}
-		if (this._itemListLiked.length > this._listLength){
+		if (this._itemListLiked.length > this._listLength) {
 			this._itemListLiked.shift();
 		}
 	}
@@ -46,7 +46,7 @@ export class ItemLikerComponent implements OnInit {
 			let dislikedItem = this._itemList.pop();
 			this._itemListDisliked.push(dislikedItem);
 		}
-		if (this._itemListDisliked.length > this._listLength){
+		if (this._itemListDisliked.length > this._listLength) {
 			this._itemListDisliked.shift();
 		}
 	}
@@ -56,19 +56,10 @@ export class ItemLikerComponent implements OnInit {
 
 
 	public getItemList(): void {
-		let that = this;
-
-		this._itemListData.getItemList().subscribe(
-			itemDataList => {
-				let itemList = [];
-				for (let i = 0; i < itemDataList.length; i++) {
-					itemList.push(ItemDataPresentation.fromObject(itemDataList[i]));
-				}
-				that._itemList = itemList;
-
-				that._listLength = that._itemList.length;
-			}
-		);
+		this._itemData.getItemListJSON().then(itemList => {
+			this._itemList = itemList;
+			this._listLength = this._itemList.length;
+		});
 	}
 	public getClassByColor(color: Color): string {
 		return this._itemColor.getClassByColor(color);

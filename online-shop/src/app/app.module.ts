@@ -4,16 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppComponent } from './app.component';
 
-import { ItemColorService } from "app/_services/item-color/item-color.service";
-import { ItemCostService } from "app/_services/item-cost/item-cost.service";
-import { ItemSizeService } from "app/_services/item-size/item-size.service";
-import { ItemListService } from "app/_services/item-list/item-list.service";
-import { ItemService } from "app/_services/item/item.service";
-import { CategoryListService } from "app/_services/category-list/category-list.service";
-import { UserDataService } from "app/_services/user-data/user-data.service";
+import { ColorService } from "app/_services/color.service";
+import { ItemService } from "app/_services/item.service";
+import { CategoryService } from "app/_services/category.service";
+import { UserDataService } from "app/_services/user-data.service";
 
 import { OnlineShopComponent } from './online-shop/online-shop.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -55,18 +53,30 @@ import { AboutHistoryComponent } from './about-history/about-history.component';
 import { AboutTeamComponent } from './about-team/about-team.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserComponent } from "app/user/user.component";
-
-
-import { UserCartGuard } from "app/_guards/user-cart/user-cart.guard";
-import { UserWishlistGuard } from "app/_guards/user-wishlist/user-wishlist.guard";
 import { UserStatisticComponent } from './user-statistic/user-statistic.component';
-import { UserStatisticGuard } from "app/_guards/user-statistic/user-statistic.guard";
 
 
+import { UserCartGuard } from "app/_guards/user-cart.guard";
+import { UserWishlistGuard } from "app/_guards/user-wishlist.guard";
+import { UserStatisticGuard } from "app/_guards/user-statistic.guard";
+import { UserInfoGuard } from "app/_guards/user-info.guard";
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import { UserSettingsComponent } from './user-settings/user-settings.component';
-// import { userDashboardRoutes, UserDashboardModule } from "app/user-dashboard/user-dashboard.module";
+import { SelectComponent } from './ui/select/select.component';
+import { DropdownComponent } from './ui/dropdown/dropdown.component';
+import { UserInfoComponent } from "app/user-info/user-info.component";
+import { UserSettingsComponent } from "app/user-settings/user-settings.component";
+import { UserCartOrderComponent } from './user-cart-order/user-cart-order.component';
+import { UserCartCheckoutComponent } from './user-cart-checkout/user-cart-checkout.component';
+import { UserCartDeliveryComponent } from './user-cart-delivery/user-cart-delivery.component';
+import { UserCartPaymentComponent } from './user-cart-payment/user-cart-payment.component';
+import { CreditCardEditComponent } from './credit-card-edit/credit-card-edit.component';
+import { CreditCardPresetListComponent } from './credit-card-preset-list/credit-card-preset-list.component';
+import { CreditCardPresetComponent } from './credit-card-preset/credit-card-preset.component';
+import { CreditCardPresetEditComponent } from './credit-card-preset-edit/credit-card-preset-edit.component';
+import { CategoryComponent } from './category/category.component';
+import { SizeService } from "app/_services/size.service";
+
 
 const appRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -84,6 +94,11 @@ const appRoutes: Routes = [
 			{
 				path: 'login',
 				component: UserLoginComponent
+			},
+			{
+				path: 'info',
+				component: UserInfoComponent,
+				canActivate: [UserInfoGuard]
 			},
 			{
 				path: 'cart',
@@ -160,7 +175,19 @@ const appRoutes: Routes = [
 		UserLoginComponent,
 		UserComponent,
 		UserStatisticComponent,
-		UserSettingsComponent
+		UserSettingsComponent,
+		UserInfoComponent,
+		SelectComponent,
+		DropdownComponent,
+		UserCartOrderComponent,
+		UserCartCheckoutComponent,
+		UserCartDeliveryComponent,
+		UserCartPaymentComponent,
+		CreditCardEditComponent,
+		CreditCardPresetListComponent,
+		CreditCardPresetComponent,
+		CreditCardPresetEditComponent,
+		CategoryComponent
 	],
 	imports: [
 		BrowserModule,
@@ -170,19 +197,19 @@ const appRoutes: Routes = [
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
 		}),
-		ChartsModule
+		ChartsModule,
+		TextMaskModule
 	],
 	providers: [
-		ItemColorService,
-		ItemCostService,
-		ItemSizeService,
-		ItemListService,
+		ColorService,
 		ItemService,
-		CategoryListService,
+		CategoryService,
 		UserDataService,
 		UserCartGuard,
 		UserWishlistGuard,
-		UserStatisticGuard
+		UserStatisticGuard,
+		UserInfoGuard,
+		SizeService
 	],
 	bootstrap: [AppComponent]
 })

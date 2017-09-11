@@ -202,6 +202,7 @@ export class ContactsComponent implements OnInit {
 
 	public onSendMessage(): void {
 		this.message.value = '';
+		this._elementRef.nativeElement.querySelector('.contact_form-input--message').focus();
 	}
 
 	public get map(): { lat: number, lng: number, zoom: number, styles: any } {

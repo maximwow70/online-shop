@@ -1,8 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { Select } from "app/ui/select/select";
 import { Item } from "app/_model/item";
 import { Router } from "@angular/router";
-import { UserDataService } from "app/_services/user-data/user-data.service";
+import { UserDataService } from "app/_services/user-data.service";
 
 declare var Ps: any;
 
@@ -18,25 +17,34 @@ export class HeaderComponent implements OnInit {
 	
 	private _wishListItemsVM;
 	private _cartItemsVM;
+
+	private onClick = (e) => {
+		if (!this._elementRef.nativeElement.querySelector('.user_wishlist').contains((e as any).target)) {
+			this._elementRef.nativeElement.querySelector('.user_wishlist').classList.remove('user_wishlist--open');
+		}
+		if (!this._elementRef.nativeElement.querySelector('.user_cart').contains((e as any).target)) {
+			this._elementRef.nativeElement.querySelector('.user_cart').classList.remove('user_cart--open');
+		}
+		if (
+			!this._elementRef.nativeElement.querySelector('.navigation--smart').contains((e as any).target) &&
+			!this._elementRef.nativeElement.querySelector('.header-hamburger').contains((e as any).target)
+		) {
+			this._elementRef.nativeElement.querySelector('.navigation--smart').classList.remove('navigation--open');
+		}
+		
+	}
+
 	constructor(
 		private _elementRef: ElementRef,
 		private _router: Router,
 		private _userData: UserDataService
 	) {
 		this._userData.getUserWishlist().subscribe(itemList => {
-			let items: Item[] = [];
-			for (let item = 0; item < itemList.length; item++){
-				items.push(Item.fromObject(itemList[item]));
-			}
-			this._wishlistItems = items;
+			this._wishlistItems = itemList;
 		});
 
 		this._userData.getUserCart().subscribe(itemList => {
-			let items: Item[] = [];
-			for (let item = 0; item < itemList.length; item++){
-				items.push(Item.fromObject(itemList[item]));
-			}
-			this._cartItems = items;
+			this._cartItems = itemList;
 		})
 	}
 
@@ -50,6 +58,12 @@ export class HeaderComponent implements OnInit {
 		Ps.initialize(
 			this._cartItemsVM.querySelector('.user_cart-item_list')
 		);
+	}
+	ngAfterViewInit() {
+		window.addEventListener('click', this.onClick);
+	}
+	ngOnDestroy() {
+		window.removeEventListener('click', this.onClick);
 	}
 
 	public onItemClicked(item: Item): void {

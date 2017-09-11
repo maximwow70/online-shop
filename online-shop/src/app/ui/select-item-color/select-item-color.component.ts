@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
-import { ItemColorService } from "app/_services/item-color/item-color.service";
+import { ColorService } from "app/_services/color.service";
 import { Color } from "app/_model/color";
 
 declare var Ps: any;
@@ -19,18 +19,30 @@ export class SelectItemColorComponent implements OnInit {
 	public _selectedColor: Color;
 	private _colorSelectVM;
 
+	private onClick = (e) => {
+		if (!this._elementRef.nativeElement.contains((e as any).target)) {
+			this._elementRef.nativeElement.querySelector('.select').classList.remove('select--active');
+		}
+	}
+
 	constructor(
 		private _elementRef: ElementRef,
-		private _colorService: ItemColorService
+		private _colorService: ColorService
 	) { }
 
 	ngOnInit() {
-		this._selectedColor = this.colors[0];
+		this._selectedColor = this.colors.length > 0 ? this.colors[0] : null;
 		this.selectedColor.emit(this._selectedColor);
 
 		this._colorSelectVM = this._elementRef.nativeElement.querySelector('.select--color');
 
 		//Ps.initialize(this._colorSelectVM.querySelector('.select-value_list'));
+	}
+	ngAfterViewInit() {
+		window.addEventListener('click', this.onClick);
+	}
+	ngOnDestroy() {
+		window.removeEventListener('click', this.onClick);
 	}
 
 	public onColorSelect(color: Color): void {

@@ -1,0 +1,23 @@
+.credit_card_preset{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 20px;
+
+    &-name{
+        padding-right: 20px;
+
+        font-family: $font-stack--bold;
+        font-size: 16px;
+
+        @include no-wrap();
+    }
+    &-edit_btn{
+        color: $color-dark_green;
+        font-size: 18px;
+
+        cursor: pointer;
+    }
+}

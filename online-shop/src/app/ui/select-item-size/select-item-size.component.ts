@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, EventEmitter, Input, Output } from '@angular/core';
-import { ItemColorService } from "app/_services/item-color/item-color.service";
 import { Color } from "app/_model/color";
+import { Size } from "app/_model/size";
 
 declare var Ps: any;
 
@@ -11,29 +11,34 @@ declare var Ps: any;
 })
 export class SelectItemSizeComponent implements OnInit {
 
-	@Input() sizes: string[];
-	@Input() selectedSize: string;
+	@Input() sizes: Size[];
+	@Input() selectedSize: Size;
 
-	@Output() onSelectSize: EventEmitter<string> = new EventEmitter<string>();
-
+	@Output() onSelectSize: EventEmitter<Size> = new EventEmitter<Size>();
 
 	private _sizeSelectVM;
+
+	private onClick = (e) => {
+		if (!this._elementRef.nativeElement.contains((e as any).target)) {
+			this._elementRef.nativeElement.querySelector('.select').classList.remove('select--active');
+		}
+	}
 
 	constructor(
 		private _elementRef: ElementRef
 	) { }
 
 	ngOnInit() {
-		// let isStartSizeCurrent = this.sizes.find(s => s === this.startSize);
-		// this.selectedSize = isStartSizeCurrent ? this.startSize : this.sizes[0];
-		//this.selectedSize.emit(this._selectedSize);
-
 		this._sizeSelectVM = this._elementRef.nativeElement.querySelector('.select--size');
-
-		//Ps.initialize(this._sizeSelectVM.querySelector('.select-value_list'));
+	}
+	ngAfterViewInit() {
+		window.addEventListener('click', this.onClick);
+	}
+	ngOnDestroy() {
+		window.removeEventListener('click', this.onClick);
 	}
 
-	public onSizeSelect(size: string): void {
+	public onSizeSelect(size: Size): void {
 		this._sizeSelectVM.classList.remove('select--active');
 
 		this.onSelectSize.emit(size);
@@ -43,7 +48,7 @@ export class SelectItemSizeComponent implements OnInit {
 		this._sizeSelectVM.classList.toggle('select--active');
 	}
 
-	public isSizeSelected(size: string): boolean {
+	public isSizeSelected(size: Size): boolean {
 		return size === this.selectedSize;
 	}
 

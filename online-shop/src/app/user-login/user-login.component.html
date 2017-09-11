@@ -1,64 +1,106 @@
 <div class="user_login">
-	<div class="user_login-container">
-		<div class="user_login-user_sign_in" [ngClass]="{'user_login-user_sign_in--active': isSignInActive}">
+	<div class="user_login-container" *ngIf="!isLogIn">
+
+		<div *ngIf="isSignInActive" class="user_login-user_sign_in" [ngClass]="{'user_login-user_sign_in--active': isSignInActive}">
 			<form class="user_sign_in" name="sign_in_form" (ngSubmit)="onUserSignIn($event)" #signInForm="ngForm">
 				<div class="user_sign_in-title">
 					Welcome back
 				</div>
 				<div class="user_sign_in-data_input">
 					<span class="user_sign_in-data_input_icon fa fa-envelope"></span>
-					<input type="mail" class="user_sign_in-mail" [(ngModel)]="userSignIn.mail" name="mail" autocomplete="off" placeholder="*mail" required>
+					<input type="mail" class="user_sign_in-mail" [(ngModel)]="userSignIn.mail" name="mail" autocomplete="off" placeholder="*mail" required pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'>
 				</div>
-				<div class="user_sign_in-data_input">
-					<span class="user_sign_in-data_input_icon fa fa-lock"></span>
-					<input type="password" class="user_sign_in-password" [(ngModel)]="userSignIn.password" name="password" autocomplete="off" placeholder="*password" required>
+				<div class="user_sign_in-password_container">
+					<div class="user_sign_in-data_input">
+						<span class="user_sign_in-data_input_icon fa fa-lock"></span>
+						<input type="password" class="user_sign_in-password" [(ngModel)]="userSignIn.password" name="password" autocomplete="off" placeholder="*password" required>
+					</div>
+					<button class="user_sign_in-btn user_sign_in-btn--submit" type="submit" [disabled]="signInForm.form.invalid" [ngClass]="{'user_sign_in-btn--disabled': signInForm.form.invalid}">
+						Log in
+					</button>
 				</div>
-				<h4 class="user_sign_in-forgot_password">Forgot password?</h4>
+				<button class="user_sign_in-forgot_password" type="button">Forgot password?</button>
 				<div class="user_sign_in-devider">OR</div>
-				<button class="user_sign_in-google_login" type="button">
-					<span class="user_sign_in-google_login_icon fa fa-google"></span>
-					Log in with google
-				</button>
-				<button class="user_sign_in-btn" type="button" (click)="onSignUpActivate()" [disabled]="!isSignInActive">
-					Sign up
-				</button><!--
-				--><button class="user_sign_in-btn user_sign_in-btn--submit" type="submit" [disabled]="signInForm.form.invalid" [ngClass]="{'user_sign_in-btn--disabled': signInForm.form.invalid}">
-					Log in
-				</button>
+				<div class="user_sign_in-social">
+					<div class="user_sign_in-twitter_login">
+						<button class="btn btn-twitter" type="button">
+							<span class="btn-icon fa fa-twitter"></span>
+							twitter
+						</button>
+					</div>
+					<div class="user_sign_in-facebook_login">
+						<button class="btn btn-facebook" type="button">
+							<span class="btn-icon fa fa-facebook"></span>
+							facebook
+						</button>
+					</div>
+				</div>
+				<div class="user_sign_in-sign_up_btn_container">
+					<h4 class="user_sign_in-sign_up_title">
+						Don't have an account?
+					</h4>
+					<button class="user_sign_in-btn user_sign_in-btn--sign_up" type="button" (click)="onSignUpActivate()" [disabled]="!isSignInActive">
+						Sign up for free
+					</button>
+				</div>
 			</form>
 		</div>
-		<div class="user_login-user_sign_up" [ngClass]="{'user_login-user_sign_up--active': !isSignInActive}">
+
+		<div *ngIf="!isSignInActive" class="user_login-user_sign_up" [ngClass]="{'user_login-user_sign_up--active': !isSignInActive}">
 			<form class="user_sign_up" name="sign_up_form" (ngSubmit)="onUserSignUp($event)" #signUpForm="ngForm">
 				<div class="user_sign_up-title">
 					Create Account
 				</div>
 				<div class="user_sign_up-data_input">
 					<span class="user_sign_up-data_input_icon fa fa-envelope"></span>
-					<input type="mail" class="user_sign_up-mail" [(ngModel)]="userSignUp.mail" name="mail" autocomplete="off" placeholder="*mail" required>
+					<input type="mail" class="user_sign_up-mail" [(ngModel)]="userSignUp.mail" name="mail" autocomplete="off" placeholder="*mail" required pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'>
 				</div>
-				<div class="user_sign_up-data_input">
-					<span class="user_sign_up-data_input_icon fa fa-lock"></span>
-					<input type="password" class="user_sign_up-password" [(ngModel)]="userSignUp.password" name="password" autocomplete="off" placeholder="*password" required>
-				</div>
-				<div class="user_sign_up-data_input">
-					<span class="user_sign_up-data_input_icon fa fa-lock"></span>
-					<input type="password" class="user_sign_up-password" [(ngModel)]="userSignUp.confirmPassword" name="confirm_password" autocomplete="off" placeholder="*confirm password" required>
+				<div class="user_sign_up-password_container">
+					<div class="user_sign_up-data_input">
+						<span class="user_sign_up-data_input_icon fa fa-lock"></span>
+						<input type="password" class="user_sign_up-password" [(ngModel)]="userSignUp.password" name="password" autocomplete="off" placeholder="*password" required>
+					</div>
+					<div class="user_sign_up-data_input">
+						<span class="user_sign_up-data_input_icon fa fa-lock"></span>
+						<input type="password" class="user_sign_up-password" [(ngModel)]="userSignUp.confirmPassword" name="confirm_password" autocomplete="off" placeholder="*confirm password" required>
+					</div>
 				</div>
 				<h4 class="user_sign_up-description">
-					By creating an account you agree to the Tearms of Service and Privacy Policy
+					By creating an account you agree to the 
+					<button type="button">Tearms of Service</button>
+					and 
+					<button type="button">Tearms of Service</button>
 				</h4>
-				<div class="user_sign_up-devider">OR</div>
-				<button class="user_sign_up-google_login" type="button">
-					<span class="user_sign_up-google_login_icon fa fa-google"></span>
-					Log in with google
-				</button>
-				<button class="user_sign_up-btn" type="button" (click)="onSignInActivate()" [disabled]="isSignInActive">
-					Log in
-				</button><!--
-				--><button class="user_sign_up-btn user_sign_up-btn--submit" type="submit" [disabled]="signUpForm.form.invalid" [ngClass]="{'user_sign_up-btn--disabled': signUpForm.form.invalid}">
+				<button 
+					class="user_sign_up-btn user_sign_up-btn--submit"
+					type="submit"
+					[disabled]="signUpForm.form.invalid || userSignUp.confirmPassword !== userSignUp.password"
+					[ngClass]="{'user_sign_up-btn--disabled': signUpForm.form.invalid || userSignUp.confirmPassword !== userSignUp.password}">
 					Sign up
+				</button>
+				<div class="user_sign_up-devider">OR</div>
+				<div class="user_sign_up-social">
+					<div class="user_sign_up-twitter_login">
+						<button class="btn btn-twitter" type="button">
+							<span class="btn-icon fa fa-twitter"></span>
+							twitter
+						</button>
+					</div>
+					<div class="user_sign_up-facebook_login">
+						<button class="btn btn-facebook" type="button">
+							<span class="btn-icon fa fa-facebook"></span>
+							facebook
+						</button>
+					</div>
+				</div>
+				<button class="user_sign_up-btn user_sign_up-btn--sign_in" type="button" (click)="onSignInActivate()" [disabled]="isSignInActive">
+					Log in
 				</button>
 			</form>
 		</div>
+
+	</div>
+	<div class="user_login-loading" *ngIf="isLogIn">
+		<loading></loading>
 	</div>
 </div>
