@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity.Item;
+package com.mycompany.online.shop.netbeans.entity.Item;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -18,7 +19,7 @@ import javax.persistence.*;
 public class FeatureList implements java.io.Serializable{
     private Long id;
     private String name;
-    private Set<Feature> features = new HashSet<Feature>();
+    private Set<Feature> features = new LinkedHashSet<Feature>();
     private Item owner;
 
     @Id
@@ -62,7 +63,7 @@ public class FeatureList implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "{" + "name=" + name + ", features=" + features + '}';
+        return "{" + "\"name\":" + name + ", \"features\":" + features + '}';
     }
     
 }

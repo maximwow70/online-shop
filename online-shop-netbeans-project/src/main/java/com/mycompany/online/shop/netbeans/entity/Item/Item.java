@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity.Item;
+package com.mycompany.online.shop.netbeans.entity.Item;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -93,7 +93,7 @@ public class Item implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "{" + "id=" + id + ", article=" + article + ", name=" + name + ", description=" + description + ", photos=" + photos + ", featureLists=" + featureLists + ", itemData=" + itemData + '}';
+        return "{" + "\"id\":" + id + ", \"article\":\"" + article + "\", \"name\":\"" + name + "\", \"description\":\"" + description + "\", \"photos\":" + photos + ", \"featureLists\":" + featureLists + ", \"itemData\":" + itemData + '}';
     }
 
 }

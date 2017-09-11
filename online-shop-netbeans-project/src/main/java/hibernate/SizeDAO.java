@@ -5,7 +5,7 @@
  */
 package hibernate;
 
-import entity.Item.Size;
+import com.mycompany.online.shop.netbeans.entity.Item.Size;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

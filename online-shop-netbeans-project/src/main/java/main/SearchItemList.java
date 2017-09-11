@@ -7,11 +7,12 @@ package main;
 
 import other.Helper;
 import com.google.gson.Gson;
-import entity.Item.Item;
+import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import hibernate.HibernateUtil;
 import hibernate.ItemDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
@@ -19,14 +20,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import trash.ItemDataPresentation;
+import presentation.ItemPresentation;
 
 /**
  *
  * @author admin
  */
 @WebServlet(name = "SearchItemList", urlPatterns = {"/SearchItemList"})
-public class GetItemList extends HttpServlet {
+public class SearchItemList extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -70,15 +71,21 @@ public class GetItemList extends HttpServlet {
         Gson gson = new Gson();
         int[] colors = gson.fromJson(request.getParameter("colors"), int[].class);
         int[] sizes = gson.fromJson(request.getParameter("sizes"), int[].class);
-        int min = Integer.valueOf(request.getParameter("minCost"));
-        int max = Integer.valueOf(request.getParameter("maxCost"));
-        int currentPage = Integer.valueOf(request.getParameter("currentPage"));
-        int range = Integer.valueOf(request.getParameter("range"));
+        int min = 0;
+        int max = 1000;
+//        int min = Integer.valueOf(request.getParameter("minCost"));
+//        int max = Integer.valueOf(request.getParameter("maxCost"));
+        int currentPage = 1;//Integer.valueOf(request.getParameter("currentPage"));
+        int range = 10;//Integer.valueOf(request.getParameter("range"));
         ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
         List<Item> items = itemDAO.getItemList(name, min, max, colors, sizes, currentPage, range);
-        Long countOfPages = itemDAO.getItemsCount(name, min, max, colors, sizes)/range;
+        Long countOfPages = itemDAO.getItemsCount(name, min, max, colors, sizes)/range+1;
+        List<ItemPresentation> list = new ArrayList<>();
+        for(Item item : items) {
+            list.add(new ItemPresentation(item));
+        }
         itemDAO.close();
-        response.getWriter().write("{ items="+items.toString()+", pages="+countOfPages+"}");
+        response.getWriter().write("{ \"items\":"+gson.toJson(list)+", \"countOfPages\":"+countOfPages+"}");
     }
 
     /**

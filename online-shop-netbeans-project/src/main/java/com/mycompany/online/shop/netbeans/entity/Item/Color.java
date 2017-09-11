@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity.Item;
+package com.mycompany.online.shop.netbeans.entity.Item;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -51,7 +51,7 @@ public class Color implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return '{' + "id=" + id + ", color=" + color + '}';
+        return '{' + "\"id\":" + id + ", \"color\":" + color + '}';
     }
     
 }

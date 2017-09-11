@@ -5,7 +5,7 @@
  */
 package main;
 
-import entity.Item.Color;
+import com.mycompany.online.shop.netbeans.entity.Item.Color;
 import hibernate.ColorDAO;
 import hibernate.HibernateUtil;
 import java.io.IOException;

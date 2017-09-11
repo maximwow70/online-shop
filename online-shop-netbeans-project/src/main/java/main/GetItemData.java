@@ -5,7 +5,7 @@
  */
 package main;
 
-import entity.Item.Item;
+import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import hibernate.HibernateUtil;
 import hibernate.ItemDAO;
 import java.io.IOException;

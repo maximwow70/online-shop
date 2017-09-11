@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entity.Item;
+package com.mycompany.online.shop.netbeans.entity.Item;
 
 import javax.persistence.*;
 
@@ -87,7 +87,7 @@ public class ItemData implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "{" + "color=" + color + ", size=" + size + ", count=" + count + ", cost=" + cost + '}';
+        return "{" + "\"color\":" + color + ", \"size\":" + size + ", \"count\":" + count + ", \"cost\":" + cost + '}';
     }
     
 }

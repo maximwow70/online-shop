@@ -6,7 +6,7 @@
 package Tests;
 
 import other.Helper;
-import entity.Item.Item;
+import com.mycompany.online.shop.netbeans.entity.Item.Item;
 import hibernate.HibernateUtil;
 import hibernate.ItemDAO;
 import java.util.Date;
@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Test4 {
     public static void main(String... args) {
-        int[] color = null;
+        int[] color = {};
         int[] size = {};
         String name = "";
         int max = 1000;
