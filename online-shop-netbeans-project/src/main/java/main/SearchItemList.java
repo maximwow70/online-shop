@@ -66,19 +66,32 @@ public class SearchItemList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = "";
+        
         Gson gson = new Gson();
+        String name = request.getParameter("name");
         int[] colors = gson.fromJson(request.getParameter("colors"), int[].class);
         int[] sizes = gson.fromJson(request.getParameter("sizes"), int[].class);
-        int min = Integer.valueOf(request.getParameter("minCost"));
-        int max = Integer.valueOf(request.getParameter("maxCost"));
-        int currentPage = 1;//Integer.valueOf(request.getParameter("currentPage"));
-        int range = 10;//Integer.valueOf(request.getParameter("range"));
-        SortType type = SortType.values()[Integer.valueOf(request.getParameter("sortType"))];
+        String minStr = request.getParameter("minCost");
+        int min = 0;
+        if(!"null".equals(minStr)) {
+            min = Integer.valueOf(minStr);
+        }
+        String maxStr = request.getParameter("maxCost");
+        int max = 1000000;
+        if(!"null".equals(maxStr)) {
+            max = Integer.valueOf(maxStr);
+        }
+        int currentPage = Integer.valueOf(request.getParameter("currentPage"));
+        int range = Integer.valueOf(request.getParameter("range"));
+        String sortTypeStr = request.getParameter("sortType");
+        SortType sortType = SortType.DEFAULT;//SortType.values()[Integer.valueOf(request.getParameter("sortType"))];
+        if(!"null".equals(sortTypeStr)) {
+            sortType = SortType.values()[Integer.valueOf(sortTypeStr)];
+        }
         boolean isSortByIncrease = Boolean.valueOf(request.getParameter("isSortByIncrease"));
         ItemDAO itemDAO = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
-        List<Item> items = itemDAO.getItemList(name, min, max, colors, sizes, currentPage, range);
-        items = Item.sortItems(items, type, isSortByIncrease);
+        List<Item> items = itemDAO.getItemList(name, min, max, colors, sizes, currentPage, range, sortType, isSortByIncrease);
+        //items = Item.sortItems(items, sortType, isSortByIncrease);
         Long countOfPages = itemDAO.getItemsCount(name, min, max, colors, sizes)/range+1;
         List<ItemPresentation> list = new ArrayList<>();
         for(Item item : items) {

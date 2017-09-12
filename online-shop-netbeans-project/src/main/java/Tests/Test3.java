@@ -22,10 +22,10 @@ public class Test3 {
     public static void main(String... args) {
         ItemDAO i = new ItemDAO(HibernateUtil.getSessionFactory().openSession());
         List<Item> list = i.getItemList();
-            list = Item.sortItems(list, SortType.COST, false);
+            list = Item.sortItems(list, SortType.NAME, true);
         List<ItemPresentation> list1 = new ArrayList<>();
         for(Item item : list) {
-            System.out.println(item.minCost());
+            System.out.println(item.getName());
         }
         i.close();
     }
