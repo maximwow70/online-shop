@@ -7,6 +7,7 @@ package hibernate;
 import Enums.SortType;
 import other.Helper;
 import com.mycompany.online.shop.netbeans.entity.Item.Item;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -33,7 +34,7 @@ public class ItemDAO {
         return item;
     }
     
-    public List<Item> getItemList(String name, int min, int max, int[] color, int[] size, int currentPage, int range) {
+    public List<Item> getItemList(String name, int min, int max, int[] color, int[] size, int currentPage, int range, SortType sortType, boolean isSortByIncrease) {
         boolean colorValid = color!=null&&color.length>0;
         boolean sizeValid = size!=null&&size.length>0;
         String query = "FROM Item item"+" WHERE item.name LIKE '%"+name+"%' AND EXISTS(\n";
@@ -53,8 +54,13 @@ public class ItemDAO {
         }
         query+=")";
         //System.out.println(query);
-        Query q = session.createQuery(query).setFirstResult(range*(currentPage-1)).setMaxResults(range);
-        List<Item> list = q.list();
+        //Query q = session.createQuery(query).setFirstResult(range*(currentPage-1)).setMaxResults(range);
+        Query q = session.createQuery(query);
+        List<Item> list = Item.sortItems(q.list(), sortType, isSortByIncrease);
+        if(range*(currentPage-1)+range<list.size())
+            list = list.subList(range*(currentPage-1), range*(currentPage-1)+range);
+        else
+            list = list.subList(range*(currentPage-1), list.size());
         return list;
     }
     
