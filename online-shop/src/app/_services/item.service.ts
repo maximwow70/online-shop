@@ -62,12 +62,21 @@ export class ItemService {
 
 	public getMaxCost(): Promise<number> {
 		return this._http.get('GetMaxCost', '').map(res => res.json()).toPromise();
+		// return new Promise<number>(resolve => {
+		// 	resolve(125);
+		// });
 	}
 
 	public getSortTypes(): Promise<SortType[]> {
 		return this._http.get('GetSortTypes', '').map(res => 
 			res.json().map(st => SortType.fromJSON(st)) 
 		).toPromise();
+		// return new Promise<SortType[]>(resolve => {
+		// 	resolve([
+		// 		new SortType(1, 'name'),
+		// 		new SortType(2, 'cost')
+		// 	]);
+		// });
 	}
 
 }

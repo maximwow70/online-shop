@@ -36,22 +36,20 @@ export class OnlineShopComponent implements OnInit {
 	private _availableCost: CostRange = new CostRange(null, null);
 
 	private _availableSortTypes: SortType[] = [];
-
-	private _searchParams: { name: string, colors: Color[], sizes: Size[], cost: { min: number, max: number } } = null;
-	private _selectedPage: number = null;
-	private _itemsRange: number = 6;
 	private _selectedSortType: SortType = new SortType(null, null);
 	private _isSortByIncrease: boolean = true;
+	private _availableRanges: number[] = [];
+	private _selectedRange: number = null;
+
+	private _searchParams: { name: string, colors: Color[], sizes: Size[], cost: { min: number, max: number } } = null;
+	
+	private _selectedPage: number = null;
 
 	public get pages(): number {
 		return this._pages;
 	}
 	public get selectedPage(): number {
 		return this._selectedPage;
-	}
-
-	public get itemsRange(): number {
-		return this._itemsRange;
 	}
 
 	public get itemList(): ItemDataPresentation[] {
@@ -74,6 +72,18 @@ export class OnlineShopComponent implements OnInit {
 	public get availableSortTypes(): SortType[] {
 		return this._availableSortTypes;
 	}
+	public get selectedSortType(): SortType {
+		return this._selectedSortType;
+	}
+	public get isSortByIncrease(): boolean {
+		return this._isSortByIncrease;
+	}
+	public get availableRanges(): number[] {
+		return this._availableRanges;
+	}
+	public get selectedRange(): number {
+		return this._selectedRange;
+	}
 
 
 	constructor(
@@ -84,29 +94,16 @@ export class OnlineShopComponent implements OnInit {
 		private _sizeData: SizeService,
 		private _categoryData: CategoryService
 	) {
-		// this._availableColors = [
-		// 	new Color(1, 'black'),
-		// 	new Color(2, 'white'),
-		// 	new Color(3, 'dark grey'),
-		// 	new Color(4, 'red'),
-		// 	new Color(5, 'blue'),
-		// 	new Color(6, 'eggplant'),
-		// 	new Color(7, 'green'),
-		// 	new Color(8, 'military'),
-		// 	new Color(9, 'multicolor')
-		// ];
-		// this._availableSizes = [
-		// 	new Size(0, 'xs'),
-		// 	new Size(1, 's'),
-		// 	new Size(2, 'm'),
-		// 	new Size(3, 'l'),
-		// 	new Size(4, 'xl'),
-		// 	new Size(5, 'xxl')
-		// ];
-		// this._availableCost = new CostRange(0, 100000);
 
 		this._onlineShop = new OnlineShop();
 		this._selectedPage = 1;
+		this._availableRanges = [
+			20,
+			50,
+			100,
+			200
+		];
+		this._selectedRange = this._availableRanges[0];
 
 		Promise.all([
 			this._categoryData.getCategoryList(),
@@ -128,6 +125,11 @@ export class OnlineShopComponent implements OnInit {
 			this._availableSortTypes = sortTypes;
 			this.loadItemListByParams();
 		});
+		// this._categoryData.getCategoryList().then(categories => this._availableCategories = categories);
+		// this._colorData.getColors().then(colors => this._availableColors = colors);
+		// this._sizeData.getSizes(new Category(null, null, null, null)).then(sizes => this._availableSizes = sizes);
+		// this._itemData.getMaxCost().then(maxCost => this._availableCost = new CostRange(0, maxCost));
+		// this._itemData.getSortTypes().then(sortTypes => this._availableSortTypes = sortTypes);
 
 		// this._itemData.getItemListJSON().then(itemDataList =>
 		// 	this._onlineShop.setItemList(itemDataList)
@@ -143,7 +145,7 @@ export class OnlineShopComponent implements OnInit {
 			this._searchParams ? this._searchParams.colors : [],
 			this._searchParams ? this._searchParams.sizes : [],
 			this._searchParams ? this._searchParams.cost : { min: null, max: null },
-			this.itemsRange,
+			this._selectedRange,
 			this._selectedPage,
 			this._selectedSortType,
 			this._isSortByIncrease
@@ -158,15 +160,24 @@ export class OnlineShopComponent implements OnInit {
 		this.loadItemListByParams();
 	}
 
+	public onSortTypeSelected(sortType: SortType): void {
+		this._selectedSortType = sortType;
+		this.loadItemListByParams();
+	}
+	public onSortDirectionChange(isSortByIncrease: boolean): void {
+		this._isSortByIncrease = isSortByIncrease;
+		this.loadItemListByParams();
+	}
+	public onRangeSelected(range: number): void {
+		this._selectedRange = range;
+		this.loadItemListByParams();
+	}
+
 	public onPageSelected(page: number): void {
 		this._selectedPage = page;
 		this.loadItemListByParams();
 	}
 
-	public onSortTypeSelected(sortType: SortType): void {
-		this._selectedSortType = sortType;
-		this.loadItemListByParams();
-	}
 
 	public onItemLiked(item: Item): void {
 		console.log(item);
