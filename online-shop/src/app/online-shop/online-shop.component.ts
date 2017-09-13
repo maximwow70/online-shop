@@ -123,13 +123,14 @@ export class OnlineShopComponent implements OnInit {
 			this._availableSizes = sizes;
 			this._availableCost = new CostRange(0, maxCost);
 			this._availableSortTypes = sortTypes;
+			this._selectedSortType = this._availableSortTypes[0];
 			this.loadItemListByParams();
 		});
 		// this._categoryData.getCategoryList().then(categories => this._availableCategories = categories);
 		// this._colorData.getColors().then(colors => this._availableColors = colors);
 		// this._sizeData.getSizes(new Category(null, null, null, null)).then(sizes => this._availableSizes = sizes);
 		// this._itemData.getMaxCost().then(maxCost => this._availableCost = new CostRange(0, maxCost));
-		// this._itemData.getSortTypes().then(sortTypes => this._availableSortTypes = sortTypes);
+		//this._itemData.getSortTypes().then(sortTypes => {this._availableSortTypes = sortTypes;this._selectedSortType = this._availableSortTypes[0];});
 
 		// this._itemData.getItemListJSON().then(itemDataList =>
 		// 	this._onlineShop.setItemList(itemDataList)

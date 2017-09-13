@@ -6,23 +6,24 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 	styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit {
-	
+
 	@Input() pages: number;
 	@Input() selectedPage: number;
-	
+
 	@Output() onPageSelected: EventEmitter<number> = new EventEmitter<number>();
-	
+
 	constructor() { }
 
 	ngOnInit() {
-		if (!this.selectedPage || this.selectedPage < 1){
+		if (!this.selectedPage || this.selectedPage < 1) {
 			this.selectedPage = 1;
-		} else if (this.selectedPage > this.pages) {
+			this.onPageSelected.emit(this.selectedPage);
+		} else if (this.pages && this.selectedPage > this.pages) {
 			this.selectedPage = this.pages;
+			this.onPageSelected.emit(this.selectedPage);
 		}
-		this.onPageSelected.emit(this.selectedPage);
 	}
-	
+
 	public onPageSelect(page: number): void {
 		this.selectedPage = page;
 		this.onPageSelected.emit(this.selectedPage);
@@ -38,16 +39,16 @@ export class PaginatorComponent implements OnInit {
 		);
 	}
 
-	
+
 	public isPageSelected(page: number): boolean {
 		return page === this.selectedPage;
 	}
 
 
-	public updateVM() : any {
+	public updateVM(): any {
 		let pages = [];
-		for (let page = 1; page < this.pages + 1; page++){
-			if ((page > this.selectedPage - 4) && (page < this.selectedPage + 4)){
+		for (let page = 1; page < this.pages + 1; page++) {
+			if ((page > this.selectedPage - 4) && (page < this.selectedPage + 4)) {
 				pages.push(page);
 			}
 		}

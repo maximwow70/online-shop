@@ -68,15 +68,15 @@ export class ItemService {
 	}
 
 	public getSortTypes(): Promise<SortType[]> {
-		return this._http.get('GetSortTypes', '').map(res => 
-			res.json().map(st => SortType.fromJSON(st)) 
-		).toPromise();
-		// return new Promise<SortType[]>(resolve => {
-		// 	resolve([
-		// 		new SortType(1, 'name'),
-		// 		new SortType(2, 'cost')
-		// 	]);
-		// });
+		// return this._http.get('GetSortTypes', '').map(res => 
+		// 	res.json().map(st => SortType.fromJSON(st)) 
+		// ).toPromise();
+		return new Promise<SortType[]>(resolve => {
+			resolve([
+				new SortType(1, 'name'),
+				new SortType(2, 'cost')
+			]);
+		});
 	}
 
 }

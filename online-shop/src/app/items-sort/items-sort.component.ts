@@ -27,7 +27,18 @@ export class ItemsSortData {
 })
 export class ItemsSortComponent implements OnInit {
 
-	@Input() sortTypes: SortType[] = [];
+	@Input() set sortTypes(sortTypes: SortType[]) {
+		this.sortTypesDropdown = sortTypes.map(st => new DropdownValue(st.id, st.name));
+		// if (
+		// 	this.sortTypesDropdown.length > 0
+		// 	&& !this.sortTypesDropdown.some(std => std.equals(this.selectedTypeDropdown))
+		// ) {
+		// 	this.onSortTypeSelected(this.sortTypesDropdown[0]);
+		// }
+	};
+	@Input() set selectedSortType(sortType: SortType) {
+		this.selectedTypeDropdown = new DropdownValue(sortType.id, sortType.name);
+	}
 	@Input() isSortByIncrease: boolean = true;
 	@Input() set availableRanges(ranges: number[]) {
 		this.availableRangesDropdown = ranges.map(r => new DropdownValue(0, r.toString()));
@@ -36,7 +47,7 @@ export class ItemsSortComponent implements OnInit {
 		if (range) {
 			this.selectedRangeDropdown = new DropdownValue(0, range.toString());
 		} else {
-			this.availableRangesDropdown.length > 0 ? this.availableRangesDropdown[0] : null;
+			this.selectedRangeDropdown = this.availableRangesDropdown.length > 0 ? this.availableRangesDropdown[0] : null;
 		}
 	}
 
@@ -44,45 +55,26 @@ export class ItemsSortComponent implements OnInit {
 	@Output() onDirectionChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 	@Output() onRangeSelected: EventEmitter<number> = new EventEmitter<number>();
 
-	private _selectedType: SortType = null;
-
 	public sortTypesDropdown: DropdownValue[] = [];
 	public selectedTypeDropdown: DropdownValue = null;
 	public availableRangesDropdown: DropdownValue[] = [];
 	public selectedRangeDropdown: DropdownValue = null;
 
 
-	public get selectedType(): SortType {
-		return this._selectedType;
-	}
-
-
 	constructor(
 		private _itemData: ItemService
 	) { }
-
-	ngOnChanges(changes: SimpleChanges) {
-		if (changes["sortTypes"]) {
-			this.sortTypesDropdown = this.sortTypes.map(st => new DropdownValue(st.id, st.name));
-			if (
-				this.sortTypesDropdown.length > 0
-				&& !this.sortTypesDropdown.some(std => std.equals(this.selectedTypeDropdown))
-			) {
-				this.onSortTypeSelected(this.sortTypesDropdown[0]);
-			}
-		}
-	}
 
 	ngOnInit() {
 	}
 
 	public onSortTypeSelected(value: DropdownValue): void {
 		this.selectedTypeDropdown = value;
-		this._selectedType = new SortType(
+		const selectedType = new SortType(
 			this.selectedTypeDropdown.id,
 			this.selectedTypeDropdown.name
 		);
-		this.onTypeSelected.emit(this._selectedType);
+		this.onTypeSelected.emit(selectedType);
 	}
 
 	public toggleSortDirection(): void {
