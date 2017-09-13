@@ -1,15 +1,18 @@
 @import '../src.scss';
 .items_sort{
+    min-height: 60px;
     padding: 0 20px;
     background-color: #FFF;
     border-radius: 5px;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
     &-description{
         padding-right: 40px;
-
-        display: inline-block;
-        vertical-align: middle;
-
         
         color: $color-dark_grey;
         font-family: $font-stack--bold;
@@ -17,24 +20,74 @@
         text-transform: uppercase;
     }
     &-select{
-        display: inline-block;
-        vertical-align: middle;
-
         padding-right: 20px;
 
         color: $color-dark_blue;
     }
-    &-free_shipping{
+    &-sort_direction{
+        position: relative;
+        padding: 5px;
+        margin-right: 20px;
+
         display: inline-block;
         vertical-align: middle;
 
+        color: $color-dark_green;
+        font-size: 16px;
+
+        transition: 0.3s;
+        cursor: pointer;
+
+        transform: rotate(180deg);
+
+        &.sort_by_increase{
+            transform: rotate(0deg);
+        }
+    }
+    &-free_shipping{
         padding-left: 40px;
-        border-left: 2px solid $color-light_grey;
+        border-left: 1px solid $color-light_grey;
 
         line-height: 60px;
-
         .switch{
             vertical-align: middle;
         }
+    }
+
+    &-devider{
+        flex-grow: 1;
+    } 
+
+    &-select_range{
+        margin-right: 20px;
+        border-right: 1px solid $color-light_grey;
+
+        color: $color-dark_blue;
+
+        select{
+            line-height: 60px;
+        }
+    }
+    &-select_range_title{
+        display: inline-block;
+        vertical-align: middle;
+        
+        color: $color-dark_grey;
+        font-family: $font-stack--bold;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    &-display_card,
+    &-display_list{
+        height: 24px;
+
+        color: $color-dark_blue;
+        font-size: 24px;
+
+        cursor: pointer;
+    }
+    &-display_card{
+        margin-right: 20px;
     }
 }

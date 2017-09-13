@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router } from '@angular/router';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { TextMaskModule } from 'angular2-text-mask';
 
@@ -76,6 +76,7 @@ import { CreditCardPresetComponent } from './credit-card-preset/credit-card-pres
 import { CreditCardPresetEditComponent } from './credit-card-preset-edit/credit-card-preset-edit.component';
 import { CategoryComponent } from './category/category.component';
 import { SizeService } from "app/_services/size.service";
+import { OnlineShopErrorHandler } from "app/online-shop-error-handler";
 
 
 const appRoutes: Routes = [
@@ -129,6 +130,7 @@ const appRoutes: Routes = [
 		pathMatch: 'full',
 		redirectTo: '/home'
 	},
+	{ path: 'error', component: PageNotFoundComponent },
 	{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -209,8 +211,22 @@ const appRoutes: Routes = [
 		UserWishlistGuard,
 		UserStatisticGuard,
 		UserInfoGuard,
-		SizeService
+		SizeService,
+		// OnlineShopErrorHandler,
 	],
 	bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+
+	// constructor(
+	// 	private _errorHandler: OnlineShopErrorHandler,
+	// 	private _router: Router
+	// ) {
+	// 	this._errorHandler.errorObservable.subscribe(error => {
+
+	// 		console.log(error);
+	// 		this._router.navigate(['/error']);
+	// 	});
+	// }
+}

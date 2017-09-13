@@ -4,7 +4,16 @@
 </div>
 <div class="item_list">
 	<div class="item_list-items_sort">
-		<items-sort [sortTypes]="availableSortTypes" (onTypeSelected)="onSortTypeSelected($event)"></items-sort>
+		<items-sort
+			[sortTypes]="availableSortTypes"
+			[selectedSortType]="selectedSortType"
+			[isSortByIncrease]="isSortByIncrease"
+			[availableRanges]="availableRanges"
+			[selectedRange]="selectedRange"
+			(onTypeSelected)="onSortTypeSelected($event)"
+			(onDirectionChange)="onSortDirectionChange($event)"
+			(onRangeSelected)="onRangeSelected($event)">
+		</items-sort>
 	</div>
 	<div class="item_list-items_search">
 		<items-search 

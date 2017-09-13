@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, EventEmitter, Output, Input, SimpleChanges } from '@angular/core';
 import { Datapicker } from "app/ui/datapicker/datapicker";
 import { Color } from "app/_model/color";
 import { CategoryService } from "app/_services/category.service";
@@ -33,9 +33,25 @@ export class ItemsSearchComponent implements OnInit {
 	) {
 	}
 
+	ngOnChanges(changes: SimpleChanges) {
+		if (changes["cost"]) {
+			if (this._selectedCost.min < this.cost.min) {
+				this._selectedCost = new CostRange(this.cost.min, this._selectedCost.max);
+			}
+			if (this._selectedCost.max > this.cost.max) {
+				this._selectedCost = new CostRange(this._selectedCost.min, this._selectedCost.max);
+			}
+		}
+		if (changes["colors"]) {
+			this._selectedColors = this._selectedColors.filter(c => this.colors.some(color => color.equals(c)));
+		}
+		if (changes["sizes"]) {
+			this._selectedSizes = this._selectedSizes.filter(s => this.sizes.some(size => size.equals(s)));
+		}
+	}
+
 	ngOnInit() {
-		this._selectedCost = this.cost;
-		this.onSearchClick();
+		//this._selectedCost = this.cost;
 	}
 
 	public onColorsSelected(selectedColors: Color[]): void {
