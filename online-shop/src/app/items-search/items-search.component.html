@@ -1,5 +1,5 @@
 <div class="items_search">
-	<div class="items_search-search">
+	<div class="items_search-search" [hidden]="categories.length === 0">
 		<category-list [categories]="categories"></category-list>
 	</div>
 	<div class="items_search-search">

@@ -15,37 +15,39 @@
 			(onRangeSelected)="onRangeSelected($event)">
 		</items-sort>
 	</div>
-	<div class="item_list-items_search">
-		<items-search 
-			[categories]="availableCategories"
-			[colors]="availableColors"
-			[sizes]="availableSizes"
-			[cost]="availableCost"
-			(onSearch)="onSearch($event)">
-		</items-search>
-	</div><!--
-	--><div class="item_list-items">
-		<div class="item_list-item_card" *ngFor="let itemData of itemList">
-			<div class="item_card">
-				<div class="item_card-new" *ngIf="itemData.isNew">new</div>
-				<div class="item_card-img">
-					<div class="item_card-like" (click)="onItemLiked(itemData.item)">
-						<span class="like fa fa-heart-o"></span>
-					</div>
-					<img class="img" src="{{itemData.item.photosUrl[0]}}" alt="">
-				</div>
-				<div class="item_card-info">
-					<a class="item_card-name" (click)="onItemClicked(itemData.item)">
-						{{itemData.item.name}}
-					</a>
-					<div class="item_card-color_list">
-						<div class="color-list">
-							<div class="color_list-color" *ngFor="let color of itemData.colors">
-								<div class="color color--{{getClassByColor(color)}} color--small" title="{{color.name}}"></div>
-							</div>
+	<div class="item_list-container">
+		<div class="item_list-items_search">
+			<items-search 
+				[categories]="availableCategories"
+				[colors]="availableColors"
+				[sizes]="availableSizes"
+				[cost]="availableCost"
+				(onSearch)="onSearch($event)">
+			</items-search>
+		</div>
+		<div class="item_list-items">
+			<div class="item_list-item_card" *ngFor="let itemData of itemList">
+				<div class="item_card">
+					<div class="item_card-new" *ngIf="itemData.isNew">new</div>
+					<div class="item_card-img">
+						<div class="item_card-like" (click)="onItemLiked(itemData.item)">
+							<span class="like fa fa-heart-o"></span>
 						</div>
-					</div><!--
-					--><h4 class="item_card-cost">${{itemData.cost}}</h4>
+						<img class="img" src="{{itemData.item.photosUrl[0]}}" alt="">
+					</div>
+					<div class="item_card-info">
+						<a class="item_card-name" (click)="onItemClicked(itemData.item)">
+							{{itemData.item.name}}
+						</a>
+						<div class="item_card-color_list">
+							<div class="color-list">
+								<div class="color_list-color" *ngFor="let color of itemData.colors">
+									<div class="color color--{{getClassByColor(color)}} color--small" title="{{color.name}}"></div>
+								</div>
+							</div>
+						</div><!--
+						--><h4 class="item_card-cost">${{itemData.cost}}</h4>
+					</div>
 				</div>
 			</div>
 		</div>

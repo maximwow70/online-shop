@@ -3,13 +3,25 @@
     position: relative;
     min-height: 100vh;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
     background-image: url('assets/404-bg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 
+    color: $color-dark_blue;
     font-family: Arial;
     text-align: center;
+
+    &-logo{
+        padding: 50px 75px 0 75px;
+
+        text-align: left;
+    }
 
     &-info{
         position: absolute;
@@ -23,7 +35,6 @@
 
         display: inline-block;
 
-        color: $color-dark_blue;
         font-family: $font-stack--magic_number;
         font-size: 68px * 2;
         text-transform: uppercase;
@@ -31,12 +42,37 @@
     &-description{
         margin-bottom: 20px;
 
-        color: $color-dark_blue;
         font-family: $font-stack--bold;
         font-size: 24px;
         font-weight: normal;
     }
     &-btn{
         font-family: $font-stack--bold;
+    }
+
+    &-footer{
+        padding: 0 75px 50px 75px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    &-date{
+        color: rgba($color-dark_blue, 0.8);
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    &-social{
+        font-size: 24px;
+    }
+    &-social_btn{
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
     }
 }
