@@ -212,7 +212,10 @@ const appRoutes: Routes = [
 		UserStatisticGuard,
 		UserInfoGuard,
 		SizeService,
-		// OnlineShopErrorHandler,
+		// {
+		// 	provide: ErrorHandler,
+		// 	useClass: OnlineShopErrorHandler
+		// }
 	],
 	bootstrap: [AppComponent]
 })
