@@ -77,6 +77,7 @@ import { CreditCardPresetEditComponent } from './credit-card-preset-edit/credit-
 import { CategoryComponent } from './category/category.component';
 import { SizeService } from "app/_services/size.service";
 import { OnlineShopErrorHandler } from "app/online-shop-error-handler";
+import { PageErrorComponent } from './page-error/page-error.component';
 
 
 const appRoutes: Routes = [
@@ -130,7 +131,7 @@ const appRoutes: Routes = [
 		pathMatch: 'full',
 		redirectTo: '/home'
 	},
-	{ path: 'error', component: PageNotFoundComponent },
+	{ path: 'error', component: PageErrorComponent },
 	{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -189,7 +190,8 @@ const appRoutes: Routes = [
 		CreditCardPresetListComponent,
 		CreditCardPresetComponent,
 		CreditCardPresetEditComponent,
-		CategoryComponent
+		CategoryComponent,
+		PageErrorComponent
 	],
 	imports: [
 		BrowserModule,
@@ -212,24 +214,24 @@ const appRoutes: Routes = [
 		UserStatisticGuard,
 		UserInfoGuard,
 		SizeService,
-		// {
-		// 	provide: ErrorHandler,
-		// 	useClass: OnlineShopErrorHandler
-		// }
+		{ provide: ErrorHandler, useClass: OnlineShopErrorHandler }
 	],
 	bootstrap: [AppComponent]
 })
 
 export class AppModule {
 
-	// constructor(
-	// 	private _errorHandler: OnlineShopErrorHandler,
-	// 	private _router: Router
-	// ) {
-	// 	this._errorHandler.errorObservable.subscribe(error => {
+	private _onlineShopErrorHandler: any = null;
 
-	// 		console.log(error);
-	// 		this._router.navigate(['/error']);
-	// 	});
-	// }
+	constructor(
+		errorHandler: ErrorHandler,
+		private _router: Router
+	) {
+		this._onlineShopErrorHandler = errorHandler as OnlineShopErrorHandler;
+		
+		this._onlineShopErrorHandler.errorObservable.subscribe(error => {
+			console.error(error);
+			this._router.navigate(['/error']);
+		});
+	}
 }
