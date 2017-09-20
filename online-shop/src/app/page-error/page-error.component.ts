@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'page-error',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageErrorComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.goToHome();
+  }
+
+  public goToHome(): void {
+    this._router.navigate(['/home'])
+      .then(() => {
+        window.location.reload();
+      });
   }
 
 }
