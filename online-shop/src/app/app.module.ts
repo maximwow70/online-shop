@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Response } from '@angular/http';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { TextMaskModule } from 'angular2-text-mask';
@@ -230,8 +230,14 @@ export class AppModule {
 		this._onlineShopErrorHandler = errorHandler as OnlineShopErrorHandler;
 		
 		this._onlineShopErrorHandler.errorObservable.subscribe(error => {
-			console.error(error);
-			this._router.navigate(['/error']);
+
+			if (error instanceof Response || error.rejection instanceof Response) {
+				console.error(error);
+				return;
+			}
+			this._router.navigate(['/error']).then(() => {
+				console.error(error);
+			});
 		});
 	}
 }
