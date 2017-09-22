@@ -79,6 +79,8 @@ import { SizeService } from "app/_services/size.service";
 import { OnlineShopErrorHandler } from "app/online-shop-error-handler";
 import { PageErrorComponent } from './page-error/page-error.component';
 
+import { LocationStrategy, HashLocationStrategy } from "@angular/common/common";
+
 
 const appRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -214,6 +216,7 @@ const appRoutes: Routes = [
 		UserStatisticGuard,
 		UserInfoGuard,
 		SizeService,
+		{ provide: LocationStrategy, useClass: HashLocationStrategy },
 		{ provide: ErrorHandler, useClass: OnlineShopErrorHandler }
 	],
 	bootstrap: [AppComponent]
