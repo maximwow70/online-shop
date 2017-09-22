@@ -50,16 +50,17 @@ export class ItemsSortComponent implements OnInit {
 			this.selectedRangeDropdown = this.availableRangesDropdown.length > 0 ? this.availableRangesDropdown[0] : null;
 		}
 	}
+	@Input() isItemsViewAsList: boolean = false;
 
 	@Output() onTypeSelected: EventEmitter<SortType> = new EventEmitter<SortType>();
 	@Output() onDirectionChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 	@Output() onRangeSelected: EventEmitter<number> = new EventEmitter<number>();
+	@Output() onItemsViewChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	public sortTypesDropdown: DropdownValue[] = [];
 	public selectedTypeDropdown: DropdownValue = null;
 	public availableRangesDropdown: DropdownValue[] = [];
 	public selectedRangeDropdown: DropdownValue = null;
-
 
 	constructor(
 		private _itemData: ItemService
@@ -85,6 +86,11 @@ export class ItemsSortComponent implements OnInit {
 	public rangeSelected(range: DropdownValue): void {
 		this.selectedRangeDropdown = range;
 		this.onRangeSelected.emit(parseInt(this.selectedRangeDropdown.name));
+	}
+
+	public setItemsView(isViewAsList: boolean): void {
+		this.isItemsViewAsList = isViewAsList;
+		this.onItemsViewChange.emit(this.isItemsViewAsList);
 	}
 
 

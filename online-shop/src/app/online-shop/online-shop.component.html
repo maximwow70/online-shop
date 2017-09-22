@@ -2,7 +2,7 @@
 <div class="online_shop-slider">
 	<slider></slider>
 </div>
-<div class="item_list">
+<div class="item_list" [ngClass]="{'listed': isItemsViewAsList}">
 	<div class="item_list-items_sort">
 		<items-sort
 			[sortTypes]="availableSortTypes"
@@ -10,9 +10,11 @@
 			[isSortByIncrease]="isSortByIncrease"
 			[availableRanges]="availableRanges"
 			[selectedRange]="selectedRange"
+			[isItemsViewAsList]="isItemsViewAsList"
 			(onTypeSelected)="onSortTypeSelected($event)"
 			(onDirectionChange)="onSortDirectionChange($event)"
-			(onRangeSelected)="onRangeSelected($event)">
+			(onRangeSelected)="onRangeSelected($event)"
+			(onItemsViewChange)="onItemsViewChange($event)">
 		</items-sort>
 	</div>
 	<div class="item_list-container">

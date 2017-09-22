@@ -86,6 +86,7 @@
         color: $color-dark_blue;
         font-size: 20px;
 
+        transition: 0.3s;
         cursor: pointer;
 
         &.active {

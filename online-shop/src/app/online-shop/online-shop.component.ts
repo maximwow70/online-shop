@@ -45,6 +45,8 @@ export class OnlineShopComponent implements OnInit {
 	
 	private _selectedPage: number = null;
 
+	private _isItemsViewAsList: boolean = false;
+
 	public get pages(): number {
 		return this._pages;
 	}
@@ -83,6 +85,10 @@ export class OnlineShopComponent implements OnInit {
 	}
 	public get selectedRange(): number {
 		return this._selectedRange;
+	}
+
+	public get isItemsViewAsList(): boolean {
+		return this._isItemsViewAsList;
 	}
 
 
@@ -132,9 +138,9 @@ export class OnlineShopComponent implements OnInit {
 		// this._itemData.getMaxCost().then(maxCost => this._availableCost = new CostRange(0, maxCost));
 		//this._itemData.getSortTypes().then(sortTypes => {this._availableSortTypes = sortTypes;this._selectedSortType = this._availableSortTypes[0];});
 
-		// this._itemData.getItemListJSON().then(itemDataList =>
-		// 	this._onlineShop.setItemList(itemDataList)
-		// );
+		this._itemData.getItemListJSON().then(itemDataList =>
+			this._onlineShop.setItemList(itemDataList)
+		);
 	}
 
 	ngOnInit() {
@@ -177,6 +183,10 @@ export class OnlineShopComponent implements OnInit {
 	public onPageSelected(page: number): void {
 		this._selectedPage = page;
 		this.loadItemListByParams();
+	}
+
+	public onItemsViewChange(isViewAsList: boolean): void {
+		this._isItemsViewAsList = isViewAsList;
 	}
 
 
