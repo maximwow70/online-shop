@@ -26,6 +26,12 @@ $color-light_grey: #F0F2F7;
     text-overflow: ellipsis;
 }
 
+@mixin bg-cover {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 @mixin ps-const-width {
     .ps-scrollbar-y-rail{
         width: 10px !important;

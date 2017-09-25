@@ -85,7 +85,7 @@ import { NotifyManagerComponent } from './notify-manager/notify-manager.componen
 import { NotifyManager } from "app/_services/notify-manager.service";
 
 
-const appRoutes: Routes = [
+const onlineShopRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'products', component: OnlineShopComponent },
 	{ path: 'products/:id', component: ItemComponent },
@@ -204,7 +204,7 @@ const appRoutes: Routes = [
 		BrowserAnimationsModule,
 		FormsModule,
 		HttpModule,
-		RouterModule.forRoot(appRoutes),
+		RouterModule.forRoot(onlineShopRoutes),
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
 		}),

@@ -62,9 +62,7 @@
         padding: 80px 40px;
 
         background-image: url('assets/smart-navigation.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+        @include bg-cover();
 
         color: #FFF;
         text-align: center;

@@ -51,9 +51,7 @@
 
         background-color: $color-black;
         background-image: url('assets/img/home-parallax.jpg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+        @include bg-cover();
 
     }
 }

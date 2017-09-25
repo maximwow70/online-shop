@@ -9,9 +9,7 @@
     align-items: stretch;
 
     background-image: url('assets/404-bg.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    @include bg-cover();
 
     color: $color-dark_blue;
     font-family: Arial;

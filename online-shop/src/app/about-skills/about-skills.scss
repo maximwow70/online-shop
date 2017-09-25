@@ -5,9 +5,7 @@
     padding: 50px 5% 0 5%; //grid
 
     //background-image: url('assets/img/about-skills-2.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    @include bg-cover();
 
     text-align: center;
 
