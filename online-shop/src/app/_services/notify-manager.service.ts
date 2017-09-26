@@ -9,7 +9,8 @@ export enum NotifyType {
 export class Notify {
 	private _id: number = null;
 	private _type: NotifyType = null;
-	private _template: string = null;
+	private _title: string = null;
+	private _message: string = null;
 
 	public get id(): number {
 		return this._id;
@@ -17,14 +18,18 @@ export class Notify {
 	public get type(): NotifyType {
 		return this._type;
 	}
-	public get template(): string {
-		return this._template;
+	public get title(): string {
+		return this._title;
+	}
+	public get message(): string {
+		return this._message;
 	}
 
-	constructor(id: number, type: NotifyType, template: string) {
+	constructor(id: number, type: NotifyType, title: string, message: string) {
 		this._id = id;
 		this._type = type;
-		this._template = template;
+		this._title = title;
+		this._message = message;
 	}
 
 	public equals(other: Notify): boolean {
@@ -33,14 +38,16 @@ export class Notify {
 		}
 		return this._id === other._id
 			&& this._type === other._type
-			&& this._template === other._template;
+			&& this._title === other._title
+			&& this._message === other._message;
 	}
 }
 
 @Injectable()
 export class NotifyManager {
 
-	private DEFAULT_TIME: number = 5000;
+	private DEFAULT_TIME: number = 3000;
+	private _notifyId: number = 0;
 
 	private _notifyList: Notify[] = [];
 	private _notifyListSubject: Subject<Notify[]> = new Subject<Notify[]>();
@@ -53,17 +60,15 @@ export class NotifyManager {
 	}
 
 	constructor() {
-		// this.success('success', 10000000);
-		// this.success('success', 2000000);
-		// this.success('success', 1000000);
-		// this.error('error', 1000000);
+		
 	}
 
-	private onNotify(notifyType: NotifyType, template: string, time: number = this.DEFAULT_TIME): void {
+	private onNotify(notifyType: NotifyType, message: string, time: number = this.DEFAULT_TIME): void {
 		let notify = new Notify(
-			this._notifyList.length,
+			this._notifyId > 2000000 ? this._notifyId = 0 : this._notifyId++,
 			notifyType,
-			template
+			notifyType === NotifyType.SUCCESS ? 'Success!' : 'Oops!',
+			message
 		);
 		this._notifyList.push(notify);
 		this._notifyListSubject.next(this._notifyList);
@@ -73,12 +78,12 @@ export class NotifyManager {
 		}, time);
 	}
 
-	public success(template: string, time: number = this.DEFAULT_TIME): void {
-		this.onNotify(NotifyType.SUCCESS, template, time);
+	public success(message: string, time: number = this.DEFAULT_TIME): void {
+		this.onNotify(NotifyType.SUCCESS, message, time);
 	}
 
-	public error(template: string, time: number = this.DEFAULT_TIME): void {
-		this.onNotify(NotifyType.ERROR, template, time);
+	public error(message: string, time: number = this.DEFAULT_TIME): void {
+		this.onNotify(NotifyType.ERROR, message, time);
 	}
 
 }
