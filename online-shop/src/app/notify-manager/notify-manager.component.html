@@ -1,0 +1,8 @@
+<div class="notify_manager">
+	<div
+		*ngFor="let notify of notifyList"
+		class="notify_manager-notify {{getClassByType(notify.type)}}"
+		[@flyInOut]="'static'">
+		{{notify.message}}
+	</div>
+</div>

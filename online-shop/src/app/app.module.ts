@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Response } from '@angular/http';
@@ -79,10 +80,12 @@ import { SizeService } from "app/_services/size.service";
 import { OnlineShopErrorHandler } from "app/online-shop-error-handler";
 import { PageErrorComponent } from './page-error/page-error.component';
 
-import { LocationStrategy, HashLocationStrategy } from "@angular/common/common";
+import { LocationStrategy, HashLocationStrategy } from "@angular/common";
+import { NotifyManagerComponent } from './notify-manager/notify-manager.component';
+import { NotifyManager } from "app/_services/notify-manager.service";
 
 
-const appRoutes: Routes = [
+const onlineShopRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'products', component: OnlineShopComponent },
 	{ path: 'products/:id', component: ItemComponent },
@@ -193,13 +196,15 @@ const appRoutes: Routes = [
 		CreditCardPresetComponent,
 		CreditCardPresetEditComponent,
 		CategoryComponent,
-		PageErrorComponent
+		PageErrorComponent,
+		NotifyManagerComponent
 	],
 	imports: [
 		BrowserModule,
+		BrowserAnimationsModule,
 		FormsModule,
 		HttpModule,
-		RouterModule.forRoot(appRoutes),
+		RouterModule.forRoot(onlineShopRoutes),
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
 		}),
@@ -217,7 +222,8 @@ const appRoutes: Routes = [
 		UserInfoGuard,
 		SizeService,
 		{ provide: LocationStrategy, useClass: HashLocationStrategy },
-		{ provide: ErrorHandler, useClass: OnlineShopErrorHandler }
+		{ provide: ErrorHandler, useClass: OnlineShopErrorHandler },
+		NotifyManager
 	],
 	bootstrap: [AppComponent]
 })

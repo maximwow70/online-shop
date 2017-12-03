@@ -18,6 +18,7 @@ import { CategoryService } from "app/_services/category.service";
 import { SizeService } from "app/_services/size.service";
 import { CostRange } from "app/_model/cost-range";
 import { SortType } from "app/_model/sort-type";
+import { NotifyManager } from "app/_services/notify-manager.service";
 
 @Component({
 	selector: 'online-shop',
@@ -98,7 +99,8 @@ export class OnlineShopComponent implements OnInit {
 		private _itemData: ItemService,
 		private _colorData: ColorService,
 		private _sizeData: SizeService,
-		private _categoryData: CategoryService
+		private _categoryData: CategoryService,
+		private _notifyManager: NotifyManager
 	) {
 
 		this._onlineShop = new OnlineShop();
@@ -191,7 +193,8 @@ export class OnlineShopComponent implements OnInit {
 
 
 	public onItemLiked(item: Item): void {
-		console.log(item);
+		// console.log(item);
+		this._notifyManager.success(item.name + ' was liked!');
 	}
 	public onItemClicked(item: Item): void {
 		this._router.navigate(['/products', item.id]);
