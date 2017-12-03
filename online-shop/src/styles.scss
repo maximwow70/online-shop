@@ -77,10 +77,9 @@
 @import './app/user-cart-delivery/user-cart-delivery.scss';
 @import './app/user-cart-payment/user-cart-payment.scss';
 
-@import './app/user-statistic/user-statistic.scss';
-
 @import './app/user-settings/user-settings.scss';
 
+@import "./app/user-statistic/user-statistic-styles.scss";
 
 @import './app/item-liker/item-liker.scss';
 
@@ -88,13 +87,6 @@
 @import './app/contact-info/contact-info.scss';
 @import './app/contact-form/contact-form.scss';
 @import './app/contact-map/contact-map.scss';
-
-@import './app/about/about.scss';
-@import './app/about-intro/about-intro.scss';
-@import './app/about-history/about-history.scss';
-@import './app/about-team/about-team.scss';
-@import './app/about-skills/about-skills.scss';
-
 
 @font-face{
     font-family: logo;

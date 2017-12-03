@@ -4,6 +4,7 @@ import { Http } from "@angular/http";
 import { Item } from "app/_model/item";
 import { User } from "app/_model/user";
 import { UserDashboardTheme } from "app/_model/user-dashboard-theme";
+import { ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class UserDataService {
@@ -13,6 +14,8 @@ export class UserDataService {
 
 	private _activeTheme: UserDashboardTheme = null;
 
+	private _isReady: boolean = false;
+	private _isReadySubject: ReplaySubject<boolean> = new ReplaySubject<boolean>(1); 
 	
 	public get user(): User {
 		return this._user;
@@ -27,11 +30,20 @@ export class UserDataService {
 	public get activeTheme(): UserDashboardTheme {
 		return this._activeTheme;
 	}
+
+	public get isReady(): boolean {
+		return this._isReady;
+	}
+	public get isReadyObservable(): ReplaySubject<boolean> {
+		return this._isReadySubject;
+	}
 	
 
 	constructor(
 		private _http: Http
 	) {
+		this._isReadySubject.subscribe(isReady => this._isReady = isReady);
+
 		let userData = this.getUserDataFromStorage();
 
 		if (userData.mail || userData.password) {
@@ -88,6 +100,8 @@ export class UserDataService {
 				this._user = User.fromJSON(u);
 				// this._user = undefined; // timing
 				this._isLogIn = this._user ? true : false;
+
+				this._isReadySubject.next(true);
 			});
 	}
 

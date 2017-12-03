@@ -1,0 +1,26 @@
+.user-statistic-card{
+    &--header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: 20px;
+    }
+    &--title{
+        font-size: 18px;
+        font-family: $font-stack--bold;
+        text-transform: uppercase;
+    }
+    &--icon{
+        margin-left: 20px;
+        font-size: 20px;
+    }
+    &--value{
+        font-family: $font-stack--magic_number;
+        font-size: 36px;
+        text-transform: uppercase;
+
+        @include no-wrap;
+    }
+}

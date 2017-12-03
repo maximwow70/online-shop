@@ -1,8 +1,8 @@
-<div class="about_skills">
-	<h2 class="about_skills-title">
+<div class="about-skills">
+	<h2 class="about-skills--title">
 		Our Skills
 	</h2>
-	<div class="about_skills-skill" *ngFor="let skill of skillList">
+	<div class="about-skills--skill" *ngFor="let skill of skillList">
 		<svg width="160" height="160">
 			<circle transform="rotate(-90)" r="65" cx="-80" cy="80" />
 			<circle transform="rotate(-90)" r="58" cx="-80" cy="80" [ngStyle]="{
@@ -12,7 +12,7 @@
 				{{skill.value}}%
 			</text>
 		</svg>
-		<div class="about_skills-skill_name">
+		<div class="about-skills--skill-name">
 			{{skill.name}}
 		</div>
 	</div>

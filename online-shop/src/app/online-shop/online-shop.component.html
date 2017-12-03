@@ -11,10 +11,10 @@
 			[availableRanges]="availableRanges"
 			[selectedRange]="selectedRange"
 			[isItemsViewAsList]="isItemsViewAsList"
-			(onTypeSelected)="onSortTypeSelected($event)"
-			(onDirectionChange)="onSortDirectionChange($event)"
-			(onRangeSelected)="onRangeSelected($event)"
-			(onItemsViewChange)="onItemsViewChange($event)">
+			(onTypeSelected)="selectSortType($event)"
+			(onDirectionChange)="changeSortDirection($event)"
+			(onRangeSelected)="selectRange($event)"
+			(onItemsViewChange)="changeItemsView($event)">
 		</items-sort>
 	</div>
 	<div class="item_list-container">
@@ -24,7 +24,7 @@
 				[colors]="availableColors"
 				[sizes]="availableSizes"
 				[cost]="availableCost"
-				(onSearch)="onSearch($event)">
+				(onSearch)="search($event)">
 			</items-search>
 		</div>
 		<div class="item_list-items">
@@ -32,13 +32,13 @@
 				<div class="item_card">
 					<div class="item_card-new" *ngIf="itemData.isNew">new</div>
 					<div class="item_card-img">
-						<div class="item_card-like" (click)="onItemLiked(itemData.item)">
+						<div class="item_card-like" (click)="likeItem(itemData.item)">
 							<span class="like fa fa-heart-o"></span>
 						</div>
 						<img class="img" src="{{itemData.item.photosUrl[0]}}" alt="">
 					</div>
 					<div class="item_card-info">
-						<a class="item_card-name" (click)="onItemClicked(itemData.item)">
+						<a class="item_card-name" (click)="selectItem(itemData.item)">
 							{{itemData.item.name}}
 						</a>
 						<div class="item_card-color_list">
@@ -55,7 +55,7 @@
 		</div>
 	</div>
 	<div class="item_list-paginator">
-		<paginator [pages]="pages" [selectedPage]="selectedPage" (onPageSelected)="onPageSelected($event)"></paginator>
+		<paginator [pages]="pages" [selectedPage]="selectedPage" (onPageSelected)="selectPage($event)"></paginator>
 	</div>
 </div>
 <footer></footer>

@@ -62,7 +62,6 @@ import { UserWishlistGuard } from "app/_guards/user-wishlist.guard";
 import { UserStatisticGuard } from "app/_guards/user-statistic.guard";
 import { UserInfoGuard } from "app/_guards/user-info.guard";
 
-import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SelectComponent } from './ui/select/select.component';
 import { DropdownComponent } from './ui/dropdown/dropdown.component';
 import { UserInfoComponent } from "app/user-info/user-info.component";
@@ -83,6 +82,7 @@ import { PageErrorComponent } from './page-error/page-error.component';
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { NotifyManagerComponent } from './notify-manager/notify-manager.component';
 import { NotifyManager } from "app/_services/notify-manager.service";
+import { UserStatisticModule } from 'app/user-statistic/user-statistic.module';
 
 
 const onlineShopRoutes: Routes = [
@@ -182,7 +182,6 @@ const onlineShopRoutes: Routes = [
 		AboutTeamComponent,
 		UserLoginComponent,
 		UserComponent,
-		UserStatisticComponent,
 		UserSettingsComponent,
 		UserInfoComponent,
 		SelectComponent,
@@ -208,8 +207,8 @@ const onlineShopRoutes: Routes = [
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
 		}),
-		ChartsModule,
-		TextMaskModule
+		TextMaskModule,
+		UserStatisticModule
 	],
 	providers: [
 		ColorService,

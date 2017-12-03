@@ -164,39 +164,39 @@ export class OnlineShopComponent implements OnInit {
 		});
 	}
 
-	public onSearch(params: { name: string, colors: Color[], sizes: Size[], cost: { min: number, max: number } }): void {
+	public search(params: { name: string, colors: Color[], sizes: Size[], cost: { min: number, max: number } }): void {
 		this._searchParams = params;
 		this.loadItemListByParams();
 	}
 
-	public onSortTypeSelected(sortType: SortType): void {
+	public selectSortType(sortType: SortType): void {
 		this._selectedSortType = sortType;
 		this.loadItemListByParams();
 	}
-	public onSortDirectionChange(isSortByIncrease: boolean): void {
+	public changeSortDirection(isSortByIncrease: boolean): void {
 		this._isSortByIncrease = isSortByIncrease;
 		this.loadItemListByParams();
 	}
-	public onRangeSelected(range: number): void {
+	public selectRange(range: number): void {
 		this._selectedRange = range;
 		this.loadItemListByParams();
 	}
 
-	public onPageSelected(page: number): void {
+	public selectPage(page: number): void {
 		this._selectedPage = page;
 		this.loadItemListByParams();
 	}
 
-	public onItemsViewChange(isViewAsList: boolean): void {
+	public changeItemsView(isViewAsList: boolean): void {
 		this._isItemsViewAsList = isViewAsList;
 	}
 
 
-	public onItemLiked(item: Item): void {
+	public likeItem(item: Item): void {
 		// console.log(item);
 		this._notifyManager.success(item.name + ' was liked!');
 	}
-	public onItemClicked(item: Item): void {
+	public selectItem(item: Item): void {
 		this._router.navigate(['/products', item.id]);
 	}
 

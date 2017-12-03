@@ -1,0 +1,49 @@
+@import "../src.scss";
+:host{
+    display: block;
+}
+.user-statistic{
+    padding: 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+
+    &--header{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    &--user-statistic-card{
+        margin-bottom: 50px;
+
+        box-sizing: border-box;
+        width: 300px;
+        padding: 20px;
+        background-color: #FFF;
+        border-radius: 5px;
+
+        box-shadow: 0 0 20px rgba($color-dark_blue, 0.2);
+    }
+
+    &--user-orders{
+        margin-bottom: 50px;
+        display: block;
+        width: 100%;
+    }
+    &--user-likes{
+        margin-right: 5%;
+        width: 55%;
+    }
+    &--user-category-likes{
+        margin-left: 5%;
+
+        width: 35%;
+    }
+
+}

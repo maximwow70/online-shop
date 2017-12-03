@@ -13,12 +13,14 @@ export class UserInfoGuard implements CanActivate {
 
 	}
 
-	canActivate(
-		next: ActivatedRouteSnapshot,
-		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-		if (this._userData.isLogIn === false){
-			this._router.navigate(['/user/login']);
-		}
-		return this._userData.isLogIn;
+	canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+		return new Promise<boolean>((resolve, reject) => {
+			this._userData.isReadyObservable.subscribe(() => {
+				if (this._userData.isLogIn === false) {
+					this._router.navigate(['/user/login']);
+				}
+				resolve(this._userData.isLogIn);
+			});
+		});
 	}
 }

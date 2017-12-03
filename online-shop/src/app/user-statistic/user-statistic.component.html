@@ -1,96 +1,49 @@
-<div class="user_statistic">
-	<div class="user_statistic-header">
-		<div class="user_statistic-total_cash">
-			<div class="user_statistic-total_cash_header">
-				<div class="user_statistic-total_cash_title">Total spent cash</div>
-				<div class="user_statistic-total_cash_icon fa fa-credit-card"></div>
-			</div>
-			<div class="user_statistic-total_cash_value">
-				<span>$ 1,050.54</span>
-			</div>
-		</div>
-		<div class="user_statistic-total_orders">
-			<div class="user_statistic-total_orders_header">
-				<div class="user_statistic-total_orders_title">Total orders</div>
-				<div class="user_statistic-total_orders_icon fa fa-shopping-cart"></div>
-			</div>
-			<div class="user_statistic-total_orders_value">
-				<span>452</span>
+<div class="user-statistic">
+	<div class="user-statistic--header">
+		<div class="user-statistic--user-statistic-card">
+			<div class="user-statistic-card">
+				<div class="user-statistic-card--header">
+					<div class="user-statistic-card--title">You spent</div>
+					<div class="user-statistic-card--icon fa fa-credit-card"></div>
+				</div>
+				<div class="user-statistic-card--value">{{15054.56 | currency:'USD':true}}</div>
 			</div>
 		</div>
-		<div class="user_statistic-total_likes">
-			<div class="user_statistic-total_likes_header">
-				<div class="user_statistic-total_likes_title">Total likes</div>
-				<div class="user_statistic-total_likes_icon fa fa-heart"></div>
-			</div>
-			<div class="user_statistic-total_likes_value">
-				<span>12467</span>
+		<div class="user-statistic--user-statistic-card">
+			<div class="user-statistic-card">
+				<div class="user-statistic-card--header">
+					<div class="user-statistic-card--title">You ordered</div>
+					<div class="user-statistic-card--icon fa fa-shopping-cart"></div>
+				</div>
+				<div class="user-statistic-card--value">452</div>
 			</div>
 		</div>
-	</div>
-	<div class="user_statistic-orders">
-		<div class="user_statistic-title">Your orders</div>
-		<canvas class="user_statistic-chart" baseChart
-				[datasets]="orderStatistic.data"
-				[labels]="orderStatistic.labels"
-				[options]="orderStatistic.options"
-				[colors]="orderStatistic.colors"
-				[legend]="orderStatistic.legend"
-				[chartType]="orderStatistic.type"
-				(chartHover)="chartHovered($event)"
-				(chartClick)="chartClicked($event)">
-		</canvas>
-		<div class="user_statistic-description">
-			TOTAL: <span>{{orderStatistic.total}}</span>
+		<div class="user-statistic--user-statistic-card">
+			<div class="user-statistic-card">
+				<div class="user-statistic-card--header">
+					<div class="user-statistic-card--title">You liked</div>
+					<div class="user-statistic-card--icon fa fa-heart"></div>
+				</div>
+				<div class="user-statistic-card--value">12467</div>
+			</div>
+		</div>
+		<div class="user-statistic--user-statistic-card">
+			<div class="user-statistic-card">
+				<div class="user-statistic-card--header">
+					<div class="user-statistic-card--title">Total comments</div>
+					<div class="user-statistic-card--icon fa fa-comment"></div>
+				</div>
+				<div class="user-statistic-card--value">1067</div>
+			</div>
 		</div>
 	</div>
-	<div class="user_statistic-likes">
-		<div class="user_statistic-title">Your likes</div>
-		<canvas class="user_statistic-chart" baseChart
-				[datasets]="likeStatistic.data"
-				[labels]="likeStatistic.labels"
-				[options]="likeStatistic.options"
-				[colors]="likeStatistic.colors"
-				[legend]="likeStatistic.legend"
-				[chartType]="likeStatistic.type"
-				(chartHover)="chartHovered($event)"
-				(chartClick)="chartClicked($event)">
-		</canvas>
-		<div class="user_statistic-description">
-			TOTAL: 
-			<span>{{likeStatistic.total}}</span>
-		</div>
+	<div class="user-statistic--user-orders">
+		<user-orders></user-orders>
 	</div>
-	<div class="user_statistic-category_likes">
-		<div class="user_statistic-title">Category likes</div>
-		<canvas class="user_statistic-chart" baseChart
-              [data]="categoryLikeStatistic.data"
-              [labels]="categoryLikeStatistic.labels"
-              [chartType]="categoryLikeStatistic.type"
-			  [options]="categoryLikeStatistic.options"
-			  [colors]="categoryLikeStatistic.colors"
-              (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)">
-		</canvas>
-		<!--<div class="user_statistic-description">
-			TOTAL: 
-			<span>{{categoryLikesStatistic.total}}</span>
-		</div>-->
+	<div class="user-statistic--user-likes">
+		<user-likes></user-likes>
 	</div>
-	<div class="user_statistic-cash">
-		<div class="user_statistic-title">Cash (in $)</div>
-		<canvas class="user_statistic-chart" baseChart
-				[datasets]="cashStatistic.data"
-				[labels]="cashStatistic.labels"
-				[options]="cashStatistic.options"
-				[colors]="cashStatistic.colors"
-				[legend]="cashStatistic.legend"
-				[chartType]="cashStatistic.type"
-				(chartHover)="chartHovered($event)"
-				(chartClick)="chartClicked($event)">
-		</canvas>
-		<div class="user_statistic-description">
-			TOTAL: <span>{{cashStatistic.total}}</span>
-		</div>
+	<div class="user-statistic--user-category-likes">
+		<user-category-likes></user-category-likes>
 	</div>
 </div>
