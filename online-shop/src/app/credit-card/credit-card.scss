@@ -1,11 +1,11 @@
-.credit_card{
+.credit-card{
     display: inline-block;
 
     background-color: #FFF;
     border-radius: 5px;
     box-shadow: 0 0 40px rgba($color-dark_blue, 0.4);
 
-    &-title{
+    &--title{
         padding: 20px 50px;
         border-bottom: 1px solid $color-light_grey; 
 
@@ -14,11 +14,11 @@
         text-transform: uppercase;
     }
 
-    &-info{
+    &--info{
         padding: 30px 50px 50px 50px;
     }
 
-    &-error{
+    &--error{
         position: absolute;
         bottom: -10px;
         left: 20px;
@@ -30,13 +30,13 @@
         text-transform: uppercase;        
     }
 
-    &-first_name{
+    &--first-name{
         position: relative;
         display: inline-block;
         vertical-align: top;
         width: 220px;
     }
-    &-first_name_label{
+    &--first-name-label{
         display: inline-block;
         margin-left: 20px;
         margin-bottom: 10px;
@@ -46,7 +46,7 @@
         font-size: 12px;
         text-transform: uppercase;
     }
-    &-first_name_input{
+    &--first-name-input{
         box-sizing: border-box;
         width: 100%;
         padding: 10px 20px;
@@ -66,14 +66,14 @@
         }
     }
 
-    &-last_name{
+    &--last-name{
         position: relative;
         margin-left: 40px;
         display: inline-block;
         vertical-align: top;
         width: 220px;
     }
-    &-last_name_label{
+    &--last-name-label{
         display: inline-block;
         margin-left: 20px;
         margin-bottom: 10px;
@@ -83,7 +83,7 @@
         font-size: 12px;
         text-transform: uppercase;
     }
-    &-last_name_input{
+    &--last-name-input{
         box-sizing: border-box;
         width: 100%;
         padding: 10px 20px;
@@ -103,12 +103,12 @@
         }
     }
 
-    &-number{
+    &--number{
         position: relative;
         margin: 40px 0;
         width: 100%;
     }
-    &-number_label{
+    &--number-label{
         display: inline-block;
         margin-left: 20px;
         margin-bottom: 10px;
@@ -118,7 +118,7 @@
         font-size: 12px;
         text-transform: uppercase;
     }
-    &-number_input{
+    &--number-input{
         box-sizing: border-box;
         width: 100%;
         padding: 10px 80px 10px 20px;
@@ -137,7 +137,7 @@
             box-shadow: 0px 10px 20px rgba($color-dark_blue, 0.2);
         }
     }
-    &-card_type {
+    &--card-type {
         position: absolute;
         bottom: 20px;
         right: 20px;
@@ -146,12 +146,12 @@
         width: 40px;
     }
 
-    &-date{
+    &--date{
         display: inline-block;
         vertical-align: top;
         width: 220px;
     }
-    &-date_label{
+    &--date-label{
         display: block;
         margin-left: 20px;
         margin-bottom: 10px;
@@ -161,7 +161,7 @@
         font-size: 12px;
         text-transform: uppercase;
     }
-    &-date_input{
+    &--date-input{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -173,8 +173,8 @@
             font-size: 12px;
         }
     }
-    &-month_input,
-    &-year_input{
+    &--month-input,
+    &--year-input{
         box-sizing: border-box;
         width: 100px;
         padding: 10px 20px;
@@ -195,14 +195,14 @@
         @include placeholder-color($color-dark_grey);
     }
 
-    &-cvv{
+    &--cvv{
         position: relative;
         margin-left: 40px;
         display: inline-block;
         vertical-align: top;
         width: 220px;
     }
-    &-cvv_label{
+    &--cvv-label{
         display: block;
         margin-left: 20px;
         margin-right: auto;
@@ -213,7 +213,7 @@
         font-size: 12px;
         text-transform: uppercase;
     }
-    &-cvv_input{
+    &--cvv-input{
         box-sizing: border-box;
         width: 100px;
         padding: 10px 20px;
@@ -233,7 +233,7 @@
         }
     }
 
-    &-save_button{
+    &--save-button{
         margin-top: 40px;
 
         .btn{

@@ -1,13 +1,13 @@
 <div #selectColor class="select select--color">
 	<button class="select-input" value="" (click)="onColorSelectClicked()">
-		<span class="color color--{{getClassByColor(_selectedColor)}}" title="{{_selectedColor.name}}"></span>
+		<span class="color {{getClassByColor(_selectedColor)}}" title="{{_selectedColor.name}}"></span>
 	</button><!--
 	--><button class="select-btn" (click)="onColorSelectClicked()">
 		<div class="select-btn_icon"><span class="fa fa-chevron-down"></span></div>
 	</button>
 	<div class="select-value_list">
 		<button class="select-value" *ngFor="let color of colors" (click)="onColorSelect(color)" title="{{color.name}}" [ngClass]="{'select-value--active': isColorSelected(color)}">
-      		<span class="color color--{{getClassByColor(color)}}"></span>
+      		<span class="color {{getClassByColor(color)}}"></span>
     	</button>
 	</div>
 </div>

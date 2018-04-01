@@ -73,7 +73,6 @@ import { UserCartPaymentComponent } from './user-cart-payment/user-cart-payment.
 import { CreditCardEditComponent } from './credit-card-edit/credit-card-edit.component';
 import { CreditCardPresetListComponent } from './credit-card-preset-list/credit-card-preset-list.component';
 import { CreditCardPresetComponent } from './credit-card-preset/credit-card-preset.component';
-import { CreditCardPresetEditComponent } from './credit-card-preset-edit/credit-card-preset-edit.component';
 import { CategoryComponent } from './category/category.component';
 import { SizeService } from "app/_services/size.service";
 import { OnlineShopErrorHandler } from "app/online-shop-error-handler";
@@ -193,7 +192,6 @@ const onlineShopRoutes: Routes = [
 		CreditCardEditComponent,
 		CreditCardPresetListComponent,
 		CreditCardPresetComponent,
-		CreditCardPresetEditComponent,
 		CategoryComponent,
 		PageErrorComponent,
 		NotifyManagerComponent

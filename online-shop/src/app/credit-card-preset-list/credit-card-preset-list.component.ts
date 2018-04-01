@@ -34,9 +34,9 @@ export class CreditCardPresetListComponent implements OnInit {
 	}
 
 	ngAfterViewInit() {
-		Ps.initialize(this._elementRef.nativeElement.querySelector('.credit_card_preset_list-presets'));
+		Ps.initialize(this._elementRef.nativeElement.querySelector('.credit-card-preset-list--presets'));
 		this._updateScrollInterval = setInterval(() => {
-			Ps.update(this._elementRef.nativeElement.querySelector('.credit_card_preset_list-presets'));
+			Ps.update(this._elementRef.nativeElement.querySelector('.credit-card-preset-list--presets'));
 		}, 150);
 	}
 

@@ -6,6 +6,7 @@ export class Category {
     private _hasChildren: boolean = null;
     private _children: Category[] = null;
 
+    
     public get id(): number {
         return this._id;
     }
@@ -31,9 +32,6 @@ export class Category {
         if (!other) {
             return false;
         }
-        if (this.id !== other.id || this.name !== other.name || this.hasChildren !== other.hasChildren) {
-            return false;
-        }
         
         if (this.hasChildren && !this.children.some(child => other.children.some(c => child.equals(c)))) {
             return false;
@@ -41,7 +39,9 @@ export class Category {
         if (other.hasChildren && !other.children.some(child => this.children.some(c => child.equals(c)))) {
             return false;
         }
-        return true;
+        return this.id === other.id
+            && this.name === other.name
+            && this.hasChildren === other.hasChildren;
     }
 
 
@@ -55,7 +55,7 @@ export class Category {
             json.hasChildren,
             json.children.map(child => Category.fromJSON(child))
         );
-    } 
+    }
 
 
 }

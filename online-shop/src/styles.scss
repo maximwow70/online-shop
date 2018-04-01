@@ -43,13 +43,9 @@
 @import './app/size/size.scss';
 @import './app/size-guide/size-guide.scss';
 
-@import './app/category-list/category-list.scss';
-@import './app/category/category.scss';
-
 @import './app/paginator/paginator.scss';
 
 @import './app/slider/slider.scss';
-@import './app/footer/footer.scss';
 @import './app/info/info.scss';
 
 
@@ -63,9 +59,6 @@
 
 @import './app/user-info/user-info.scss';
 @import './app/credit-card/credit-card.scss';
-@import './app/credit-card-preset/credit-card-preset.scss';
-@import './app/credit-card-preset-list/credit-card-preset-list.scss';
-@import './app/credit-card-preset-edit/credit-card-preset-edit.scss';
 
 @import './app/user-wishlist/user-wishlist.scss';
 
@@ -83,7 +76,6 @@
 
 @import './app/item-liker/item-liker.scss';
 
-@import './app/contacts/contacts.scss';
 @import './app/contact-info/contact-info.scss';
 @import './app/contact-form/contact-form.scss';
 @import './app/contact-map/contact-map.scss';
@@ -140,4 +132,6 @@
 }
 body{
     font-family: ubuntu--r, Arial, Helvetica, sans-serif;
+
+    @include ps-const-width();
 }

@@ -1,48 +1,48 @@
-<div class="credit_card_edit-credit_card">
-	<div class="credit_card">
-		<div class="credit_card-title">Your card data:</div>
-		<div class="credit_card-info">
-			<div class="credit_card-first_name">
-				<label class="credit_card-first_name_label">First name</label>
+<div class="credit-card-edit--credit-card">
+	<div class="credit-card">
+		<div class="credit-card--title">Your card data:</div>
+		<div class="credit-card--info">
+			<div class="credit-card--first-name">
+				<label class="credit-card--first-name-label">First name</label>
 				<input 
 					type="text"
-					class="credit_card-first_name_input"
+					class="credit-card--first-name-input"
 					(ngModelChange)="change($event)"
 					[(ngModel)]="creditCard.firstName"
 					#firstNameModel="ngModel"
 					pattern="^\S+(\s\S+)*$"
 					required>
-					<div class="credit_card-error" *ngIf="firstNameModel.invalid && (firstNameModel.dirty || firstNameModel.touched)">
+					<div class="credit-card--error" *ngIf="firstNameModel.invalid && (firstNameModel.dirty || firstNameModel.touched)">
 						<div class="error" [hidden]="!firstNameModel.errors?.pattern || firstNameModel.errors?.required">Please, provide valid name</div>
 						<div class="error" [hidden]="!firstNameModel.errors?.required">First name is required</div>
 					</div>
 			</div>
-			<div class="credit_card-last_name">
-				<label class="credit_card-last_name_label">Last name</label>
+			<div class="credit-card--last-name">
+				<label class="credit-card--last-name-label">Last name</label>
 				<input
 					type="text"
-					class="credit_card-last_name_input"
+					class="credit-card--last-name-input"
 					(ngModelChange)="change($event)"
 					[(ngModel)]="creditCard.lastName"
 					#lastNameModel="ngModel"
 					pattern="^\S+(\s\S+)*$"
 					required>
-				<div class="credit_card-error" *ngIf="lastNameModel.invalid && (lastNameModel.dirty || lastNameModel.touched)">
+				<div class="credit-card--error" *ngIf="lastNameModel.invalid && (lastNameModel.dirty || lastNameModel.touched)">
 					<div class="error" [hidden]="!lastNameModel.errors?.pattern || lastNameModel.errors?.required">Please, provide valid name</div>
 					<div class="error" [hidden]="!lastNameModel.errors?.required">First name is required</div>
 				</div>
 			</div>
-			<div class="credit_card-number">
-				<label class="credit_card-number_label">Credit Card Number</label>
-				<input type="text" class="credit_card-number_input" [(ngModel)]="cardNumber" (ngModelChange)="change($event)" [textMask]="{mask: cardNumberMask}">
-				<img alt="" class="credit_card-card_type" src="assets/credit-card/{{getCardImageSource(creditCard)}}">
+			<div class="credit-card--number">
+				<label class="credit-card--number-label">Credit Card Number</label>
+				<input class="credit-card--number-input" type="text" [(ngModel)]="cardNumber" (ngModelChange)="change($event)" [textMask]="{mask: cardNumberMask}">
+				<img class="credit-card--card-type" src="assets/credit-card/{{getCardImageSource(creditCard)}}" alt="">
 			</div>
-			<div class="credit_card-date">
-				<label class="credit_card-date_label">EXP. DATE</label>
-				<div class="credit_card-date_input">
+			<div class="credit-card--date">
+				<label class="credit-card--date-label">EXP. DATE</label>
+				<div class="credit-card--date-input">
 					<input
 						type="text"
-						class="credit_card-month_input"
+						class="credit-card--month-input"
 						[(ngModel)]="cardMonth"
 						(keypress)="isNumberPressed($event)"
 						(ngModelChange)="change($event)"
@@ -52,7 +52,7 @@
 					<span>/</span>
 					<input
 						type="text"
-						class="credit_card-year_input"
+						class="credit-card--year-input"
 						[(ngModel)]="cardYear"
 						(keypress)="isNumberPressed($event)"
 						(ngModelChange)="change($event)"
@@ -61,11 +61,11 @@
 						required>
 				</div>
 			</div>
-			<div class="credit_card-cvv">
-				<label class="credit_card-cvv_label">CVV</label>
+			<div class="credit-card--cvv">
+				<label class="credit-card--cvv-label">CVV</label>
 				<input 
 					type="password"
-					class="credit_card-cvv_input"
+					class="credit-card--cvv-input"
 					[(ngModel)]="creditCard.cvv"
 					(keypressed)="isNumberPressed($event)"
 					(ngModelChange)="change($event)"
@@ -73,11 +73,11 @@
 					#cvvModel="ngModel"
 					maxlength="3"
 					required>
-				<div class="credit_card-error" *ngIf="cvvModel.invalid && (cvvModel.dirty || cvvModel.touched)">
+				<div class="credit-card--error" *ngIf="cvvModel.invalid && (cvvModel.dirty || cvvModel.touched)">
 					<div class="error" [hidden]="!cvvModel.errors?.pattern && !cvvModel.errors?.required">Please, provide full cvv</div>
 				</div>
 			</div>
-			<div class="credit_card-save_button">
+			<div class="credit-card--save-button">
 				<button class="btn btn--dark_green" (click)="save()">Save</button>
 			</div>
 		</div>

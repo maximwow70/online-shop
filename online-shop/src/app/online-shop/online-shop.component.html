@@ -43,8 +43,8 @@
 						</a>
 						<div class="item_card-color_list">
 							<div class="color-list">
-								<div class="color_list-color" *ngFor="let color of itemData.colors">
-									<div class="color color--{{getClassByColor(color)}} color--small" title="{{color.name}}"></div>
+								<div class="color-list--color" *ngFor="let color of itemData.colors">
+									<div class="color {{getClassByColor(color)}} small" title="{{color.name}}"></div>
 								</div>
 							</div>
 						</div><!--

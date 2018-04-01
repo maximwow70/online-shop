@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 
+declare var Ps: any;
+
 @Component({
 	selector: 'category-list',
 	templateUrl: './category-list.component.html',
@@ -8,31 +10,26 @@ import { Component, OnInit, Input, ElementRef } from '@angular/core';
 export class CategoryListComponent implements OnInit {
 	
 	@Input() categories: any;
-	
 	private _selectedCategory: string = '';
+
+	private _updateScrollInterval: any = null;
 
 	constructor(
 		private _elementRef: ElementRef
 	) { }
 
 	ngOnInit() {
-	}
-
-	public onToggleCategory(event, categoryNumber): void {
-		let category = this._elementRef.nativeElement.querySelectorAll('.category')[categoryNumber]
 		
-		category.classList.toggle('category--open');
-		if (!category.classList.contains('category--open')){
-			this._selectedCategory = '';
-		}
+	}
+	
+	ngAfterViewInit() {
+		Ps.initialize(this._elementRef.nativeElement.querySelector('.category-list'));
+		this._updateScrollInterval = setInterval(() => {
+			Ps.update(this._elementRef.nativeElement.querySelector('.category-list'));
+		}, 150);
 	}
 
-	public onCategorySelect(categoryName: string): void {
-		this._selectedCategory = categoryName;
+	ngOnDestroy() {
+		clearInterval(this._updateScrollInterval);
 	}
-
-	public isCategorySelected(categoryName: string): boolean {
-		return (this._selectedCategory === categoryName);
-	}
-
 }
