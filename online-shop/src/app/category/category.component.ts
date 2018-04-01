@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
 import { Category } from "app/_model/category";
 
-declare var Ps: any;
-
 @Component({
 	selector: 'category',
 	templateUrl: './category.component.html',
@@ -17,8 +15,6 @@ export class CategoryComponent implements OnInit {
 	private _parentStack: Category[] = [];
 	private _childrenToShow: Category[] = [];
 
-	private _updateScrollInterval: any = null;
-
 	public get parentStack(): Category[] {
 		return this._parentStack;
 	}
@@ -29,34 +25,21 @@ export class CategoryComponent implements OnInit {
 
 	constructor(
 		private _elementRef: ElementRef
-	) {
-	}
+	) { }
 
 	ngOnInit() {
 		this.parentStack.push(this.category);
 	}
 
-	ngAfterViewInit() {
-		Ps.initialize(this._elementRef.nativeElement.querySelector('.category-values_container'));
-		this._updateScrollInterval = setInterval(() => {
-			Ps.update(this._elementRef.nativeElement.querySelector('.category-values_container'));
-		}, 150);
-	}
-
-	ngOnDestroy() {
-		clearInterval(this._updateScrollInterval);
-	}
-
-	public onRootClick(): void {
+	public toggleRoot(): void {
 		if (this._parentStack.length > 1) {
-			this._elementRef.nativeElement.querySelector('.category').classList.add('category--open');
+			this._elementRef.nativeElement.querySelector('.category').classList.add('open');
 		} else {
-			this._elementRef.nativeElement.querySelector('.category').classList.toggle('category--open');
+			this._elementRef.nativeElement.querySelector('.category').classList.toggle('open');
 		}
-		this._parentStack = [];
-		this._parentStack.push(this.category);
+		this._parentStack = [this.category];
 	}
-	public onChildClick(child: Category): void {
+	public toggleChild(child: Category): void {
 		if (!child.hasChildren) {
 			if (!this._selectedCategories.some(c => c.equals(child))) {
 				this._selectedCategories.push(child);
@@ -67,7 +50,7 @@ export class CategoryComponent implements OnInit {
 			this._parentStack.push(child);
 		}
 	}
-	public onParentClick(parent: Category): void {
+	public toggleParent(parent: Category): void {
 		let currentParent = this._parentStack[this._parentStack.length - 1];
 		while (this._parentStack.length > 0 && !parent.equals(currentParent)) {
 			this._parentStack.pop();
@@ -76,19 +59,11 @@ export class CategoryComponent implements OnInit {
 	}
 
 	public isCategorySelected(category: Category): boolean {
-		if (!category.hasChildren) {
-			return this._selectedCategories.some(c => category.equals(c));
-		} else if (category.children && category.children.length > 0) {
-			let isAllChildrenSelected = true;
-			category.children.map(child => {
-				if (this.isCategorySelected(child) !== true) {
-					isAllChildrenSelected = false;
-				}
-			});
-			return isAllChildrenSelected;
-		} else {
-			return false;
-		}
+		return !category.hasChildren
+			? this._selectedCategories.some(c => category.equals(c))
+			: category.children && category.children.length > 0
+				? category.children.every(c => this.isCategorySelected(c))
+				: false;
 	}
 
 }

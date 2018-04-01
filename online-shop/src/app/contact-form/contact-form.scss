@@ -1,7 +1,7 @@
 @import '../src.scss';
-.contact_form{
+.contact-form{
 
-    &-title{
+    &--title{
         margin-bottom: 40px;
 
         font-size: 20px;
@@ -9,7 +9,7 @@
         font-weight: normal;
     }
 
-    &-input{
+    &--input{
         box-sizing: border-box;
         width: 100%;
         max-width: 100%;
@@ -25,7 +25,7 @@
             margin-bottom: 20px;
         }
 
-        &--message{
+        &.message{
             max-height: 200px;
             min-height: 36px * 3;
 
@@ -37,7 +37,7 @@
         }
     }
 
-    &-btn{
+    &--btn{
         margin-top: 20px;
     }
 }

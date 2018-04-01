@@ -1,55 +1,49 @@
 <header></header>
 <div class="contacts">
-	<h3 class="contacts-title">Contact us</h3>
-	<div class="contacts-info">
-		<div class="contacts-contact_info">
-			<div class="contact_info">
-				<div class="contact_info">
-					<div class="contact_info-icon">
-						<span class="fa fa-envelope-o"></span>
-					</div>
-					<h4 class="contact_info-title">Email</h4>
-					<a class="contact_info-contact">
-						portland@gmail.com
-					</a>
+	<h3 class="contacts--title">Contact us</h3>
+	<div class="contacts--info">
+		<div class="contacts--contact-info">
+			<div class="contact-info">
+				<div class="contact-info--icon">
+					<span class="fa fa-envelope-o"></span>
 				</div>
+				<h4 class="contact-info--title">Email</h4>
+				<a class="contact-info--contact">
+					portland@gmail.com
+				</a>
 			</div>
 		</div><!--
-		--><div class="contacts-contact_info">
-			<div class="contact_info">
-				<div class="contact_info">
-					<div class="contact_info-icon">
-						<span class="fa fa-map-marker"></span>
-					</div>
-					<h4 class="contact_info-title">Adress</h4>
-					<a class="contact_info-contact">
-						23 Bedford Avenue, Portland
-					</a>
+		--><div class="contacts--contact-info">
+			<div class="contact-info">
+				<div class="contact-info--icon">
+					<span class="fa fa-map-marker"></span>
 				</div>
+				<h4 class="contact-info--title">Adress</h4>
+				<a class="contact-info--contact">
+					23 Bedford Avenue, Portland
+				</a>
 			</div>
 		</div><!--
-		--><div class="contacts-contact_info">
-			<div class="contact_info">
-				<div class="contact_info">
-					<div class="contact_info-icon">
-						<span class="fa fa-headphones"></span>
-					</div>
-					<h4 class="contact_info-title">Call at</h4>
-					<a class="contact_info-contact">
-						+ (1) 021 385 3--0
-					</a>
+		--><div class="contacts--contact-info">
+			<div class="contact-info">
+				<div class="contact-info--icon">
+					<span class="fa fa-headphones"></span>
 				</div>
+				<h4 class="contact-info--title">Call at</h4>
+				<a class="contact-info--contact">
+					+ (1) 021 385 3--0
+				</a>
 			</div>
 		</div>
 	</div>
-	<div class="contacts-contact_form">
-		<form class="contact_form" name="contact_form" (ngSubmit)="onSendMessage()" #contactForm="ngForm">
-			<h3 class="contact_form-title">send message to us</h3>
-			<input class="contact_form-input" type="text" placeholder="*name" autocomplete="off" required name="contact_form-name" [(ngModel)]="message.name">
-			<input class="contact_form-input" type="email" placeholder="*mail" autocomplete="off" required name="contact_form-mail" [(ngModel)]="message.mail" pattern='^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$'a>
-			<input class="contact_form-input" type="text" placeholder="*phone" autocomplete="off" required name="contact_form-phone" [(ngModel)]="message.phone">
-			<textarea class="contact_form-input contact_form-input--message" autocomplete="off" placeholder="*message" required name="contact_form-message" [(ngModel)]="message.value"></textarea>
-			<div class="contact_form-btn" type="submit">
+	<div class="contacts--contact-form">
+		<form class="contact-form" name="contact-form" (ngSubmit)="onSendMessage()" #contactForm="ngForm">
+			<h3 class="contact-form--title">send message to us</h3>
+			<input class="contact-form--input" type="text" placeholder="*name" autocomplete="off" required name="contact-form--name" [(ngModel)]="message.name">
+			<input class="contact-form--input" type="email" placeholder="*mail" autocomplete="off" required name="contact-form--mail" [(ngModel)]="message.mail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+			<input class="contact-form--input" type="text" placeholder="*phone" autocomplete="off" required name="contact-form--phone" [(ngModel)]="message.phone">
+			<textarea class="contact-form--input message" placeholder="*message" autocomplete="off" required name="contact-form--message" [(ngModel)]="message.value"></textarea>
+			<div class="contact-form--btn" type="submit">
 				<button 
 					class="btn btn--send_message"
 					[disabled]="contactForm.form.invalid"
@@ -57,13 +51,13 @@
 			</div>
 		</form>
 	</div>
-	<div class="contacts-contact_map">
-		<div class="contact_map">
-			<sebm-google-map class="contact_map-map" [latitude]="map.lat" [longitude]="map.lng" [zoom]="map.zoom" [styles]="map.styles" [disableDoubleClickZoom]="true" [scrollwheel]="false">
+	<div class="contacts--contact-map">
+		<div class="contact-map">
+			<sebm-google-map class="contact-map--map" [latitude]="map.lat" [longitude]="map.lng" [zoom]="map.zoom" [styles]="map.styles" [disableDoubleClickZoom]="true" [scrollwheel]="false">
 				<sebm-google-map-marker (markerClick)="window.open()" [latitude]="map.lat" [longitude]="map.lng" [iconUrl]="'assets/icon-location.svg'">
 				
 				</sebm-google-map-marker>
-				<sebm-google-map-info-window class="contact_map-info" [latitude]="map.lat" [longitude]="map.lng" (closeClick)="window.close()" #window
+				<sebm-google-map-info-window class="contact-map--info" [latitude]="map.lat" [longitude]="map.lng" (closeClick)="window.close()" #window
 					[disableAutoPan]="true" [maxWidth]="150"> 
 					<h1>Portland</h1>
 					<h3>23 Bedford Avenue</h3>

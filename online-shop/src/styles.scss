@@ -3,6 +3,9 @@
 @import './app/loading/loading.scss';
 
 @import './app/page-not-found/page-not-found.scss';
+@import './app/page-error/page-error.scss';
+
+@import './app/notify-manager/notify-manager.scss';
 
 @import './app/ui/btn/btn.scss';
 @import './app/ui/select-number/select-number.scss';
@@ -40,13 +43,9 @@
 @import './app/size/size.scss';
 @import './app/size-guide/size-guide.scss';
 
-@import './app/category-list/category-list.scss';
-@import './app/category/category.scss';
-
 @import './app/paginator/paginator.scss';
 
 @import './app/slider/slider.scss';
-@import './app/footer/footer.scss';
 @import './app/info/info.scss';
 
 
@@ -60,9 +59,6 @@
 
 @import './app/user-info/user-info.scss';
 @import './app/credit-card/credit-card.scss';
-@import './app/credit-card-preset/credit-card-preset.scss';
-@import './app/credit-card-preset-list/credit-card-preset-list.scss';
-@import './app/credit-card-preset-edit/credit-card-preset-edit.scss';
 
 @import './app/user-wishlist/user-wishlist.scss';
 
@@ -74,24 +70,15 @@
 @import './app/user-cart-delivery/user-cart-delivery.scss';
 @import './app/user-cart-payment/user-cart-payment.scss';
 
-@import './app/user-statistic/user-statistic.scss';
-
 @import './app/user-settings/user-settings.scss';
 
+@import "./app/user-statistic/user-statistic-styles.scss";
 
 @import './app/item-liker/item-liker.scss';
 
-@import './app/contacts/contacts.scss';
 @import './app/contact-info/contact-info.scss';
 @import './app/contact-form/contact-form.scss';
 @import './app/contact-map/contact-map.scss';
-
-@import './app/about/about.scss';
-@import './app/about-intro/about-intro.scss';
-@import './app/about-history/about-history.scss';
-@import './app/about-team/about-team.scss';
-@import './app/about-skills/about-skills.scss';
-
 
 @font-face{
     font-family: logo;
@@ -145,4 +132,6 @@
 }
 body{
     font-family: ubuntu--r, Arial, Helvetica, sans-serif;
+
+    @include ps-const-width();
 }

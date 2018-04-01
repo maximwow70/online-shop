@@ -25,4 +25,15 @@ dropdown{
             }
         }
     }
+
+    &.no-arrow{
+        .select-btn{
+            display: none;
+        }
+    }
+    &.text-center{
+        .select-input{
+            text-align: center;
+        }
+    }
 }

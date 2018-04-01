@@ -41,7 +41,7 @@ export class AboutSkillsComponent implements OnInit {
 	ngOnInit() {
 		let that = this;
 		let initTopScroll =
-			this._elementRef.nativeElement.querySelector('.about_skills')
+			this._elementRef.nativeElement.querySelector('.about-skills')
 				.offsetTop - document.documentElement.clientHeight;
 
 

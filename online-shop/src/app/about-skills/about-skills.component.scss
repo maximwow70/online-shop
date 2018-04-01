@@ -1,0 +1,50 @@
+@import '../src.scss';
+.about-skills{
+    display: block;        
+    
+    padding: 50px 5% 0 5%; //grid
+
+    //background-image: url('assets/img/about-skills-2.jpg');
+    @include bg-cover();
+
+    text-align: center;
+
+    &--title{
+        margin-bottom: 40px;
+
+        color: $color-dark_blue;
+        font-family: $font-stack--bold;
+        font-size: 32px;
+        text-transform: uppercase;
+    }
+    &--skill{
+        margin: 0 20px 50px 20px;
+
+        display: inline-block;
+        vertical-align: top;
+
+        circle {
+            fill: rgba(0,0,0,0);
+            stroke: rgba($color-dark_grey, 0.6);
+            stroke-width: 4;
+            stroke-dasharray: 408px 408px;
+            
+
+            &:nth-child(2){
+
+                width: 90%;
+                height: 90%;
+
+                fill: rgba(0,0,0,0);
+                stroke: $color-dark_green;
+                stroke-width: 4;
+            }
+        }
+    }
+    &--skill-name{
+        margin-top: 20px;
+
+        color: $color-dark_blue;
+        text-transform: capitalize;
+    }
+}

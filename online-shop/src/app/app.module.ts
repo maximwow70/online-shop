@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
+import { HttpModule, Response } from '@angular/http';
+import { RouterModule, Routes, Router } from '@angular/router';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { TextMaskModule } from 'angular2-text-mask';
 
@@ -61,7 +62,6 @@ import { UserWishlistGuard } from "app/_guards/user-wishlist.guard";
 import { UserStatisticGuard } from "app/_guards/user-statistic.guard";
 import { UserInfoGuard } from "app/_guards/user-info.guard";
 
-import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SelectComponent } from './ui/select/select.component';
 import { DropdownComponent } from './ui/dropdown/dropdown.component';
 import { UserInfoComponent } from "app/user-info/user-info.component";
@@ -73,12 +73,18 @@ import { UserCartPaymentComponent } from './user-cart-payment/user-cart-payment.
 import { CreditCardEditComponent } from './credit-card-edit/credit-card-edit.component';
 import { CreditCardPresetListComponent } from './credit-card-preset-list/credit-card-preset-list.component';
 import { CreditCardPresetComponent } from './credit-card-preset/credit-card-preset.component';
-import { CreditCardPresetEditComponent } from './credit-card-preset-edit/credit-card-preset-edit.component';
 import { CategoryComponent } from './category/category.component';
 import { SizeService } from "app/_services/size.service";
+import { OnlineShopErrorHandler } from "app/online-shop-error-handler";
+import { PageErrorComponent } from './page-error/page-error.component';
+
+import { LocationStrategy, HashLocationStrategy } from "@angular/common";
+import { NotifyManagerComponent } from './notify-manager/notify-manager.component';
+import { NotifyManager } from "app/_services/notify-manager.service";
+import { UserStatisticModule } from 'app/user-statistic/user-statistic.module';
 
 
-const appRoutes: Routes = [
+const onlineShopRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'products', component: OnlineShopComponent },
 	{ path: 'products/:id', component: ItemComponent },
@@ -129,6 +135,7 @@ const appRoutes: Routes = [
 		pathMatch: 'full',
 		redirectTo: '/home'
 	},
+	{ path: 'error', component: PageErrorComponent },
 	{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -174,7 +181,6 @@ const appRoutes: Routes = [
 		AboutTeamComponent,
 		UserLoginComponent,
 		UserComponent,
-		UserStatisticComponent,
 		UserSettingsComponent,
 		UserInfoComponent,
 		SelectComponent,
@@ -186,19 +192,21 @@ const appRoutes: Routes = [
 		CreditCardEditComponent,
 		CreditCardPresetListComponent,
 		CreditCardPresetComponent,
-		CreditCardPresetEditComponent,
-		CategoryComponent
+		CategoryComponent,
+		PageErrorComponent,
+		NotifyManagerComponent
 	],
 	imports: [
 		BrowserModule,
+		BrowserAnimationsModule,
 		FormsModule,
 		HttpModule,
-		RouterModule.forRoot(appRoutes),
+		RouterModule.forRoot(onlineShopRoutes),
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
 		}),
-		ChartsModule,
-		TextMaskModule
+		TextMaskModule,
+		UserStatisticModule
 	],
 	providers: [
 		ColorService,
@@ -209,8 +217,33 @@ const appRoutes: Routes = [
 		UserWishlistGuard,
 		UserStatisticGuard,
 		UserInfoGuard,
-		SizeService
+		SizeService,
+		{ provide: LocationStrategy, useClass: HashLocationStrategy },
+		{ provide: ErrorHandler, useClass: OnlineShopErrorHandler },
+		NotifyManager
 	],
 	bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+
+	private _onlineShopErrorHandler: any = null;
+
+	constructor(
+		errorHandler: ErrorHandler,
+		private _router: Router
+	) {
+		this._onlineShopErrorHandler = errorHandler as OnlineShopErrorHandler;
+		
+		this._onlineShopErrorHandler.errorObservable.subscribe(error => {
+
+			if (error instanceof Response || error.rejection instanceof Response) {
+				console.error(error);
+				return;
+			}
+			this._router.navigate(['/error']).then(() => {
+				console.error(error);
+			});
+		});
+	}
+}

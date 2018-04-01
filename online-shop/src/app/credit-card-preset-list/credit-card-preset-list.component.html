@@ -1,12 +1,12 @@
-<div class="credit_card_preset_list">
-	<div class="credit_card_preset_list-title">Your presets:</div>
-	<div class="credit_card_preset_list-presets" [hidden]="isInEditStatement">
-		<div class="credit_card_preset_list-preset" *ngFor="let preset of presetList">
+<div class="credit-card-preset-list">
+	<div class="credit-card-preset-list--title">Your presets:</div>
+	<div class="credit-card-preset-list--presets" [hidden]="isInEditStatement">
+		<div class="credit-card-preset-list--preset" *ngFor="let preset of presetList">
 			<credit-card-preset [preset]="preset" (onEdit)="onClickEditPreset(preset)"></credit-card-preset>
 		</div>
 	</div>
-	<div class="credit_card_preset_list-edit_preset" *ngIf="isInEditStatement && editablePreset">
+	<div class="credit-card-preset-list--edit-preset" *ngIf="isInEditStatement && editablePreset">
 		<credit-card-edit [creditCard]="editablePreset.creditCard" (onSave)="savePreset($event)"></credit-card-edit>
 	</div>
-	<div class="credit_card_preset_list-add_preset_btn" (click)="onClickAddPreset()">Add preset</div>
+	<div class="credit-card-preset-list--add-preset-btn" (click)="onClickAddPreset()">Add preset</div>
 </div>

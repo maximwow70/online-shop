@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class AboutTeamComponent implements OnInit {
 
 	private _teamMembers: { name: string, position: string, photoUrl: string, socialUrls: string[] }[] = [];
+	public get teamMembers(): { name: string, position: string, photoUrl: string, socialUrls: string[] }[] {
+		return this._teamMembers;
+	}
+	
 	constructor() {
 		this._teamMembers.push({
 			name: 'Peter Anderson',
@@ -30,10 +34,6 @@ export class AboutTeamComponent implements OnInit {
 	}
 
 	ngOnInit() {
-	}
-
-	public get teamMembers(): { name: string, position: string, photoUrl: string, socialUrls: string[] }[] {
-		return this._teamMembers;
 	}
 
 }

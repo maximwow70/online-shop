@@ -1,0 +1,193 @@
+@import "../src.scss";
+.about-team{
+    $that: &;
+
+    padding: 100px 5% 50px 5%; //grid
+
+    color: $color-dark_blue;
+    text-align: center;
+
+    &--title{
+        margin-bottom: 100px;
+
+        color: $color-dark_blue;
+        font-family: $font-stack--bold;
+        font-size: 32px;
+        text-transform: uppercase;
+    }
+
+    &--member{
+        margin: 0 40px 50px 40px;
+
+        display: inline-block;
+        vertical-align: top;
+
+        box-sizing: border-box;
+        width: 250px;
+    }
+    &--img{
+        position: relative;
+
+        margin-bottom: 20px;
+
+        display: inline-block;
+        vertical-align: top;
+
+        width: 250px;
+        height: 250px;
+
+        overflow: hidden;
+        .img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &--info{
+        position: relative;
+
+        box-sizing: border-box;
+        padding: 10px;
+        //border: 2px solid $color-dark_grey;
+
+        .border{
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            line {
+                stroke: $color-dark_blue;
+                stroke-width: 4;
+
+                transition: 0.5s;
+
+                &:nth-child(1){
+                    transform: translateX(-200%);
+                }
+                &:nth-child(2){
+                    transform: translateY(-200%);
+                }
+                &:nth-child(3){
+                    transform: translateX(200%);
+                }
+                &:nth-child(4){
+                    transform: translateY(200%);
+                }
+                
+            
+                &:nth-child(5){
+                    transform: translateX(0%);
+                }
+                &:nth-child(6){
+                    transform: translateY(0%);
+                }
+                &:nth-child(7){
+                    transform: translateX(0%);
+                }
+                &:nth-child(8){
+                    transform: translateY(0%);
+                }
+            }
+        }
+    }
+    &--name{
+        margin-bottom: 5px;
+
+        font-family: $font-stack--bold;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+    &--position{
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    &--social{
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        transform: translate(0, -100%);
+
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color-black, 0.8);
+
+        transition: 0.5s;
+    }
+    &--btn-list{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+    }
+    &--btn{
+        margin: 0 5px;
+
+        display: inline-block;
+
+        box-sizing: border-box;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: 2px solid #FFF;
+
+        line-height: 31px;
+        color: #FFF;
+        font-size: 16px;
+
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover{
+            border-color: $color-dark_green;
+            color: $color-dark_green;
+        }
+    }
+
+    &--member:hover{
+        #{$that}{
+            &--social{
+                transform: translate(0, 0);
+            }
+            &--info{
+                .border{
+                    line{
+                        stroke-width: 4;
+                        &:nth-child(1){
+                            transform: translateX(-0%);
+                        }
+                        &:nth-child(2){
+                            transform: translateY(-0%);
+                        }
+                        &:nth-child(3){
+                            transform: translateX(0%);
+                        }
+                        &:nth-child(4){
+                            transform: translateY(0%);
+                        }
+                        
+                    
+                        &:nth-child(5){
+                            transform: translateX(200%);
+                        }
+                        &:nth-child(6){
+                            transform: translateY(200%);
+                        }
+                        &:nth-child(7){
+                            transform: translateX(-200%);
+                        }
+                        &:nth-child(8){
+                            transform: translateY(-200%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

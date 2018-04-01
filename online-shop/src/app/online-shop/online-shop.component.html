@@ -2,47 +2,60 @@
 <div class="online_shop-slider">
 	<slider></slider>
 </div>
-<div class="item_list">
+<div class="item_list" [ngClass]="{'listed': isItemsViewAsList}">
 	<div class="item_list-items_sort">
-		<items-sort [sortTypes]="availableSortTypes" (onTypeSelected)="onSortTypeSelected($event)"></items-sort>
+		<items-sort
+			[sortTypes]="availableSortTypes"
+			[selectedSortType]="selectedSortType"
+			[isSortByIncrease]="isSortByIncrease"
+			[availableRanges]="availableRanges"
+			[selectedRange]="selectedRange"
+			[isItemsViewAsList]="isItemsViewAsList"
+			(onTypeSelected)="selectSortType($event)"
+			(onDirectionChange)="changeSortDirection($event)"
+			(onRangeSelected)="selectRange($event)"
+			(onItemsViewChange)="changeItemsView($event)">
+		</items-sort>
 	</div>
-	<div class="item_list-items_search">
-		<items-search 
-			[categories]="availableCategories"
-			[colors]="availableColors"
-			[sizes]="availableSizes"
-			[cost]="availableCost"
-			(onSearch)="onSearch($event)">
-		</items-search>
-	</div><!--
-	--><div class="item_list-items">
-		<div class="item_list-item_card" *ngFor="let itemData of itemList">
-			<div class="item_card">
-				<div class="item_card-new" *ngIf="itemData.isNew">new</div>
-				<div class="item_card-img">
-					<div class="item_card-like" (click)="onItemLiked(itemData.item)">
-						<span class="like fa fa-heart-o"></span>
-					</div>
-					<img class="img" src="{{itemData.item.photosUrl[0]}}" alt="">
-				</div>
-				<div class="item_card-info">
-					<a class="item_card-name" (click)="onItemClicked(itemData.item)">
-						{{itemData.item.name}}
-					</a>
-					<div class="item_card-color_list">
-						<div class="color-list">
-							<div class="color_list-color" *ngFor="let color of itemData.colors">
-								<div class="color color--{{getClassByColor(color)}} color--small" title="{{color.name}}"></div>
-							</div>
+	<div class="item_list-container">
+		<div class="item_list-items_search">
+			<items-search 
+				[categories]="availableCategories"
+				[colors]="availableColors"
+				[sizes]="availableSizes"
+				[cost]="availableCost"
+				(onSearch)="search($event)">
+			</items-search>
+		</div>
+		<div class="item_list-items">
+			<div class="item_list-item_card" *ngFor="let itemData of itemList">
+				<div class="item_card">
+					<div class="item_card-new" *ngIf="itemData.isNew">new</div>
+					<div class="item_card-img">
+						<div class="item_card-like" (click)="likeItem(itemData.item)">
+							<span class="like fa fa-heart-o"></span>
 						</div>
-					</div><!--
-					--><h4 class="item_card-cost">${{itemData.cost}}</h4>
+						<img class="img" src="{{itemData.item.photosUrl[0]}}" alt="">
+					</div>
+					<div class="item_card-info">
+						<a class="item_card-name" (click)="selectItem(itemData.item)">
+							{{itemData.item.name}}
+						</a>
+						<div class="item_card-color_list">
+							<div class="color-list">
+								<div class="color-list--color" *ngFor="let color of itemData.colors">
+									<div class="color {{getClassByColor(color)}} small" title="{{color.name}}"></div>
+								</div>
+							</div>
+						</div><!--
+						--><h4 class="item_card-cost">${{itemData.cost}}</h4>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="item_list-paginator">
-		<paginator [pages]="pages" [selectedPage]="selectedPage" (onPageSelected)="onPageSelected($event)"></paginator>
+		<paginator [pages]="pages" [selectedPage]="selectedPage" (onPageSelected)="selectPage($event)"></paginator>
 	</div>
 </div>
 <footer></footer>

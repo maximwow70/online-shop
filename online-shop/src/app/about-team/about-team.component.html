@@ -1,25 +1,25 @@
-<div class="about_team">
-	<h2 class="about_team-title">
+<div class="about-team">
+	<h2 class="about-team--title">
 		Our team
 	</h2>
-	<div class="about_team-member" *ngFor="let member of teamMembers">
-		<div class="about_team-img">
+	<div class="about-team--member" *ngFor="let member of teamMembers">
+		<div class="about-team--img">
 			<img class="img" src="{{member.photoUrl}}" alt="">
-			<div class="about_team-social">
-				<div class="about_team-btn_list">
-					<div class="about_team-btn">
+			<div class="about-team--social">
+				<div class="about-team--btn-list">
+					<div class="about-team--btn">
 						<span class="fa fa-twitter"></span>
 					</div><!--
-					--><div class="about_team-btn">
+					--><div class="about-team--btn">
 						<span class="fa fa-facebook"></span>
 					</div><!--
-					--><div class="about_team-btn">
+					--><div class="about-team--btn">
 						<span class="fa fa-vk"></span>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="about_team-info">
+		<div class="about-team--info">
 			<svg class="border">
 				<line x1="0" y1="0" x2="100%" y2="0%"/>
 				<line x1="100%" y1="0" x2="100%" y2="100%"/>
@@ -31,10 +31,10 @@
 				<line x1="100%" y1="100%" x2="0%" y2="100%"/>
 				<line x1="0%" y1="100%" x2="0%" y2="0%"/>
 			</svg>
-			<h3 class="about_team-name">
+			<h3 class="about-team--name">
 				{{member.name}}
 			</h3>
-			<p class="about_team-position">
+			<p class="about-team--position">
 				{{member.position}}
 			</p>
 		</div>

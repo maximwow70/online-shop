@@ -1,5 +1,6 @@
 @import '../src.scss';
 .item_list{
+
     padding: 50px 5%;
     background-color: $color-bg;
 
@@ -7,22 +8,30 @@
 
     &-items_sort{
         margin-bottom: 20px;
+        width: 100%;
+    }
+    
+    &-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: nowrap;
     }
     &-items_search{
         display: inline-block;
         vertical-align: top;
 
-        width: 25%;
+        width: 280px;
 
+        flex-shrink: 0;
     }
     &-items{
         display: inline-block;
         vertical-align: top;
 
-        width: 75%;
-
+        flex-grow: 1;
     }
-
     &-item_card{
         margin-bottom: 20px;
         display: inline-block;
@@ -34,42 +43,51 @@
 
     &-paginator{
         margin-top: 50px;
+        width: 100%;
     }
 
-    @media screen and (max-width: 1500px){
-        &-items_search{
+    @media screen and (min-width: 2800px){
+        &-item_card{
+            width: 16.6666%;
+        }
+    }
+    @media screen and (max-width: 2500px){
+        &-item_card{
+            width: 20%;
+        }
+    }
+    @media screen and (max-width: 2100px){
+        &-item_card{
             width: 25%;
         }
-        &-items{
-            width: 75%;
-        }
+    }
+    @media screen and (max-width: 1700px){
         &-item_card{
             width: 33.3333%;
         }
     }
     @media screen and (max-width: 1300px){
-        &-items_search{
-            width: 33.3333%;
-        }
-        &-items{
-            width: 66.6666%;
-        }
         &-item_card{
             width: 50%;
         }
     }
     @media screen and (max-width: 1000px){
-        &-items_search{
-            width: 50%;
+        &-container{
+            justify-content: space-around;
         }
         &-items{
-            width: 50%;
+            width: 280px;
+            flex-grow: 0;
         }
         &-item_card{
             width: 100%;
+            text-align: center;
         }
     }
     @media screen and (max-width:700px){
+        &-container{
+            flex-wrap: wrap;
+        }
         &-items_search{
             margin-bottom: 40px;
 
@@ -87,6 +105,57 @@
         &-item_card{
             width: 100%;
             text-align: center;
+        }
+    }
+
+
+    &.listed {
+        .item_list-items{
+
+            .item_list-item_card{
+                box-sizing: border-box;
+                width: 100%;
+                padding-left: calc(25% - 270px);
+
+                .item_card {
+                    width: 100%;
+                }
+            }
+        }
+        @media screen and (min-width: 2800px){
+            .item_list-items{
+                .item_list-item_card{
+                    padding-left: calc(16.6666% - 270px);
+                }
+            }
+        }
+        @media screen and (max-width: 2500px){
+            .item_list-items{
+                .item_list-item_card{
+                    padding-left: calc(20% - 270px);
+                }
+            }
+        }
+        @media screen and (max-width: 2100px){
+            .item_list-items{
+                .item_list-item_card{
+                    padding-left: calc(25% - 270px);
+                }
+            }
+        }
+        @media screen and (max-width: 1700px){
+            .item_list-items{
+                .item_list-item_card{
+                    padding-left: calc(33.3333% - 270px);
+                }
+            }
+        }
+        @media screen and (max-width: 1300px){
+            .item_list-items{
+                .item_list-item_card{
+                    padding-left: calc(50% - 270px);
+                }
+            }
         }
     }
 }

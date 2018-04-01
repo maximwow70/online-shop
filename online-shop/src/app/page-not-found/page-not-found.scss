@@ -3,8 +3,23 @@
     position: relative;
     min-height: 100vh;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
+    background-image: url('assets/404-bg.jpg');
+    @include bg-cover();
+
+    color: $color-dark_blue;
     font-family: Arial;
     text-align: center;
+
+    &-logo{
+        padding: 50px 75px 0 75px;
+
+        text-align: left;
+    }
 
     &-info{
         position: absolute;
@@ -13,34 +28,49 @@
         transform: translate(-50%, -50%);
     }
 
-    &-image{
+    &-title{
         margin-bottom: 20px;
 
         display: inline-block;
-        width: 100px;
-        height: 100px;
-    }
-    &-title{
-        margin-bottom: 10px;
 
-        color: $color-dark_blue;
-        font-family: $font-stack--bold;
-        font-size: 32px;
-        font-weight: normal;
+        font-family: $font-stack--magic_number;
+        font-size: 68px * 2;
+        text-transform: uppercase;
     }
     &-description{
-        outline: none;
+        margin-bottom: 20px;
 
-        color: $color-dark_grey;
         font-family: $font-stack--bold;
-        font-size: 16px;
+        font-size: 24px;
         font-weight: normal;
-        text-transform: uppercase;
+    }
+    &-btn{
+        font-family: $font-stack--bold;
+    }
 
-        transition: 0.3s;
-        cursor: pointer;
-        &:hover{
-            color: $color-dark_green;
+    &-footer{
+        padding: 0 75px 50px 75px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    &-date{
+        color: rgba($color-dark_blue, 0.8);
+        font-family: $font-stack--bold;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    &-social{
+        font-size: 24px;
+    }
+    &-social_btn{
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: 10px;
         }
     }
 }

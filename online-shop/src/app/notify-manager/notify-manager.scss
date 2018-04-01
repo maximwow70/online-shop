@@ -1,0 +1,39 @@
+.notify_manager {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 40px;
+    
+    transform: translate(100%, 0);
+
+    &-notify{
+        position: relative;
+        transform: translate(0px, 0);
+
+        width: 200px;
+        padding: 20px;
+        background-color: #FFF;
+        border-radius: 5px;
+
+        color: $color-dark_blue;
+
+        box-shadow: 0 0 20px rgba($color-dark_blue, 0.4);
+        transition: transform 1s;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        &.success {
+            background-color: $color-dark_green;
+            color: #FFF;
+        }
+        &.error {
+            background-color: $color-dark_red;
+            color: #FFF;
+        }
+    }
+}

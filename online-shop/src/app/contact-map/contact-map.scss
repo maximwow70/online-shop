@@ -1,11 +1,11 @@
 @import '../src.scss';
-.contact_map{
+.contact-map{
     position: relative;
-    &-map{
+    &--map{
         display: block;
         height: 400px;
     }
-    &-info{
+    &--info{
         font-family: $font-stack--bold;
         text-align: left; 
     }

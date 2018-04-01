@@ -1,15 +1,29 @@
 <div class="items_sort">
 	<div class="items_sort-description">
 		Sort by:
-	</div><!--
-	--><div class="items_sort-select">
-		<dropdown class="small" [values]="sortTypesDropdown" [selectedValue]="selectedTypeDropdown" (onValueSelected)="onSortTypeSelected($event)"></dropdown>
-	</div><!--
-	--><div class="items_sort-free_shipping">
+	</div>
+	<div class="items_sort-select">
+		<dropdown class="small no-arrow" [values]="sortTypesDropdown" [selectedValue]="selectedTypeDropdown" (onValueSelected)="onSortTypeSelected($event)"></dropdown>
+	</div>
+	<div class="items_sort-sort_direction" [ngClass]="{'sort_by_increase': isSortByIncrease}">
+		<span class="fa fa-caret-down" (click)="toggleSortDirection()"></span>
+	</div>
+	<div class="items_sort-free_shipping">
 		<!--<button class="switch" value="false">
 			<div class="switch-line"></div>
 			<span class="switch-status"></span>
 		</button>-->
 		Free shipping
+	</div>
+	<div class="items_sort-devider"></div>
+	<div class="items_sort-select_range">
+		<span class="items_sort-select_range_title">Show:</span>
+		<dropdown class="small no-arrow text-center" [values]="availableRangesDropdown" [selectedValue]="selectedRangeDropdown" (onValueSelected)="rangeSelected($event)"></dropdown>
+	</div>
+	<div class="items_sort-display_card" (click)="setItemsView(false)" [ngClass]="{'active': !isItemsViewAsList}">
+		<div class="fa fa-th-large"></div>
+	</div>
+	<div class="items_sort-display_list" (click)="setItemsView(true)" [ngClass]="{'active': isItemsViewAsList}">
+		<div class="fa fa-list-ul"></div>
 	</div>
 </div>

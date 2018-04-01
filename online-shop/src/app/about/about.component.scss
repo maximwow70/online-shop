@@ -1,0 +1,13 @@
+@import "../src.scss";
+.about{
+    color: $color-dark_blue;
+    &--about-intro{
+        border-bottom: 1px solid $color-light_grey;
+    }
+    &--about-history{
+        border-bottom: 1px solid $color-light_grey;
+    }
+    &--about-skills{
+        border-bottom: 1px solid $color-light_grey;
+    }
+}
