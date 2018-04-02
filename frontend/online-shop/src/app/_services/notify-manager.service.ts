@@ -33,10 +33,8 @@ export class Notify {
 	}
 
 	public equals(other: Notify): boolean {
-		if (!other) {
-			return false;
-		}
-		return this._id === other._id
+		return other
+			&& this._id === other._id
 			&& this._type === other._type
 			&& this._title === other._title
 			&& this._message === other._message;
@@ -60,7 +58,7 @@ export class NotifyManager {
 	}
 
 	constructor() {
-		
+
 	}
 
 	private onNotify(notifyType: NotifyType, message: string, time: number = this.DEFAULT_TIME): void {

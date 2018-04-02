@@ -8,7 +8,7 @@
     min-height: 100vh;
     color: #FFF;
 
-    &-home_intro{
+    &--home-intro{
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -16,34 +16,35 @@
 
         min-height: 100vh;
     }
-    &-shop_history{
+    &--shop-history{
         min-height: 300px;
         padding: 0px 0; 
         background-color: #FFF;
 
         color: $color-dark_blue;
     }
-    &-shopping_road{
+    &--shopping-road{
         padding: 100px 5% 100px 5%; //grid
 
         color: #FFF;
 
         text-align: center;
-        .home-btn{
-            margin-top: 50px;
-        }
     }
-    &-shop_product_features{
+    &--shop-product-features{
     }
-    &-shop_features{
+    &--shop-features{
         border-bottom: 1px solid $color-light_grey;
     }
-    &-shop_partners{
+    &--shop-partners{
         padding: 0px 5%; //grid
         background-color: #FFF;
     }
+    
+    &--hire-button{
+        margin-top: 50px;
+    }
 
-    &-parallax{
+    &--parallax{
         z-index: -1;
         position: fixed;
         width: 100%;
@@ -52,6 +53,5 @@
         background-color: $color-black;
         background-image: url('assets/img/home-parallax.jpg');
         @include bg-cover();
-
     }
 }

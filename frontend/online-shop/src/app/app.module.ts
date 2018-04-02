@@ -82,7 +82,7 @@ import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { NotifyManagerComponent } from './notify-manager/notify-manager.component';
 import { NotifyManager } from "app/_services/notify-manager.service";
 import { UserStatisticModule } from 'app/user-statistic/user-statistic.module';
-
+import { UiModule } from './_ui/ui.module';
 
 const onlineShopRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -206,7 +206,8 @@ const onlineShopRoutes: Routes = [
 			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
 		}),
 		TextMaskModule,
-		UserStatisticModule
+		UserStatisticModule,
+		UiModule
 	],
 	providers: [
 		ColorService,
