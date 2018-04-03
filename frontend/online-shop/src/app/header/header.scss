@@ -10,7 +10,8 @@
 
     border-bottom: 1px solid $color-light_grey;
 
-    &--hamburger-button, &--main{
+    &--hamburger-button,
+    &--main{
         display: inline-block;
         vertical-align: middle;
     }
@@ -43,7 +44,10 @@
         padding: 0 5% 0 40px;
     }
 
-    &--logo, &--search, &--actions, &--navigation{
+    &--logo,
+    &--search,
+    &--actions,
+    &--navigation{
         display: inline-block;
         vertical-align: middle;
     }
@@ -144,7 +148,8 @@
         &--user{
             width: 100%;
             .user{
-                &-wishlist, &-cart{
+                &-wishlist,
+                &-cart{
                     width: 50%;
                 }
                 .wishlist{

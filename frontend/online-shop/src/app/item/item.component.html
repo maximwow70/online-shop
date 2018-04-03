@@ -2,19 +2,19 @@
 <div class="item-loading" *ngIf="!itemData">
 	<loading></loading>
 </div>
-<div class="item-container" *ngIf="itemData">
+<div class="item--container" *ngIf="itemData">
 	<div class="item">
-		<div class="item-photos">
+		<div class="item--item-photos">
 			<item-photos [photosUrl]="itemData.item.photosUrl"></item-photos>
 		</div><!--
-		--><div class="item-info">
-			<h2 class="item-name">{{itemData.item.name}}</h2>
-			<h3 class="item-cost">${{itemData.cost}}</h3>
-			<div class="item-size_guide">
+		--><div class="item--info">
+			<h2 class="item--name">{{itemData.item.name}}</h2>
+			<h3 class="item--cost">${{itemData.cost}}</h3>
+			<div class="item--size-guide">
 				<size-guide></size-guide>
 			</div>
-			<p class="item-description">{{itemData.item.description}}</p>
-			<div class="item-item_feature_list" *ngFor="let featureList of itemData.item.featureLists">
+			<p class="item--description">{{itemData.item.description}}</p>
+			<div class="item--item-feature-list" *ngFor="let featureList of itemData.item.featureLists">
 				<div class="item_feature_list">
 					<div class="item_feature_list-title">
 						{{featureList.name}}
@@ -27,34 +27,34 @@
 				</div>
 			</div>
 
-			<div class="item-controls">
-				<div class="item-select">
+			<div class="item--controls">
+				<div class="item--select">
 					<select-item-color [colors]="availableColors" (selectedColor)="onColorSelected($event)"></select-item-color>
 				</div><!--
-				--><div class="item-select">
+				--><div class="item--select">
 					<select-item-size [sizes]="availableSizes" [selectedSize]="selectedSize" (onSelectSize)="onSizeSelected($event)"></select-item-size>
 				</div><!--
-				--><div class="item-select">
+				--><div class="item--select">
 					<select-item-count [min]="0" [max]="availableCount" [selectedCount]="selectedCount" (onSelectCount)="onCountChange($event)"></select-item-count>
 				</div><!--
-				--><div class="item-available">
+				--><div class="item--available">
 					available: {{availableCount}}
 				</div>
 			</div>
 
-			<div class="item-delivery">
+			<div class="item--delivery">
 				Next Day Delivery or Standart delivery in 2-4 days
 			</div>
 
-			<div class="item-actions">
-				<div class="item-btn">
+			<div class="item--action-list">
+				<div class="item--btn">
 					<button class="btn btn--add_to_card" (click)="addToCard()" [ngClass]="{'btn--disabled': !canAddToCard}" [disabled]="!canAddToCard">
 						<div class="btn-icon fa fa-shopping-cart"></div>
 						Add To Card
 					</button>
 				</div>
-				<div class="item-btn">
-					<button class="btn btn--add_to_wishlist" (click)="addToWishList()">
+				<div class="item--btn">
+					<button class="btn btn--add_to_wishlist" (click)="addToWishlist()">
 						<div class="btn-icon fa fa-heart"></div>
 						Add To WishList
 					</button>

@@ -1,5 +1,5 @@
 @import '../src.scss';
-.info{
+.footer-info{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -9,20 +9,21 @@
     color: $color-dark_grey;
     font-size: 14px;
 
-    &-title{
+    &--title{
         max-width: 500px;
 
         line-height: 22px;
     }
-    &-navigation{
+    &--navigation{
     }
 
     @media screen and (max-width: 1100px){
-        &-title, &-navigation{
+        &--title,
+        &--navigation{
             width: 100%;
             text-align: center;
         }
-        &-title{
+        &--title{
             margin: 0 auto;
             margin-bottom: 20px;
         }

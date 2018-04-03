@@ -1,12 +1,12 @@
-@import '../src.scss';
-.home_intro{
+@import '../../src.scss';
+.home-intro{
 
     max-width: 550px;
     padding: 0 10px;
     
     text-align: center;
 
-    &-welcome{
+    &--welcome{
         margin-bottom: 25px;
 
         font-family: $font-stack--bold;
@@ -15,7 +15,7 @@
         text-transform: uppercase;
         letter-spacing: 1px;
     }
-    &-title{
+    &--title{
         margin-bottom: 25px;
 
         font-family: $font-stack--regular;
@@ -23,7 +23,7 @@
         font-size: 42px;
         font-weight: normal;
     }
-    &-description{
+    &--description{
         margin-bottom: 40px;
 
         line-height: 1.5em;
@@ -31,7 +31,7 @@
         font-family: $font-stack--light;
     }
 
-    &-btn{
+    &--button{
         margin: 0 10px;
 
         display: inline-block;
@@ -39,7 +39,7 @@
     }
 
     @media screen and (max-width: 600px){
-        .home_intro-btn{
+        &--button{
             display: block;
             
             &:not(:last-of-type){
