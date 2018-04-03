@@ -1,0 +1,65 @@
+@import "../src.scss";
+
+.item-small {
+    height: 100%;
+
+    &--photos{
+        position: relative;
+
+        display: inline-block;
+        vertical-align: middle;
+
+        width: 40%;
+        height: 100%;
+        padding: 0;
+
+        //overflow: hidden;
+    }
+    &--photo{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: auto;
+        height: auto;
+        max-width: 80%;
+        max-height: 80%;
+    }
+
+    &--info{
+        margin: 0;
+        display: inline-block;
+        vertical-align: middle;
+        
+        box-sizing: border-box;
+        width: 60%;
+        padding-right: 20px;
+    }
+    &--name{
+        margin: 0;
+
+        line-height: 24px;
+        font-size: 16px;
+        text-align: left;
+
+        max-height: 24px * 3;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    &--cost{
+        display: block;
+        margin: 5px 0 10px 0px;
+
+        line-height: 18px;
+        color: $color-dark_grey;
+        font-size: 16px;
+        text-align: left;
+    }
+    &--count{
+        line-height: 18px;
+        font-size: 16px;
+        text-align: left;
+    }
+}

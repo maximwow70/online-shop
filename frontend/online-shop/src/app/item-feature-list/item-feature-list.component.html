@@ -1,0 +1,10 @@
+<div class="item-feature-list">
+	<div class="item-feature-list--title">
+		{{featureList.name}}
+	</div>
+	<div class="item-feature-list--feature-list">
+		<div class="item-feature-list--feature" *ngFor="let feature of featureList.features">
+			{{feature.name}}: {{feature.value}}
+		</div>
+	</div>
+</div>

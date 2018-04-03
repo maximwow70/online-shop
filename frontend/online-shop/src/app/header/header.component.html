@@ -48,14 +48,7 @@
 						</button>
 						<div class="user_wishlist-item_list">
 							<div class="user_wishlist-item" *ngFor="let item of wishlistItems" (click)="selectItem(item)">
-								<div class="item item--small">
-									<div class="item-photos">
-										<img class="item-photo" src="{{item.photosUrl[0]}}" alt="">
-									</div><!--
-									--><div class="item-info">
-										<h2 class="item-name">{{item.name}}</h2>
-									</div>
-								</div>
+								<item-chip [item]="item"></item-chip>
 							</div>
 						</div>
 					</div>
@@ -70,18 +63,7 @@
 						</button>
 						<div class="user_cart-item_list">
 							<div class="user_cart-item" *ngFor="let item of cartItems" (click)="selectItem(item)">
-								<div class="item item--small">
-									<div class="item-photos">
-										<img class="item-photo" src="{{item.photosUrl[0]}}" alt="">
-									</div><!--
-									--><div class="item-info">
-										<h2 class="item-name">{{item.name}}</h2>
-										<h4 class="item-cost">$45</h4>
-										<div class="item-count">
-											1 items in cart
-										</div>
-									</div>
-								</div>
+								<item-small [item]="item"></item-small>
 							</div>
 						</div>
 					</div>

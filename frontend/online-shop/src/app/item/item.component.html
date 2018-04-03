@@ -1,7 +1,4 @@
 <header></header>
-<div class="item-loading" *ngIf="!itemData">
-	<loading></loading>
-</div>
 <div class="item--container" *ngIf="itemData">
 	<div class="item">
 		<div class="item--item-photos">
@@ -15,16 +12,7 @@
 			</div>
 			<p class="item--description">{{itemData.item.description}}</p>
 			<div class="item--item-feature-list" *ngFor="let featureList of itemData.item.featureLists">
-				<div class="item_feature_list">
-					<div class="item_feature_list-title">
-						{{featureList.name}}
-					</div>
-					<div class="item_feature_list-feature_list">
-						<div class="item_feature_list-feature" *ngFor="let feature of featureList.features">
-							{{feature.name}}: {{feature.value}}
-						</div>
-					</div>
-				</div>
+				<item-feature-list [featureList]="featureList"></item-feature-list>
 			</div>
 
 			<div class="item--controls">
@@ -62,5 +50,8 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="item--loading" *ngIf="!itemData">
+	<loading></loading>
 </div>
 <footer></footer>
