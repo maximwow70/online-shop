@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "title": "asdwa",
+  "description": "awfda",
+  "cost": 2.0,
+  "details": [
+    {
+      "id": 1,
+      "itemId": 1,
+      "color": {
+        "id": 1,
+        "title": "red"
+      },
+      "count": 3
+    },
+    {
+      "id": 2,
+      "itemId": 1,
+      "color": {
+        "id": 2,
+        "title": "yellow"
+      },
+      "count": 4
+    }
+  ]
+}
