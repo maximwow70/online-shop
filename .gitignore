@@ -6,3 +6,7 @@
 java-backend/\.idea/
 
 java-backend/target/
+
+java-backend/shop\.iml
+
+java-backend/checkstyle-checker\.xml
