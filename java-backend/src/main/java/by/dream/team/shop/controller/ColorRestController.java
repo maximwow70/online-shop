@@ -1,4 +1,4 @@
-package by.dream.team.shop.conroller;
+package by.dream.team.shop.controller;
 
 import by.dream.team.shop.model.Color;
 import by.dream.team.shop.service.ColorRestService;
