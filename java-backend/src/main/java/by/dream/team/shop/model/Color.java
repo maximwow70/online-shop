@@ -4,9 +4,8 @@ package by.dream.team.shop.model;
  * @author Dmitry Kovalenko
  */
 public class Color {
-
     private Integer id;
-    private String title;
+    private String name;
 
     public Integer getId() {
         return id;
@@ -16,11 +15,11 @@ public class Color {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 }

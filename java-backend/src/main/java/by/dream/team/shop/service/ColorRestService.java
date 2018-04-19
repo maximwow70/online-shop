@@ -27,7 +27,7 @@ public class ColorRestService {
     private Color extract(by.dream.team.shop.domain.Color color) {
         Color colorModel = new Color();
         colorModel.setId(color.getId());
-        colorModel.setTitle(color.getTitle());
+        colorModel.setName(color.getTitle());
         return colorModel;
     }
 }
