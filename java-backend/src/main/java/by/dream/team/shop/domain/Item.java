@@ -8,10 +8,9 @@ import java.util.List;
 public class Item {
 
     private Integer id;
-    private String title;
+    private String article;
+    private String name;
     private String description;
-    private Double cost;
-    private List<Detail> details;
 
     public Integer getId() {
         return id;
@@ -21,12 +20,20 @@ public class Item {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getArticle() {
+        return article;
     }
 
-    public void setTitle(final String title) {
-        this.title = title;
+    public void setArticle(final String article) {
+        this.article = article;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -35,21 +42,5 @@ public class Item {
 
     public void setDescription(final String description) {
         this.description = description;
-    }
-
-    public Double getCost() {
-        return cost;
-    }
-
-    public void setCost(final Double cost) {
-        this.cost = cost;
-    }
-
-    public List<Detail> getDetails() {
-        return details;
-    }
-
-    public void setDetails(List<Detail> details) {
-        this.details = details;
     }
 }

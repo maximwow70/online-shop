@@ -55,7 +55,7 @@ public class JdbcItemDAO implements ItemDAO {
         String query = "INSERT INTO item VALUES (id = :id, title = :title, description = :description, cost = :cost)";
         Map<String, Object> namedParameters = new HashMap<>();
         namedParameters.put("id", object.getId());
-        namedParameters.put("title", object.getTitle());
+        namedParameters.put("title", object.getArticle());
         namedParameters.put("description", object.getDescription());
         namedParameters.put("cost", object.getCost());
         return operationsHandler.update(query, namedParameters) > 0;
@@ -74,7 +74,7 @@ public class JdbcItemDAO implements ItemDAO {
         String query = "UPDATE item SET title = :title, description = :description, cost = :cost WHERE id = :id";
         Map<String, Object> namedParameters = new HashMap<>();
         namedParameters.put("id", object.getId());
-        namedParameters.put("title", object.getTitle());
+        namedParameters.put("title", object.getArticle());
         namedParameters.put("description", object.getDescription());
         namedParameters.put("cost", object.getCost());
         return operationsHandler.update(query, namedParameters) > 0;
@@ -132,7 +132,7 @@ public class JdbcItemDAO implements ItemDAO {
         Item item = new Item();
         item.setId(itemId);
         item.setCost(resultSet.getDouble("cost"));
-        item.setTitle(resultSet.getString("title"));
+        item.setArticle(resultSet.getString("title"));
         item.setDescription(resultSet.getString("description"));
         item.setDetails(details);
         return item;
