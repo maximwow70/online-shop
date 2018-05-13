@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "local-serve": "ng serve"
+    "local-serve": "ng serve",
+    "prod-build": "ng build --prod"
   },
   "private": true,
   "dependencies": {
