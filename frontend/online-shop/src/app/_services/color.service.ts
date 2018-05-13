@@ -5,18 +5,20 @@ import { Observable } from "rxjs/Observable";
 import { Http } from "@angular/http";
 
 import 'rxjs';
+import { ApplicationService } from '../application.service';
 
 @Injectable()
 export class ColorService {
 
 	constructor(
-		private _http: Http
+		private _http: Http,
+		private _appliaction: ApplicationService
 	) {
 
 	}
 
 	public getColors(): Promise<Color[]> {
-		return this._http.get('GetColors', '').map(res =>
+		return this._http.get(this._appliaction.apiBase + 'color', '').map(res =>
 			res.json().map(c => Color.fromJSON(c))
 		).toPromise();
 	}

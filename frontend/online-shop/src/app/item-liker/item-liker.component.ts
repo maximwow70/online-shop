@@ -56,10 +56,10 @@ export class ItemLikerComponent implements OnInit {
 
 
 	public getItemList(): void {
-		this._itemData.getItemListJSON().then(itemList => {
-			this._itemList = itemList;
-			this._listLength = this._itemList.length;
-		});
+		// this._itemData.getItemList().then(itemList => {
+		// 	this._itemList = itemList;
+		// 	this._listLength = this._itemList.length;
+		// });
 	}
 	public getClassByColor(color: Color): string {
 		return this._itemColor.getClassByColor(color);

@@ -86,6 +86,7 @@ import { UiModule } from './_ui/ui.module';
 import { ItemChipComponent } from './item-chip/item-chip.component';
 import { ItemSmallComponent } from './item-small/item-small.component';
 import { ItemFeatureListComponent } from './item-feature-list/item-feature-list.component';
+import { ApplicationService } from './application.service';
 
 const onlineShopRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -216,6 +217,7 @@ const onlineShopRoutes: Routes = [
 		UiModule
 	],
 	providers: [
+		ApplicationService,
 		ColorService,
 		ItemService,
 		CategoryService,

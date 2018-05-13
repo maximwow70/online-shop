@@ -190,7 +190,7 @@ export class CategoryService {
 
 	public getCategoryList(): Promise<Category[]> {
 		return new Promise<Category[]>((resolve,reject) => {
-			resolve(this._categoryList);
+			resolve([]);
 		});
 		// return this._http.get('GetCategoryList', '').map(res =>
 		// 	res.json().map(c => Category.fromJSON(c))

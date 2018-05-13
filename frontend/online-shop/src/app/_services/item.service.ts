@@ -10,19 +10,16 @@ import { ItemDataSearch } from "app/_model/item-data-search";
 import { SortType } from "app/_model/sort-type";
 
 import 'rxjs';
+import { ApplicationService } from '../application.service';
 
 @Injectable()
 export class ItemService {
 
 	constructor(
-		private _http: Http
+		private _http: Http,
+		private _appliaction: ApplicationService
 	) { }
 
-
-	public getItemListJSON(): Promise<ItemDataPresentation[]> {
-		return this._http.get('assets/GetItemList.json', '')
-			.map(response => response.json().map(itemData => ItemDataPresentation.fromJSON(itemData))).toPromise();
-	}
 
 	public getItemList(
 		name: string,
@@ -45,25 +42,22 @@ export class ItemService {
 			'&sortType=' + JSON.stringify(sortType.id) + 
 			'&isSortByIncrease=' + JSON.stringify(isSortByIncrease);
 
-		return this._http.get('SearchItemList?' + params, '')
+		return this._http.get(`${this._appliaction.apiBase}item?${params}`, '')
 			.map(response =>
 				ItemDataSearch.fromJSON(response.json())
 			).toPromise();
 	}
 
 	public getItem(id: string): Promise<ItemData> {
-		return this._http.get('assets/GetItemData.json')
-			.map(response => ItemData.fromJSON(response.json())).toPromise();
-		// return this._http.get('GetItemData' + '?id=' + id).map(res =>
-		// 	ItemData.fromJSON(res.json())
-		// ).toPromise();
+		return this._http.get(`${this._appliaction.apiBase}item/${id}`).map(res =>
+			ItemData.fromJSON(res.json())
+		).toPromise();
 	}
 
 	public getMaxCost(): Promise<number> {
-		return this._http.get('GetMaxCost', '').map(res => res.json()).toPromise();
-		// return new Promise<number>(resolve => {
-		// 	resolve(125);
-		// });
+		return new Promise<number>(resolve => {
+			resolve(10000);
+		});
 	}
 
 	public getSortTypes(): Promise<SortType[]> {

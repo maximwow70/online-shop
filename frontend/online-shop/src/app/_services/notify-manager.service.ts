@@ -54,7 +54,7 @@ export class NotifyManager {
 		return this._notifyList;
 	}
 	public get notifyListObservable(): Observable<Notify[]> {
-		return this._notifyListSubject;
+		return this._notifyListSubject as Observable<Notify[]>;
 	}
 
 	constructor() {
