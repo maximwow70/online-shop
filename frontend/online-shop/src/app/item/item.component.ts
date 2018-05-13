@@ -47,9 +47,9 @@ export class ItemComponent implements OnInit {
 	}
 
 	public get canAddToCard(): boolean {
-		return (this._selectedCount > 0) &&
-			(this._selectedColor !== null) &&
-			(this._selectedSize !== null);
+		return this._selectedCount > 0
+			&& this._selectedColor !== null
+			&& this._selectedSize !== null;
 	}
 
 
@@ -68,14 +68,16 @@ export class ItemComponent implements OnInit {
 			this._itemData = itemData;
 			this._selectedColor = this.availableColors[0];
 			this._selectedSize = this.availableSizes[0];
-			this._selectedCount = this.availableCount > 0 
-				? 1
-				: 0;
+			this._selectedCount = this.availableCount > 0 ? 1 : 0;
 		});
 	}
 
 	public addToCard(): void {
 		//console.log(this._selectColor.getData() + " / " + this._selectSize.getData());
+	}
+
+	public addToWishlist(): void {
+		
 	}
 
 	public onColorSelected(color): void {

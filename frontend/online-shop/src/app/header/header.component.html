@@ -1,34 +1,32 @@
 <div class="header header--light">
-	<button class="header-hamburger" (click)="smartNavigation.classList.add('navigation--open')">
-		<div class="btn btn--hamburger">
-			<span class="btn-icon fa fa-navicon"></span>
-		</div>
+	<button class="header--hamburger-button" (click)="smartNavigation.classList.add('navigation--open')">
+		<hamburger-button class="align-left"></hamburger-button>
 	</button>
-	<div class="header-main">
-		<div class="header-logo">
-			<div class="logo">
+	<div class="header--main">
+		<div class="header--logo">
+			<a class="logo" routerLink="/home">
 				<h2 class="logo-name">
 					Portland
 				</h2>
-			</div>
+			</a>
 		</div><!--
-		--><div class="header-navigation">
+		--><div class="header--navigation">
 			<div class="navigation">
-				<a routerLink="/home" routerLinkActive="active" class="navigation-list">home</a>
-				<a routerLink="/products" routerLinkActive="active" class="navigation-list">products</a>
-				<a routerLink="/product-liker" routerLinkActive="active" class="navigation-list">Quick View</a>
-				<a routerLink="/contacts" routerLinkActive="active" class="navigation-list">contacts</a>
-				<a routerLink="/about" routerLinkActive="active" class="navigation-list">about us</a>
+				<a class="navigation-list" routerLink="/home" routerLinkActive="active">home</a>
+				<a class="navigation-list" routerLink="/products" routerLinkActive="active">products</a>
+				<a class="navigation-list" routerLink="/product-liker" routerLinkActive="active">Quick View</a>
+				<a class="navigation-list" routerLink="/contacts" routerLinkActive="active">contacts</a>
+				<a class="navigation-list" routerLink="/about" routerLinkActive="active">about us</a>
 			</div>
 		</div><!--
-		--><div class="header-btn">
+		--><div class="header--user-button">
 			<button routerLink="/user" routerLinkActive="active" class="btn btn--sign_in" title="My account">
 				<span class="fa fa-user"></span>
 			</button>
 		</div>
 	</div>
-	<div class="header-actions">
-		<div class="header-search">
+	<div class="header--actions">
+		<div class="header--search">
 			<div class="search">
 				<button class="search-btn">
 					<div class="btn btn--search">
@@ -38,52 +36,34 @@
 				--><input class="search-input" type="text" placeholder="I'm shopping for..">
 			</div>
 		</div>
-		<div class="header-user">
+		<div class="header--user">
 			<div class="user">
 				<div class="user-wishlist">
-					<div class="user_wishlist user_wishlist--smart">
-						<button class="user_wishlist-btn" (click)="onWishlistBtnToggle()">
+					<div class="user_wishlist user_wishlist--smart" #userWishlist>
+						<button class="user_wishlist-btn" (click)="userWishlist.classList.toggle('user_wishlist--open')">
 							<div class="btn btn--user_wishlist">
 								<div class="btn-icon fa fa-heart"></div>
 								4 items
 							</div>
 						</button>
 						<div class="user_wishlist-item_list">
-							<div class="user_wishlist-item" *ngFor="let item of wishlistItems" (click)="onItemClicked(item)">
-								<div class="item item--small">
-									<div class="item-photos">
-										<img class="item-photo" src="{{item.photosUrl[0]}}" alt="">
-									</div><!--
-									--><div class="item-info">
-										<h2 class="item-name">{{item.name}}</h2>
-									</div>
-								</div>
+							<div class="user_wishlist-item" *ngFor="let item of wishlistItems" (click)="selectItem(item)">
+								<item-chip [item]="item"></item-chip>
 							</div>
 						</div>
 					</div>
 				</div><!--
 				<--><div class="user-cart">
-					<div class="user_cart user_cart--smart">
-						<button class="user_cart-btn" (click)="onCartBtnToggle()">
+					<div class="user_cart user_cart--smart" #userCart>
+						<button class="user_cart-btn" (click)="userCart.classList.toggle('user_cart--open')">
 							<div class="btn btn--user_cart">
 								<div class="btn-icon fa fa-shopping-cart"></div>
 								3 items
 							</div>
 						</button>
 						<div class="user_cart-item_list">
-							<div class="user_cart-item" *ngFor="let item of cartItems" (click)="onItemClicked(item)">
-								<div class="item item--small">
-									<div class="item-photos">
-										<img class="item-photo" src="{{item.photosUrl[0]}}" alt="">
-									</div><!--
-									--><div class="item-info">
-										<h2 class="item-name">{{item.name}}</h2>
-										<h4 class="item-cost">$45</h4>
-										<div class="item-count">
-											1 items in cart
-										</div>
-									</div>
-								</div>
+							<div class="user_cart-item" *ngFor="let item of cartItems" (click)="selectItem(item)">
+								<item-small [item]="item"></item-small>
 							</div>
 						</div>
 					</div>
@@ -91,14 +71,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="header-smart_navigation">
+	<div class="header--smart-navigation">
 		<div class="navigation navigation--smart" #smartNavigation>
 			<button class="navigation-btn navigation-btn--close" (click)="smartNavigation.classList.remove('navigation--open')">
 				<span class="fa fa-close"></span>
 			</button>
-			<a routerLink="/home" routerLinkActive="active" class="navigation-list">home</a>
-			<a routerLink="/products" routerLinkActive="active" class="navigation-list">products</a>
-			<a routerLink="/user" routerLinkActive="active" class="navigation-list">My account</a>	
+			<a class="navigation-list" routerLink="/home" routerLinkActive="active">home</a>
+			<a class="navigation-list" routerLink="/products" routerLinkActive="active">products</a>
+			<a class="navigation-list" routerLink="/user" routerLinkActive="active">My account</a>	
 			<a class="navigation-list">Our Team</a>
 			<div class="navigation-navigation">
 				<div class="navigation">		

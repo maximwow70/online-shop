@@ -1,11 +1,6 @@
 @import './app/src.scss';
 
-@import './app/loading/loading.scss';
-
-@import './app/page-not-found/page-not-found.scss';
-@import './app/page-error/page-error.scss';
-
-@import './app/notify-manager/notify-manager.scss';
+@import "./app/_ui/ui.styles.scss";
 
 @import './app/ui/btn/btn.scss';
 @import './app/ui/select-number/select-number.scss';
@@ -16,8 +11,14 @@
 @import './app/ui/datapicker/datapicker.scss';
 @import './app/ui/switch/switch.scss';
 
-@import './app/home/home.scss';
-@import './app/home-intro/home-intro.scss';
+@import './app/loading/loading.scss';
+
+@import './app/page-not-found/page-not-found.scss';
+@import './app/page-error/page-error.scss';
+
+@import './app/notify-manager/notify-manager.scss';
+
+@import './app/home/home-intro/home-intro.scss';
 @import './app/shop-history/shop-history.scss';
 @import './app/shopping-road/shopping-road.scss';
 @import './app/shop-features/shop-features.scss';
@@ -33,9 +34,7 @@
 @import './app/items-search/items-search.scss';
 @import './app/item-list/item-list.scss';
 @import './app/item-card/item-card.scss';
-@import './app/item/item.scss';
 @import './app/item-photos/item-photos.scss';
-@import './app/item-feature-list/item-feature-list.scss';
 
 @import './app/color-list/color-list.scss';
 @import './app/color/color.scss';
@@ -46,7 +45,7 @@
 @import './app/paginator/paginator.scss';
 
 @import './app/slider/slider.scss';
-@import './app/info/info.scss';
+@import './app/footer-info/footer-info.scss';
 
 
 @import './app/user/user.scss';
@@ -76,9 +75,9 @@
 
 @import './app/item-liker/item-liker.scss';
 
-@import './app/contact-info/contact-info.scss';
-@import './app/contact-form/contact-form.scss';
-@import './app/contact-map/contact-map.scss';
+@import './app/contacts/contact-info/contact-info.scss';
+@import './app/contacts/contact-form/contact-form.scss';
+@import './app/contacts/contact-map/contact-map.scss';
 
 @font-face{
     font-family: logo;

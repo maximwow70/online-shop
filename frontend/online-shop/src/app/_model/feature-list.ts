@@ -18,18 +18,10 @@ export class FeatureList {
     }
 
     public equals(other: FeatureList): boolean {
-        if (!other) {
-            return false;
-        }
-        let notEqualsFeatures = this.features.map(feature =>
-            !other.features.some(f => feature.equals(f))
-        ).concat(other.features.map(feature =>
-            !this.features.some(f => feature.equals(f))
-        ));
-        if (notEqualsFeatures.length > 0) {
-            return false;
-        }
-        return this.name === other.name;
+        return other
+            && this.name === other.name
+            && this.features.every(feature => other.features.some(f => feature.equals(f)))
+            && other.features.every(feature => this.features.some(f => feature.equals(f)));
     }
 
     public static toJSON(featureList: FeatureList): any {
@@ -43,6 +35,6 @@ export class FeatureList {
             json.name,
             json.features.map(f => Feature.fromJSON(f))
         );
-    } 
+    }
 
 }

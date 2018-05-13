@@ -18,7 +18,7 @@
             }
         }
     }
-    &--info{
+    &--footer-info{
         padding: 60px 0;
     }
 
@@ -31,7 +31,8 @@
         }
     }
     @media screen and (max-width: 900px){
-        &--header, &--info{
+        &--header,
+        &--footer-info{
             padding: 30px 0;
         }
         &--header{

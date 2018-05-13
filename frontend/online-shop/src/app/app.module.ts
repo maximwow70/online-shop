@@ -46,16 +46,16 @@ import { ShopHistoryComponent } from './shop-history/shop-history.component';
 import { ShopFeaturesComponent } from './shop-features/shop-features.component';
 import { ShopProductFeaturesComponent } from './shop-product-features/shop-product-features.component';
 import { ItemLikerComponent } from './item-liker/item-liker.component';
-import { AboutComponent } from './about/about.component';
-import { AboutSkillsComponent } from './about-skills/about-skills.component';
-import { AboutIntroComponent } from './about-intro/about-intro.component';
 import { ItemsSortComponent } from './items-sort/items-sort.component';
-import { AboutHistoryComponent } from './about-history/about-history.component';
-import { AboutTeamComponent } from './about-team/about-team.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserComponent } from "app/user/user.component";
 import { UserStatisticComponent } from './user-statistic/user-statistic.component';
 
+import { AboutComponent } from './about/about.component';
+import { AboutHistoryComponent } from './about/about-history/about-history.component';
+import { AboutTeamComponent } from './about/about-team/about-team.component';
+import { AboutSkillsComponent } from './about/about-skills/about-skills.component';
+import { AboutIntroComponent } from './about/about-intro/about-intro.component';
 
 import { UserCartGuard } from "app/_guards/user-cart.guard";
 import { UserWishlistGuard } from "app/_guards/user-wishlist.guard";
@@ -82,7 +82,10 @@ import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { NotifyManagerComponent } from './notify-manager/notify-manager.component';
 import { NotifyManager } from "app/_services/notify-manager.service";
 import { UserStatisticModule } from 'app/user-statistic/user-statistic.module';
-
+import { UiModule } from './_ui/ui.module';
+import { ItemChipComponent } from './item-chip/item-chip.component';
+import { ItemSmallComponent } from './item-small/item-small.component';
+import { ItemFeatureListComponent } from './item-feature-list/item-feature-list.component';
 
 const onlineShopRoutes: Routes = [
 	{ path: 'home', component: HomeComponent },
@@ -194,7 +197,10 @@ const onlineShopRoutes: Routes = [
 		CreditCardPresetComponent,
 		CategoryComponent,
 		PageErrorComponent,
-		NotifyManagerComponent
+		NotifyManagerComponent,
+		ItemChipComponent,
+		ItemSmallComponent,
+		ItemFeatureListComponent
 	],
 	imports: [
 		BrowserModule,
@@ -206,7 +212,8 @@ const onlineShopRoutes: Routes = [
 			apiKey: 'AIzaSyC-rAlCQwoW7PpUspaBZc2ODHKVP5VW8f4'
 		}),
 		TextMaskModule,
-		UserStatisticModule
+		UserStatisticModule,
+		UiModule
 	],
 	providers: [
 		ColorService,

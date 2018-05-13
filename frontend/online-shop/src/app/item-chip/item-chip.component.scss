@@ -1,0 +1,48 @@
+@import "../src.scss";
+
+.item-chip {
+    height: 100%;
+
+    &--photos {
+        position: relative;
+
+        display: inline-block;
+        vertical-align: middle;
+
+        width: 40%;
+        height: 100%;
+        padding: 0;
+
+        //overflow: hidden;
+    }
+    &--photo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: auto;
+        height: auto;
+        max-width: 80%;
+        max-height: 80%;
+    }
+    &--name {
+        margin: 0;
+        display: inline-block;
+        vertical-align: middle;
+        
+        box-sizing: border-box;
+        width: 60%;
+        max-height: 24px * 3;
+        padding-right: 20px;
+        
+        line-height: 24px;
+        font-size: 16px;
+        text-align: left;
+
+        
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
