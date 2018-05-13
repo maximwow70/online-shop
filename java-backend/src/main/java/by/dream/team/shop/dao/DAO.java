@@ -1,8 +1,5 @@
 package by.dream.team.shop.dao;
 
-import by.dream.team.shop.domain.Item;
-
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -48,4 +45,5 @@ public interface DAO<T> {
      * @return список объектов или пустой список.
      */
     List<T> getAll();
+
 }

@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Dmitry Kovalenko
@@ -52,5 +55,12 @@ public class JdbcColorDAO implements ColorDAO {
         color.setId(resultSet.getInt("id"));
         color.setTitle(resultSet.getString("title"));
         return color;
+    }
+
+    @Override
+    public List<Color> getByIds(Collection<Integer> ids) {
+        String query = "SELECT * FROM color WHERE id in :ids";
+        Map<String, Object> namedParameters = Collections.singletonMap("ids", ids);
+        return operationsHandler.query(query, namedParameters, rowMapper);
     }
 }

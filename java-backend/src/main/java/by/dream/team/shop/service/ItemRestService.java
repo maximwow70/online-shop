@@ -6,6 +6,8 @@ import by.dream.team.shop.domain.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,5 +26,13 @@ public class ItemRestService {
 
     public Item get(Integer id) {
         return itemDAO.get(id);
+    }
+
+    public List<Item> getByIds(Collection<Integer> ids) {
+        if (ids.isEmpty()) {
+            return Collections.emptyList();
+        } else {
+            return itemDAO.getByIds(ids);
+        }
     }
 }

@@ -6,6 +6,7 @@ package by.dream.team.shop.domain;
 public class Detail {
 
     private Integer id;
+    private Integer itemId;
     private Color color;
     private Size size;
     private Integer count;
@@ -17,6 +18,14 @@ public class Detail {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
     }
 
     public Size getSize() {

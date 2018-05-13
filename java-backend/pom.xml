@@ -39,6 +39,14 @@
     </dependency>
     <!-- Spring  -->
 
+    <!-- Spring Test -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+      <scope>test</scope>
+    </dependency>
+
     <!-- Spring MVC -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -86,6 +94,14 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
       <version>4.3.1.Final</version>
+    </dependency>
+
+    <!-- JUnit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
     </dependency>
 
   </dependencies>

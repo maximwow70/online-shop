@@ -1,26 +1,148 @@
-{
-  "id": 1,
-  "title": "asdwa",
-  "description": "awfda",
-  "cost": 2.0,
-  "details": [
-    {
-      "id": 1,
-      "itemId": 1,
-      "color": {
+[
+  {
+    "id": 1,
+    "article": "article",
+    "name": "title",
+    "description": "description",
+    "photos": [
+      {
         "id": 1,
-        "title": "red"
+        "photo": "photo1"
       },
-      "count": 3
-    },
-    {
-      "id": 2,
-      "itemId": 1,
-      "color": {
+      {
         "id": 2,
-        "title": "yellow"
+        "photo": "photo2"
       },
-      "count": 4
-    }
-  ]
-}
+      {
+        "id": 3,
+        "photo": "photo3"
+      },
+      {
+        "id": 4,
+        "photo": "photo4"
+      }
+    ],
+    "detailList": [
+      {
+        "id": 1,
+        "itemId": 1,
+        "color": {
+          "id": 1,
+          "title": "color1"
+        },
+        "size": {
+          "id": 1,
+          "title": "size1"
+        },
+        "count": 2,
+        "cost": 4.21
+      },
+      {
+        "id": 2,
+        "itemId": 1,
+        "color": {
+          "id": 1,
+          "title": "color1"
+        },
+        "size": {
+          "id": 2,
+          "title": "size2"
+        },
+        "count": 2,
+        "cost": 4.21
+      },
+      {
+        "id": 3,
+        "itemId": 1,
+        "color": {
+          "id": 2,
+          "title": "color2"
+        },
+        "size": {
+          "id": 3,
+          "title": "size3"
+        },
+        "count": 2,
+        "cost": 4.21
+      },
+      {
+        "id": 4,
+        "itemId": 1,
+        "color": {
+          "id": 3,
+          "title": "color3"
+        },
+        "size": {
+          "id": 1,
+          "title": "size1"
+        },
+        "count": 2,
+        "cost": 4.21
+      }
+    ],
+    "featureLists": [
+      {
+        "id": 1,
+        "itemId": 1,
+        "name": "name",
+        "features": [
+          {
+            "id": 1,
+            "featureListId": 1,
+            "key": "key",
+            "value": "value"
+          },
+          {
+            "id": 2,
+            "featureListId": 1,
+            "key": "key",
+            "value": "value"
+          },
+          {
+            "id": 3,
+            "featureListId": 1,
+            "key": "key",
+            "value": "value"
+          },
+          {
+            "id": 4,
+            "featureListId": 1,
+            "key": "key",
+            "value": "value"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "itemId": 1,
+        "name": "name",
+        "features": [
+          {
+            "id": 5,
+            "featureListId": 2,
+            "key": "key",
+            "value": "value"
+          },
+          {
+            "id": 6,
+            "featureListId": 2,
+            "key": "key",
+            "value": "value"
+          },
+          {
+            "id": 7,
+            "featureListId": 2,
+            "key": "key",
+            "value": "value"
+          },
+          {
+            "id": 8,
+            "featureListId": 2,
+            "key": "key",
+            "value": "value"
+          }
+        ]
+      }
+    ]
+  }
+]

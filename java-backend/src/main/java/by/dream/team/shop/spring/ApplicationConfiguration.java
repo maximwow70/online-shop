@@ -17,7 +17,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @PropertySource("classpath:database.properties")
-@ComponentScan("by.dream.team.shop")
+@ComponentScan(basePackages = {"by.dream.team.shop.dao", "by.dream.team.shop.service"})
 public class ApplicationConfiguration {
 
     @Value("${database.host}")
@@ -42,7 +42,6 @@ public class ApplicationConfiguration {
     public DataSource dataSource() {
         String databaseUrl = "jdbc:mysql://" + databaseHost + "/" + databaseName +
                 "?useUnicode=true&characterEncoding=utf8";
-        System.out.println(databaseUrl);
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUrl(databaseUrl);

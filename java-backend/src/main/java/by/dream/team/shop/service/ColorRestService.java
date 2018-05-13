@@ -1,12 +1,11 @@
 package by.dream.team.shop.service;
 
 import by.dream.team.shop.dao.ColorDAO;
-import by.dream.team.shop.model.Color;
+import by.dream.team.shop.domain.Color;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Dmitry Kovalenko
@@ -18,16 +17,6 @@ public class ColorRestService {
     private ColorDAO colorDAO;
 
     public List<Color> getAll() {
-        return colorDAO.getAll()
-                .stream()
-                .map(this::extract)
-                .collect(Collectors.toList());
-    }
-
-    private Color extract(by.dream.team.shop.domain.Color color) {
-        Color colorModel = new Color();
-        colorModel.setId(color.getId());
-        colorModel.setName(color.getTitle());
-        return colorModel;
+        return colorDAO.getAll();
     }
 }

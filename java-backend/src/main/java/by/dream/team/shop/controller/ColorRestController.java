@@ -1,6 +1,6 @@
 package by.dream.team.shop.controller;
 
-import by.dream.team.shop.model.Color;
+import by.dream.team.shop.domain.Color;
 import by.dream.team.shop.service.ColorRestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

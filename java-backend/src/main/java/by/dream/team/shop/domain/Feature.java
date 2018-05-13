@@ -6,7 +6,7 @@ package by.dream.team.shop.domain;
 public class Feature {
 
     private Integer id;
-    private Integer itemId;
+    private Integer featureListId;
     private String key;
     private String value;
 
@@ -18,12 +18,12 @@ public class Feature {
         this.id = id;
     }
 
-    public Integer getItemId() {
-        return itemId;
+    public Integer getFeatureListId() {
+        return featureListId;
     }
 
-    public void setItemId(final Integer itemId) {
-        this.itemId = itemId;
+    public void setFeatureListId(final Integer featureListId) {
+        this.featureListId = featureListId;
     }
 
     public String getKey() {
