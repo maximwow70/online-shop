@@ -16,7 +16,7 @@ export class SizeService {
 	) { }
 
 	public getSizes(category: Category): Promise<Size[]> {
-		return this._http.get(`${this._application.apiBase}api/size`, "").map(res =>
+		return this._http.get(`${this._application.apiBase}size`, "").map(res =>
 			res.json().map(s => Size.fromJSON(s))
 		).toPromise();
 	}
